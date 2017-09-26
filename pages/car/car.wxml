@@ -1,0 +1,94 @@
+
+  
+<view class="view1 c">
+  <image class=" adsimg" src="{{image_Url}}{{detail_data.imgUrl}}"></image>
+  <view class="v1-title">{{detail_data.name}}</view>
+  <view class="v1-carnum">云P74110 {{car_num}}</view>
+  <view class="v1-comm h">
+    <view class="v1-star h">
+      <image class="d-e" src="/assets/index/{{start_status[0]}}"></image>
+      <image class="d-e" src="/assets/index/{{start_status[1]}}"></image>
+      <image class="d-e" src="/assets/index/{{start_status[2]}}"></image>
+      <image class="d-e" src="/assets/index/{{start_status[3]}}"></image>
+      <image class="d-e" src="/assets/index/{{start_status[4]}}"></image>
+    </view>
+    <view class="v1-num">{{detail_data.commentNumber}}点评</view>
+  </view>
+  <view class="v1-score c">
+    <view>{{nav_score_change}}</view>
+    <view>信用分</view>
+  </view>
+</view>
+
+<view class="view2">
+  <view class="v2-row h">
+    <view class="v2-comm c">准时达 125</view>
+    <view class="v2-comm c">按表计费 235</view>
+    <view class="v2-comm c">态度友好 143</view>
+  </view>
+  <view class="v2-row h">
+    <view class="v2-comm c">接驾很快 187</view>
+    <view class="v2-comm c">车内干净 453</view>
+    <view class="v2-comm c">熟悉路线 276</view>
+  </view>
+  <view class="v2-row h">
+    <view class="v2-comm c">驾驶技术好 329</view>
+    <view class="v2-comm v2-hui c">司机绕路 32</view>
+    <view class="v2-comm v2-hui c">危险驾驶 4</view>
+  </view>
+</view>
+
+<view class="view3">
+  <block wx:if="{{detail_data.Address != ''}}" >
+    <view class="v3-row h">
+      <view>隶属公司</view>
+      <view>{{car_company}}</view>
+    </view>
+    <view class="line"></view>
+  </block>
+  <block wx:if="{{detail_data.telephone !=''}}" >
+    <view class="v3-row h">
+      <view>司机电话</view>
+      <view>{{detail_data.telephone}}</view>
+    </view>
+    <view class="line"></view>
+  </block>
+</view>
+
+
+<view class="view5">
+  <view class="v5-title c">精选评价</view>
+  <!--评价开始-->
+  <block wx:for="{{detail_data.comment}}" wx:key="id" wx:for-index="i">
+    <block wx:if="{{user_switch[i]=='on'}}" >
+      <view class="v5-row h h-t">
+        <view class="v5-icon">
+          <image src="{{detail_data.comment[i].headImgUrl}}"></image>
+        </view>
+        <view class="v5-des f">
+          <view class="v5-d1 h ">
+            <view>{{detail_data.comment[i].nickName}}</view>
+            <view class="f h h-r v5-d1s-text">{{time_stamp[i]}}</view>
+          </view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{user_start_status[i][0]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][1]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][2]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][3]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][4]}}"></image>
+          </view>
+          <view class="v5-text">
+            {{detail_data.comment[i].content}}
+          </view>
+        </view>
+      </view>
+      <view class="goodsline d-e"></view> 
+    </block>
+  </block>
+  <!--评价结束-->
+  <view class="view6 h h-c">
+    <view class="btnall c" bindtap="all_commentsHandel">查看全部评价</view>
+  </view>
+</view>
+
+<view class="docomm c" bindtap="write_comments" >发表评论</view>

@@ -1,0 +1,96 @@
+  
+<form bindsubmit="submit">
+  <!--收货人  -->
+  <view class='person_name_container h'>
+    <view class='person_name_title'>收货人</view>
+    <input type='text' name='person_name' placeholder='姓名' placeholder-class='empty_person_name' value='{{defualt_name}}' class='person_name f' bindinput='check_name_inputHandle'></input>
+    <block wx:if="{{check_name_switch == 'yes'}}">
+      <view class='person_name_image' bindtap='emptyHandle' data-num="1">
+        <image class='d-e' src='/assets/index/delete_input.png'></image>
+      </view>
+    </block>
+  </view>
+  <!--分隔线  -->
+  <view class='interval_line'></view>
+
+  <!--联系电话  -->
+  <view class='person_name_container h'>
+    <view class='person_name_title'>联系方式</view>
+    <input type='text' name='person_phone' placeholder='手机号码' placeholder-class='empty_person_name' value='{{defualt_phone}}' class='person_phone f' bindinput='check_phone_inputHandle'></input>
+    <block wx:if="{{check_phone_switch == 'yes'}}"> 
+      <view class='person_name_image' bindtap='emptyHandle' data-num="2">
+        <image class='d-e' src='/assets/index/delete_input.png'></image>
+      </view>
+    </block>
+  </view>
+  <!--分隔线  -->
+  <view class='interval_line'></view>
+
+  <!--省市区选择器  -->
+  <view class="province_container h">
+    <view class="province_title">省</view>
+    <view class="province">
+      <picker mode="region" bindchange="choose_provinceHandle" value="{{choose_province}}" custom-item="{{customItem}}">
+        <block wx:if="{{choose_switch == 'yes'}}">
+        {{choose_province[0]}}
+        </block>
+        <block wx:else>
+        — 请选择 —
+        </block>
+      </picker>
+    </view>
+  </view>
+  <!--分隔线  -->
+  <view class='interval_line'></view>
+
+  <!--市选择器  -->
+  <view class="province_container h">
+    <view class="province_title">市</view>
+    <view class="province">
+      <picker mode="region" bindchange="choose_provinceHandle" value="{{choose_province}}" custom-item="{{customItem}}">
+        <block wx:if="{{choose_switch == 'yes'}}">
+        {{choose_province[1]}}
+        </block>
+      </picker>
+    </view>
+  </view>
+  <!--分隔线  -->
+  <view class='interval_line'></view>
+  <!--区选择器  -->
+  <view class="province_container h">
+    <view class="province_title">区/县</view>
+    <view class="county">
+      <picker mode="region" bindchange="choose_provinceHandle" value="{{choose_province}}" custom-item="{{customItem}}">
+        <block wx:if="{{choose_switch == 'yes'}}">
+        {{choose_province[2]}}
+        </block>
+      </picker>
+    </view>
+  </view>
+  <!--分隔线  -->
+  <view class='interval_line'></view>
+
+  <!--详细街道  -->
+  <view class='person_name_container h'>
+    <view class='person_name_title'>详细街道</view>
+    <input type='text' name='person_address' placeholder='街道地址' placeholder-class='empty_person_name' value='{{defualt_address}}' class='person_phone f' bindinput='check_address_inputHandle'></input>
+    <block wx:if="{{check_address_switch == 'yes'}}">
+      <view class='person_name_image' bindtap='emptyHandle' data-num="3">
+        <image class='d-e' src='/assets/index/delete_input.png'></image>
+      </view>
+    </block>
+  </view>
+  <!--分隔线  -->
+  <view class='interval_line'></view>
+  <!--详细地址  -->
+  <view class='notice'>*详细地址需填写楼栋楼层或房间号信息</view>
+  <!--设为默认地址  -->
+  <view class='set_up_address h' bindtap='set_up_defualt'>
+    <view class='set_up_address_image d-e' >
+      <image src="{{(setup_defualt==1)?'/assets/index/default_address.png':'/assets/index/no_default_address.png'}}" class="d-e"></image>
+    </view>
+    <view class='set_up_address_text d-e'>设为默认地址</view>
+  </view>
+  <!--确认按钮  -->
+  <button form-type="submit" class="ok_button c" >确认</button>   
+</form>

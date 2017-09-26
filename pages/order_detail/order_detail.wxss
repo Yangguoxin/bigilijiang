@@ -1,0 +1,240 @@
+.order_state_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.order_state{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.order_state_text{
+  margin-left: 6rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.order_state_num{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.order_state_num_text{
+  margin-left: 6rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #171717;
+}
+.order_state_time{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.order_state_time_text{
+  margin-left: 6rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #171717;
+}
+.goto_pay{
+  width: 600rpx;
+  height: 88rpx;
+  margin-left: 76rpx;
+  margin-top: 20rpx;
+  background-color: #3FC8DE;
+  border-radius: 10rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #FFFFFF;
+}
+.cancel_order{
+  width: 600rpx;
+  height: 88rpx;
+  margin-left: 76rpx;
+  margin-top: 30rpx;
+  margin-bottom: 40rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color:#979797;
+  border: 2rpx solid #DFDFDF;
+  border-radius: 10rpx;
+}
+.order_interval{
+  height: 20rpx;
+  width: 100%;
+  background-color: #EFEFEF;
+}
+.address_goods_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.address_goods_price{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.address_goods_price_text{
+  margin-left: 6rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #171717;
+}
+.address_goods_person{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.address_goods_person_text{
+  margin-left: 34rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #171717;
+}
+.interval_line{
+  width: 100%;
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.goods_count_container{
+  height: auto;
+  width: 100%;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.goods_brief_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+
+}
+.goods_brief_image{
+  width: auto;
+  height: auto;
+}
+.goods_brief_image image{
+  width: 152rpx;
+  height: 152rpx;
+}
+.goods_brief_text_container{
+  width: 498rpx;
+  height: auto;
+  margin-left: 20rpx;
+}
+.goods_brief_text_title{
+  width: 100%;
+  height: auto;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #4A4A4A;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+}
+.goods_brief_type_price{
+  margin-top: 30rpx;
+  width: 100%;
+  height: auto;
+}
+.goods_brief_type{
+  padding: 0rpx 10rpx 0rpx 10rpx;
+  border: 2rpx solid #3FC8DE; 
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color:  #353535;
+}
+.goods_brief_price_container{
+  width: auto;
+  height: auto;
+}
+.goods_brief_price{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.goods_brief_num{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  color: #4A4A4A;
+}
+.pay_detail_container{
+  height: auto;
+  width: 100%;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.pay_detail_title{
+  width: 100%;
+  height: auto;
+}
+.pay_detail{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.pay_detail_text{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.total_pay_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.total_pay_title{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #353535;
+}
+.total_pay{
+  margin-left: 6rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.logistics_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.logistics{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.logistics_button{
+  width: 80rpx;
+  height: 40rpx;
+  border: 2rpx solid #979797;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #353535;
+
+}
+.after_sale{
+  margin-top:10rpx;
+  margin-left: 76rpx;
+  width: 600rpx;
+  height: 90rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #979797;
+  border: 2rpx solid #DFDFDF;
+  border-radius: 10rpx;
+}
+.logistics_text{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.bottom{
+  width: 100%;
+  height: 60rpx;
+}

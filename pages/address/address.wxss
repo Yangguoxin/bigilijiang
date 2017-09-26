@@ -1,0 +1,106 @@
+/* pages/address/address.wxss */
+.title_container{
+  padding: 40rpx 40rpx 40rpx 40rpx;
+  height: auto;
+  width: 100%;
+}
+.title_left{
+  width: 26rpx;
+  height: 24rpx;
+  margin-right: 32rpx;
+}
+.title_left image{
+  width: 26rpx;
+  height: 24rpx;
+}
+.title_right{
+  margin-left: 32rpx;
+  width: 26rpx;
+  height: 24rpx;
+}
+.title_right image{
+  width: 26rpx;
+  height: 24rpx;
+}
+.title_text{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.interval_line{
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.address_container{
+  height: auto;
+  width: 520rpx;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.person_name_telephone{
+  height: auto;
+  width: 100%;
+}
+.person_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.person_telephone{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.address{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #979797;
+}
+.address_information_container{
+  height: auto;
+  width: 100%;
+}
+.address_image{
+  height: auto;
+  width: auto;
+  padding: 76rpx 0rpx 74rpx 40rpx;
+}
+.address_image image{
+  height: 48rpx;
+  width: 48rpx;
+}
+.default_address_text{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #979797;
+}
+.edit_address{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #3FC8DE;
+}
+.edit_address_container{
+  height: auto;
+  width: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.new_address_button{
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  height: 88rpx;
+  width: 100%;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #FFFFFF;
+  background-color:#3FC8DE;
+}
+.add_address_line{
+  margin-left: 1rpx;
+  height: auto;
+  width: auto;
+}
+.add_address_line image{
+  height: 8rpx;
+  width: 748rpx;
+}

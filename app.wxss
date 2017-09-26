@@ -1,0 +1,67 @@
+@import "dao/wxParse/wxParse.wxss";
+view {
+  box-sizing: border-box;
+}
+image{
+  display: block;
+}
+.flow {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+.h {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.v {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.v-r {
+  align-items: flex-end;
+}
+.v-b {
+  justify-content: flex-end;
+}
+.v-c{
+  justify-content: center;
+}
+.h-r {
+  justify-content: flex-end;
+}
+.h-c {
+  justify-content: center;
+}
+.h-t {
+  align-items: flex-start;
+}
+.h-b{
+  align-items: flex-end;
+}
+.c {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.f {
+  flex: 1;
+}
+.d-e {
+  pointer-events: none;
+}
+.gap {
+  width: 100%;
+  height: 20rpx;
+  background-color: #eaf0f0;
+}
+.line {
+  width: 100%;
+  height: 2rpx;
+  background-color: rgb(235, 235, 235);
+}

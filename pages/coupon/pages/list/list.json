@@ -1,0 +1,7 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#47c8dc",
+  "navigationBarTitleText": "酒店列表",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
+}

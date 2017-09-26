@@ -1,0 +1,20 @@
+<!--顶部  -->
+<view class="top_interval"></view>
+<!--第一个行程-->
+<block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+  <view class="travel v" bindtap="recommHandler" data-num = "{{i}}"> 
+    <view class="travel_image d-e">
+      <image  src="{{image_Url}}{{brief_list[i].imgUrl}}"></image>
+    </view>
+    <view class="travel_interval d-e"></view>
+    <view class="v travel_text d-e">
+      <view class="travel_titel h d-e">
+        {{brief_list[i].name}}
+      </view>
+      <!-- <view class="travel_price">￥{{brief_list[i].price / 100}}</view> -->
+      <view class="travel_content d-e">{{brief_list[i].description}}</view>
+    </view>
+  </view>
+    <!--间隔-->
+  <view class="interval"></view>
+</block>

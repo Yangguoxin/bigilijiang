@@ -1,0 +1,47 @@
+<!--地址标题  -->
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+    <view class="title_text">收货地址</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view>
+<!--分割线  -->
+<view class='interval_line'></view>
+
+
+<block wx:for="{{person_address_list}}" wx:key="id" wx:for-index="i">
+    <!--收货人地址信息  -->
+    <view class='address_information_container h'>
+      <view class='address_image c' bindtap='change_defualt' data-num='{{i}}'>
+        <image src="{{(person_address_list[i].ifChoose==1)?'/assets/index/default_address.png':'/assets/index/no_default_address.png'}}" class="d-e"></image>
+      </view>
+      <view class='address_container v  f' bindtap='choose_addressHandle' data-num='{{i}}'>
+        <view class='person_name_telephone h d-e'>
+          <view class='person_name f d-e'>收货人：{{person_address_list[i].personName}}</view>
+          <view class='person_telephone d-e'>{{person_address_list[i].telephone}}</view>
+        </view>
+        <view class='address d-e'>{{person_address_list[i].addressProvince}}{{person_address_list[i].addressCity}}{{person_address_list[i].addressCountry}}{{person_address_list[i].detailAddress}}</view>
+      </view>
+      <!--编辑  -->
+      <view class='edit_address_container c'>
+        <block wx:if="{{person_address_list[i].ifDefualt==1}}">
+          <view class='default_address_text'>默认</view>
+        </block>
+        <view class='edit_address'>编辑</view>
+      </view>
+    </view>
+    <!--分割线  -->
+    <view class='interval_line'></view>
+</block>
+
+
+<!--地址分割线  -->
+<view class='add_address_line'>
+  <image src='/assets/index/add_address_line.png'></image>
+</view>
+
+<!--新增收货地址  -->
+<view class='new_address_button c' bindtap='add_address'>新增收货地址</view>

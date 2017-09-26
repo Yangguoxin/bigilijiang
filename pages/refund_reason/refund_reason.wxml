@@ -1,0 +1,35 @@
+<!--退款原因  -->
+<view class="refund_reason_container h">
+  <view class="refund_reason">退款原因</view>
+  <view class="refund_small">（至少选1项）</view>
+</view>
+<!--界面分割线  -->
+<view class="parting_line"></view>
+<!--原因列表  -->
+<block wx:for="{{reasons_container}}" wx:key="*this" wx:for-index="i" >
+  <view class="reason_container h" bindtap="choose_Handle" data-num="{{i}}">
+    <view class="reason f d-e">{{reasons_container[i].reason}}</view>
+    <view class="reason_image c d-e">
+      <image class="d-e" src="{{reasons_container[i].pick_nopick}}"></image>
+    </view>
+  </view>
+<view class="choose_man_line"></view>
+</block>
+
+
+
+<!--意见框  -->
+<view class="section v ">
+  <form bindsubmit="submit">
+
+    <view class="user_name v">
+      <textarea  name="textarea" cursor-spacing="60" placeholder="更多不爽？不吐不快！" placeholder-class = "empty" />
+    </view>
+    
+  <!--提交  -->
+  <button form-type="submit" class="docomm c" >提交</button>
+  </form>
+</view>
+
+
+

@@ -1,0 +1,46 @@
+<view class="query-bg h h-c">
+  <view class="query-view h f">
+    <image class="query-icon" src="../../assets/map/index-ss.png"></image>
+    <input class="f" placeholder="输入关键词进行搜索" focus="true" bindinput="inputHandler" value="{{text}}" />
+    <view class="query-clear c" bindtap="clearHandler">
+      <image style="display:{{clearshow}}" class="d-e" src="/assets/map/clear.png"></image>
+    </view>
+  </view>
+  <view class="close c" bindtap="closeHandler">取消</view>
+</view>
+<view class="line"></view>
+
+<!--搜索结果-->
+<block wx:if="{{text}}">
+  <view class="list" bindtap="resultHandler">
+
+    <block wx:for="{{results}}" wx:key="id">
+      <view class="listitem h" data-num="{{item.id}}">
+        <image class="d-e" src="/assets/map/dw.png"></image>
+        <view class="item-name f d-e">
+          <view class="d-e">{{item.title}}</view>
+          <view class="d-e">{{item.typename}}.{{item.address}}</view>
+        </view>
+        <image class="d-e" src="/assets/map/arrow.png"></image>
+        <view class="list-line d-e"></view>
+      </view>
+    </block>
+    
+  </view>
+</block>
+
+<!--常用搜索-->
+<!-- <block wx:else>
+  <view class="title">常用搜索</view>
+  <view class="piece h" bindtap="typeHandler">
+    <view class="piece-item c" data-name="景点">景点</view>
+    <view class="piece-item c" data-name="客栈">客栈</view>
+    <view class="piece-item c" data-name="乘车点">乘车点</view>
+    <view class="piece-item c" data-name="公厕">公厕</view>
+  </view>
+  <view class="piece h" bindtap="typeHandler">
+    <view class="piece-item c" data-name="停车场">停车场</view>
+    <view class="piece-item c" data-name="加油站">加油站</view>
+  </view>
+  <view class="line"></view>
+</block> -->

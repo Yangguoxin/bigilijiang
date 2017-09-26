@@ -1,0 +1,78 @@
+.query-bg{
+  background-color: #f8f7f3;
+  padding-left: 16rpx;
+  height: 114rpx;
+}
+.query-view{
+  height: 82rpx;
+  background-color: white;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  padding-left: 32rpx;
+  box-shadow: 2rpx 2rpx 2rpx #888888;
+}
+.query-icon{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 32rpx;
+}
+.query-clear{
+  width: 88rpx;
+  height: 100%;
+}
+.query-clear image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.close{
+  min-width: 88rpx;
+  height: 100%;
+  padding: 0 16rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.title{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: rgb(160, 160, 160);
+  margin: 32rpx;
+  margin-bottom: 0;
+}
+.piece{
+  padding: 0 32rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+}
+.piece-item{
+  width: 171.5rpx;
+  height: 88rpx;
+}
+.listitem{
+  position: relative;
+  padding: 24rpx 32rpx;
+}
+.listitem image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.list-line{
+  position: absolute;
+  left: 94rpx;
+  right: 0;
+  bottom: 0;
+  height: 2rpx;
+  background-color: rgb(235, 235, 235);
+}
+.item-name{
+  margin: 0 32rpx;
+}
+.item-name view:nth-child(1){
+  font-size: 32rpx;
+  line-height: 48rpx;
+}
+.item-name view:nth-child(2){
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: rgb(160, 160, 160);
+}

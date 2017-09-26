@@ -1,0 +1,172 @@
+.container{
+  padding: 0 0;
+  position: relative;
+}
+.quickOrder {
+  height: 120rpx;
+  color: #a5a5a5;
+  font-size: 30rpx;
+}
+.quickOrder image{
+  width: 320rpx;
+  height: 70rpx;
+  margin-left:  20rpx;
+  margin-right: 150rpx;
+  
+}
+.search{
+  width: 100%;
+  z-index: 9999;
+}
+.search input{
+  text-align: center;
+  height: 75rpx;
+  font-size:28rpx;
+  background: #f7f7f7;
+}
+
+.table {
+  border: none;
+  margin-top: 0;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height:250rpx ;
+  align-items: center;
+  border-top: 1px #f1f1f1 solid;
+}
+.pic {
+    width:35%;
+    justify-content: center;
+    text-align: center;
+}
+.pic image{
+  width: 180rpx;
+  height: 220rpx;
+  margin: 0 auto;
+  border-radius: 5rpx;
+}
+
+.description{
+  display: flex;
+  width: 70%;
+  height: 235rpx;
+  padding-right: 20rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  flex-direction:column;
+  justify-content:center;
+  color: #555;
+}
+     
+ .description .text .order{
+   width:180rpx;
+   height: 60rpx;
+   line-height: 60rpx;
+   background-color: #4ec8db;
+   border: none;
+   border-radius: 10rpx;
+   font-size: 35rpx;
+   color: white;
+   margin-top: 7.5rpx;
+   margin-left: 0;
+}
+.description .text .service,
+.description .text .price{
+  color: #a5a5a5;
+}
+/*mask*/
+.drawer_screen { 
+ width: 100%; 
+ height: 100%; 
+ position: fixed; 
+ top: 0; 
+ left: 0; 
+ z-index: 1000; 
+ background: #000; 
+ opacity: 0.5; 
+ overflow: hidden; 
+} 
+.info{
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding: 0 0;
+  position: fixed;
+  bottom: 0;
+  font-size: 28rpx;
+  background: #FFF;
+  overflow-y: scroll;
+  z-index: 1001; 
+}
+
+.info .title{
+  font-size: 29rpx;
+  margin: 30rpx auto;
+  text-align: left;
+  width: 90%;
+  margin-bottom: 0;
+}
+.info .tips{
+  color:#a5a5a5;
+  margin-top: -15rpx;
+  margin-bottom: 30rpx;
+}
+.info .personal-info{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  margin: 30rpx auto;
+  margin-top: 0px;
+}
+
+.info input{
+  
+  height: 60rpx;
+  border: 1px #000 solid;
+  border-radius: 15rpx;
+  text-align: left;
+  margin:0 auto;
+  width: 100%;
+}
+.info .button-group{
+  display: flex;
+  width: 60%;
+  justify-content:space-between;
+  margin: 0 auto;
+
+}
+.info .cansel{
+  width:200rpx;
+  background-color: #4ec8db; 
+  border: none;
+  border-radius: 15rpx;
+  color: white;
+  font-size: 35rpx;
+  line-height: 60rpx;
+}
+.info .submit{
+  width:200rpx;
+  background-color: #4ec8db; 
+  border: none;
+  border-radius: 15rpx;
+  color: white;
+  font-size: 35rpx;
+  line-height: 60rpx;
+}
+/*.info label{
+  width:30%;
+  text-align: right;
+  line-height: 60rpx;
+
+}*/
+.info .field{
+  display: flex;
+  justify-content:center;
+  margin: 30rpx auto;
+  width: 90%;
+}

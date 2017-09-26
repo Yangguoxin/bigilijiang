@@ -1,0 +1,103 @@
+/* pages/add_address/add_address.wxss */
+.person_name_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.person_name_title{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.person_name{
+  width: 374rpx;
+  height: auto;
+  margin-left: 80rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.empty_person_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.interval_line{
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.person_phone{
+  width: 374rpx;
+  height: auto;
+  margin-left: 50rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.province_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.province_title{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.province{
+  margin-left: 134rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #346FF1;
+}
+.county{
+  margin-left: 92rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #346FF1;
+}
+.notice{
+  padding: 20rpx 40rpx 20rpx 40rpx;
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #979797;
+}
+.set_up_address{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.set_up_address_image{
+  width: auto;
+  height: auto;
+}
+.set_up_address_image image{
+  width: 48rpx;
+  height: 48rpx;
+}
+.set_up_address_text{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.ok_button{
+  width: 600rpx;
+  height: 88rpx;
+  position: fixed;
+  bottom: 30rpx;
+  left: 76rpx;
+  right: 74rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #FFFFFF;
+  background-color: #3FC8DE;
+  border-radius: 10rpx;
+}
+.person_name_image{
+  width: auto;
+  height: auto;
+}
+.person_name_image image{
+  width: 48rpx;
+  height: 48rpx;
+}

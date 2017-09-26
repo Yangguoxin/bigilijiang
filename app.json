@@ -1,0 +1,81 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/comments/comments",
+    "pages/travel/travel",
+    "pages/recommend/recommend",
+    "pages/num1/num1",
+    "pages/user_choose_route/user_choose_route",
+    "pages/write_comments/write_comments",
+    "pages/choose_scenery/choose_scenery",
+    "pages/all_comments/all_comments",
+    "pages/modify_scenery/modify_scenery",
+    "pages/map/map",
+    "pages/search/search",
+    "pages/car/car",
+    "pages/guide/guide",
+    "pages/order/order",
+    "pages/add_information/add_information",
+    "pages/order_detail/order_detail",
+    "pages/refund/refund",
+    "pages/refund_reason/refund_reason",
+    "pages/me/me",
+    "pages/order_list/order_list",
+    "pages/shop/shop",
+    "pages/group_tour/group_tour",
+    "pages/hardware_buy/hardware_buy",
+    "pages/merchant_detail/merchant_detail",
+    "pages/coupon/pages/confirm/confirm",
+    "pages/coupon/pages/list/list",
+    "pages/route_list/route_list",
+    "pages/news/news",
+    "pages/high_travel/high_travel",
+    "pages/group_travel/group_travel",
+    "pages/address/address",
+    "pages/goods_order/goods_order",
+    "pages/add_address/add_address",
+    "pages/write_goods_comments/wirte_goods_comments"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#69c5dc",
+    "navigationBarTitleText": "超爱丽江",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#737476",
+    "selectedColor": "#22a9c5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "assets/tabs/11.png",
+        "selectedIconPath": "assets/tabs/1.png"
+      },
+      {
+        "pagePath": "pages/travel/travel",
+        "text": "行程单",
+        "iconPath": "assets/tabs/33.png",
+        "selectedIconPath": "assets/tabs/3.png"
+      },
+      {
+        "pagePath": "pages/map/map",
+        "text": "wifi覆盖",
+        "iconPath": "assets/tabs/55.png",
+        "selectedIconPath": "assets/tabs/5.png"
+      },
+      {
+        "pagePath": "pages/shop/shop",
+        "text": "旅游商城",
+        "iconPath": "assets/tabs/44.png",
+        "selectedIconPath": "assets/tabs/4.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "assets/tabs/22.png",
+        "selectedIconPath": "assets/tabs/2.png"
+      }
+    ]
+  }
+}

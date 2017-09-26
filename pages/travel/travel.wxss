@@ -1,0 +1,166 @@
+.jump_test{
+  background-color: aquamarine;
+  height: 70rpx;
+  width: 750rpx;
+}
+.top{
+  height: 70rpx;
+  width: 750rpx;
+}
+.my{
+  height: 100rpx;
+  width: 300rpx;
+  margin-left: 60rpx;
+}
+.my_travel_text{
+  font-size: 44rpx;
+  line-height: 66rpx;
+  color: #4A4A4A;
+  height: 60rpx;
+  width: 300rpx;
+  
+}
+.optimization_text{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #4A4A4A;
+  height: 40rpx;
+  width: 300rpx;
+}
+.interval{
+  height: 60rpx;
+  width: 750rpx;
+}
+.interval_up{
+  height: 60rpx;
+  width: 750rpx;
+}
+.interval_down{
+  height: 66rpx;
+  width: 750rpx;
+}
+.head{
+  height: 6rpx;
+  width:81rpx;
+  margin-left: 40rpx;
+}
+.head image{
+  height: 6rpx;
+  width:81rpx;
+}
+.travel{
+  height: auto;
+  width:670rpx;
+  margin-left: 40rpx;
+}
+.travel_image{
+  height: 360rpx;
+  width: 670rpx;
+}
+.travel_image image{
+  height: 360rpx;
+  width: 670rpx;
+}
+.travel_interval{
+  height: 24rpx;
+  width: 670rpx;
+}
+.travel_text{
+  height: auto;
+  width: 590rpx;
+  margin-left: 20rpx;
+}
+.travel_titel{
+  font-size: 34rpx;
+  line-height: 40rpx;
+  color: #030303;
+  height: auto;
+  width: 590rpx;
+}
+.travel_content{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 39rpx;
+  color: #AAAAAA;
+  height: 80rpx;
+  width: 590rpx;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+}
+.tabview {
+  height:  60rpx;
+  width: 750rpx;
+}
+.tourline {
+  margin-bottom: 10rpx;
+  position: relative;
+}
+
+.tourline image, .tourline-text {
+  width: 686rpx;
+  height: 235rpx;
+}
+
+.tourline-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+  padding-left: 98rpx;
+}
+
+.tourline-text view:first-child {
+  font-size: 46rpx;
+  line-height: 69rpx;
+}
+
+.tourline-text view:last-child {
+  font-size: 28rpx;
+  line-height: 42rpx;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 235rpx;
+  padding-right: 46rpx;
+}
+
+.arrow image {
+  width: 16rpx;
+  height: 28rpx;
+}
+.myAdd_button{
+  width: 200rpx;
+  height: 48rpx;
+}
+.myAdd_button image{
+  width: 20rpx;
+  height: 20rpx;
+}
+.Add_text{
+  padding-left: 10rpx;
+  font-size: 28rpx;
+  line-height: 52rpx;
+  color: #4A4A4A;
+  height: 30rpx;
+  width: 124rpx;
+}
+.delete_bar{
+  height: 360rpx;
+  width: 670rpx;
+}
+.delete{
+  height: 360rpx;
+  width: 300rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: white;
+  background-color: rgb(234, 50, 53);
+}
+

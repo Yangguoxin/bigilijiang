@@ -1,0 +1,136 @@
+/* refund.wxss */
+.top{
+  height: 50rpx;
+  width: 100%;
+}
+.travel{
+  height: 532rpx;
+  width:670rpx;
+  margin-left: 40rpx;
+}
+.travel_image{
+  height: 360rpx;
+  width: 670rpx;
+}
+.travel_image image{
+  height: 360rpx;
+  width: 670rpx;
+}
+.travel_interval{
+  height: 24rpx;
+  width: 670rpx;
+}
+.travel_text{
+  height: 160rpx;
+  width: 590rpx;
+  margin-left: 20rpx;
+}
+.travel_titel{
+  position: relative;
+  font-size: 34rpx;
+  line-height: 51rpx;
+  color: #030303;
+  height: 80rpx;
+  width: 590rpx;
+}
+.travel_content{
+  font-size: 26rpx;
+  line-height: 39rpx;
+  color: #AAAAAA;
+  height: 80rpx;
+  width: 590rpx;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+}
+.travel_price{
+  position: absolute;
+  right: 0rpx;
+  top: 20rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #3FC8DE;
+  font-weight: bold;
+}
+.parting_line{
+  width: 100%;
+  height: 20rpx;
+  border: 2rpx solid #DFDFDF;
+  background-color: #EFEFEF;
+}
+.refund_reason_container{
+  width: 100%;
+  height: 130rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.refund_reason{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.refund_image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.refund_image image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.choose_man_line{
+  width: 750rpx;
+  height: 2rpx;
+  border: 2rpx solid #F1F1F1;
+}
+.interval{
+  height: 60rpx;
+  width: 750rpx;
+}
+.refund_num_container{
+  width: 100%;
+  height: 124rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+}
+.refund_num_title{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.refund_num{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.warning_container{
+  width: 100%;
+  height: 400rpx;
+  padding-left: 45rpx;
+  padding-right: 35rpx;
+  padding-top: 40rpx;
+  padding-bottom: 88rpx;
+}
+.warning{
+  width: 670rpx;
+  height: auto;
+}
+.warning_text{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #4B4F63;
+}
+.sure{
+  background-color: #3FC8DE;
+  height: 88rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 36rpx;
+  line-height:54rpx;
+  color:white; 
+}
+

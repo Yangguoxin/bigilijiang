@@ -1,0 +1,36 @@
+page{
+  background-color: #fafafa;
+}
+.section-line{
+  background-color: #1ec2ce;
+  width: 4rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+.section{
+  height: 98rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  padding: 0 32rpx;
+  color: #5a5a5a;
+}
+.arrow{
+  width: 24rpx;
+  height: 16rpx;
+}
+.content{
+  padding: 32rpx;
+  padding-top: 16rpx;
+}
+.title{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  margin-top: 16rpx;
+  margin-bottom: 8rpx;
+  font-weight: bold;
+}
+.article{
+  font-size: 26rpx;
+  line-height: 39rpx;
+  color: #5a5a5a;
+}

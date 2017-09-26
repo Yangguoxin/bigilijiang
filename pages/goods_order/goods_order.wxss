@@ -1,0 +1,224 @@
+/* pages/goods_order/goods_order.wxss */
+.add_address_container{
+  height: 128rpx;
+  width: 100%;
+  padding: 0rpx 0rpx 0rpx 40rpx;
+}
+.add_address_text{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.add_address_image{
+  height: 80rpx;
+  width: 80rpx;
+  padding-right: 30rpx;
+}
+.add_address_image image{
+  height: 50rpx;
+  width: 50rpx;
+}
+.add_address_line{
+  margin-left: 1rpx;
+  height: auto;
+  width: auto;
+}
+.add_address_line image{
+  height: 8rpx;
+  width: 748rpx;
+}
+.interval{
+  width: 100%;
+  height: 20rpx;
+  background-color: #EFEFEF;
+}
+.goods_brief_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+
+}
+.goods_brief_image{
+  width: auto;
+  height: auto;
+}
+.goods_brief_image image{
+  width: 152rpx;
+  height: 152rpx;
+}
+.goods_brief_text_container{
+  width: 498rpx;
+  height: auto;
+  margin-left: 20rpx;
+}
+.goods_brief_text_title{
+  width: 100%;
+  height: auto;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #4A4A4A;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+}
+.goods_brief_type_price{
+  margin-top: 30rpx;
+  width: 100%;
+  height: auto;
+}
+.goods_brief_type{
+  padding: 0rpx 10rpx 0rpx 10rpx;
+  border: 2rpx solid #3FC8DE; 
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color:  #353535;
+}
+.goods_brief_price_container{
+  width: auto;
+  height: auto;
+}
+.goods_brief_price{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.goods_brief_num{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  color: #4A4A4A;
+}
+.invoice_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.invoice{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #4A4A4A;
+}
+.invoice_text{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #979797;
+}
+.invoice_image{
+  margin-left: 20rpx;
+  width: auto;
+  height: auto;
+}
+.invoice_image image{
+  width: 12rpx;
+  height: 21rpx;
+}
+.interval_line{
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.goods_price{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #3FC8DE;
+}
+.freight{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #3FC8DE;
+}
+.choose_bottom{
+  height: 104rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 750rpx;
+}
+.price{
+  width: 510rpx;
+  height: 104rpx;
+  background-color: #F8F8F8;
+}
+.book{
+  width: 240rpx;
+  height: 104rpx;
+  background-color: #3FC8DE;
+}
+.price_title{
+  margin-top: 20rpx;
+  font-size:28rpx;
+  line-height:42rpx;
+  color:#9B9B9B;
+}
+.price_num{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  font-size:30rpx;
+  line-height:45rpx;
+  color:#3FC8DE;
+}
+.book_text{
+  font-size:36rpx;
+  line-height:54rpx;
+  color:#FFFFFF ;
+}
+.pay_num_container{
+  padding: 40rpx 40rpx 40rpx 40rpx;
+  width: 100%;
+  height: auto;
+}
+.pay_num_title{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #4A4A4A;
+}
+.pay_num{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.bottom{
+  height: 104rpx;
+  width: 100%;
+}
+.address_container_container{
+  height: auto;
+  width: 100%;
+}
+.address_container{
+  height: auto;
+  width: 690rpx;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.person_name_telephone{
+  height: auto;
+  width: 100%;
+}
+.person_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.person_telephone{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.address{
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.address_image{
+  height: auto;
+  width: auto;
+}
+.address_image image{
+  height: 21rpx;
+  width: 12rpx;
+}
+

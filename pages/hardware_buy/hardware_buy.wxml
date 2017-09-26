@@ -1,0 +1,41 @@
+<!--标题  -->
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+    <view class="title_text">智能硬件</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view>
+<!--间隔  -->
+<view class="interval"></view>
+<block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+  <!--线路列表  -->
+  <view class="route_list_container h" bindtap="hardwareHandle" data-num = "{{i}}">
+    <view class="route_image d-e">
+      <image class="d-e" src="/assets/index/hardware_mid.png"></image>
+    </view>
+    <view class="route_discription_container v d-e" >
+      <view class="route_discription f d-e">{{brief_list[i].name}}</view>
+      <!--跟团游  -->
+        <view class="route_tag flow d-e h">
+          <view class="tag_yellow d-e">斐讯体脂秤</view>
+          <view class="tag_green d-e">减肥</view>
+          <view class="tag_green d-e">健康</view>
+          <view class="tag_green d-e">运动</view>
+        </view>
+      <view class="route_price h d-e">
+        <view class="price_symbol d-e">￥</view>
+        <view class="price d-e">{{brief_list[i].price / 100}}</view>
+        <view class="price_unit d-e">/台</view>
+      </view>
+    </view>
+  </view>
+  <!--线路分割线  -->
+  <view class="route_interval"></view>
+</block>
+
+
+<!--底部  -->
+<view class="bottom"></view>

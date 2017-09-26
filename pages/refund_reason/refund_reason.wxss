@@ -1,0 +1,103 @@
+/* refund_reason.wxss */
+.refund_reason_container{
+  width: 100%;
+  height: 130rpx;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.refund_reason{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #3FC8DE;
+}
+.refund_small{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #3FC8DE;
+}
+.parting_line{
+  width: 100%;
+  height: 20rpx;
+  border: 2rpx solid #DFDFDF;
+  background-color: #EFEFEF;
+}
+.reason_container{
+  width:100%;
+  height: 100rpx;
+  padding: 30rpx 0rpx 30rpx 40rpx;
+}
+.reason{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #000000;
+}
+.reason_image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.reason_image image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.choose_man_line{
+  width: 750rpx;
+  height: 2rpx;
+  border: 2rpx solid #F1F1F1;
+}
+.docomm{
+  background-color: #40c8de;
+  border-radius: 0rpx;
+  border: none ;
+  height: 88rpx;
+  color: white;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.section{
+  width: 750rpx;
+  padding: 30rpx 40rpx 40rpx 34rpx;
+  height: auto;
+}
+.section textarea{
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.user_name textarea{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  width: 630rpx;
+  height: 136rpx;
+  border: 2rpx solid #3FC8DE;
+  border-radius: 20rpx;
+}
+.empty{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #C8C8C8;
+  opacity:0.5;
+}
+.user_name{
+  width: 670rpx;
+  height: auto;
+}
+.star{
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: rgb(105, 198, 220)
+}
+.star_text{
+  margin-left: 8rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: rgb(0, 0, 0)
+}
+.empty_test{
+ 
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #9b9b9b;
+  opacity:0.5;
+}
+

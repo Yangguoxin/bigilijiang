@@ -1,0 +1,130 @@
+<!--顶部  -->
+<view class='top_bar h' bindtap='changeHandle'>
+  <!--全部订单  -->
+  <view class='{{order_container[0]}} c' data-num="0">全部订单</view>
+  <!--待付款  -->
+  <view class='{{order_container[1]}} c' data-num="1">待付款</view>
+  <!--待收货  -->
+  <view class='{{order_container[2]}} c' data-num="2">待收货</view> 
+</view>
+<!--粗分割线  -->
+<view class='order_interval'></view>
+
+
+<!--待发货状态  -->
+<!--订单状态  -->
+<view class='order_state_container v'>
+  <view class='order_state h'>状态：
+    <view class='order_state_text'>待发货</view>
+  </view>
+  <view class='order_state_pay h'>总价：
+    <view class='order_state_pay_text'>￥799.00</view>
+  </view>
+</view>
+<!--分割细线  -->
+<view class='interval_line'></view>
+<!--商品详情  -->
+<view class='goods_brief_container h'>
+  <view class='goods_brief_image'>
+    <image src='/assets/index/hardware_mid.png'></image>
+  </view>
+  <view class='goods_brief_text_container v'>
+    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+    <view class='goods_brief_type_price h ' >
+      <view class='goods_brief_type h'>香槟金</view>
+      <view class='f'></view>
+      <view class='goods_brief_price_container h' >
+        <view class='goods_brief_price'>￥799.00</view>
+        <view class='goods_brief_num'>x 1</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--粗分割线  -->
+<view class='order_interval'></view>
+
+
+<!--待支付状态  -->
+<!--订单状态  -->
+<view class='order_state_container v'>
+  <view class='order_state h'>状态：
+    <view class='order_state_text'>待支付</view>
+  </view>
+  <view class='order_state_pay h'>总价：
+    <view class='order_state_pay_text'>￥799.00</view>
+  </view>
+  <view class='goto_pay c' bindtap='goto_payHandle'>去支付</view>
+</view>
+<!--分割细线  -->
+<view class='interval_line'></view>
+<!--商品详情  -->
+<view class='goods_brief_container h'>
+  <view class='goods_brief_image'>
+    <image src='/assets/index/hardware_mid.png'></image>
+  </view>
+  <view class='goods_brief_text_container v'>
+    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+    <view class='goods_brief_type_price h ' >
+      <view class='goods_brief_type h'>香槟金</view>
+      <view class='f'></view>
+      <view class='goods_brief_price_container h' >
+        <view class='goods_brief_price'>￥799.00</view>
+        <view class='goods_brief_num'>x 1</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--粗分割线  -->
+<view class='order_interval'></view>
+
+
+
+
+<!--已完成状态  -->
+<!--订单状态  -->
+<view class='order_state_container v'>
+  <view class='order_state h'>状态：
+    <view class='order_state_text'>已完成</view>
+  </view>
+  <view class='order_state_pay h'>总价：
+    <view class='order_state_pay_text'>￥799.00</view>
+  </view>
+  <view class='goto_pay c' bindtap='goto_comment'>去评价</view>
+</view>
+<!--分割细线  -->
+<view class='interval_line'></view>
+<!--商品详情  -->
+<view class='goods_brief_container h'>
+  <view class='goods_brief_image'>
+    <image src='/assets/index/hardware_mid.png'></image>
+  </view>
+  <view class='goods_brief_text_container v'>
+    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+    <view class='goods_brief_type_price h ' >
+      <view class='goods_brief_type h'>香槟金</view>
+      <view class='f'></view>
+      <view class='goods_brief_price_container h' >
+        <view class='goods_brief_price'>￥799.00</view>
+        <view class='goods_brief_num'>x 1</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--粗分割线  -->
+<view class='order_interval'></view>
+
+
+
+<!--底部空行  -->
+<view class='bottom'></view>
+
+
+<!--没有订单的时候显示  -->
+<block wx:if="{{false}}">
+  <view class='f c' >
+    <view class='empty_image c'>
+      <image src='/assets/index/no_order.png'></image>
+      <view class='empty_image_text c'>暂无相关订单</view>
+    </view>
+  </view>
+</block>

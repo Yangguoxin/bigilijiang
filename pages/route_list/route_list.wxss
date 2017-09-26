@@ -1,0 +1,63 @@
+/* pages/route_list/route_list.wxss */
+.top_interval{
+  width: 100%;
+  height: 88rpx;
+}
+.travel{
+  /* height: 532rpx; */
+  height: auto;
+  width:670rpx;
+  margin-left: 40rpx;
+}
+.travel_image{
+  height: 360rpx;
+  width: 670rpx;
+}
+.travel_image image{
+  height: 360rpx;
+  width: 670rpx;
+}
+.travel_interval{
+  height: 24rpx;
+  width: 670rpx;
+}
+.travel_text{
+  position: relative;
+  height: auto;
+  width: 650rpx;
+  margin-left: 20rpx;
+}
+.travel_titel{
+  font-size: 34rpx;
+  line-height: 40rpx;
+  color: #030303;
+  height: auto;
+  width: 570rpx;
+}
+.travel_price{
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #3FC8DE;
+  font-weight: bold;
+}
+.travel_content{
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 39rpx;
+  color: #AAAAAA;
+  height: 80rpx;
+  width: 590rpx;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+}
+.interval{
+  height: 60rpx;
+  width: 750rpx;
+}

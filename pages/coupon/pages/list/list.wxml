@@ -1,0 +1,52 @@
+<!--list.wxml-->
+ 
+<view class="container">
+<!-- 快速预定 -->
+<!-- <view class='quickOrder h' bindtap="powerDrawer" data-statu="open">
+    <image  bindtap="powerDrawer" data-statu="open" src='../../img/quick-order.png'></image>
+    <view  bindtap="powerDrawer" data-statu="open"><text>没想好住哪儿？\n客服一对一推荐</text></view>
+  </view> -->
+  <!-- 酒店列表 -->
+  <scroll-view class="detail"   scroll-y="true"  style="height:1160rpx;overflow:scroll-y"  bindscrolltolower="loadMore" >
+    <view class="table" style="height:auto">
+      <block wx:for="{{list}}" wx:key="{{name}}" wx:for-index="i">
+        <view class="tr" >
+          <view class="td pic"><image src="{{item.src}}"></image></view>
+          <view class="td description">
+            <view class="text">
+               <view class="name">{{item.name}}</view>
+               <view class="service">{{item.service}}</view>
+               <view class="price">{{item.price}}</view>
+               <button type="default" class="order" bindtap="powerDrawer" data-statu="open" data-num = "{{i}}">预定</button>
+            </view>
+          </view>
+          
+        </view>
+      </block>
+    </view>
+  </scroll-view> 
+  <!--order.wxml-->
+  <!--mask-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view> 
+  <!--content-->
+  <view class="info" animation="{{animationData}}" wx:if="{{showModalStatus}}" >                                                                                                    
+      <view class="title">请留下您的联系方式以便客服尽快联系帮您订房哦!</view>
+      <view class="personal-info">
+        <form bindsubmit="formSubmit">
+          <view class="field clearfix">
+              <!--<label for="name">移动电话</label>-->
+              <input id="mobile" name="mobile" class="login-input" type="text" placeholder="请输入您的手机号" />
+          </view>
+          <view class="tips">温馨提示：客栈房源紧张时，以客服安排为准！</view>
+          <!--<view class="field clearfix">
+              <label for="name">入住时间</label>
+              <input id="time" name="time" class="login-input" type="text" placeholder="请输入入住时间" />
+          </view>-->
+          <view class="button-group">
+            <!--<button class="cansel" bindtap="powerDrawer" data-statu="close">取消</button>-->
+            <button class="submit"  formType="submit" >立即预定</button>
+          </view>
+        </form>
+      </view>
+  </view>
+</view>

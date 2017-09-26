@@ -1,0 +1,103 @@
+
+
+
+
+
+
+<!-- 顶部 -->
+
+  <!-- <view class="city h">
+    <view class="city_text c">丽江</view>
+    <image src="/assets/index/down.png"></image>
+  </view>
+
+  <view class="city h">
+    <view class="city_text c">景点</view>
+    <image src="/assets/index/down.png"></image>
+  </view>
+  
+  <view class="city h">
+    <view class="city_text c">默认排序</view>
+    <image src="/assets/index/down.png"></image>
+  </view>  -->
+
+<scroll-view class="display_scrollbar" scroll-y="{{turn_true}}" bindscrolltolower="scroll_page">
+  <view class="scroll_window">
+  <view class="top_bar h"></view>
+    <block wx:for="{{scenery_type_list}}" wx:key="*this" wx:for-index="j">
+      <block wx:for="{{scenery_type_list[j]}}" wx:key="id" wx:for-index="i">
+        <view class="goods h">
+          <image class="photo d-e" src="{{image_Url}}{{scenery_type_list[j][i].imgUrl}}"></image>
+          <view class="goods-des d-e">
+            <view class="gdes1 d-e">{{scenery_type_list[j][i].sceneryName}}</view>
+            <view class="gdes3 d-e">{{scenery_type_list[j][i].sceneryName}}.建议玩半小时</view>
+            <view class="gdes2 d-e h">
+              <image class="d-e" src="/assets/index/{{scenery_start_status[j][i][0]}}"></image>
+              <image class="d-e" src="/assets/index/{{scenery_start_status[j][i][1]}}"></image>
+              <image class="d-e" src="/assets/index/{{scenery_start_status[j][i][2]}}"></image>
+              <image class="d-e" src="/assets/index/{{scenery_start_status[j][i][3]}}"></image>
+              <image class="d-e" src="/assets/index/{{scenery_start_status[j][i][4]}}"></image>
+              <view class="d-e">{{scenery_nav_score_change[j][i]}}分/{{scenery_type_list[j][i].commentNumber}}点评</view>
+            </view>
+          </view>
+          <view class="f"></view>
+          <view class="Add c" data-mm="{{j}}" data-num="{{i}}" bindtap="change_Add">
+            <image src="/assets/index/{{choose_add[j][i]}}" data-mm="{{j}}" data-num="{{i}}"></image>
+          </view>
+        </view>
+        <view class="goodsline d-e"></view>
+      </block>
+    </block>
+  <view class="bottom_bar"></view>
+  </view> 
+</scroll-view>
+
+
+
+
+<!--选择底栏-->
+<view class="choose_bottom h">
+  <scroll-view class="choose_scrollbar" scroll-x="{{true}}">
+    <view class="choose_bar h" style="width:{{scroll_width}}rpx">
+      <block wx:for="{{choose_scenery}}" wx:key="*this" wx:for-index="j">
+        <block wx:for="{{choose_scenery[j]}}" wx:key="*this" wx:for-index="i">
+          <block wx:if="{{choose_scenery[j][i] != 'Null'}}">
+            <view class="scenery_container h" bindtap="delete_choose" data-mm = "{{j}}" data-num = "{{i}}">
+              <view class="text d-e">{{choose_scenery[j][i]}}</view>
+              <image class = "d-e" src="/assets/index/delete.png" ></image>
+            </view>
+          </block>
+        </block>
+      </block>
+    </view>
+  </scroll-view>
+  <view class="Add_button c " bindtap="eject_add_scenery">下一步</view>
+</view>
+
+<!--隐藏界面-->
+<view class="hide_Add v" style="display:{{hide_display}}">
+    <view class="hide_up f"></view>
+    <view class="hide_down">
+      <view class="hide_down_bar h h-c">
+        <image src="/assets/index/clock.png"></image>
+        <view class="hide_text v">请选择添加到下列第几天?</view>
+      </view>
+    <!--显示已有的景点及对应得天数-->
+      <block wx:for="{{scenery_name}}" wx:key="*this" wx:for-index="i">
+        <view class="day_container v v-c" bindtap="add_into_day" data-num="{{i}}">
+          <view class="day_title h d-e">DAY{{i+1}}</view>
+          <view class="day_title_name h d-e">
+            <view class="day_title_title h d-e">已有景点: </view>
+            <block wx:for="{{scenery_name[0]}}" wx:key="*this" wx:for-index="j">
+            <view class="day_scenery d-e">{{scenery_name[i][j]}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="goodsline_day d-e"></view>
+      </block>
+      <view class="bottom_bar"></view>
+    </view>
+    
+     <view class="docomm c" bindtap="cancel_add" >回到上一步</view> 
+</view>
+

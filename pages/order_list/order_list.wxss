@@ -1,0 +1,150 @@
+.top_bar{
+  height: 118rpx;
+  width: 100%;
+}
+.all_orders_fix{
+  width: 250rpx;
+  height: 118rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: rgb(105, 197, 220);
+  border-bottom:4rpx solid rgb(105, 197, 220);
+}
+.all_orders{
+  width: 250rpx;
+  height: 118rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #656565;
+  border-bottom:4rpx solid rgb(235, 235, 235);
+}
+.empty_image{
+  margin-top: 220rpx;
+  width: auto;
+  height: auto;
+}
+.empty_image image{
+  width: 332rpx;
+  height: 298rpx;
+}
+.order_interval{
+  height: 20rpx;
+  width: 100%;
+  background-color: #EFEFEF;
+}
+.empty_image_text{
+  margin-top: 40rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: #999999;
+}
+.goods_brief_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+
+}
+.goods_brief_image{
+  width: auto;
+  height: auto;
+}
+.goods_brief_image image{
+  width: 152rpx;
+  height: 152rpx;
+}
+.goods_brief_text_container{
+  width: 498rpx;
+  height: auto;
+  margin-left: 20rpx;
+}
+.goods_brief_text_title{
+  width: 100%;
+  height: auto;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #4A4A4A;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 2;
+}
+.goods_brief_type_price{
+  margin-top: 30rpx;
+  width: 100%;
+  height: auto;
+}
+.goods_brief_type{
+  padding: 0rpx 10rpx 0rpx 10rpx;
+  border: 2rpx solid #3FC8DE; 
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color:  #353535;
+}
+.goods_brief_price_container{
+  width: auto;
+  height: auto;
+}
+.goods_brief_price{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.goods_brief_num{
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  color: #4A4A4A;
+}
+.interval_line{
+  width: 100%;
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.order_state_container{
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.order_state{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.order_state_text{
+  margin-left: 6rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.order_state_pay{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #979797;
+}
+.order_state_pay_text{
+  margin-left: 6rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #171717;
+}
+.bottom{
+  width: 100%;
+  height: 118rpx;
+
+}
+.goto_pay{
+  position: absolute;
+  right: 40rpx;
+  top: 40rpx;
+  bottom: 40rpx;
+  height:60rpx;
+  width: 164rpx;
+  background-color: #3FC8DE;
+  color: #FFFFFF;
+  font-size: 28rpx;
+  line-height: 30rpx;
+  border-radius: 15rpx; 
+}

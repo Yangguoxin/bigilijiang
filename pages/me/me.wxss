@@ -1,0 +1,94 @@
+/* me.wxss */
+.parting_line{
+  width: 100%;
+  height: 20rpx;
+  border: 2rpx solid #DFDFDF;
+  background-color: #EFEFEF;
+}
+.my_information_contianer{
+  width: 100%;
+  height: 200rpx;
+  padding: 52rpx 50rpx 52rpx 50rpx;
+}
+.my_photo{
+  width: 96rpx;
+  height: 96rpx;
+  background-color: #d8d8d8;
+  border-radius: 48rpx;
+}
+.my_photo image{
+  width: 96rpx;
+  height: 96rpx;
+}
+.nick_name{
+  margin-left: 30rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #4B4F63;
+}
+.choose_man_line{
+  width: 750rpx;
+  height: 2rpx;
+  border: 2rpx solid #F1F1F1;
+}
+.all_orders{
+  width: 100%;
+  height: 100rpx;
+  padding: 30rpx 0rpx 30rpx 30rpx;
+}
+.all_orders_image{
+  width: 40rpx;
+  height: 50rpx;
+}
+.all_orders_image image{
+  width: 40rpx;
+  height: 50rpx;
+}
+.all_orders_text{
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #4A4A4A;
+}
+.all_orders_detail{
+  width: 100rpx;
+  height: 100rpx;
+}
+.all_orders_detail image{
+  width: 16rpx;
+  height: 28rpx;
+}
+.asda{
+  width: 100rpx;
+  height: 100rpx;
+  background-color: saddlebrown;
+}
+.button_test{
+  width: 240rpx;
+  height: 80rpx;
+  background-color: royalblue;
+}
+.Pending_pay_image{
+  width: 40rpx;
+  height: 37rpx;
+}
+.Pending_pay_image image{
+  width: 40rpx;
+  height: 37rpx;
+}
+.receiving_image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.receiving_image image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.complete_image{
+  width: 38rpx;
+  height: 42rpx;
+}
+.complete_image image{
+  width:38rpx;
+  height: 42rpx;
+}

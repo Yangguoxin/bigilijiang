@@ -1,0 +1,55 @@
+
+
+
+<view class="section v ">
+  <form bindsubmit="submit">
+      <view class="user_name v">
+        <view class="star h">
+        *
+        <view class="star_text">姓名</view>
+        </view>
+        <view class="user_name_container h " >
+          <input value="{{choose_name}}" name="user_name" type ="text" focus="true" placeholder="请输入姓名" placeholder-class = "empty_test" />
+          <!-- <view class="add_person h h-c " bindtap="choose_name_Handle">
+            <image class="d-e" src="/assets/index/traveler_add.png"></image>
+          </view> -->
+        </view>
+        
+      </view>
+
+      <view class="user_name v">
+        <view class="star h">
+        *
+        <view class="star_text">联系方式</view>
+        </view>
+        <view class="user_telephone_container h">
+          <input name="telephone_num" value="{{choose_telephone}}" type ="number" placeholder="请输入手机号码" placeholder-class = "empty_test" />
+          <!-- <view class="add_person h h-c" bindtap="choose_telephone_Handle">
+            <image class="d-e" src="/assets/index/traveler_phone.png"></image>
+          </view> -->
+        </view>
+      </view>
+
+      <view class="user_name v">
+        <view class="star h">
+        <view class="star_text_ID">身份证</view>
+        </view>
+        <view class="user_ID_container h">
+          <input name="ID_num" type ="idcard" placeholder="请输入身份证号码" placeholder-class = "empty_test" />
+        </view>
+      </view>
+
+      <view class="line_container h h-c">
+        <view class="left_line">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="text_line h">“*”为必填项</view>
+        <view class="right_line"> 
+          <image src="/assets/index/right_line.png"></image>
+        </view> 
+      </view>
+
+       <!-- <view form-type="submit" class="docomm c" >添加</view>  -->
+         <button form-type="submit" class="docomm c" >添加</button>   
+  </form>
+</view>

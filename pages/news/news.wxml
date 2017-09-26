@@ -1,0 +1,30 @@
+<block wx:for="{{info}}" wx:key="id" wx:for-index="i">
+  <block wx:if="{{info[i].types == 'text+image'}}">
+    <view class="text_image_news_contain h h-t">
+      <view class="text_image_news_title h">{{info[i].title}}</view>
+      <view class="text_image_news_image">
+        <image src="{{img_Url}}{{info[i].image_url}}"></image>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="image_news_container v">
+      <view class="image_news_title">{{info[i].title}}</view>
+      <view class="image_news_image_container h">
+        <view class="image_news_image">
+          <image src="{{img_Url}}{{info[i].image_url[0]}}"></image>
+        </view>
+        <view class="image_news_image_interval"></view>
+        <view class="image_news_image">
+          <image src="{{img_Url}}{{info[i].image_url[1]}}"></image>
+        </view>
+        <view class="image_news_image_interval"></view>
+        <view class="image_news_image">
+          <image src="{{img_Url}}{{info[i].image_url[2]}}"></image>
+        </view>
+      </view>
+      
+    </view>
+  </block>
+</block>
+

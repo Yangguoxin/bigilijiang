@@ -1,0 +1,5 @@
+ <view class="query-view h" bindtap="queryHandler">
+    <image class="d-e" src="../../assets/map/index-ss.png"></image>
+    <view class="d-e">输入关键词进行搜索</view>
+ </view>
+<map id="myMap" class="f" markers="{{markers}}" latitude="{{latitude}}" longitude="{{longitude}}" show-location bindcallouttap="markerHandler"></map>

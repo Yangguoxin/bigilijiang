@@ -1,0 +1,14 @@
+<block wx:for="{{list}}" wx:key="id">
+  <view class="section h" data-num="{{item.id}}" bindtap="eventHandler">
+    <view class="section-line d-e"></view>
+    <view class="f d-e">{{item.name}}</view>
+    <image class="arrow d-e" src="/assets/num1/{{item.selected}}.png"></image>
+  </view>
+  <view class="content" wx:if="{{item.selected=='arrow_up'}}">
+    <block wx:for="{{item.items}}" wx:key="id">
+      <view class="title" wx:if="{{item.typename=='title'}}">{{item.content}}</view>
+      <view class="article" wx:elif="{{item.typename=='article'}}">{{item.content}}</view>
+    </block>
+  </view>
+  <view class="line"></view>
+</block>

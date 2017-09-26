@@ -1,0 +1,48 @@
+<view class="top"></view>
+<view class="h">
+  <view class="v my">
+    <view class="my_travel_text">我的行程</view>
+    <view class="optimization_text">智能推荐、一键优化</view>
+  </view>
+    <view class="f"></view>
+    <view class="myAdd_button h" bindtap="Add_travel">
+      <image class="d-e" src="/assets/index/myAdd_button.png" ></image>
+      <view class="Add_text h d-e" >添加行程</view>
+    </view>
+</view>
+
+<view class="interval"></view>  
+  <!--用户选择的路线-->
+   <block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+
+      <view class="travel v" bindtap="recommHandler" data-num = "{{i}}">
+
+            <view class="travel_image h d-e">
+              <image  src="{{image_Url}}{{brief_list[i].imgUrl}}"></image>
+            </view>
+            
+        <view class="travel_interval d-e"></view>
+        <view class="v travel_text d-e">
+          <view class="travel_titel d-e">{{brief_list[i].name}}</view>
+          <view class="travel_content d-e">{{brief_list[i].description}}</view>
+        </view>
+      </view>
+        <!--间隔-->
+      <view class="interval"></view>
+    </block> 
+
+
+
+   <!-- 第一个行程 -->
+  <!-- <view class="travel v"> 
+    <view class="travel_image">
+      <image  src="/assets/index/travel_first.png"></image>
+    </view>
+    <view class="travel_interval"></view>
+    <view class="v travel_text">
+      <view class="travel_titel">丽江与周边经典4日游</view>
+      <view class="travel_content">丽江和大理是云南最重要的两大旅游地，适合用4天的时间紧凑的游览一遍，既可以闲逛风情独特的...</view>
+    </view>
+  </view> -->
+    <!--间隔-->
+  <!-- <view class="interval"></view>  -->

@@ -1,0 +1,52 @@
+<!--顶部  -->
+<view class="top"></view>
+<!--订单详情  -->
+<view class="travel v" bindtap="recommHandler" >
+
+      <view class="travel_image h d-e">
+        <image  src="{{imgUrl}}"></image>
+      </view>
+      
+  <view class="travel_interval d-e"></view>
+  <view class="v travel_text d-e">
+    <view class="travel_titel h d-e">
+      {{route_brief.name}}
+      <view class="travel_price">￥{{route_brief.price/100}}</view>
+    </view>
+    <view class="travel_content d-e">{{route_brief.description}}</view>
+  </view>
+</view>
+  <!--间隔-->
+<view class="interval"></view>
+
+<!--界面分割线  -->
+<view class="parting_line"></view>
+
+<!--退款原因  -->
+<view class="refund_reason_container h" bindtap="refund_reason_Handle">
+  <view class="refund_reason f d-e">退款原因</view>
+  <view class="refund_image c d-e">
+    <image class="d-e" src="/assets/index/date_pick.png"></image>
+  </view>  
+</view>
+
+<!--界面分割线  -->
+<view class="parting_line"></view>
+
+
+<!--退款金额  -->
+<view class="refund_num_container h">
+  <view class="refund_num_title f">退款金额</view>
+  <view class="refund_num ">￥{{totalFee/100}}</view>
+</view>
+<!--分割线  -->
+<view class="choose_man_line"></view>
+
+<!--提醒用户  -->
+<view class="warning_container">
+  <view class="warning v">
+    <view class="warning_text">由于游客自己的原因耽误出行时间导致的误点，概不退款；</view>
+  </view>
+</view>
+
+<button  class="sure c {{turn_true == true ? 'd-e':''}}" loading="{{turn_true}}" bindtap="submit_Handle">确定</button>

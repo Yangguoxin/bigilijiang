@@ -1,0 +1,104 @@
+/* write_comments.wxss */
+image{
+  display: block;
+}
+.top{
+  height:28rpx;
+  width: 750rpx; 
+}
+.title{
+  height: 64rpx;
+  width: 750rpx;
+  font-size: 42rpx;
+  line-height: 64rpx;
+}
+.interval{
+  height: 20rpx;
+  width: 750rpx;
+}
+.interval_bottom{
+  height: 26rpx;
+  width: 750rpx;
+}
+.interval_right{
+  height: 120rpx;
+  width: 30rpx;
+}
+.score{
+  height: 64rpx;
+  width: 750rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: #9b9b9b;
+}
+.score_value{
+  height: 64rpx;
+  width: 80rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: rgb(247, 201, 106);
+}
+.start{
+  height: 120rpx;
+  width: 750rpx;
+}
+.start_container{
+  height: 120rpx;
+  width: 68rpx;
+}
+.half_start{
+  height: 64rpx;
+  width: 68rpx;
+}
+.half_start_left{
+  height: 64rpx;
+  width: 34rpx;
+}
+.half_start_right{
+  margin-left: -3rpx;
+  height: 64rpx;
+  width: 34rpx;
+}
+
+.start_interval{
+  height: 26rpx;
+  width: 68rpx;
+}
+.start_text{
+  font-size: 20rpx;
+  line-height: 30rpx;
+  color: #9b9b9b;
+}
+.goodsline {
+  width: 650rpx;
+  margin-left: 50rpx;
+  height: 2rpx;
+  background-color: rgb(235, 235, 235);
+}
+.section{
+  width: 650rpx;
+  margin-left: 50rpx;
+  height: 284rpx;
+}
+.section textarea{
+  width: 650rpx;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.empty{
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: #9b9b9b;
+  opacity:0.5;
+}
+.docomm{
+  background-color: #40c8de;
+  height: 88rpx;
+  color: white;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

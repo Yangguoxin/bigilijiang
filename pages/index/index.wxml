@@ -1,0 +1,144 @@
+<scroll-view class="page-scroll" scroll-y="{{true}}" bindscroll="scroll" scroll-top="{{scrollTop}}" >
+
+  <view class="ads">
+    <image class="adsimg" src="/assets/index/ads.jpg"></image>
+<!--    <view class="search h h-c">
+      <image src="/assets/index/search.png"></image>
+      <view>搜索城市</view>
+    </view>
+-->
+    <view class="ads-text c">
+      <view class="h">
+        <view class="cityname">丽江</view>
+<!--        <image src="/assets/index/pulldown.png"></image> -->
+      </view>
+      <view class="citypy">LiJiang</view>
+    </view>
+  </view>
+  <!--导航-->
+  <view  class="{{fixed}} h" bindtap="tabhandler">
+    <view class="tabitem {{tabs[0]}} f c" data-num="1">推荐路线</view>
+    <view class="tabitem {{tabs[1]}} f c" data-num="2">口袋攻略</view>
+  </view>
+  <view class="tabsgap" wx:if="{{fixed}}"></view> 
+  <!--推荐线路-->
+  <view wx:if="{{currindex==0}}">
+    <!-- <block wx:for="{{info}}" wx:key="id" wx:for-index="i">
+      <block wx:if="{{info[i].types == 'text+image'}}">
+        <view class="text_image_news_contain h h-t">
+          <view class="text_image_news_title h">{{info[i].title}}</view>
+          <view class="text_image_news_image">
+            <image src="{{image_Url}}{{info[i].image_url}}"></image>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="image_news_container v">
+          <view class="image_news_title">{{info[i].title}}</view>
+          <view class="image_news_image_container h">
+            <view class="image_news_image">
+              <image src="{{image_Url}}{{info[i].image_url[0]}}"></image>
+            </view>
+            <view class="image_news_image_interval"></view>
+            <view class="image_news_image">
+              <image src="{{image_Url}}{{info[i].image_url[1]}}"></image>
+            </view>
+            <view class="image_news_image_interval"></view>
+            <view class="image_news_image">
+              <image src="{{image_Url}}{{info[i].image_url[2]}}"></image>
+            </view>
+          </view>
+          
+        </view>
+      </block>
+    </block>  -->
+
+       <block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+      <view class="travel v" bindtap="recommHandler" data-num = "{{i}}"> 
+        <view class="travel_image d-e">
+          <image  src="{{image_Url}}{{brief_list[i].imgUrl}}"></image>
+        </view>
+        <view class="travel_interval d-e"></view>
+        <view class="v travel_text d-e">
+          <view class="travel_titel h d-e">
+            {{brief_list[i].name}}
+          </view>
+           <!-- <view class="travel_price">￥{{brief_list[i].price / 100}}</view>  -->
+          <view class="travel_content d-e">{{brief_list[i].description}}</view>
+        </view>
+      </view>
+      <view class="interval"></view>
+    </block>   
+
+  </view>
+  <!--攻略-->
+  <view wx:if="{{currindex==1}}" class="tabview pt0">
+    <!--概览-->
+    <view class="gl-title h h-c">
+      <image src="/assets/index/gl1.png"></image>
+      <view>概览</view>
+    </view>
+    <view class="gl-subtitle c">Overview</view>
+    <view class="glbtns flow" bindtap="OverviewHandle">
+      <view class="c" data-num="0">丽江速览</view>
+      <view class="c glgap " data-num="1">路线推荐</view>
+    </view>
+    <!--交通指南-->
+    <view class="gl-title h h-c">
+      <image src="/assets/index/gl2.png"></image>
+      <view>交通指南</view>
+    </view>
+    <view class="gl-subtitle c">Traffic</view>
+    <view class="glbtns h h-c"  bindtap="OverviewHandle">
+      <view class="c" data-num="2">如何到达</view>
+      <view class="c glgap " data-num="3">市内交通</view>
+    </view>
+    <!--景点-->
+    <view class="gl-title h h-c">
+      <image src="/assets/index/gl3.png"></image>
+      <view>景点</view>
+    </view>
+    <view class="gl-subtitle c">Attraction</view>
+    <view class="glbtns flow"  bindtap="OverviewHandle">
+      <view class="c" data-num="4">景点概况</view>
+      <view class="c glgap" data-num="5">必游TOP5</view>
+      <view class="c" data-num="6">景点防坑指南</view>
+    </view>
+
+    <!--娱乐-->
+    <view class="gl-title h h-c">
+      <image src="/assets/index/gl4.png"></image>
+      <view>娱乐</view>
+    </view>
+    <view class="gl-subtitle c">Entertainment</view>
+    <view class="glbtns flow"  bindtap="OverviewHandle">
+      <view class="c" data-num="7">印象丽江</view>
+      <view class="c glgap" data-num="8">千古情</view>
+      <view class="c" data-num="9">纳西古乐</view>
+    </view>
+
+    <!--美食-->
+    <view class="gl-title h h-c">
+      <image src="/assets/index/gl5.png"></image>
+      <view>美食</view>
+    </view>
+    <view class="gl-subtitle c">Food</view>
+    <view class="glbtns flow"  bindtap="OverviewHandle">
+      <view class="c" data-num="10">特色美食榜</view>
+      <view class="c glgap" data-num="11">捡菌子攻略</view>
+    </view>
+
+    <!--购物-->
+    <view class="gl-title h h-c">
+      <image src="/assets/index/gl6.png"></image>
+      <view>购物</view>
+    </view>
+    <view class="gl-subtitle c">Shopping</view>
+    <view class="glbtns flow"  bindtap="OverviewHandle">
+      <view class="c" data-num="12">剁手指南</view>
+      <view class="c glgap" data-num="13">人气伴手礼</view>
+      <view class="c" data-num="14">防坑小贴士</view>
+    </view>
+
+  </view>
+</scroll-view>

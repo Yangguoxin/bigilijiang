@@ -1,0 +1,25 @@
+<!-- 顶部 -->
+<view class="top_bar h"></view>
+
+<block wx:for="{{type_list}}" wx:key="id" wx:for-index="i">
+  <view class="goods h">
+    <image class="photo d-e" src="{{image_Url}}{{type_list[i].imgUrl}}"></image>
+    <view class="goods-des d-e">
+      <view class="gdes1 d-e">{{type_list[i].sceneryName}}</view>
+      <view class="gdes3 d-e">{{type_list[i].sceneryName}}.建议玩半小时</view>
+      <view class="gdes2 d-e h">
+        <image class="d-e" src="/assets/index/{{start_status[i][0]}}"></image>
+        <image class="d-e" src="/assets/index/{{start_status[i][1]}}"></image>
+        <image class="d-e" src="/assets/index/{{start_status[i][2]}}"></image>
+        <image class="d-e" src="/assets/index/{{start_status[i][3]}}"></image>
+        <image class="d-e" src="/assets/index/{{start_status[i][4]}}"></image>
+        <view class="d-e">{{nav_score_change[i]}}分/{{type_list[i].commentNumber}}点评</view>
+      </view>
+    </view>
+    <view class="f"></view>
+  <view class="Add c" data-num="{{i}}" bindtap="modify_sceneryHandle">替换
+      <!-- <image src="/assets/index/{{choose_add[i]}}" data-num="{{i}}"></image> -->
+  </view>
+  </view>
+  <view class="goodsline d-e"></view>
+</block>

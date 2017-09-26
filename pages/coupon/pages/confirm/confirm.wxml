@@ -1,0 +1,26 @@
+<!--confirm.wxml-->
+<view class="container" hidden="{{validate}}">
+  <view class="icon"><image src="../../img/input-img.png"></image></view>
+  <view class="text">验证兑换码</view>
+  <view class="code-box"><input type="text" id="code" name="code" bindinput="codeInput" /></view>
+  <button bindtap="toorder" class="confirm c">验证使用</button>
+</view>
+<view class="container" hidden="{{validated}}">
+  <view class="icon" hidden='{{!state}}'><image src="../../img/waiting.png"></image></view>
+  <view class="icon" hidden='{{state}}'><image src="../../img/detail.png"></image></view>
+  <view class="service">{{serviceState}}</view>
+  <view class="prizeCode">您的兑换码为：{{prizeCode}}</view>
+  <view class="confirmTime">兑换码验证日期：{{confirmTime}}</view>
+  <view class="servicePhone">客服电话：{{servicePhone}}</view>
+  <view class="order" hidden='{{state}}'>
+    <view class="hotelDetail" >客栈详情</view>
+    <view class="hotelName" >客栈名：{{hotelName}}</view>
+    <view class="hotelAddress" >客栈地址：{{hotelAddress}}</view>
+    <view class="hotelPhone" >客栈电话：{{hotelPhone}}</view>
+    <view class="guestName" >入住人：{{guestName}}</view>
+    <view class="guestDate" >入住日期：{{guestDate}}</view>
+  </view>
+  <button bindtap="tooList" hidden='{{!state}}' class="checkList c">查看可预定房间</button>
+  
+</view>
+ <!-- <button bindtap="change">切换</button>  -->

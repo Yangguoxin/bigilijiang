@@ -1,0 +1,223 @@
+/* choose_scenery.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.top_bar{
+  height: 30rpx;
+  width: 750rpx;
+}
+.bottom_bar{
+  height: 90rpx;
+  width: 750;
+}
+.city{
+  height: 85rpx;
+  width: 250rpx;
+}
+.city_text{
+  width: 170rpx;
+  height: 85;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: #43c6e2;
+}
+.city image{
+    height: 15rpx;
+    width: 30rpx;
+}
+.photo {
+  width: 126rpx;
+  height: 126rpx;
+  border-radius: 8rpx;
+}
+.goods-des {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #485465;
+  margin-left: 44rpx;
+}
+.goodsline_c {
+  width: 5rpx;
+  height: 50rpx;
+  background-color: #43c6e2;
+}
+.gdes2 {
+  font-size: 26rpx;
+  line-height: 39rpx;
+  height: 52rpx;
+}
+.gdes2 image{
+  width: 28rpx;
+  height: 26rpx;
+}
+.gdes2 view{
+  margin-left:18rpx;
+}
+
+.gdes3 {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #9b9b9b;
+}
+
+.goods-num {
+  color: #43c6e2;
+  font-size: 44rpx;
+  line-height: 44rpx;
+  font-weight: bold;
+}
+
+.gn2 {
+  font-size: 22rpx;
+  line-height: 44rpx;
+  font-weight: normal;
+}
+
+.goodsline {
+  width: 690rpx;
+  margin-left: 60rpx;
+  height: 2rpx;
+  background-color: rgb(235, 235, 235);
+}
+.goods {
+  height: 180rpx;
+  width: 690rpx;
+  margin-left: 60rpx;
+}
+.Add{
+  height: 180rpx;
+  width: 160rpx;
+}
+.Add image{
+  height: 40rpx;
+  width: 40rpx;
+}
+.choose_bottom{
+  background-color: rgb(105, 197, 220);
+  height: 88rpx;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 750rpx;
+}
+.choose_scrollbar{
+  height: 88rpx;
+  width: 600rpx;
+}
+.display_scrollbar{
+  height: 100%;
+  width: 750rpx;
+}
+.scroll_window{
+  height: 100%;
+  width: 750rpx;
+}
+.choose_bar{
+  height: 88rpx;
+  /* width: 1500rpx; */
+}
+.Add_button{
+  color: white;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  height: 88rpx;
+  width: 150rpx;
+}
+.scenery_container{
+  margin-left: 16rpx;
+  height: 62rpx;
+  width: auto;
+  border:1rpx solid white;
+}
+.text{
+  margin-left: 20rpx;
+  color: white;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+.scenery_container image{
+  margin-left: 10rpx;
+  margin-right:14rpx;
+  height: 24rpx;
+  width: 24rpx;
+}
+.hide_Add{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.hide_up{
+  background-color: rgba(87, 86, 85,0.4);
+  width: 750rpx;
+} 
+.hide_down{
+  background-color: white ;
+  width: 750rpx;
+  height: 700rpx;
+}
+.hide_down_bar{
+  width: 750rpx;
+  height: 120rpx;
+  background-color: rgb(241, 241, 241);
+} 
+.hide_down_bar image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.hide_text{
+  margin-left: 26rpx;
+  color: #4A4A4A;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.day_container{
+  width: 750rpx;
+  height: 160rpx;
+}
+.day_title{
+  margin-left: 40rpx;
+  color: #4A4A4A;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+.day_title_name{
+  margin-left: 40rpx;
+  width: 670rpx;
+  height:70rpx; 
+}
+.day_title_title{
+  color: #4A4A4A;
+  font-size: 20rpx;
+  line-height: 30rpx;
+}
+.day_scenery{
+  margin-left: 10rpx;
+  color: #4A4A4A;
+  font-size: 20rpx;
+  line-height: 30rpx; 
+}
+.goodsline_day{
+  width: 750rpx;
+  height: 2rpx;
+  background-color: rgb(235, 235, 235);
+}
+.docomm{
+  background-color: #40c8de;
+  height: 88rpx;
+  color: white;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+

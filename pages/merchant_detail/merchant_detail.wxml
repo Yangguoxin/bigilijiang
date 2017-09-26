@@ -1,0 +1,295 @@
+<!--滑动模块  -->
+<import src='../../dao/wxParse/wxParse.wxml'/>
+<scroll-view class="display_scrollbar" lower-threshold="0" scroll-y="{{true}}" bindscrolltolower="scroll_bottom">
+  <view class="scroll_window">
+
+    <!--图片滑块  -->
+    <swiper class="swiper_container " indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" indicator-active-color="rgb(104,195,218)">
+      <block wx:for="{{brief_list.product.imgList}}" wx:for-index="i" wx:key="id">
+        <swiper-item >
+          
+          <view class="swiper_item h" >
+            <image mode="aspectFill" src="{{brief_list.product.imgList[i].path}}" class="slide_image d-e"/>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--分割线  -->
+    <view class="interval"></view>
+    <!--标题  -->
+    <view class="title_container v">
+      <view class="title_price h">
+        <view class="title f">斐讯体脂秤</view>
+        <view class="price">￥599</view>
+      </view>
+      <view class="title_discription">PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+    </view>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--规格型号  -->
+    <view class="merchant_type h" bindtap='choose_goodsHandle'>
+      <view class="merchant_type_text f d-e">规格型号</view>
+      <view class="merchant_type_image d-e"> 
+        <image class="d-e" src="{{goods_type_switch}}"></image>
+      </view>
+    </view>
+    <block wx:if="{{goods_type_switch == '/assets/index/up.png'}}">
+      <view class="goods_type_container h  flow">
+        <view class="goods_type_choosed">白色</view>
+        <view class="goods_type">黑色</view>
+        <view class="goods_type">体脂秤套餐(天蓝色)</view>
+        <view class="goods_type">体脂秤套餐(粉红色)</view>
+      </view>
+    </block>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--数量  -->
+    <view class="merchant_num_container h">
+      <view class="merchant_num f">已选 {{goods_num}} 个</view>
+      <view class="num_count_container h">
+        <view class="num_count_plus c" bindtap='reduceHandle'>-</view>
+        <view class="num c d-e">{{goods_num}}</view>
+        <view class="num_count_reduce c" bindtap='plusHandle'>+</view>
+      </view>
+    </view>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--小标签  -->
+    <view class="tag h flow">
+      <view class="tag_container">icity发货&g供应商售后</view>
+      <view class="tag_container">免运费</view>
+      <view class="tag_container">0元购</view>
+      <view class="tag_container">全国联保</view>
+      <view class="tag_container">7天无理由退货</view>
+    </view>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--收货地址  -->
+    <view class="address_container v">
+      <view class="address h">
+        <view class="address_title">收货地址</view>
+        <view class="address_content">贵州省安龙县栖凤街道办事处竹林湾组43号</view>
+      </view>
+      <view class="goods_supply_container h">
+        <view class="supply">现货</view>
+        <view class="distribution">23:00前下单，预计明天09月09日送达</view>
+      </view>
+    </view>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--标题  -->
+    <view class="title_container_title h h-c">
+      <view class="title_left">
+        <image src="/assets/index/shop_left.png"></image>
+      </view>
+        <view class="title_text">评论</view>
+      <view class="title_right">
+        <image src="/assets/index/shop_right.png"></image>
+      </view>
+    </view>
+    <!--空白间隔  -->
+    <view class="block_interval"></view>
+    <!--评价内容  -->
+    <view class="comment_container v">
+      <view class="head_container h">
+        <view class="head_image">
+           <image src=""></image> 
+        </view>
+        <view class="nick_name">大吉大利，今晚吃鸡！</view>
+      </view>
+      <view class="comment">我就是登记卡老师觉得快乐撒娇对了撒即可领导说的就是卡里的撒即可来的时间啊丽江斯柯达</view>
+      <view class="time_goodstype h">
+        <view class="time">2017-09-09 16:31:31</view>
+        <view class="goodstype">规格：S7标准版</view>
+      </view>
+    </view>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--评价内容  -->
+    <view class="comment_container v">
+      <view class="head_container h">
+        <view class="head_image">
+           <image src=""></image> 
+        </view>
+        <view class="nick_name">大吉大利，今晚吃鸡！</view>
+      </view>
+      <view class="comment">我就是登记卡老师觉得快乐撒娇对了撒即可领导说的就是卡里的撒即可来的时间啊丽江斯柯达</view>
+      <view class="time_goodstype h">
+        <view class="time">2017-09-09 16:31:31</view>
+        <view class="goodstype">规格：S7标准版</view>
+      </view>
+    </view>
+
+    <!--查看全部评价  -->
+    <view class="commetHandle_container c">
+      <view class="commetHandle c">查看全部评价</view>
+    </view>
+    
+<block wx:if="{{second_page}}">
+  <!--分割线  -->
+  <view class="interval"></view>
+  <!--商品信息条  -->
+  
+  <view class="goods_information_container h" bindtap="change_informationHandle">
+    <view class="{{information_array[0]}}" data-num="0">商品简介</view>
+    <view class="line_goods d-e"></view>
+    <view class="{{information_array[1]}}" data-num="1">规格参数</view>
+    <view class="line_goods d-e"></view>
+    <view class="{{information_array[2]}}" data-num="2">包装售后</view>
+  </view>
+
+  <block wx:if="{{current_choose==0}}">
+    <!--商品简介  -->
+    <!--付文本  -->
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    
+    <!-- <view class="merchant_brief_container">
+      <view class="merchant_brief">
+        <image src="/assets/index/merchant_image.png"></image>
+      </view>
+    </view> -->
+  </block>
+
+  <block wx:if="{{current_choose==1}}">
+    <!--规格参数  -->
+    <view class="big_container">
+      <view class="frame_container v">
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">商品编号</view>
+          <view class="table_content c">2248768</view>
+        </view>
+        <!--标题表项  -->
+        <view class="title_container_paking h">监测功能</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">测量范围</view>
+          <view class="table_content c">8KG-150KG</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">测量方法</view>
+          <view class="table_content c">站立</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">精度</view>
+          <view class="table_content c">0.1</view>
+        </view>
+        <!--标题表项  -->
+        <view class="title_container_paking h">规格</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">机身尺寸</view>
+          <view class="table_content c">260*260*20mm</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">机身重量</view>
+          <view class="table_content c">1.2kg</view>
+        </view>
+        <!--标题表项  -->
+        <view class="title_container_paking h">主体</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">型号</view>
+          <view class="table_content c">MINI</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">品牌</view>
+          <view class="table_content c">斐讯PICOOC</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">颜色</view>
+          <view class="table_content c">白色</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">适用范围</view>
+          <view class="table_content c">家用式</view>
+        </view>        
+        <!--标题表项  -->
+        <view class="title_container_paking h">连接方式</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">蓝牙</view>
+          <view class="table_content c">4.0</view>
+        </view>         
+      </view>
+    </view>
+    
+  </block>
+    
+  <block wx:if="{{current_choose==2}}">
+    <!--包装售后  -->
+    <view class="paking_container v" >
+      <view class="paking_title_container h h-t">
+        <view class="line_left">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="paking_title c">包装清单</view>
+        <view class="line_right">
+          <image src="/assets/index/right_line.png"></image>
+        </view>
+      </view>
+      <!--清单内容  -->
+      <view class="paking_content_container v">
+        <view class="paking_content">斐讯智能体脂秤x1、说明书x1、AAA电池x3、保修卡x1</view>
+      </view>
+    </view>
+    
+
+    <!--售后服务  -->
+    <view class="paking_container v" >
+      <view class="paking_title_container h h-t">
+        <view class="line_left">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="paking_title c">售后服务</view>
+        <view class="line_right">
+          <image src="/assets/index/right_line.png"></image>
+        </view>
+      </view>
+      <!--清单内容  -->
+      <view class="paking_content_container v">
+        <view class="paking_content">本产品全国联保，享受三包服务，质保期为：一年质保</view>
+        <view class="paking_content">售后服务电话：400-400-4024</view>
+        <view class="paking_content">品牌官网地址：http://www.tiziyi.com</view>
+      </view>
+    </view>
+
+
+    <!--价格说明  -->
+    <view class="paking_container v" >
+      <view class="paking_title_container h h-t">
+        <view class="line_left">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="paking_title c">价格说明</view>
+        <view class="line_right">
+          <image src="/assets/index/right_line.png"></image>
+        </view>
+      </view>
+      <!--清单内容  -->
+      <view class="paking_content_container v">
+        <view class="paking_content">1、斐讯智能体脂秤特惠价是您最终的购买价</view>
+        <view class="paking_content">2、斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价</view>
+        <view class="paking_content">3、斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价</view>
+      </view>
+    </view>
+  </block>
+    <!--购买按钮  -->
+    <!--底部空间  --> 
+</block>
+<view class="bottom"></view> 
+  </view> 
+</scroll-view>
+
+<view class="buy_button c" bindtap='payHandle'>立即购买</view>
+
+
+
+
+

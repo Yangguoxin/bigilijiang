@@ -1,0 +1,170 @@
+<!--滑动模块  -->
+<scroll-view class="display_scrollbar" lower-threshold="0" scroll-y="{{true}}" bindscrolltolower="scroll_bottom">
+  <view class="scroll_window">
+
+    <!--图片滑块  -->
+    <swiper class="swiper_container " indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" indicator-active-color="rgb(104,195,218)">
+      <block wx:for="{{merchant_detail}}" wx:for-index="i" wx:key="id">
+        <swiper-item >
+          
+          <view class="swiper_item h" >
+            <image mode="aspectFill" src="{{image_Url}}{{merchant_detail[i].imageUrl}}" class="slide_image d-e"/>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--分割线  -->
+    <view class="interval"></view>
+    <!--标题  -->
+    <view class="title_container v">
+      <view class="title_price h">
+        <view class="title ">{{route_name}}</view>
+      </view>
+      <view class="title_discription">{{route_discription}}</view>
+    </view>
+    <view class="route_price_container v">
+      <view class="discount_route_price_container h">
+        <view class="discount_route_price_title">推广价：￥</view>
+        <view class="discount_route_price">{{price/100}}</view>
+        <view class="discount_route_price_title">/人</view>
+      </view>
+      <view class="origin_route_price_container h">
+        <view class="origin_route_price_title">原价：￥</view>
+        <view class="origin_route_price">1998</view>
+        <view class="origin_route_price_title">/人</view>
+      </view>
+    </view>
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--小标签  -->
+    <view class="tag h flow">
+      <view class="tag_container">私人订制</view>
+      <view class="tag_container">保险</view>
+      <view class="tag_container">与大自然零距离接触</view>
+      <view class="tag_container">无忧退款</view>
+      <view class="tag_container">导游一对一</view>
+    </view>
+
+    
+
+  <!--分割线  -->
+  <view class="interval"></view>
+  <!--商品信息条  -->
+  
+  <view class="goods_information_container h" bindtap="change_informationHandle">
+    <view class="{{information_array[0]}}" data-num="0">商品简介</view>
+    <view class="line_goods d-e"></view>
+    <view class="{{information_array[1]}}" data-num="1">商品详情</view>
+    <view class="line_goods d-e"></view>
+    <view class="{{information_array[2]}} c" data-num="2">须知</view>
+  </view>
+
+  <block wx:if="{{current_choose==0}}">
+    <!--商品简介  -->
+    <view class="merchant_brief_container">
+      <view class="merchant_brief">
+        <image src="{{image_Url}}{{goodes_image}}"></image>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{current_choose==1}}">
+    <view class="merchant_brief_day">
+        <image src="{{image_Url}}{{goodes_detail}}"></image>
+    </view>
+  </block>
+    
+  <block wx:if="{{current_choose==2}}">
+    <!--包装售后  -->
+    <view class="paking_container v" >
+      <view class="paking_title_container h h-t">
+        <view class="line_left">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="paking_title c">费用包含</view>
+        <view class="line_right">
+          <image src="/assets/index/right_line.png"></image>
+        </view>
+      </view>
+      <!--清单内容  -->
+      <view class="paking_content_container v_high">
+        <view class="paking_content_title h h-t">
+          <view class="dot_style c ">·</view>
+          <view class="paking_content_text">50万元户外专业保险、接送交通费用、公共餐费、领队费、公用装备租赁用费（帐篷、睡袋、登山杖、雨衣）不含个人消费费用</view>
+        </view>
+        <view class="paking_content_title h h-t">
+          <view class="dot_style c ">·</view>
+          <view class="paking_content_text">4小时越野车费、BBQ费用、2小时漂流费用、篝火晚会费用、2小时骑马费用</view>
+        </view>
+      </view>
+    </view>
+    
+
+    <!--售后服务  -->
+    <view class="paking_container v" >
+      <view class="paking_title_container h h-t">
+        <view class="line_left">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="paking_title c">徒步准备</view>
+        <view class="line_right">
+          <image src="/assets/index/right_line.png"></image>
+        </view>
+      </view>
+      <!--清单内容  -->
+      <view class="paking_content_container v_high">
+        <view class="paking_content">1、食品类：饮用水、压缩干粮、巧克力、奶糖、饼干、茶叶、牛肉等小食品（自备）饮用水、压缩干粮、巧克力、奶糖、饼干、茶叶、牛肉等小食品（自备）</view>
+        <view class="paking_content">2、衣物类：冲锋衣或保暖衣、裤、帽子、手套、袜子、高邦硬底鞋徒步鞋及休闲鞋各一双、头巾、T恤</view>
+        <view class="paking_content">3、药品类：感冒药、退烧药、自备个人药品</view>
+        <view class="paking_content">4、电器类：手机、相机（充电器、电池、卡）、充电宝、头灯或手电筒（电池）</view>
+        <view class="paking_content">5、其他类：墨镜、保湿壶、卫生纸</view>
+        <view class="paking_content">6、证件类：身份证原件</view>
+        <view class="paking_content">7、洗漱类：毛巾、香皂、牙刷、牙膏、防晒霜</view>
+      </view>
+    </view>
+
+
+    <!--价格说明  -->
+    <view class="paking_container v" >
+      <view class="paking_title_container h h-t">
+        <view class="line_left">
+          <image src="/assets/index/left_line.png"></image>
+        </view>
+        <view class="paking_title c">温馨提示</view>
+        <view class="line_right">
+          <image src="/assets/index/right_line.png"></image>
+        </view>
+      </view>
+      <!--清单内容  -->
+      <view class="paking_content_container v_high">
+        <view class="paking_content">1、登山前晚不宜宿醉、早休息，保持体力。</view>
+        <view class="paking_content">2、行程中会遇突发状况，领队会及时作出调整，请参加徒步的旅客，尽量配合领队做出调整。</view>
+        <view class="paking_content">3、高原地区，不易过于兴奋紧张，保存心情舒畅。</view>
+        <view class="paking_content">4、要求报名者有一定户外经验，认识到户外可能存在的风险，自愿在户外活动中对自己的行为后果负责，并在出发前到当地正规医院进行体检，如患有心脏病、心血管病、高血压等疾病或医生认为不适宜参加户外活动的提前告知。</view>
+        <view class="paking_content">5、请自备垃圾袋，带走自己产生的垃圾，为子孙后代造福。</view>
+      </view>
+    </view>
+  </block>
+    <!--购买按钮  -->
+    <!--底部空间  --> 
+  <view class="bottom"></view>
+  </view> 
+</scroll-view>
+
+<view class="choose_bottom h">
+  <!-- <view class="price h h-c">
+    <view class="price_title">总计:</view>
+    <view class="price_num">￥{{price/100}}</view>
+  </view> -->
+  <view class="book h h-c d-e" bindtap="place_order">
+    <view class="book_text d-e" >预订</view>
+  </view>
+</view>
+
+
+
+  
+      
+
+
+

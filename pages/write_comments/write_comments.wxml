@@ -1,0 +1,77 @@
+<!--顶部 -->
+<view class="top"></view>
+<!--标题-->
+<view class="title h h-c">{{detail_data.name}}</view>
+<!--间隔-->
+<view class="interval"></view>
+<!--计算评分-->
+<view class="score h h-c">评分 
+<view class="score_value h h-c">{{score}}分</view>
+</view>
+<!--间隔-->
+<view class="interval"></view>
+<!--星级-->
+<view class="star h h-c" bindtap="change_start">
+  <view class="start_container c " >
+    <view class="half_start h ">
+      <image class="half_start_left" src="/assets/index/{{start_statues[0]}}" data-num="1"></image>
+      <image class="half_start_right" src="/assets/index/{{start_statues[1]}}" data-num="2"></image>
+    </view>
+    <view class="start_interval "></view>
+    <view class="start_text ">极差</view>
+  </view>
+  <view class="interval_right"></view>
+  <view class="start_container c">
+    <view class="half_start h">
+      <image class="half_start_left" src="/assets/index/{{start_statues[2]}}" data-num="3"></image>
+      <image class="half_start_right" src="/assets/index/{{start_statues[3]}}" data-num="4"></image>
+    </view>
+    <view class="start_interval"></view>
+    <view class="start_text">较差</view>
+  </view>
+  <view class="interval_right"></view>
+  <view class="start_container c">
+    <view class="half_start h">
+      <image class="half_start_left" src="/assets/index/{{start_statues[4]}}" data-num="5"></image>
+      <image class="half_start_right" src="/assets/index/{{start_statues[5]}}" data-num="6"></image>
+    </view>
+    <view class="start_interval"></view>
+    <view class="start_text">一般</view>
+  </view>
+  <view class="interval_right"></view>
+  <view class="start_container c">
+    <view class="half_start h">
+      <image class="half_start_left" src="/assets/index/{{start_statues[6]}}" data-num="7"></image>
+      <image class="half_start_right" src="/assets/index/{{start_statues[7]}}" data-num="8"></image>
+    </view>
+    <view class="start_interval"></view>
+    <view class="start_text">不错</view>
+  </view>
+  <view class="interval_right"></view>
+  <view class="start_container c">
+    <view class="half_start h">
+      <image class="half_start_left" src="/assets/index/{{start_statues[8]}}" data-num="9"></image>
+      <image class="half_start_right" src="/assets/index/{{start_statues[9]}}" data-num="10"></image>
+    </view>
+    <view class="start_interval"></view>
+    <view class="start_text">很棒</view>
+  </view>
+</view>
+<!--间隔-->
+<view class="interval"></view>
+<view class="interval"></view>
+<view class="interval"></view>
+
+
+<!--线-->
+<view class="goodsline d-e"></view>
+
+<!--评论框-->
+<view class="section">
+<form bindsubmit="submit">
+    <textarea  name="textarea" placeholder="写几句评价" placeholder-class = "empty" />
+    <button form-type="submit" class="docomm h h-c {{turn_true == true ? 'd-e':''}}" loading="{{turn_true}}">提交评价</button>
+</form>
+</view>
+<view class="goodsline d-e"></view>
+<!--线-->

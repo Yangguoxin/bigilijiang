@@ -1,0 +1,106 @@
+<!--添加地址  -->
+<block wx:if="{{defualt_information == null}}">
+  <view class='add_address_container h' bindtap='add_addressHandle'>
+    <view class='add_address_text f d-e'>添加地址</view>
+    <view class='add_address_image c d-e'>
+      <image class='d-e' src='/assets/index/traveler_add.png'></image>
+    </view>
+  </view>
+</block>
+<!--默认地址  -->
+<block wx:if="{{defualt_information != null }}">
+  <view class='address_container_container h ' bindtap='choose_addressHandle'>
+    <view class='address_container v d-e'>
+      <view class='person_name_telephone h d-e'>
+        <view class='person_name f d-e'>收货人：{{defualt_information.personName}}</view>
+        <view class='person_telephone d-e'>{{defualt_information.telephone}}</view>
+      </view>
+      <view class='address d-e'>{{defualt_information.addressProvince}}{{defualt_information.addressCity}}{{defualt_information.addressCountry}}{{defualt_information.detailAddress}}</view>
+    </view>
+    <view class='address_image c d-e'>
+      <image class='d-e' src='/assets/index/right.png'></image>
+    </view>
+  </view>
+</block>
+
+<!--地址分割线  -->
+<view class='add_address_line'>
+  <image src='/assets/index/add_address_line.png'></image>
+</view>
+<!--分割线  -->
+<view class='interval'></view>
+<!--商品简介  -->
+<view class='goods_brief_container h'>
+  <view class='goods_brief_image'>
+    <image src='/assets/index/hardware_mid.png'></image>
+  </view>
+  <view class='goods_brief_text_container v'>
+    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+    <view class='goods_brief_type_price h ' >
+      <view class='goods_brief_type h'>香槟金</view>
+      <view class='f'></view>
+      <view class='goods_brief_price_container h' >
+        <view class='goods_brief_price'>￥799.00</view>
+        <view class='goods_brief_num'>x 1</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!--分割线  -->
+<view class='interval'></view>
+<!--发票信息  -->
+<view class='invoice_container h'>
+  <view class='invoice f' >发票信息</view>
+  <view class='invoice_text'>暂无发票</view>
+  <view class='invoice_image'>
+    <image src='/assets/index/right.png'></image>
+  </view>
+</view>
+
+<!--分割线  -->
+<view class='interval'></view>
+
+<!--优惠券  -->
+<view class='invoice_container h'>
+  <view class='invoice f' >优惠券</view>
+  <view class='invoice_text'>无优惠券</view>
+  <view class='invoice_image'>
+    <image src='/assets/index/right.png'></image>
+  </view>
+</view>
+<!--细线  -->
+<view class='interval_line'></view>
+
+<!--商品金额  -->
+<view class='invoice_container h'>
+  <view class='invoice f' >商品金额</view>
+  <view class='goods_price'>￥799.00元</view>
+</view>
+<!--细线  -->
+<view class='interval_line'></view>
+
+<!--运费  -->
+<view class='invoice_container h'>
+  <view class='invoice f' >运费</view>
+  <view class='freight'>￥0.00元</view>
+</view>
+<!--细线  -->
+<view class='interval_line'></view>
+<!--应付金额  -->
+<view class='pay_num_container h h-r'>
+  <view class='pay_num_title'>应付金额：</view>
+  <view class='pay_num'>￥799.00元</view>
+</view>
+<!--底部空格  -->
+<view class='bottom'></view>
+<!--提交按钮  -->
+<view class="choose_bottom h">
+  <view class="price h h-c">
+    <view class="price_title">合计:</view>
+    <view class="price_num">￥799.00</view>
+  </view>
+  <view class="book h h-c" bindtap="place_order">
+    <view class="book_text d-e" >提交订单</view>
+  </view>
+</view> 
+

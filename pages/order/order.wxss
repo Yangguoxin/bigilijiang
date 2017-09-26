@@ -1,0 +1,313 @@
+/* order.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+.travel_time{
+  height: 128rpx;
+  width: 100%;
+}
+.time_title{
+  height: auto;
+  width: auto;
+  margin-left: 40rpx;
+  margin-top: 42rpx;
+}
+.time_text{
+  font-size:32rpx;
+  line-height:48rpx;
+  color: #3FC8DE ;
+}
+.date_container{
+  height: auto;
+  width: auto;
+  margin-left: 40rpx;
+  margin-top: 42rpx;
+}
+.date_pick{
+  font-size:32rpx;
+  line-height:48rpx;
+  color: #3FC8DE ;
+}
+.date_buttun{
+  height: 100rpx;
+  width: 100rpx;
+}
+.date_buttun image{
+  margin-top: 38rpx;
+  margin-right: 40rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+.parting_line{
+  width: 100%;
+  height: 20rpx;
+  border: 2rpx solid #DFDFDF;
+  background-color: #EFEFEF;
+}
+.route_list_container{
+  margin-top: 40rpx;
+  width: 100%;
+  height: auto;
+}
+.route_title{
+  margin-left:298rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #000000;
+}
+.scenery_container{
+  height: auto;
+  width: 100%;
+}
+.scenery_title{
+  margin-top:40rpx;
+  margin-left:40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.scenery_name{
+  margin-top:10rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #848484;
+}
+.scenery_content{
+  margin-top:40rpx;
+  margin-left:40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.scenery_discription{
+  margin-top:10rpx;
+  margin-bottom: 40rpx;
+  margin-right: 40rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #848484;
+}
+.line{
+  width: 730rpx;
+  margin-left: 10rpx;
+  height: 2rpx;
+  border: 2rpx solid #F1F1F1;
+}
+.traveler_container{
+  margin-top: 40rpx;
+  width: 100%;
+  height: auto;
+}
+.traveler_title{
+  margin-left:298rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #000000;
+}
+.traveler_edit{
+  width: 100%; 
+  height: 100rpx;
+}
+.traveler_name{
+  margin-left:40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.traveler_name input{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.traveler_empty{
+  margin-left:40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #C8C8C8;
+}
+.add_person{
+  width: 100rpx;
+  height: 100rpx;
+}
+.add_person image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 40rpx;
+  margin-top: 28rpx;
+}
+.line_traveler{
+  width: 670rpx;
+  margin-left: 40rpx;
+  height: 2rpx;
+  border: 2rpx solid #F1F1F1;
+}
+.traveler_phone{
+  margin-left: 40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.traveler_phone input{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #3FC8DE;
+}
+.price_container{
+  width: 100%;
+  height: 120rpx;
+}
+.price_title{
+  margin-left: 40rpx;
+  font-size: 32rpx;
+  line-height:48rpx;
+  color: #000000; 
+}
+.price_num{
+  margin-right: 40rpx;
+  font-size: 32rpx;
+  line-height:48rpx;
+  color: #000000;  
+}
+.pay_container{
+  background-color: #40c8de;
+  height: 96rpx;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 36rpx;
+  line-height:54rpx;
+  color:white; 
+  border-radius:0px;
+}
+.bottom{
+  height: 100rpx;
+}
+button::after{
+  border: none;
+}
+.hide_Add{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+}
+.hide_up{
+  background-color: rgba(87, 86, 85,0.4);
+  width: 750rpx;
+} 
+.hide_down{
+  background-color: white ;
+  width: 750rpx;
+  height: 820rpx;
+}
+.display_scrollbar{
+  height: 100%;
+  width: 750rpx;
+}
+.scroll_window{
+  height: 100%;
+  width: 750rpx;
+}
+.sure_container{
+  height: 140rpx;
+  width: 100%;
+}
+.no_style{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #FF5F73;
+  margin-left: 40rpx;
+}
+.yes_style{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #3FC8DE;
+  margin-right: 40rpx;
+}
+.add_contact{
+  height: 130rpx;
+  width: 100%;
+}
+.add_contact image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 242rpx;
+}
+.add_contact_text{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #3FC8DE;
+  margin-left: 30rpx;
+}
+.choose_man_container{
+  height: 130rpx;
+  width: 100%;
+}
+.choose_man_title{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #000000;
+}
+.choose_man_line{
+  width: 750rpx;
+  height: 2rpx;
+  border: 2rpx solid #F1F1F1;
+}
+.person_container{
+  width: 100%;
+  height: 1000rpx;
+}
+.person_list_container{
+  width: 100%;
+  height: 110rpx;
+}
+.person_name{
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.person_pick{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+}
+.person_pick image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.person_delete{
+  width: 100rpx;
+  height: 100rpx;
+}
+.person_delete image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.order_detail_title{
+  height: 130rpx;
+  width: 100%;
+}
+.order_detail_text{
+  margin-left: 300rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #3FC8DE;
+
+}
+.order_detail_image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.order_detail_image image{
+  height: 16rpx;
+  width: 28rpx;
+}
+.person_scrollbar{
+  width: 100%;
+  height: 376rpx;
+}

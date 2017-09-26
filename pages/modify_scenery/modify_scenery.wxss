@@ -1,0 +1,135 @@
+/* modify_scenery.wxss */
+.top_bar{
+  height: 85rpx;
+  width: 750;
+}
+.city{
+  height: 85rpx;
+  width: 250rpx;
+}
+.city_text{
+  width: 170rpx;
+  height: 85;
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: #43c6e2;
+}
+.city image{
+    height: 15rpx;
+    width: 30rpx;
+}
+.photo {
+  width: 126rpx;
+  height: 126rpx;
+  border-radius: 8rpx;
+}
+.goods-des {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #485465;
+  margin-left: 44rpx;
+}
+.goodsline_c {
+  width: 5rpx;
+  height: 50rpx;
+  background-color: #43c6e2;
+}
+.gdes2 {
+  font-size: 26rpx;
+  line-height: 39rpx;
+  height: 52rpx;
+}
+.gdes2 image{
+  width: 28rpx;
+  height: 26rpx;
+}
+.gdes2 view{
+  margin-left:18rpx;
+}
+
+.gdes3 {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #9b9b9b;
+}
+
+.goods-num {
+  color: #43c6e2;
+  font-size: 44rpx;
+  line-height: 44rpx;
+  font-weight: bold;
+}
+
+.gn2 {
+  font-size: 22rpx;
+  line-height: 44rpx;
+  font-weight: normal;
+}
+
+.goodsline {
+  width: 690rpx;
+  margin-left: 60rpx;
+  height: 2rpx;
+  background-color: rgb(235, 235, 235);
+}
+.goods {
+  height: 180rpx;
+  width: 690rpx;
+  margin-left: 60rpx;
+}
+.Add{
+  font-size: 30rpx;
+  line-height: 45rpx;
+  color: rgb(138, 138, 138);
+  height: 180rpx;
+  width: 128rpx;
+  /* height: 180rpx;
+  width: 150rpx; */
+}
+.Add image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.choose_bottom{
+  background-color: rgb(105, 197, 220);
+  height: 88rpx;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 750rpx;
+}
+.choose_scrollbar{
+  height: 88rpx;
+  width: 600rpx;
+}
+.choose_bar{
+  height: 88rpx;
+  width: 1000rpx;
+}
+.Add_button{
+  color: white;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  height: 88rpx;
+  width: 150rpx;
+}
+.scenery_container{
+  margin-left: 16rpx;
+  height: 62rpx;
+  width: auto;
+  border:1rpx solid white;
+}
+.text{
+  margin-left: 20rpx;
+  color: white;
+  font-size: 24rpx;
+  line-height: 36rpx;
+}
+.scenery_container image{
+  margin-left: 10rpx;
+  margin-right:14rpx;
+  height: 24rpx;
+  width: 24rpx;
+}

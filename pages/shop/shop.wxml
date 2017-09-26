@@ -1,0 +1,300 @@
+<!--标题  -->
+<!-- <view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+  <view class="title_text">商城</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view> -->
+<!--主页图标  -->
+<view class="menu_container v">
+  <!--上层菜单  -->
+  <view class="menu_up_container h h-c">
+    <!--酒店客栈  -->
+    <view class="logo_container c">
+      <view class="logo_image">
+        <image src="/assets/index/inn_hotel.png"></image>
+      </view>
+      <view class="logo_text">酒店客栈</view>
+    </view> 
+    <!--自由行  -->
+    <view class="logo_container c">
+      <view class="logo_image">
+        <image src="/assets/index/own_tour.png"></image>
+      </view>
+      <view class="logo_text">自由行</view>
+    </view> 
+    <!--跟团游  -->
+    <view class="logo_container c">
+      <view class="logo_image" bindtap="group_tourHandle" data-num="1">
+        <image class="d-e" src="/assets/index/group_tour.png"></image>
+      </view>
+      <view class="logo_text d-e">当地游</view>
+    </view>
+    <!--高端游  -->
+    <view class="logo_container c">
+      <view class="logo_image" bindtap="group_tourHandle" data-num="2">
+        <image class="d-e" src="/assets/index/high_tour.png"></image>
+      </view>
+      <view class="d-e logo_text">高端游</view>
+    </view>
+  </view>
+  <!--下层菜单  -->
+  <view class="menu_down_coantainer h">
+    
+    <view class="logo_container c">
+      <view class="logo_image">
+        <image src="/assets/index/car.png"></image>
+      </view>
+      <view class="logo_text">用车</view>
+    </view>
+    
+    <view class="logo_container c">
+      <view class="logo_image">
+        <image src="/assets/index/scenery_ticket.png"></image>
+      </view>
+      <view class="logo_text">景点门票</view>
+    </view>
+    
+    <view class="logo_container c">
+      <view class="logo_image" bindtap="hardwareHandle">
+        <image class="d-e" src="/assets/index/hardware.png"></image>
+      </view>
+      <view class="logo_text d-e">智能硬件</view>
+    </view>
+    
+    <view class="logo_container c">
+      <view class="logo_image">
+        <image src="/assets/index/gift.png"></image>
+      </view>
+      <view class="logo_text">伴手礼</view>
+    </view>    
+  </view>  
+</view>
+<!--间隔  -->
+<view class="interval"></view>
+<!--分割线  -->
+<view class="parting_line"></view>
+<!--标题  -->
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+  <view class="title_text">精选折扣</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view>
+<!--间隔  -->
+<view class="interval"></view>
+<!--特价滑块  -->
+<swiper class="swiper_container " indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000">
+  <block wx:for="{{discount_route_list}}" wx:key="*this" wx:for-index="i" >
+    <swiper-item >
+      
+      <view class="swiper_item h" bindtap="bargainHandle" data-num="{{i}}">
+        <image mode="aspectFill" src="{{image_Url}}{{discount_route_list[i].imgUrl}}" class="slide_image d-e"/>
+        <view class="item_container v d-e">
+          <view class="item_title  d-e">{{discount_route_list[i].name}}</view>
+          <view class="content_container d-e">{{discount_route_list[i].description}}</view>
+          <view class="price_container h h-r d-e">
+            <view class="price_symbol d-e">￥</view>
+            <view class="price d-e">{{discount_route_list[i].discountPrice / 100}}</view>
+            <view class="price_unit d-e">/人</view>
+            <view class="original_price_container h d-e">
+              <view class="original_price_titel d-e">原价：</view>
+              <view class="original_price d-e">￥{{discount_route_list[i].price / 100}}</view>
+            </view> 
+          </view>
+          <!-- <view class="start_container h">
+            <view class="v1-star h">
+              <image class="d-e" src="/assets/index/star1.png"></image>
+              <image class="d-e" src="/assets/index/star1.png"></image>
+              <image class="d-e" src="/assets/index/star1.png"></image>
+              <image class="d-e" src="/assets/index/star1.png"></image>
+              <image class="d-e" src="/assets/index/star1.png"></image>
+            </view>
+            <view class="score">{{imgUrls[i].score}}分/{{imgUrls[i].count}}点评</view>
+          </view> -->
+          
+        </view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+<!--间隔  -->
+<view class="interval"></view>
+<!--分割线  -->
+<view class="parting_line"></view>
+<!--标题  -->
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+  <view class="title_text">热门景点</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view>
+<!--热门景点模块  -->
+<scroll-view class="scroll_container" scroll-x = "{{true}}" >
+  <view class="scroll_size h">
+    <block wx:for="{{hot_scenery_list}}" wx:key="id" wx:for-index="i">
+    
+      <!--景点1  -->
+      <view class="scenery_container v" bindtap="commentHandle" data-num="{{i}}">
+        <view class="scenery d-e">
+          <image  mode="aspectFill" class="d-e" src="{{image_Url}}{{hot_scenery_list[i].imgUrl}}"></image>
+        </view>
+        <view class="scenery_text_container v d-e">
+          <view class="scenery_text_title d-e">{{hot_scenery_list[i].sceneryName}}</view>
+          <view class="scenery_text_image h h-t d-e">
+            <image class="scenery_text_image_image d-e" src="/assets/index/hot_scenery.png"></image>
+            <view class="scenery_text d-e">{{hot_scenery_list[i].sceneryName}}·{{hot_scenery_list[i].address}}</view>
+          </view>
+        </view>
+      </view>
+      <!--景点间隔  -->
+      <view class="scenery_interval"></view>
+    </block>
+  </view>
+</scroll-view>
+
+<!--热门酒店标题  -->
+
+<!-- <view class="interval"></view>
+
+<view class="parting_line"></view>
+
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+  <view class="title_text">热门酒店</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view> -->
+
+
+<!--热门酒店模块  -->
+
+<!-- <scroll-view class="scroll_container" scroll-x = "{{true}}" >
+  <view class="scroll_size h">
+
+    <view class="scenery_container v">
+      <view class="scenery">
+        <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+      </view>
+      <view class="scenery_text_container v">
+        <view class="scenery_text_title">小宝贝客栈</view>
+        <view class="tag_container flow h">
+          <image src="/assets/index/big_bed.png"></image>
+          <image src="/assets/index/return_maney.png"></image>
+          <image src="/assets/index/breakfirst.png"></image>
+          <image src="/assets/index/free_wifi.png"></image>
+          <image src="/assets/index/parking.png"></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="scenery_interval"></view>
+
+  </view>
+</scroll-view> -->
+
+
+
+<block wx:if="{{hot_route_list==null}}">
+  <!--间隔  -->
+  <view class="interval"></view>
+  <!--分割线  -->
+  <view class="parting_line"></view>
+  <!--标题  -->
+  <view class="title_container h h-c">
+    <view class="title_left">
+      <image src="/assets/index/shop_left.png"></image>
+    </view>
+    <view class="title_text">大家都在买</view>
+    <view class="title_right">
+      <image src="/assets/index/shop_right.png"></image>
+    </view>
+  </view>
+  <!--大家都在买  -->
+  <view class="hot_goods_container h" >
+    <view class="hot_goods_left v" bindtap="hot_routeHandle" data-num="0">
+      <view class="hot_goods_left_image d-e">
+        <view class="top_tag_container h d-e">
+          <view class="top_tag_left c d-e">丽江</view>
+          <view class="top_tag_right c d-e">跟团游</view>
+        </view>
+        <image  mode="aspectFill" class="hot_goods_image d-e" src="{{image_Url}}{{hot_route_list[0].imgUrl}}"></image>
+      </view>
+      <view class="hot_goods_left_text d-e">i-丽江推荐{{hot_route_list[0].name}}</view>
+      <view class="hot_goods_left_pay_container h d-e">
+        <view class="hot_goods_left_pay f d-e">￥{{hot_route_list[0].discountPrice/100}}</view>
+        <view class="hot_goodx_left_people d-e">1000人已买</view>
+      </view>
+    </view>
+    <!--商品间隔  -->
+    <view class="goods_interval"></view>
+    <view class="hot_goods_left v" bindtap="hot_routeHandle" data-num="1">
+      <view class="hot_goods_left_image d-e">
+        <view class="top_tag_container h d-e">
+          <view class="top_tag_left c d-e">丽江</view>
+          <view class="top_tag_right c d-e">跟团游</view>
+        </view>
+        <image  mode="aspectFill" class="hot_goods_image d-e" src="{{image_Url}}{{hot_route_list[1].imgUrl}}"></image>
+      </view>
+      <view class="hot_goods_left_text d-e">i-丽江推荐{{hot_route_list[1].name}}</view>
+      <view class="hot_goods_left_pay_container h d-e">
+        <view class="hot_goods_left_pay f d-e">￥{{hot_route_list[1].discountPrice/100}}</view>
+        <view class="hot_goodx_left_people d-e">1000人已买</view>
+      </view>
+    </view>
+  </view>
+  <!--大家都在买  -->
+  <view class="hot_goods_container h">
+    <view class="hot_goods_left v" bindtap="hot_routeHandle" data-num="2">
+      <view class="hot_goods_left_image d-e">
+        <view class="top_tag_container h d-e">
+          <view class="top_tag_left c d-e">丽江</view>
+          <view class="top_tag_right c d-e">跟团游</view>
+        </view>
+        <image  mode="aspectFill" class="hot_goods_image d-e" src="{{image_Url}}{{hot_route_list[2].imgUrl}}"></image>
+      </view>
+      <view class="hot_goods_left_text d-e">i-丽江推荐{{hot_route_list[2].name}}</view>
+      <view class="hot_goods_left_pay_container h d-e">
+        <view class="hot_goods_left_pay f d-e">￥{{hot_route_list[2].discountPrice/100}}</view>
+        <view class="hot_goodx_left_people d-e">1000人已买</view>
+      </view>
+    </view>
+    <!--商品间隔  -->
+    <view class="goods_interval"></view>
+    <view class="hot_goods_left v" bindtap="hot_routeHandle" data-num="3">
+      <view class="hot_goods_left_image d-e">
+        <view class="top_tag_container h d-e">
+          <view class="top_tag_left c d-e">丽江</view>
+          <view class="top_tag_right c d-e">跟团游</view>
+        </view>
+        <image  mode="aspectFill" class="hot_goods_image d-e" src="{{image_Url}}{{hot_route_list[3].imgUrl}}"></image>
+      </view>
+      <view class="hot_goods_left_text d-e">i-丽江推荐{{hot_route_list[3].name}}</view>
+      <view class="hot_goods_left_pay_container h d-e">
+        <view class="hot_goods_left_pay f d-e">￥{{hot_route_list[3].discountPrice/100}}</view>
+        <view class="hot_goodx_left_people d-e">1000人已买</view>
+      </view>
+    </view>
+  </view>
+</block>
+<!--底部空行  -->
+<view class="bottom"></view>
+
+
+
+
+
+
+

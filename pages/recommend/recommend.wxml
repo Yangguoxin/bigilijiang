@@ -1,0 +1,184 @@
+<!--顶部空行-->
+<view class="top">
+</view>
+
+<!--第一天-->
+<view class="day h" bindtap="change_updown" data-num="0">
+  <view class="circular v d-e">
+      <view class="dot d-e"></view>
+      <view class="dotline d-e"></view>
+  </view>
+  <view class="day_text h d-e" >
+      <view class="day_date d-e">Day1</view>
+      <view class="day_place f d-e">丽江</view>
+      <view class="day_up h h-c d-e" >
+         <image class="day_imge d-e" src="{{updown[0]}}" ></image>
+      </view>    
+  </view>
+</view>
+<!--景点游玩描述  -->
+<view class="scenery_discription h">
+  <view class="discription_line v">
+    <view class="discription_line_line"></view>
+  </view>
+  <view class="discription_content">
+    <view class="discription_text">狮子山公园是一座位于丽江古城中心的依山而建的森林公园。占地3.9万平方米，是国家级风景名胜区的主要景点。 </view>
+  </view>
+</view>
+<!--第一个景点-->
+<block wx:if="{{updown[0] == '/assets/index/up.png' }}" >
+
+  <block wx:for="{{recommend_data[0].scenery}}" wx:key="day" wx:for-index="i">
+    <view class="goods h"  data-num="{{i}}" bindtap="eventHandler">
+      <view class="commend c d-e" >
+        <view class="goodsline_c d-e"></view>
+        <image class="d-e" src="{{(recommend_data[0].scenery[i].category == 1 ) ?'/assets/index/scenery.png':'/assets/index/restaurant.png'}}"></image>
+        <view class="goodsline_c d-e"></view>
+      </view>
+      <image class="photo d-e" src="{{image_Url}}{{recommend_data[0].scenery[i].imgUrl}}"></image>
+      <view class="goods-des d-e">
+        <view class="gdes1 d-e">{{recommend_data[0].scenery[i].name}}</view>
+        <view class="gdes3 d-e">{{recommend_data[0].scenery[i].name}}.建议玩半小时</view>
+        <view class="gdes2 d-e h">
+          <image class="d-e" src="/assets/index/{{start_status[0][i][0]}}"></image>
+          <image class="d-e" src="/assets/index/{{start_status[0][i][1]}}"></image>
+          <image class="d-e" src="/assets/index/{{start_status[0][i][2]}}"></image>
+          <image class="d-e" src="/assets/index/{{start_status[0][i][3]}}"></image>
+          <image class="d-e" src="/assets/index/{{start_status[0][i][4]}}"></image>
+          <view class="d-e">{{score_change[0][i]}}分/{{recommend_data[0].scenery[i].commentNumber}}点评</view>
+        </view>
+      </view>
+    </view>
+    <view class="goodsline d-e"></view>
+<!--行走路程-->
+    <block wx:if="{{recommend_data[0].scenery.length  != (i+1) }}" >
+      <view class="walk h " >
+        <view class="walk_img c ">
+          <view class="walk_line d-e"></view>
+          <image class="d-e" src="/assets/index/walking.png"></image>
+          <view class="walk_line d-e"></view>
+        </view>
+        <view class=" f h">
+          <view class="walk_text">距离上一景点：{{distance[0][i]}}公里</view>
+        </view> 
+        <!-- <view class="walk_d h h-c">
+          <image class="walk_detail" src="/assets/index/walk_detail.jpg"></image>
+        </view>  -->
+      </view>
+      <view class="goodsline d-e"></view>
+    </block>
+  </block>
+
+</block>
+<block wx:if="{{updown[0] == '/assets/index/down.png' }}" >
+  <view class="goodsline d-e"></view>
+</block>
+
+<!--除了第一天之外的天数-->
+<block wx:for="{{recommend_data.length - 1}}" wx:for-item="i" wx:key="day">
+  <!--第某天-->
+    <view class="day h" bindtap="change_updown" data-num="{{i+1}}">
+      <view class="circular v-s d-e">
+        <view class="dotline_L d-e"></view>
+        <view class="dot d-e"></view>
+        <view class="dotline d-e"></view>
+      </view>
+      <view class="day_text h d-e">
+        <view class="day_date d-e">Day{{i+2}}</view>
+        <view class="day_place f d-e">丽江</view>
+        <view class="day_up h h-c d-e" >
+          <image class="day_imge d-e" src="{{updown[i+1]}}" ></image>
+        </view>    
+      </view>
+    </view>
+<!--景点游玩描述  -->
+<view class="scenery_discription h">
+  <view class="discription_line v">
+    <view class="discription_line_line"></view>
+  </view>
+  <view class="discription_content">
+    <view class="discription_text">狮子山公园是一座位于丽江古城中心的依山而建的森林公园。占地3.9万平方米，是国家级风景名胜区的主要景点。</view>
+  </view>
+</view>
+  <!--天内景色循环-->
+    <block wx:if="{{updown[i+1] == '/assets/index/up.png' }}" >
+      <block wx:for="{{recommend_data[i+1].scenery}}" wx:key="id" wx:for-index="j">
+        <view class="goods h" data-id="{{i+1}}" data-num="{{j}}" bindtap="eventHandler_second">
+          <view class="commend c" >
+              <view class="goodsline_c d-e"></view>
+              <image class="d-e" src="{{(recommend_data[i+1].scenery[j].category == 1 ) ?'/assets/index/scenery.png':'/assets/index/restaurant.png'}}"></image>
+              <view class="goodsline_c d-e"></view>
+          </view>
+          <image class="photo d-e" src="{{image_Url}}{{recommend_data[i+1].scenery[j].imgUrl}}"></image>
+          <view class="goods-des d-e">
+            <view class="gdes1 d-e">{{recommend_data[i+1].scenery[j].name}}</view>
+            <view class="gdes3 d-e">{{recommend_data[i+1].scenery[j].name}}.建议玩半小时</view>
+            <view class="gdes2 d-e h">
+            <image class="d-e" src="/assets/index/{{start_status[i+1][j][0]}}"></image>
+            <image class="d-e" src="/assets/index/{{start_status[i+1][j][1]}}"></image>
+            <image class="d-e" src="/assets/index/{{start_status[i+1][j][2]}}"></image>
+            <image class="d-e" src="/assets/index/{{start_status[i+1][j][3]}}"></image>
+            <image class="d-e" src="/assets/index/{{start_status[i+1][j][4]}}"></image>
+              <view class="d-e">{{score_change[i+1][j]}}分/{{recommend_data[i+1].scenery[j].commentNumber}}点评</view>
+            </view>
+          </view>
+        </view>
+        <view class="goodsline d-e"></view>
+        <block wx:if="{{recommend_data[i+1].scenery.length  != (j+1) }}" >
+          <view class="walk h " >
+            <view class="walk_img c ">
+              <view class="walk_line d-e"></view>
+              <image class="d-e" src="/assets/index/walking.png"></image>
+              <view class="walk_line d-e"></view>
+            </view>
+            <view class=" f h">
+              <view class="walk_text">距离上一景点：{{distance[i+1][j]}}公里</view>
+            </view> 
+            <!-- <view class="walk_d h h-c">
+              <image class="walk_detail" src="/assets/index/walk_detail.jpg"></image>
+            </view>  -->
+          </view>
+          <view class="goodsline d-e"></view>
+        </block>
+      </block>
+    </block>
+  <block wx:if="{{updown[i+1] == '/assets/index/down.png' }}" >
+    <view class="goodsline d-e"></view>
+  </block>
+</block>
+<!--最后标题-->
+<view class="day h">
+  <view class="circular v-s ">
+    <view class="dotline_L"></view>
+    <view class="dot"></view>
+  </view>
+  <view class="day_text h ">
+    <view class="day_date">The End</view>    
+  </view>
+</view>
+<!-- <view class="choose_bottom h">
+  <view class="price h h-c">
+    <view class="price_title">总计:</view>
+    <view class="price_num">￥{{price/100}}</view>
+  </view>
+  <view class="book h h-c" bindtap="place_order">
+    <view class="book_text d-e" >预订</view>
+  </view>
+</view> -->
+
+<!--采纳按钮  -->
+<view class="Add_button h h-c">
+  <image  src="/assets/index/Add_button.png" bindtap="test_button"></image>
+</view>
+
+
+<!--底部空行-->
+<view class="bottom"></view>
+
+
+
+  
+      
+
+
+

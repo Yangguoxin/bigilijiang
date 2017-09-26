@@ -1,0 +1,198 @@
+<!--表单  -->
+<scroll-view class="display_scrollbar" scroll-y="{{turn_true}}"  >
+   <view class="scroll_window">
+  <!--旅程开始时间  -->
+    <view class="travel_time h h-t">
+      <view class="time_title">
+        <view class="time_text">旅行开始时间：</view>
+      </view>
+      <view class="date_container f" >
+            <view id="date_pick" class="date_pick" >{{date}}</view>
+      </view>
+        <picker mode="date" value="{{date}}" start="{{data_start}}" end="{{date_end}}" bindchange="bindDateChange">
+          <!--显示选择的日期  -->
+          <view class="date_buttun">
+            <image src="/assets/index/date_pick.png"></image>
+          </view> 
+        </picker>
+    </view>
+
+
+    <!--界面分割线  -->
+    <view class="parting_line"></view>
+
+
+    <!--线路清单  -->
+    
+    <view class="route_list_container v">
+      <view class="route_title">线路详情</view>
+
+      <!--景点描述  -->
+      <view class="scenery_container v ">
+        <view class="scenery_title">
+          景点
+          <view class="scenery_name">{{scenery_detail_list[0].name}}</view>
+        </view>
+        <!--游玩内容  -->
+        <view class="scenery_content v">
+          游玩内容
+          <view class="scenery_discription">{{scenery_detail_list[0].palyItem}}</view>
+        </view>
+      </view>
+      <!--景点清单分割线  -->
+      <view class="line"></view>
+      <!--景点描述  -->
+      <view class="scenery_container v ">
+        <view class="scenery_title">
+          景点
+          <view class="scenery_name">{{scenery_detail_list[1].name}}</view>
+        </view>
+        <!--游玩内容  -->
+        <view class="scenery_content v">
+          游玩内容
+          <view class="scenery_discription">{{scenery_detail_list[1].palyItem}}</view>
+        </view>
+      </view>
+      <!--景点清单分割线  -->
+      <view class="line"></view>
+      <block wx:if="{{route_detail_switch=='open'}}">
+        <block wx:for="{{scenery_detail_list.length - 2}}"  wx:key="*this" wx:for-index="i" >
+          <!--景点描述  -->
+          <view class="scenery_container v ">
+            <view class="scenery_title">
+              景点
+              <view class="scenery_name">{{scenery_detail_list[i+2].name}}</view>
+            </view>
+            <!--游玩内容  -->
+            <view class="scenery_content v">
+              游玩内容
+              <view class="scenery_discription">{{scenery_detail_list[i+2].palyItem}}</view>
+            </view>
+          </view>
+          <!--景点清单分割线  -->
+          <view class="line"></view>
+        </block>
+      </block>
+
+    </view>
+    
+    
+    <!--包含详情  -->
+    <view class="order_detail_title h" bindtap="change_route_detail">
+      <view class="order_detail_text d-e">更多详情</view>
+      <view class="order_detail_image c d-e">
+        <image src="{{choose_route_detail}}" class="d-e"></image>
+      </view>
+    </view>
+    <!--界面分割线  -->
+    <view class="parting_line"></view>
+    <!--游客信息  -->
+    <view class="traveler_container v">
+      <view class="traveler_title">游客信息</view>
+      <!--游客1  -->
+      <view class="traveler_edit h">
+        <view class=" f">
+          <view class="{{(traveler_list == null ) ?'traveler_empty':'traveler_name'}}">{{(traveler_list == null ) ?'游客信息':''}}{{traveler_list[0].contactName}}</view>
+        </view>
+        <view class="add_person " bindtap="choose_person">
+          <image class="d-e" src="/assets/index/traveler_add.png"></image>
+        </view>
+      </view>
+      <view class="line_traveler"></view>
+      <!--游客2  -->
+      <block wx:for="{{traveler_list.length-1}}" wx:key="*this" wx:for-index="i">
+        <view class="traveler_edit h">
+          <view class="f">
+            <view class="traveler_name">{{traveler_list[i+1].contactName}}</view>
+          </view>
+        </view>
+        <view class="line_traveler"></view>
+      </block>
+
+      <!--游客手机号  -->
+      <block wx:if="{{traveler_list != null}}">
+        <view class="traveler_edit h " >
+          <view class="f">
+            <view class="traveler_phone">联系方式：{{traveler_list[0].telephone}}</view>
+          </view>
+          <!-- <view class="add_person">
+            <image src="/assets/index/traveler_phone.png"></image>
+          </view> -->
+        </view>
+        <view class="line_traveler"></view>
+      </block>
+      
+    </view>
+
+    <!--价格  -->
+    <view class="price_container h">
+      <view class="price_title f">价格</view>
+      <block wx:if="{{traveler_list.length != null}}">
+        <view class="price_num">￥{{price*traveler_list.length/100}}</view>
+      </block>
+      <block wx:if="{{traveler_list.length == null}}">
+        <view class="price_num">￥{{price/100}}</view>
+      </block>
+    </view>
+    <view class="line_traveler"></view>
+    <!--付款  -->
+    <button class="pay_container h h-c {{(button_loading == true ) ?'d-e':''}}" style="display:{{button_hiden}}" bindtap="pay_Handle" loading="{{button_loading}}">去付款</button>
+    <!-- <view class="pay_container h h-c" style="display:{{button_hiden}}" bindtap="pay_Handle">
+      去付款
+    </view> -->
+    <view class="bottom d-e"></view>
+  </view>  
+</scroll-view>
+
+
+<!--隐藏界面-->
+<view class="hide_Add v" style="display:{{display_switch}}">
+    <view class="hide_up f"></view>
+    <view class="hide_down">
+      <!--确定和取消的按钮  -->
+      <view class="sure_container h">
+        <view class="no_style f" bindtap="add_cancel">取消</view>
+        <view class="yes_style" bindtap="add_ok">确定</view>
+      </view>
+      <!--界限分割  -->
+      <view class="parting_line"></view>
+
+
+      <!--添加联系人按钮  -->
+      <view class="add_contact h" bindtap="add_contact">
+        <image class="d-e" src="/assets/index/traveler_add.png"></image> 
+        <view class="d-e add_contact_text">添加联系人</view>
+      </view>
+      <!--界限分割  -->
+      <view class="parting_line"></view>
+
+      <!--选择主要联系人  -->
+      <view class="choose_man_container c">
+        <view class="choose_man_title">选择参与人员</view>
+      </view>
+      <!--分割线  -->
+      <view class="choose_man_line"></view>
+      <!--联系人列表  -->
+        <scroll-view class="person_scrollbar" scroll-y="{{true}}">
+          <view class="person_container v">
+
+            <block wx:for="{{traveler_list_before}}" wx:key="*this" wx:for-index="i">
+              <!--联系人1  -->
+                <view class="person_list_container h ">
+                  <view class="person_name f">{{traveler_list_before[i].contactName}}</view>
+                  <view class="person_pick c" bindtap="choose_Handle" data-num="{{i}}">
+                    <image src="{{choose_image[i]}}" class="d-e"></image>
+                  </view>
+                  <view class="person_delete c" bindtap="delete_person" data-num="{{i}}">
+                    <image class="d-e" src="/assets/index/delete_travel.png" ></image>
+                  </view>
+                </view>
+            </block>
+        
+          <view class="bottom"></view>
+        </view>
+        
+      </scroll-view>
+      
+    </view>
+</view>

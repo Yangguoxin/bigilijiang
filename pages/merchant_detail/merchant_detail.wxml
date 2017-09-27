@@ -98,6 +98,26 @@
         <view class="nick_name">大吉大利，今晚吃鸡！</view>
       </view>
       <view class="comment">我就是登记卡老师觉得快乐撒娇对了撒即可领导说的就是卡里的撒即可来的时间啊丽江斯柯达</view>
+      <view class='comment_photos_contianer h flow'>
+        <view class='comment_photos'>
+          <image src='/assets/index/hardware_big.png'></image>
+        </view>
+        <view class='comment_photos'>
+          <image src='/assets/index/hardware_big.png'></image>
+        </view>
+        <view class='comment_photos'>
+          <image src='/assets/index/hardware_big.png'></image>
+        </view>
+        <view class='comment_photos'>
+          <image src='/assets/index/hardware_big.png'></image>
+        </view>
+        <view class='comment_photos'>
+          <image src='/assets/index/hardware_big.png'></image>
+        </view>
+        <view class='comment_photos'>
+          <image src='/assets/index/hardware_big.png'></image>
+        </view>
+      </view>
       <view class="time_goodstype h">
         <view class="time">2017-09-09 16:31:31</view>
         <view class="goodstype">规格：S7标准版</view>
@@ -125,7 +145,7 @@
       <view class="commetHandle c">查看全部评价</view>
     </view>
     
-<block wx:if="{{second_page}}">
+  <block wx:if="{{second_page}}"> 
   <!--分割线  -->
   <view class="interval"></view>
   <!--商品信息条  -->
@@ -279,10 +299,12 @@
         <view class="paking_content">3、斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价</view>
       </view>
     </view>
+
   </block>
     <!--购买按钮  -->
     <!--底部空间  --> 
-</block>
+    
+ </block> 
 <view class="bottom"></view> 
   </view> 
 </scroll-view>

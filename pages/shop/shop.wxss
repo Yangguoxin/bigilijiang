@@ -41,7 +41,7 @@
 }
 .logo_container{
   width: 187rpx;
-  height: 187rpx;
+  height: 204rpx;
   padding: 50rpx 0rpx 0rpx 0rpx;
 }
 .logo_image{

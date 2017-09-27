@@ -99,7 +99,7 @@
     <view class="price_title">合计:</view>
     <view class="price_num">￥799.00</view>
   </view>
-  <view class="book h h-c" bindtap="place_order">
+  <view class="book h h-c {{(button_loading==true)?'d-e':''}}" bindtap="place_order">
     <view class="book_text d-e" >提交订单</view>
   </view>
 </view> 

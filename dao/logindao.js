@@ -24,28 +24,28 @@ function getUserInfo(code) {
         title: '加载中',
         mask:false
       });
-       wx.request({
-         url: app.globalData.global_Url +'/iTour/user/login',
-         data: userInfo,
-         method: 'POST',
-         header: {
-           'content-type': 'application/x-www-form-urlencoded'
-         },
-         success: function (res) {
-           if(res.statusCode == 200){
-             wx.hideLoading();
-             var app = getApp();
-             var tmp = res.data;
-             app.globalData.userId = tmp.id;
-             app.globalData.openId = tmp.openId;
-             
-           }
-           else{
-             //访问出错了
-           }
-           
-         }
-       });
+      wx.request({
+        url: 'http://119.62.125.201:8888/YYAPI/wechat/login.do',
+        data: { "data": JSON.stringify(userInfo) },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          if (res.statusCode == 200) {
+            wx.hideLoading();
+            var app = getApp();
+            var tmp = res.data;
+            app.globalData.userId = tmp.id;
+            app.globalData.openId = tmp.openId;
+            console.log(res.data);
+          }
+          else {
+            //访问出错了
+          }
+
+        }
+      });
     }
   });
 }

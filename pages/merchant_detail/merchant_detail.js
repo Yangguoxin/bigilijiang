@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    comments:null,
     merchant_detail : [{
       id:1,
       imageUrl: "/assets/index/hardware_big.png"
@@ -109,6 +109,24 @@ Page({
         else {
           //请求出错了
           
+        }
+
+      }
+    })
+    wx.request({
+      url: 'http://119.62.125.201:8888/YYAPI/phone/api.do',
+      data: requestdao.setParamsData("comment.l", { "productId": 200, hasImg: true, page: 1, size: 2 }, true),
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          var back = res.data;
+          self.setData({ comments: back });
+          console.log(self.data.comments);
+        }
+        else {
+          //请求出错了
+
         }
 
       }

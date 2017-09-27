@@ -1,8 +1,4 @@
 /* merchant_detail.wxss */
-.page{
-  width: 100%;
-  height: 100%;
-}
 .swiper_container{
   position: relative;
   width: 750rpx;
@@ -450,4 +446,21 @@
   border-radius: 8rpx;
   background: #3FC8DE;
   color: #FFFFFF;
+}
+.comment_photos_contianer{
+  width: 100%;
+  height: auto;
+  padding: 20rpx 0rpx 20rpx 0rpx;
+}
+.comment_photos{
+  width: 150rpx;
+  height: 150rpx;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  background-color: #EFEFEF;
+  border: 2rpx solid #DFDFDF;
+}
+.comment_photos image{
+  width: 146rpx;
+  height: 146rpx;
 }

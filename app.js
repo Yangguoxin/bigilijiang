@@ -57,7 +57,9 @@ App({
     //地址选择
     global_choose_address_switch:"no",
     global_choose_address:null,
-    global_order_to_address:"no"
+    global_order_to_address:"no",
+    //修改地址
+    global_modify_address:null
     
   }
 })

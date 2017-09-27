@@ -308,7 +308,7 @@
   width: 750rpx; 
 }
 .buy_button{
-  position: absolute;
+  position: fixed;
   bottom: 0rpx;
   width: 750rpx;
   height: 88rpx;

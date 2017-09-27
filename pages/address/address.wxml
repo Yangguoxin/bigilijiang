@@ -30,7 +30,7 @@
         <block wx:if="{{person_address_list[i].ifDefualt==1}}">
           <view class='default_address_text'>默认</view>
         </block>
-        <view class='edit_address'>编辑</view>
+        <view class='edit_address' bindtap='modify_addressHandle' data-num="{{i}}">编辑</view>
       </view>
     </view>
     <!--分割线  -->

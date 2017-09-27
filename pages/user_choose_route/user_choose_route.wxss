@@ -1,7 +1,6 @@
 .goods {
   height: 180rpx;
   width: 1006rpx;
-  padding: 0 0rpx;
 }
 
 .photo {
@@ -71,7 +70,6 @@
 .commend {
   height: 180rpx;
   width: 150rpx;
-  padding: 0 0rpx;
 }
 .commend image{
   width: 80rpx;
@@ -80,12 +78,10 @@
 .day {
   height: 80rpx;
   width: 750rpx;
-  padding: 0 0rpx;
 }
 .circular {
   height: 80rpx;
   width: 150rpx;
-  padding: 0 0rpx;
 }
 .dot{
   width: 10px; 
@@ -118,7 +114,6 @@
 .day_text{
   height: 80rpx;
   width: 600rpx;
-  padding: 0 0rpx;
 }
 .day_date{
   font-size: 40rpx;
@@ -148,7 +143,6 @@
 .walk_img{
   height: 80rpx;
   width: 150rpx;
-  padding-left: 2rpx;
 }
 .walk_line{
   width: 5rpx;
@@ -184,7 +178,7 @@
   width: 256rpx;
 }
 .interval{
-  width: 70rpx;
+  width: 80rpx;
   height: 180rpx;
 }
 .merchant_c{

@@ -115,7 +115,7 @@ Page({
     })
     wx.request({
       url: 'http://119.62.125.201:8888/YYAPI/phone/api.do',
-      data: requestdao.setParamsData("comment.l", { "productId": 200, hasImg: true, page: 1, size: 2 }, true),
+      data: requestdao.setParamsData("comment.l", { "productId": 200, "hasImg": true, "page": 1, "size": 2 }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {

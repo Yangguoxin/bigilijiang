@@ -1,7 +1,6 @@
 .goods {
   height: 180rpx;
   width: 750rpx;
-  padding: 0 0rpx;
 }
 
 .photo {
@@ -71,7 +70,7 @@
 .commend {
   height: 180rpx;
   width: 150rpx;
-  padding: 0 0rpx;
+  
 }
 .commend image{
   width: 80rpx;
@@ -80,12 +79,11 @@
 .day {
   height: 80rpx;
   width: 750rpx;
-  padding: 0 0rpx;
 }
 .circular {
   height: 80rpx;
   width: 150rpx;
-  padding: 0 0rpx;
+  
 }
 .dot{
   width: 10px; 
@@ -118,7 +116,7 @@
 .day_text{
   height: 80rpx;
   width: 600rpx;
-  padding: 0 0rpx;
+  
 }
 .day_date{
   font-size: 40rpx;
@@ -148,7 +146,6 @@
 .walk_img{
   height: 80rpx;
   width: 150rpx;
-  padding-left: 2rpx;
 }
 .walk_line{
   width: 5rpx;
@@ -189,16 +186,13 @@
 .scenery_discription{
     height: auto;
     width: 750rpx;
-    padding: 0 0rpx;
     position: relative;
 }
 .discription_line{
   position: absolute;
   top: 0;
-  bottom: 0;
-  left: 1rpx;
+  bottom: 0; 
   width: 150rpx;
-  padding: 0 0rpx;
 }
 .discription_line_line{ 
   width: 5rpx;

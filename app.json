@@ -34,7 +34,8 @@
     "pages/address/address",
     "pages/goods_order/goods_order",
     "pages/add_address/add_address",
-    "pages/write_goods_comments/wirte_goods_comments"
+    "pages/write_goods_comments/wirte_goods_comments",
+    "pages/modify_address/modify_address"
   ],
   "window": {
     "backgroundTextStyle": "light",

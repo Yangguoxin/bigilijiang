@@ -71,6 +71,15 @@ Page({
       });
     }
   },
+  modify_addressHandle:function(e){
+    var num = e.target.dataset.num;
+    if (num != undefined){
+      app.globalData.global_modify_address = this.data.person_address_list[num];
+      wx.navigateTo({
+        url: '../modify_address/modify_address'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

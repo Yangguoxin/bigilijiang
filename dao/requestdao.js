@@ -13,7 +13,7 @@ function setParamsData(method, data, isToken) {
   if (isToken) {
     params.sign = md5.md5(params.method + params.deviceType + params.appType + params.apiVersion + dataJson + params.token);
   } else {
-    params.sign = md5.md5(params.method + params.deviceType + params.appType + params.apiVersion + data);
+    params.sign = md5.md5(params.method + params.deviceType + params.appType + params.apiVersion + dataJson);
   }
   return params
 }

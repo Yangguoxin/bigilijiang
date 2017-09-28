@@ -27,7 +27,7 @@ function getUserInfo(code) {
         mask:false
       });
       wx.request({
-        url: 'http://119.62.125.201:8888/YYAPI/wechat/login.do',
+        url: 'http://api.dxoo.cn/phone/api.do',
         data: requestdao.setParamsData("wechat.login",userInfo,false),
         method: 'POST',
         header: {

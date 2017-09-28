@@ -1,5 +1,5 @@
 
-var md5 = require('hex_md5.js');
+var md5 = require('md5.js');
 function setParamsData(method, data, isToken) {
   var dataJson = JSON.stringify(data);
   var params = {};
@@ -11,14 +11,12 @@ function setParamsData(method, data, isToken) {
   params.encryptType = "none";
   params.token = "";
   if (isToken) {
-    params.sign = md5.hex_md5(params.method + params.deviceType + params.appType + params.apiVersion + dataJson + params.token);
+    params.sign = md5.md5(params.method + params.deviceType + params.appType + params.apiVersion + dataJson + params.token);
   } else {
-    params.sign = md5.hex_md5(params.method + params.deviceType + params.appType + params.apiVersion + dataJson);
+    params.sign = md5.md5(params.method + params.deviceType + params.appType + params.apiVersion + data);
   }
   return params
 }
-
-
 
 module.exports = {
   setParamsData: setParamsData

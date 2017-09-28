@@ -1,3 +1,4 @@
+var requestdao = require('requestdao.js');
 //登录
 function doLogin() {
   wx.login({
@@ -17,7 +18,8 @@ function getUserInfo(code) {
       var app = getApp();
       var userInfo = res.userInfo;
       userInfo.js_code = code;
-      console.log(res);
+      userInfo.appid = "wx122a174956f794cf";
+      userInfo.secret = "130e677645732a9a1265360a4505b19a"
       app.globalData.nickName = userInfo.nickName;
       app.globalData.avatarUrl = userInfo.avatarUrl;
       wx.showLoading({
@@ -26,7 +28,7 @@ function getUserInfo(code) {
       });
       wx.request({
         url: 'http://119.62.125.201:8888/YYAPI/wechat/login.do',
-        data: { "data": JSON.stringify(userInfo) },
+        data: requestdao.setParamsData("wechat.login",userInfo,false),
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded'

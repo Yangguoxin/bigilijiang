@@ -1,46 +1,102 @@
 <!--物流查询  -->
-<view class='logistics_container h'>
- <view class='logistics '>货运单号：</view>
- <view class='logistics_text f'>6222022409003038180</view>
- <view class='logistics_button c' bindtap='copy_goods_num'>复制</view>
-</view>
-<!--粗分割线  -->
-<view class='order_interval'></view>
+<block wx:if="{{order_detail.process==2}}">
+  <view class='logistics_container h'>
+  <view class='logistics '>货运单号：</view>
+  <view class='logistics_text f'>6222022409003038180</view>
+  <view class='logistics_button c' bindtap='copy_goods_num'>复制</view>
+  </view>
+  <!--粗分割线  -->
+  <view class='order_interval'></view>
+</block>
+
+
+<!--订单状态栏  待支付-->
+<block wx:if="{{order_detail.process==1}}">
+  <view class='order_state_container'>
+    <view class='order_state h'>状态：
+      <view class='order_state_text'>待支付</view>
+    </view>
+    <view class='order_state_num h'>订单编号：
+      <view class='order_state_num_text'>{{order_detail.orderNo}}</view>
+    </view>
+    <view class='order_state_time h'>下单时间：
+      <view class='order_state_time_text'>{{order_detail.createTime}}</view>
+    </view>
+    <view></view>
+  </view>
+  <!--支付按钮  -->
+  <view class='goto_pay c' >去支付</view>
+  <!--取消订单  -->
+  <view class='cancel_order c'>取消订单</view>
+  <!--粗分割线  -->
+  <view class='order_interval'></view>
+</block>
+
+<!--订单状态栏  已发货-->
+<block wx:if="{{order_detail.process==2}}">
+  <view class='order_state_container'>
+    <view class='order_state h'>状态：
+      <view class='order_state_text'>已支付</view>
+    </view>
+    <view class='order_state_num h'>订单编号：
+      <view class='order_state_num_text'>{{order_detail.orderNo}}</view>
+    </view>
+    <view class='order_state_time h'>下单时间：
+      <view class='order_state_time_text'>{{order_detail.createTime}}</view>
+    </view>
+    <view></view>
+  </view>
+  <!--支付按钮  -->
+  <view class='goto_pay c' >再次购买</view>
+  <!--取消订单  -->
+  <view class='cancel_order c'>取消订单</view>
+  <!--粗分割线  -->
+  <view class='order_interval'></view>
+</block>
 
 
 
-<!--订单状态栏  -->
-<view class='order_state_container'>
-  <view class='order_state h'>状态：
-    <view class='order_state_text'>待支付</view>
+<!--订单状态栏  已完成-->
+<block wx:if="{{order_detail.process==6}}">
+  <view class='order_state_container'>
+    <view class='order_state h'>状态：
+      <view class='order_state_text'>已完成</view>
+    </view>
+    <view class='order_state_num h'>订单编号：
+      <view class='order_state_num_text'>{{order_detail.orderNo}}</view>
+    </view>
+    <view class='order_state_time h'>下单时间：
+      <view class='order_state_time_text'>{{order_detail.createTime}}</view>
+    </view>
+    <view></view>
   </view>
-  <view class='order_state_num h'>订单编号：
-    <view class='order_state_num_text'>111122333331113313</view>
-  </view>
-  <view class='order_state_time h'>下单时间：
-    <view class='order_state_time_text'>2017-09-25 14:33:24</view>
-  </view>
-  <view></view>
-</view>
-<!--支付按钮  -->
-<view class='goto_pay c' >去支付</view>
-<!--取消订单  -->
-<view class='cancel_order c'>取消订单</view>
-<!--粗分割线  -->
-<view class='order_interval'></view>
+  <!--支付按钮  -->
+  <view class='goto_pay c' >再次购买</view>
+  <!--粗分割线  -->
+  <view class='order_interval'></view>
+</block>
+
+
+
+
+
+
 
 <!--收货信息  -->
 <view class='address_goods_container v'>
-  <view class='address_goods_price h'>商品金额：
-    <view class='address_goods_price_text'>￥799.00</view>
+  <view class='address_goods_price h'>
+    <view class='address_goods_price_title h'>商品信息：</view>
+    <view class='address_goods_price_text'>￥{{order_detail.products[0].priceSale}}</view>
   </view>
-  <view class='address_goods_price h'>收货地址：
-    <view class='address_goods_price_text'>云南省丽江市古城区束河古镇32号</view>
+  <view class='address_goods_price h'>
+    <view class='address_goods_price_title h'>收货地址：</view>
+    <view class='address_goods_price_text'>{{order_detail.address.province}}{{order_detail.address.city}}{{order_detail.address.area}}{{order_detail.address.address}}</view>
   </view>
   <view class='address_goods_person h'>收货人：
-    <view class='address_goods_person_text'>阮远鹏 18685961601</view>
+    <view class='address_goods_person_text'>{{order_detail.address.name}} {{order_detail.address.phone}}</view>
   </view>
-  <view class='address_goods_price h'>发票信息：
+  <view class='address_goods_price h'>
+    <view class='address_goods_price_title h'>发票信息：</view>
     <view class='address_goods_price_text'>无</view>
   </view>
 </view>
@@ -49,7 +105,7 @@
 
 
 <!--商品数量标题  -->
-<view class='goods_count_container c'>共计1件商品</view>
+<view class='goods_count_container c'>共计{{order_detail.products[0].quantity}}件商品</view>
 <!--分割细线  -->
 <view class='interval_line'></view>
 
@@ -59,13 +115,13 @@
     <image src='/assets/index/hardware_mid.png'></image>
   </view>
   <view class='goods_brief_text_container v'>
-    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+    <view class='goods_brief_text_title'>{{order_detail.products[0].productName}}</view>
     <view class='goods_brief_type_price h ' >
-      <view class='goods_brief_type h'>香槟金</view>
+      <view class='goods_brief_type h'>白色</view>
       <view class='f'></view>
       <view class='goods_brief_price_container h' >
-        <view class='goods_brief_price'>￥799.00</view>
-        <view class='goods_brief_num'>x 1</view>
+        <view class='goods_brief_price'>￥{{order_detail.products[0].priceSale}}</view>
+        <view class='goods_brief_num'>x {{order_detail.products[0].quantity}}</view>
       </view>
     </view>
   </view>
@@ -78,7 +134,7 @@
   <!--商品金额  -->
   <view class='pay_detail_title h'>
     <view class='pay_detail f'>商品金额：</view>
-    <view class='pay_detail_text'>￥799.00</view>
+    <view class='pay_detail_text'>￥{{order_detail.products[0].priceSale}}</view>
   </view>
   <!--运费  -->
   <view class='pay_detail_title h'>
@@ -97,10 +153,12 @@
 <!--实付金额  -->
 <view class='total_pay_container h h-r'>
   <view class='total_pay_title'>实付金额：</view>
-  <view class='total_pay'>￥799.00</view>
+  <view class='total_pay'>￥{{order_detail.totalPrice}}</view>
 </view>
 
 <!--申请售后  -->
-<view class='after_sale c'>售后服务</view>
+<block wx:if="{{order_detail.process==2}}">
+  <view class='after_sale c'>售后服务</view>
+</block>
 <!--底部空行  -->
 <view class='bottom'></view>

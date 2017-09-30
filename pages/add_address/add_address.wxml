@@ -85,12 +85,12 @@
   <!--详细地址  -->
   <view class='notice'>*详细地址需填写楼栋楼层或房间号信息</view>
   <!--设为默认地址  -->
-  <view class='set_up_address h' bindtap='set_up_defualt'>
+  <!-- <view class='set_up_address h' bindtap='set_up_defualt'>
     <view class='set_up_address_image d-e' >
       <image src="{{(setup_defualt==1)?'/assets/index/default_address.png':'/assets/index/no_default_address.png'}}" class="d-e"></image>
     </view>
     <view class='set_up_address_text d-e'>设为默认地址</view>
-  </view>
+  </view> -->
   <!--确认按钮  -->
   <button form-type="submit" class="ok_button c" >确认</button>   
 </form>

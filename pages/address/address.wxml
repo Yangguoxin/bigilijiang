@@ -16,18 +16,18 @@
     <!--收货人地址信息  -->
     <view class='address_information_container h'>
       <view class='address_image c' bindtap='change_defualt' data-num='{{i}}'>
-        <image src="{{(person_address_list[i].ifChoose==1)?'/assets/index/default_address.png':'/assets/index/no_default_address.png'}}" class="d-e"></image>
+        <image src="{{(person_address_list[i].isChoose)?'/assets/index/default_address.png':'/assets/index/no_default_address.png'}}" class="d-e"></image>
       </view>
       <view class='address_container v  f' bindtap='choose_addressHandle' data-num='{{i}}'>
         <view class='person_name_telephone h d-e'>
-          <view class='person_name f d-e'>收货人：{{person_address_list[i].personName}}</view>
-          <view class='person_telephone d-e'>{{person_address_list[i].telephone}}</view>
+          <view class='person_name f d-e'>收货人：{{person_address_list[i].name}}</view>
+          <view class='person_telephone d-e'>{{person_address_list[i].phone}}</view>
         </view>
-        <view class='address d-e'>{{person_address_list[i].addressProvince}}{{person_address_list[i].addressCity}}{{person_address_list[i].addressCountry}}{{person_address_list[i].detailAddress}}</view>
+        <view class='address d-e'>{{person_address_list[i].province}}{{person_address_list[i].city}}{{person_address_list[i].area}}{{person_address_list[i].address}}</view>
       </view>
       <!--编辑  -->
       <view class='edit_address_container c'>
-        <block wx:if="{{person_address_list[i].ifDefualt==1}}">
+        <block wx:if="{{person_address_list[i].isDefault}}">
           <view class='default_address_text'>默认</view>
         </block>
         <view class='edit_address' bindtap='modify_addressHandle' data-num="{{i}}">编辑</view>

@@ -165,7 +165,7 @@
 .title_container_title{
   margin-top: 40rpx;
   width: 100%;
-  height: 38rpx;
+  height: auto;
 }
 .title_left{
   width: 26rpx;

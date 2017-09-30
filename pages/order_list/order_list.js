@@ -1,12 +1,14 @@
 // order_list.js
 var app=getApp();
+var requestdao = require('../../dao/requestdao.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    order_container: ['all_orders_fix', 'all_orders', 'all_orders']
+    order_container: ['all_orders_fix', 'all_orders', 'all_orders'],
+    order_list: []
   },
   changeHandle:function(e){
     var num = e.target.dataset.num;
@@ -24,11 +26,53 @@ Page({
    */
   onLoad: function (options) {
     app.globalData.global_order = null;
+    var self = this;
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
+    //订单列表请求
+    wx.request({
+      url: app.globalData.global_lijiang_Url,
+      data: requestdao.setParamsData("order.l", {
+        "userId": app.globalData.userId,
+        "page": 1,
+        "size": 10,
+      }, true),
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          var back = res.data;
+          wx.hideLoading();
+          self.setData({ order_list: back.orders});
+        }
+        else {
+          //请求出错了
+
+        }
+
+      }
+    })
+
+
+
+
   },
   goto_payHandle:function(){
     wx.navigateTo({
       url: '../order_detail/order_detail'
     })
+  },
+  goto_order_detailHandle:function(e){
+    var num = e.target.dataset.num;
+    if(num != undefined){
+      app.globalData.global_order_id = this.data.order_list[num].id;
+        wx.navigateTo({
+          url: '../order_detail/order_detail'
+        })
+    }
+    
   },
   goto_comment:function(){
     wx.navigateTo({

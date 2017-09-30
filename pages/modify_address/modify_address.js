@@ -1,5 +1,6 @@
 // pages/add_address/add_address.js
 var app = getApp();
+var requestdao = require('../../dao/requestdao.js');
 Page({
 
   /**
@@ -52,31 +53,137 @@ Page({
           wx.hideToast()
         }, 2000)
       } else {
-        if (app.globalData.global_order_to_address == "yes") {
-          app.globalData.global_order_to_address = "no";
-          var address_tmp = {
-            id: 3,
-            personName: e.detail.value.person_name,
-            telephone: e.detail.value.person_phone,
-            addressProvince: this.data.choose_province[0],
-            addressCity: this.data.choose_province[1],
-            addressCountry: this.data.choose_province[2],
-            detailAddress: e.detail.value.person_address,
-            ifDefualt: 1,
-            ifChoose: 1
-          }
-          app.globalData.global_choose_address = address_tmp;
-          app.globalData.global_choose_address_switch = "ok";
-          wx.navigateBack({
-            delta: 1
-          });
+        var self = this;
+
+        //设置默认地址
+        if (self.data.setup_defualt == 1) {
+          wx.request({
+            url: app.globalData.global_lijiang_Url,
+            data: requestdao.setParamsData("address.sd", {
+              "userId": app.globalData.userId,
+              "id": app.globalData.global_modify_address.id
+            }, true),
+            method: "POST",
+            header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+            success: function (res) {
+              if (res.statusCode == 200) {
+                var back = res.data;
+                //修改地址请求
+                wx.request({
+                  url: app.globalData.global_lijiang_Url,
+                  data: requestdao.setParamsData("address.m", {
+                    "userId": app.globalData.userId,
+                    "id": app.globalData.global_modify_address.id,
+                    "name": name_tmp,
+                    "phone": phone_tmp,
+                    "address": address_detail_tmp,
+                    "province": self.data.choose_province[0],
+                    "city": self.data.choose_province[1],
+                    "area": self.data.choose_province[2]
+                  }, true),
+                  method: "POST",
+                  header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+                  success: function (res) {
+                    if (res.statusCode == 200) {
+                      var back = res.data;
+                      console.log(back);
+                      //跳转到地址列表的刷新开关
+                      wx.showToast({
+                        title: "修改成功",//这里打印出登录成功
+                        image: '/assets/index/success.jpg',
+                        duration: 1500
+                      })
+                      setTimeout(function () {
+                        wx.hideToast()
+                        app.globalData.global_add_to_address = "yes";
+                        wx.navigateBack({
+                          delta: 1
+                        });
+                      }, 1500)
+
+                    }
+                    else {
+                      //请求出错了
+
+                    }
+
+                  }
+                })
+
+              }
+              else {
+                //请求出错了
+                wx.showToast({
+                  title: "修改失败",//这里打印出登录成功
+                  image: '/assets/index/warning.jpg',
+                  duration: 1500
+                })
+                setTimeout(function () {
+                  wx.hideToast()
+                  app.globalData.global_add_to_address = "yes";
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }, 1500)
+              }
+
+            }
+          })
+        }else{
+          //不设置默认地址的情况
+          //修改地址请求
+          wx.request({
+            url: app.globalData.global_lijiang_Url,
+            data: requestdao.setParamsData("address.m", {
+              "userId": app.globalData.userId,
+              "id": app.globalData.global_modify_address.id,
+              "name": name_tmp,
+              "phone": phone_tmp,
+              "address": address_detail_tmp,
+              "province": self.data.choose_province[0],
+              "city": self.data.choose_province[1],
+              "area": self.data.choose_province[2]
+            }, true),
+            method: "POST",
+            header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+            success: function (res) {
+              if (res.statusCode == 200) {
+                var back = res.data;
+                console.log(back);
+                //跳转到地址列表的刷新开关
+                wx.showToast({
+                  title: "修改成功",//这里打印出登录成功
+                  image: '/assets/index/success.jpg',
+                  duration: 1500
+                })
+                setTimeout(function () {
+                  wx.hideToast()
+                  app.globalData.global_add_to_address = "yes";
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }, 1500)
+
+              }
+              else {
+                //请求出错了
+
+              }
+
+            }
+          })
         }
-        else {
-          wx.navigateBack({
-            delta: 1
-          });
-        }
-        console.log(app.globalData.global_choose_address)
+
+        
+
+        
+        
+
+
+
+        
+
+
       }
     }
 
@@ -157,9 +264,9 @@ Page({
     var check_name_switch_tmp ="no";
     var check_phone_switch_tmp = "no";
     var check_address_switch_tmp = "no";
-    choose_province_tmp[0] = app.globalData.global_modify_address.addressProvince;
-    choose_province_tmp[1] = app.globalData.global_modify_address.addressCity;
-    choose_province_tmp[2] = app.globalData.global_modify_address.addressCountry;
+    choose_province_tmp[0] = app.globalData.global_modify_address.province;
+    choose_province_tmp[1] = app.globalData.global_modify_address.city;
+    choose_province_tmp[2] = app.globalData.global_modify_address.area;
     if (app.globalData.global_modify_address.personName != ""){
         check_name_switch_tmp = "yes";
     }
@@ -170,9 +277,9 @@ Page({
         check_address_switch_tmp = "yes";
     }
     this.setData({
-      defualt_name:   app.globalData.global_modify_address.personName,
-      defualt_phone:  app.globalData.global_modify_address.telephone,
-      defualt_address:app.globalData.global_modify_address.detailAddress,
+      defualt_name: app.globalData.global_modify_address.name,
+      defualt_phone: app.globalData.global_modify_address.phone,
+      defualt_address: app.globalData.global_modify_address.address,
       choose_province:choose_province_tmp,
       choose_switch:"yes",
       check_name_switch: check_name_switch_tmp,
@@ -182,7 +289,73 @@ Page({
     console.log(this.data);
   },
   delete_addressHandle:function(){
+    var self = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否删除该地址',
+      success: function (res) {
+        if (res.confirm) {
+
+          //删除地址请求
+          wx.request({
+            url: app.globalData.global_lijiang_Url,
+            data: requestdao.setParamsData("address.d", {
+              "userId": app.globalData.userId,
+              "id": app.globalData.global_modify_address.id
+            }, true),
+            method: "POST",
+            header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+            success: function (res) {
+              if (res.statusCode == 200) {
+                var back = res.data;
+                console.log(back);
+                //跳转到地址列表的刷新开关
+                wx.showToast({
+                  title: "删除成功",//这里打印出登录成功
+                  image: '/assets/index/success.jpg',
+                  duration: 1500
+                })
+                setTimeout(function () {
+                  wx.hideToast()
+                  app.globalData.global_add_to_address = "yes";
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }, 1500)
+
+              }
+              else {
+                //请求出错了
+                wx.showToast({
+                  title: "删除失败",//这里打印出登录成功
+                  image: '/assets/index/warning.jpg',
+                  duration: 1500
+                })
+                setTimeout(function () {
+                  wx.hideToast()
+                  app.globalData.global_add_to_address = "yes";
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }, 1500)
+              }
+
+            }
+          })
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+
+
     
+    
+    
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

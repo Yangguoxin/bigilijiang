@@ -19,10 +19,10 @@
     <!--标题  -->
     <view class="title_container v">
       <view class="title_price h">
-        <view class="title f">斐讯体脂秤</view>
-        <view class="price">￥599</view>
+        <view class="title f">{{brief_list.product.name}}</view>
+        <view class="price">￥{{brief_list.product.price}}</view>
       </view>
-      <view class="title_discription">PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
+      <view class="title_discription">{{brief_list.product.buyInfo}}</view>
     </view>
     <!--分割线  -->
     <view class="line"></view>
@@ -35,10 +35,13 @@
     </view>
     <block wx:if="{{goods_type_switch == '/assets/index/up.png'}}">
       <view class="goods_type_container h  flow">
-        <view class="goods_type_choosed">白色</view>
+        <block wx:for="{{goods_type}}" wx:key="i" wx:for-index="i">
+          <view class="{{type_class[i]}}" bindtap='choose_typeHandle' data-num='{{i}}'>{{goods_type[i]}}</view>
+        </block>
+        <!-- <view class="goods_type_choosed">白色</view>
         <view class="goods_type">黑色</view>
         <view class="goods_type">体脂秤套餐(天蓝色)</view>
-        <view class="goods_type">体脂秤套餐(粉红色)</view>
+        <view class="goods_type">体脂秤套餐(粉红色)</view> -->
       </view>
     </block>
     <!--分割线  -->
@@ -65,7 +68,7 @@
     <!--分割线  -->
     <view class="line"></view>
     <!--收货地址  -->
-    <view class="address_container v">
+    <!-- <view class="address_container v">
       <view class="address h">
         <view class="address_title">收货地址</view>
         <view class="address_content">贵州省安龙县栖凤街道办事处竹林湾组43号</view>
@@ -74,9 +77,9 @@
         <view class="supply">现货</view>
         <view class="distribution">23:00前下单，预计明天09月09日送达</view>
       </view>
-    </view>
+    </view> -->
     <!--分割线  -->
-    <view class="line"></view>
+    <!-- <view class="line"></view> -->
     <!--标题  -->
     <view class="title_container_title h h-c">
       <view class="title_left">

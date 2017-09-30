@@ -1,6 +1,7 @@
 // merchant_detail.js
 var requestdao = require('../../dao/requestdao.js');
 var WxParse = require('../../dao/wxParse/wxParse.js');
+var app = getApp();
 Page({
 
   /**
@@ -31,7 +32,9 @@ Page({
     information_array: ["goods_information_fix", "goods_information","goods_information"],
     current_choose:0,
     goods_type_switch:'/assets/index/down.png',
-    goods_num:0
+    goods_num:0,
+    goods_type:['白色'],
+    type_class: ['goods_type']
   },
   scroll_bottom:function(){
     if(this.data.scroll_switch == true){
@@ -83,9 +86,48 @@ Page({
     
   },
   payHandle:function(){
-    wx.navigateTo({
-      url: '../goods_order/goods_order'
-    })
+    console.log(this.data.goods_num);
+    if (this.data.goods_num==0){
+      wx.showToast({
+        title: "请选择数量",//这里打印出登录成功
+        image: '/assets/index/warning.jpg',
+        duration: 1500
+      })
+      setTimeout(function () {
+        wx.hideToast()
+      }, 1500)
+    }else{
+      var choose_type_tmp = null;
+      for (var j = 0; j < this.data.type_class.length;j++){
+        if (this.data.type_class[j] =='goods_type_choosed'){
+          choose_type_tmp=this.data.goods_type[j];
+          break;
+        }
+      }
+      if (choose_type_tmp==null){
+        wx.showToast({
+          title: "请选择型号",//这里打印出登录成功
+          image: '/assets/index/warning.jpg',
+          duration: 1500
+        })
+        setTimeout(function () {
+          wx.hideToast()
+        }, 1500)
+      }else{
+        //填充商品的信息和用户选择的信息
+        //商品数量
+        app.globalData.global_goods_num = this.data.goods_num;
+        //商品信息
+        app.globalData.global_goods_detail = this.data.brief_list;
+        //商品类型
+        app.globalData.global_goods_type = choose_type_tmp;
+        wx.navigateTo({
+            url: '../goods_order/goods_order'
+        })
+      }
+     
+    }
+   
   },
   /**
    * 生命周期函数--监听页面加载
@@ -94,15 +136,15 @@ Page({
     //接口测试
     var self = this;
     wx.request({
-      url: 'http://119.62.125.201:8888/YYAPI/phone/api.do',
-      data: requestdao.setParamsData("product.d", { "productId": 503 }, true),  
+      url: app.globalData.global_lijiang_Url,
+      data: requestdao.setParamsData("product.d",  { "productId": 521, noNeedPlate: true }, true),  
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {
         if (res.statusCode == 200) {
           var back = res.data;
           self.setData({ brief_list: back });
-          var article = self.data.brief_list.product.buyInfo;
+          var article = self.data.brief_list.product.content;
           WxParse.wxParse('article', 'html', article, self, 5);
           console.log(self.data.brief_list);
         }
@@ -114,7 +156,7 @@ Page({
       }
     })
     wx.request({
-      url: 'http://119.62.125.201:8888/YYAPI/phone/api.do',
+      url: app.globalData.global_lijiang_Url,
       data: requestdao.setParamsData("comment.l", { "productId": 200, "hasImg": true, "page": 1, "size": 2 }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
@@ -132,7 +174,24 @@ Page({
       }
     })
   },
-
+  choose_typeHandle:function(e){
+    var num = e.target.dataset.num;
+    if(num != undefined){
+      if (this.data.type_class[num] =='goods_type'){
+        for(var i=0 ; i<this.data.type_class.length ;i++){
+          this.data.type_class[i] ='goods_type';
+        }
+        this.data.type_class[num] = 'goods_type_choosed';
+        this.setData({ type_class: this.data.type_class});
+      }
+      else if(this.data.type_class[num] == 'goods_type_choosed') {
+        for (var i = 0; i < this.data.type_class.length; i++) {
+          this.data.type_class[i] = 'goods_type';
+        }
+        this.setData({ type_class: this.data.type_class });
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

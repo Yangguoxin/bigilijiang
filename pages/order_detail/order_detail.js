@@ -1,18 +1,45 @@
 // order_detail.js
 var app = getApp();
+var requestdao = require('../../dao/requestdao.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    order_detail:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.global_order_id != null){
+      var self=this;
+      wx.request({
+        url: app.globalData.global_lijiang_Url,
+        data: requestdao.setParamsData("order.d", {
+          "userId": app.globalData.userId,
+          "orderId": app.globalData.global_order_id,
+        }, true),
+        method: "POST",
+        header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        success: function (res) {
+          if (res.statusCode == 200) {
+            var back = res.data;
+            self.setData({
+              order_detail: back.order
+            });
+          }
+          else {
+            //请求出错了
 
+          }
+
+        }
+      })
+    }
+    
   },
   copy_goods_num:function(){
     wx.setClipboardData({

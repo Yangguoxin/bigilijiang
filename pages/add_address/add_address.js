@@ -26,6 +26,7 @@ Page({
   submit:function(e){
     //添加新用户地址
     var self = this;
+    //判断地址列表是否大于10
     var name_tmp = (e.detail.value.person_name).replace(/\s/g, '');
     var phone_tmp = (e.detail.value.person_phone).replace(/\s/g, '');
     var address_detail_tmp = (e.detail.value.person_address).replace(/\s/g, '');
@@ -51,7 +52,7 @@ Page({
         }, 2000)
       }else{
         wx.request({
-          url: 'http://119.62.125.201:8888/YYAPI/phone/api.do',
+          url: app.globalData.global_lijiang_Url,
           data: requestdao.setParamsData("address.i", {
              "userId": app.globalData.userId, 
              "name": name_tmp, 
@@ -67,6 +68,80 @@ Page({
             if (res.statusCode == 200) {
               var back = res.data;
               console.log(back);
+
+              //判断用户之前有没有添加过地址
+              if (app.globalData.global_order_to_address == "yes") {
+                app.globalData.global_order_to_address = "no";
+                //请求默认地址作为第一个地址
+                wx.request({
+                  url: app.globalData.global_lijiang_Url,
+                  data: requestdao.setParamsData("address.gd", {
+                    "userId": app.globalData.userId
+                  }, true),
+                  method: "POST",
+                  header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+                  success: function (res) {
+                    if (res.statusCode == 200) {
+                      var back = res.data;
+                        
+                          app.globalData.global_choose_address = back.address;
+                          app.globalData.global_choose_address_switch = "ok";
+                          wx.showToast({
+                            title: "添加成功",//这里打印出登录成功
+                            image: '/assets/index/success.jpg',
+                            duration: 1500
+                          })
+                          setTimeout(function () {
+                            wx.hideToast()
+                            wx.navigateBack({
+                              delta: 1
+                            });
+                          }, 1500)
+            
+
+                    }
+                    else {
+                      //请求出错了
+
+                    }
+
+                  }
+                })
+                
+              }
+              else {
+                if (back.reCode == "06") {
+                  wx.showToast({
+                    title: "地址已存在",//这里打印出登录成功
+                    image: '/assets/index/warning.jpg',
+                    duration: 1500
+                  })
+                  setTimeout(function () {
+                    wx.hideToast()
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  }, 1500)
+                } else {
+                  //跳转到地址列表的刷新开关
+                  wx.showToast({
+                    title: "添加成功",//这里打印出登录成功
+                    image: '/assets/index/success.jpg',
+                    duration: 1500
+                  })
+                  setTimeout(function () {
+                    wx.hideToast()
+                    app.globalData.global_add_to_address = "yes";
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  }, 1500)
+                  
+                }
+              }
+
+
+
             }
             else {
               //请求出错了
@@ -75,31 +150,7 @@ Page({
 
           }
         })
-        if (app.globalData.global_order_to_address == "yes") {
-          app.globalData.global_order_to_address = "no";
-          var address_tmp = {
-            id: 3,
-            personName: e.detail.value.person_name,
-            telephone: e.detail.value.person_phone,
-            addressProvince: this.data.choose_province[0],
-            addressCity: this.data.choose_province[1],
-            addressCountry: this.data.choose_province[2],
-            detailAddress: e.detail.value.person_address,
-            ifDefualt: 1,
-            ifChoose: 1
-          }
-          app.globalData.global_choose_address = address_tmp;
-          app.globalData.global_choose_address_switch = "ok";
-          wx.navigateBack({
-            delta: 1
-          });
-        }
-        else {
-          wx.navigateBack({
-            delta: 1
-          });
-        }
-        console.log(app.globalData.global_choose_address)
+
       }
     }
 
@@ -174,7 +225,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    console.log('userId'+app.globalData.userId);
   },
 
   /**

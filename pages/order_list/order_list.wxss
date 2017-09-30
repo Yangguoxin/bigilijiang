@@ -1,6 +1,15 @@
-.top_bar{
+.top_interval{
   height: 118rpx;
   width: 100%;
+}
+.top_bar{
+  position: fixed;
+  top:0;
+  left: 0;
+  height: 118rpx;
+  width: 100%;
+  z-index: 1;
+  background-color: #FFFFFF;
 }
 .all_orders_fix{
   width: 250rpx;

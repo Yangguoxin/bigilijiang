@@ -7,10 +7,11 @@ App({
     console.log(num.toFixed(0));
   },
   globalData: {
-    global_Url: "https://www.natkey.com",
+    global_Url: "https://m.natkey.com",
     global_Img_Url:"https://www.natkey.com",
+    global_lijiang_Url:"http://api.dxoo.cn/phone/api.do",
     //global_Url: "http://106.14.5.54",
-    //global_Url: "http://172.17.68.183",
+    //global_Url: "http://172.17.68.183:8080",
     //global_Img_Url: "http://106.14.223.37",
     //global_Url: "http://106.14.223.37",
     currscenery:null,
@@ -59,7 +60,19 @@ App({
     global_choose_address:null,
     global_order_to_address:"no",
     //修改地址
-    global_modify_address:null
+    global_modify_address:null,
+    global_choose_address_id:null,
+    global_add_to_address:"no",
+    //记录地址数量
+    global_address_num:null,
+    //商品数量
+    global_goods_num:null,
+    //商品类型
+    global_goods_type:null,
+    //商品信息
+    global_goods_detail:null,
+    //保存全局的订单id
+    global_order_id:null
     
   }
 })

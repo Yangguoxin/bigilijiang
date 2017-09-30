@@ -70,12 +70,19 @@
   padding: 30rpx 40rpx 30rpx 40rpx;
 }
 .address_goods_price{
+  width: 100%;
+  height: auto;
+}
+.address_goods_price_title{
+  width: 146rpx;
+  height: auto;
   font-size: 28rpx;
   line-height: 42rpx;
   color: #979797;
 }
 .address_goods_price_text{
-  margin-left: 6rpx;
+  width: 500rpx;
+  height: auto;
   font-size: 28rpx;
   line-height: 42rpx;
   color: #171717;

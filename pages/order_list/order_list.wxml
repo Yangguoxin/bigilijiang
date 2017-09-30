@@ -1,3 +1,5 @@
+<!--顶部空行  -->
+<view class='top_interval'></view>
 <!--顶部  -->
 <view class='top_bar h' bindtap='changeHandle'>
   <!--全部订单  -->
@@ -13,105 +15,124 @@
 
 <!--待发货状态  -->
 <!--订单状态  -->
-<view class='order_state_container v'>
-  <view class='order_state h'>状态：
-    <view class='order_state_text'>待发货</view>
-  </view>
-  <view class='order_state_pay h'>总价：
-    <view class='order_state_pay_text'>￥799.00</view>
-  </view>
-</view>
-<!--分割细线  -->
-<view class='interval_line'></view>
-<!--商品详情  -->
-<view class='goods_brief_container h'>
-  <view class='goods_brief_image'>
-    <image src='/assets/index/hardware_mid.png'></image>
-  </view>
-  <view class='goods_brief_text_container v'>
-    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
-    <view class='goods_brief_type_price h ' >
-      <view class='goods_brief_type h'>香槟金</view>
-      <view class='f'></view>
-      <view class='goods_brief_price_container h' >
-        <view class='goods_brief_price'>￥799.00</view>
-        <view class='goods_brief_num'>x 1</view>
+<block wx:for="{{order_list}}" wx:key="id"  wx:for-index="i">
+
+  <!--状态是付款的  -->
+   <block wx:if="{{order_list[i].process == 2}}"> 
+    <view class='order_state_container v'>
+      <view class='order_state h'>状态：
+        <view class='order_state_text'>待发货</view>
+      </view>
+      <view class='order_state_pay h'>总价：
+        <view class='order_state_pay_text'>￥{{order_list[i].totalPrice}}</view>
       </view>
     </view>
-  </view>
-</view>
-<!--粗分割线  -->
-<view class='order_interval'></view>
-
-
-<!--待支付状态  -->
-<!--订单状态  -->
-<view class='order_state_container v'>
-  <view class='order_state h'>状态：
-    <view class='order_state_text'>待支付</view>
-  </view>
-  <view class='order_state_pay h'>总价：
-    <view class='order_state_pay_text'>￥799.00</view>
-  </view>
-  <view class='goto_pay c' bindtap='goto_payHandle'>去支付</view>
-</view>
-<!--分割细线  -->
-<view class='interval_line'></view>
-<!--商品详情  -->
-<view class='goods_brief_container h'>
-  <view class='goods_brief_image'>
-    <image src='/assets/index/hardware_mid.png'></image>
-  </view>
-  <view class='goods_brief_text_container v'>
-    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
-    <view class='goods_brief_type_price h ' >
-      <view class='goods_brief_type h'>香槟金</view>
-      <view class='f'></view>
-      <view class='goods_brief_price_container h' >
-        <view class='goods_brief_price'>￥799.00</view>
-        <view class='goods_brief_num'>x 1</view>
+    <!--分割细线  -->
+    <view class='interval_line'></view>
+    <!--商品详情  -->
+     <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}'>
+      <view class='goods_brief_image d-e'>
+        <image src='{{order_list[i].thumbLogoUrl}} ' class='d-e'></image>
+      </view>
+      <view class='goods_brief_text_container v d-e'>
+        <view class='goods_brief_text_title d-e'>{{order_list[i].products[0].productName}}</view>
+        <view class='goods_brief_type_price h d-e' >
+          <view class='goods_brief_type h d-e'>白色</view>
+          <view class='f'></view>
+          <view class='goods_brief_price_container h d-e' >
+            <view class='goods_brief_price d-e'>￥{{order_list[i].products[0].priceSale}}</view>
+            <view class='goods_brief_num d-e'>x {{order_list[i].products[0].quantity}}</view>
+          </view>
+        </view>
       </view>
     </view>
-  </view>
-</view>
-<!--粗分割线  -->
-<view class='order_interval'></view>
+    <!--粗分割线  -->
+    <view class='order_interval'></view>
+   </block> 
 
-
-
-
-<!--已完成状态  -->
-<!--订单状态  -->
-<view class='order_state_container v'>
-  <view class='order_state h'>状态：
-    <view class='order_state_text'>已完成</view>
-  </view>
-  <view class='order_state_pay h'>总价：
-    <view class='order_state_pay_text'>￥799.00</view>
-  </view>
-  <view class='goto_pay c' bindtap='goto_comment'>去评价</view>
-</view>
-<!--分割细线  -->
-<view class='interval_line'></view>
-<!--商品详情  -->
-<view class='goods_brief_container h'>
-  <view class='goods_brief_image'>
-    <image src='/assets/index/hardware_mid.png'></image>
-  </view>
-  <view class='goods_brief_text_container v'>
-    <view class='goods_brief_text_title'>PHICOMM斐讯智能体脂秤S7 隐藏式LED显示 8电极测全身 22项身体数据 APP数据统计分析 内置锂电池 家用体重秤电子秤 白色</view>
-    <view class='goods_brief_type_price h ' >
-      <view class='goods_brief_type h'>香槟金</view>
-      <view class='f'></view>
-      <view class='goods_brief_price_container h' >
-        <view class='goods_brief_price'>￥799.00</view>
-        <view class='goods_brief_num'>x 1</view>
+  <!--状态是未付款的  -->
+  <block wx:if="{{order_list[i].process == 1}}">
+    <!--待支付状态  -->
+    <!--订单状态  -->
+    <view class='order_state_container v'>
+      <view class='order_state h'>状态：
+        <view class='order_state_text'>待支付</view>
+      </view>
+      <view class='order_state_pay h'>总价：
+        <view class='order_state_pay_text'>￥{{order_list[i].totalPrice}}</view>
+      </view>
+      <view class='goto_pay c' bindtap='goto_payHandle' data-num='{{i}}'>去支付</view>
+    </view>
+    <!--分割细线  -->
+    <view class='interval_line'></view>
+    <!--商品详情  -->
+    <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}'>
+      <view class='goods_brief_image d-e'>
+        <image src='{{order_list[i].thumbLogoUrl}} ' class='d-e'></image>
+      </view>
+      <view class='goods_brief_text_container v d-e'>
+        <view class='goods_brief_text_title d-e'>{{order_list[i].products[0].productName}}</view>
+        <view class='goods_brief_type_price h d-e' >
+          <view class='goods_brief_type h d-e'>白色</view>
+          <view class='f'></view>
+          <view class='goods_brief_price_container h d-e' >
+            <view class='goods_brief_price d-e'>￥{{order_list[i].products[0].priceSale}}</view>
+            <view class='goods_brief_num d-e'>x {{order_list[i].products[0].quantity}}</view>
+          </view>
+        </view>
       </view>
     </view>
-  </view>
-</view>
-<!--粗分割线  -->
-<view class='order_interval'></view>
+    <!--粗分割线  -->
+    <view class='order_interval d-e'></view>
+  </block>
+
+  <!--状态是已经完成的  -->
+  <block wx:if="{{order_list[i].process == 6}}">
+    <!--已完成状态  -->
+    <!--订单状态  -->
+    <view class='order_state_container v'>
+      <view class='order_state h'>状态：
+        <view class='order_state_text'>已完成</view>
+      </view>
+      <view class='order_state_pay h'>总价：
+        <view class='order_state_pay_text'>￥{{order_list[i].totalPrice}}</view>
+      </view>
+      <view class='goto_pay c' bindtap='goto_comment'>去评价</view>
+    </view>
+    <!--分割细线  -->
+    <view class='interval_line'></view>
+    <!--商品详情  -->
+     <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}'>
+      <view class='goods_brief_image d-e'>
+        <image src='{{order_list[i].thumbLogoUrl}} ' class='d-e'></image>
+      </view>
+      <view class='goods_brief_text_container v d-e'>
+        <view class='goods_brief_text_title d-e'>{{order_list[i].products[0].productName}}</view>
+        <view class='goods_brief_type_price h d-e' >
+          <view class='goods_brief_type h d-e'>白色</view>
+          <view class='f'></view>
+          <view class='goods_brief_price_container h d-e' >
+            <view class='goods_brief_price d-e'>￥{{order_list[i].products[0].priceSale}}</view>
+            <view class='goods_brief_num d-e'>x {{order_list[i].products[0].quantity}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--粗分割线  -->
+    <view class='order_interval'></view>
+  </block>
+
+
+</block>
+
+
+
+
+
+
+
+
+
 
 
 

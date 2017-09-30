@@ -27,7 +27,7 @@ function getUserInfo(code) {
         mask:false
       });
       wx.request({
-        url: 'http://api.dxoo.cn/phone/api.do',
+        url: app.globalData.global_lijiang_Url,
         data: requestdao.setParamsData("wechat.login",userInfo,false),
         method: 'POST',
         header: {

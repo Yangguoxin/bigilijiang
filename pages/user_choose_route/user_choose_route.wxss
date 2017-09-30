@@ -178,7 +178,7 @@
   width: 256rpx;
 }
 .interval{
-  width: 80rpx;
+  width: 70rpx;
   height: 180rpx;
 }
 .merchant_c{

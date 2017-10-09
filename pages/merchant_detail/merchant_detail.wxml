@@ -164,7 +164,10 @@
   <block wx:if="{{current_choose==0}}">
     <!--商品简介  -->
     <!--付文本  -->
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <!--<template is="wxParse" data="{{wxParseData:article.nodes}}"/>-->
+    <view>
+		  <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+		</view>
     
     <!-- <view class="merchant_brief_container">
       <view class="merchant_brief">

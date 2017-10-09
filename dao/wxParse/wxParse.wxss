@@ -17,7 +17,10 @@
     color: #666;
     line-height: 1.8;
 }
-view{
+page>view{
+	margin-top:-2rpx;
+}
+view{margin-top:-10rpx;
     word-break:break-all; overflow:auto;
 }
 .wxParse-inline{
@@ -95,7 +98,9 @@ view{
 
 .wxParse-img{
     /*background-color: #efefef;*/
+    
     overflow: hidden;
+    
 }
 
 .wxParse-blockquote {

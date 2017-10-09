@@ -132,47 +132,67 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    //接口测试
-    var self = this;
-    wx.request({
-      url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("product.d",  { "productId": 521, noNeedPlate: true }, true),  
-      method: "POST",
-      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
-      success: function (res) {
-        if (res.statusCode == 200) {
-          var back = res.data;
-          self.setData({ brief_list: back });
-          var article = self.data.brief_list.product.content;
-          WxParse.wxParse('article', 'html', article, self, 5);
-          console.log(self.data.brief_list);
-        }
-        else {
-          //请求出错了
-          
-        }
-
-      }
-    })
-    wx.request({
-      url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("comment.l", { "productId": 200, "hasImg": true, "page": 1, "size": 2 }, true),
-      method: "POST",
-      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
-      success: function (res) {
-        if (res.statusCode == 200) {
-          var back = res.data;
-          self.setData({ comments: back });
-          console.log(self.data.comments);
-        }
-        else {
-          //请求出错了
-
-        }
-
-      }
-    })
+//onLoad: function (options) {
+//  //接口测试
+//  var self = this;
+//  wx.request({
+//    url: app.globalData.global_lijiang_Url,
+//    data: requestdao.setParamsData("product.d",  { "productId": 521, noNeedPlate: true }, true),  
+//    method: "POST",
+//    header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+//    success: function (res) {
+//      if (res.statusCode == 200) {
+//        var back = res.data;
+//        self.setData({ brief_list: back });
+//        var article = self.data.brief_list.product.content;
+//        WxParse.wxParse('article', 'html', article, self, 5);
+//        console.log(self.data.brief_list);
+//      }
+//      else {
+//        //请求出错了
+//        
+//      }
+//
+//    }
+//  })
+//  wx.request({
+//    url: app.globalData.global_lijiang_Url,
+//    data: requestdao.setParamsData("comment.l", { "productId": 200, "hasImg": true, "page": 1, "size": 2 }, true),
+//    method: "POST",
+//    header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+//    success: function (res) {
+//      if (res.statusCode == 200) {
+//        var back = res.data;
+//        self.setData({ comments: back });
+//        console.log(self.data.comments);
+//      }
+//      else {
+//        //请求出错了
+//
+//      }
+//
+//    }
+//  })
+//},
+    onLoad: function (options) {
+  	var that = this;
+		wx.request({
+			url: "http://119.62.125.201:8888/YYAPI/phone/api.do",
+			data: requestdao.setParamsData("product.d", {"productId":420,"userId":1166,"noNeedPlate":true},false),
+			method: "POST",
+			header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+			success: function (res) {
+				console.log(res.data.product);
+				//buyInfo
+				//content
+				//special
+				that.setData({
+					restaurant: res.data.product,
+					location: wx.getStorageSync('location')
+				});
+				WxParse.wxParse('content', 'html', res.data.product.content,that, 0);
+			}
+		});
   },
   choose_typeHandle:function(e){
     var num = e.target.dataset.num;

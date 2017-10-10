@@ -16,7 +16,7 @@
   <!--联系电话  -->
   <view class='person_name_container h'>
     <view class='person_name_title'>联系方式</view>
-    <input type='text' name='person_phone' placeholder='手机号码' placeholder-class='empty_person_name' value='{{defualt_phone}}' class='person_phone f' bindinput='check_phone_inputHandle'></input>
+    <input type='text' name='person_phone' type='number' placeholder='手机号码' placeholder-class='empty_person_name' value='{{defualt_phone}}' class='person_phone f' bindinput='check_phone_inputHandle'></input>
     <block wx:if="{{check_phone_switch == 'yes'}}"> 
       <view class='person_name_image' bindtap='emptyHandle' data-num="2">
         <image class='d-e' src='/assets/index/delete_input.png'></image>

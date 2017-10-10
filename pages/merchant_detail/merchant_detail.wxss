@@ -1,9 +1,6 @@
-/*富文本解析  测试*/
-@import "../../dao/wxParse/wxParse.wxss";
-image{
-	display: inline-block;
-}
 /* merchant_detail.wxss */
+@import "../../dao/wxParse/wxParse.wxss";
+
 .swiper_container{
   position: relative;
   width: 750rpx;
@@ -468,4 +465,14 @@ image{
 .comment_photos image{
   width: 146rpx;
   height: 146rpx;
+}
+.wxParse_detail{
+  height: auto;
+  width: auto;
+}
+.wxParse_detail image{
+  display: inline-block;
+}
+.wxParse_detail text{
+  display: none;
 }

@@ -9,9 +9,29 @@
   <view class='order_interval'></view>
 </block>
 
+<!--订单状态栏  已经失效-->
+<block wx:if="{{order_detail.process==1}}">
+  <view class='order_state_container'>
+    <view class='order_state h'>状态：
+      <view class='order_state_text'>已经失效</view>
+    </view>
+    <view class='order_state_num h'>订单编号：
+      <view class='order_state_num_text'>{{order_detail.orderNo}}</view>
+    </view>
+    <view class='order_state_time h'>下单时间：
+      <view class='order_state_time_text'>{{order_detail.createTime}}</view>
+    </view>
+    <view></view>
+  </view>
+  <!--支付按钮  -->
+  <view class='cancel_order c' bindtap='replace_orderHandle'>重新下单</view>
+  <!--粗分割线  -->
+  <view class='order_interval'></view>
+</block>
+
 
 <!--订单状态栏  待支付-->
-<block wx:if="{{order_detail.process==1}}">
+<block wx:if="{{order_detail.process==0}}">
   <view class='order_state_container'>
     <view class='order_state h'>状态：
       <view class='order_state_text'>待支付</view>
@@ -25,15 +45,15 @@
     <view></view>
   </view>
   <!--支付按钮  -->
-  <view class='goto_pay c' >去支付</view>
+  <view class="goto_pay c {{(button_loading==true)?'d-e':''}}" bindtap='goto_pay' >去支付</view>
   <!--取消订单  -->
-  <view class='cancel_order c'>取消订单</view>
+  <view class='cancel_order c' bindtap='cancel_orderHandle'>取消订单</view>
   <!--粗分割线  -->
   <view class='order_interval'></view>
 </block>
 
 <!--订单状态栏  已发货-->
-<block wx:if="{{order_detail.process==2}}">
+<block wx:if="{{order_detail.process==6}}">
   <view class='order_state_container'>
     <view class='order_state h'>状态：
       <view class='order_state_text'>已支付</view>
@@ -47,7 +67,7 @@
     <view></view>
   </view>
   <!--支付按钮  -->
-  <view class='goto_pay c' >再次购买</view>
+  <view class='goto_pay c' bindtap='replace_orderHandle'>再次购买</view>
   <!--取消订单  -->
   <view class='cancel_order c'>取消订单</view>
   <!--粗分割线  -->
@@ -57,7 +77,7 @@
 
 
 <!--订单状态栏  已完成-->
-<block wx:if="{{order_detail.process==6}}">
+<block wx:if="{{order_detail.process==2}}">
   <view class='order_state_container'>
     <view class='order_state h'>状态：
       <view class='order_state_text'>已完成</view>

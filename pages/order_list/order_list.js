@@ -8,7 +8,15 @@ Page({
    */
   data: {
     order_container: ['all_orders_fix', 'all_orders', 'all_orders'],
-    order_list: []
+    order_list: [],
+    page_num:1,
+    page_size:6,
+    //分页加载的开关
+    scroll_loading:true,
+    page_count:1,
+    choose_type:0,
+    wait_pay_list:[],
+    has_pay_list:[]
   },
   changeHandle:function(e){
     var num = e.target.dataset.num;
@@ -17,8 +25,78 @@ Page({
       for(var i=0;i<order_container_tmp.length;i++){
         order_container_tmp[i] = 'all_orders';
       }
-      order_container_tmp[num] = 'all_orders_fix';
-      this.setData({ order_container: order_container_tmp});
+      if(num == '1'){
+        var self = this;
+        wx.request({
+          url: app.globalData.global_lijiang_Url,
+          data: requestdao.setParamsData("order.l", {
+            "userId": app.globalData.userId,
+            "page": 1,
+            "size": 20,
+            "orderState":0
+          }, true),
+          method: "POST",
+          header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+          success: function (res) {
+            if (res.statusCode == 200) {
+              var back = res.data;
+              order_container_tmp[num] = 'all_orders_fix';
+              self.setData({
+                wait_pay_list: back.orders,
+                order_container: order_container_tmp,
+                choose_type: num
+              });
+              console.log(self.data.order_list)
+            }
+            else {
+              //请求出错了
+
+            }
+
+          }
+        })
+      }
+      //待收货
+      if(num == '2' ){
+        var self = this;
+        wx.request({
+          url: app.globalData.global_lijiang_Url,
+          data: requestdao.setParamsData("order.l", {
+            "userId": app.globalData.userId,
+            "page": 1,
+            "size": 20,
+            "orderState": 2
+          }, true),
+          method: "POST",
+          header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+          success: function (res) {
+            if (res.statusCode == 200) {
+              var back = res.data;
+              order_container_tmp[num] = 'all_orders_fix';
+              self.setData({
+                has_pay_list: back.orders,
+                order_container: order_container_tmp,
+                choose_type: num
+              });
+              console.log(self.data.order_list)
+            }
+            else {
+              //请求出错了
+
+            }
+
+          }
+        })
+      }
+      if(num == '0'){
+        order_container_tmp[num] = 'all_orders_fix';
+        this.setData({
+          order_container: order_container_tmp,
+          choose_type: num
+        });
+      } 
+      
+      
     }
   },
   /**
@@ -29,7 +107,7 @@ Page({
     var self = this;
     wx.showLoading({
       title: '加载中',
-      mask:true
+      mask: true
     })
     //订单列表请求
     wx.request({
@@ -37,15 +115,19 @@ Page({
       data: requestdao.setParamsData("order.l", {
         "userId": app.globalData.userId,
         "page": 1,
-        "size": 10,
+        "size": 6,
       }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {
         if (res.statusCode == 200) {
           var back = res.data;
+          var order_list_tmp = [];
+          // order_list_tmp[0] = new Array();
+          order_list_tmp[0] = back.orders;
           wx.hideLoading();
-          self.setData({ order_list: back.orders});
+          self.setData({ order_list: order_list_tmp });
+          console.log(self.data.order_list)
         }
         else {
           //请求出错了
@@ -54,10 +136,6 @@ Page({
 
       }
     })
-
-
-
-
   },
   goto_payHandle:function(){
     wx.navigateTo({
@@ -66,18 +144,79 @@ Page({
   },
   goto_order_detailHandle:function(e){
     var num = e.target.dataset.num;
-    if(num != undefined){
-      app.globalData.global_order_id = this.data.order_list[num].id;
+    var index = e.target.dataset.index;
+    if (num != undefined && index != undefined){
+      app.globalData.global_order_id = this.data.order_list[num][index].id;
+      console.log(app.globalData.global_order_id);
         wx.navigateTo({
           url: '../order_detail/order_detail'
         })
     }
     
   },
+  goto_has_order_detailHandle:function(e){
+    var num = e.target.dataset.num;
+    if (num != undefined ) {
+      app.globalData.global_order_id = this.data.has_pay_list[num].id;
+      console.log(app.globalData.global_order_id);
+      wx.navigateTo({
+        url: '../order_detail/order_detail'
+      })
+    }
+  },
+  goto_wait_order_detailHandle: function (e) {
+    var num = e.target.dataset.num;
+    if (num != undefined) {
+      app.globalData.global_order_id = this.data.wait_pay_list[num].id;
+      console.log(app.globalData.global_order_id);
+      wx.navigateTo({
+        url: '../order_detail/order_detail'
+      })
+    }
+  },
   goto_comment:function(){
     wx.navigateTo({
       url: '../write_goods_comments/wirte_goods_comments'
     })
+  },
+  //分页加载
+  scroll_page:function(){
+    var self = this;
+    if (this.data.scroll_loading == true && (this.data.order_list[this.data.page_count-1].length == this.data.page_size)){
+      self.setData({
+        scroll_loading: false
+      });
+      wx.request({
+        url: app.globalData.global_lijiang_Url,
+        data: requestdao.setParamsData("order.l", {
+          "userId": app.globalData.userId,
+          "page": (this.data.page_count + 1),
+          "size": 6,
+        }, true),
+        method: "POST",
+        header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        success: function (res) {
+          if (res.statusCode == 200) {
+            var back = res.data;
+            var order_list_tmp = [];
+            // order_list_tmp[0] = new Array();
+            order_list_tmp = self.data.order_list;
+            order_list_tmp[self.data.page_count] = back.orders;
+            self.setData({ 
+              order_list: order_list_tmp,
+              scroll_loading:true,
+              page_count: (self.data.page_count+1)
+               });
+            console.log(self.data.order_list)
+          }
+          else {
+            //请求出错了
+
+          }
+
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

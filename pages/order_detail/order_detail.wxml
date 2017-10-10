@@ -53,7 +53,7 @@
 </block>
 
 <!--订单状态栏  已发货-->
-<block wx:if="{{order_detail.process==6}}">
+<block wx:if="{{order_detail.process==2}}">
   <view class='order_state_container'>
     <view class='order_state h'>状态：
       <view class='order_state_text'>已支付</view>
@@ -77,7 +77,7 @@
 
 
 <!--订单状态栏  已完成-->
-<block wx:if="{{order_detail.process==2}}">
+<block wx:if="{{order_detail.process==6}}">
   <view class='order_state_container'>
     <view class='order_state h'>状态：
       <view class='order_state_text'>已完成</view>
@@ -92,6 +92,7 @@
   </view>
   <!--支付按钮  -->
   <view class='goto_pay c' >再次购买</view>
+  <view class='goto_pay_interval'></view>
   <!--粗分割线  -->
   <view class='order_interval'></view>
 </block>

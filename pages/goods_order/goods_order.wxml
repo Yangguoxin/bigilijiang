@@ -40,7 +40,7 @@
       <view class='goods_brief_type h'>{{goods_type}}</view>
       <view class='f'></view>
       <view class='goods_brief_price_container h' >
-        <view class='goods_brief_price'>￥{{goods_detail.product.price}}</view>
+        <view class='goods_brief_price'>￥{{goods_detail.product.defaultPrice}}</view>
         <view class='goods_brief_num'>x {{goods_num}}</view>
       </view>
     </view>
@@ -74,7 +74,7 @@
 <!--商品金额  -->
 <view class='invoice_container h'>
   <view class='invoice f' >商品金额</view>
-  <view class='goods_price'>￥{{goods_num * goods_detail.product.price}}元</view>
+  <view class='goods_price'>￥{{goods_num * goods_detail.product.defaultPrice}}元</view>
 </view>
 <!--细线  -->
 <view class='interval_line'></view>
@@ -89,7 +89,7 @@
 <!--应付金额  -->
 <view class='pay_num_container h h-r'>
   <view class='pay_num_title'>应付金额：</view>
-  <view class='pay_num'>￥{{goods_num * goods_detail.product.price}}元</view>
+  <view class='pay_num'>￥{{goods_num * goods_detail.product.defaultPrice}}元</view>
 </view>
 <!--底部空格  -->
 <view class='bottom'></view>
@@ -97,7 +97,7 @@
 <view class="choose_bottom h">
   <view class="price h h-c">
     <view class="price_title">合计:</view>
-    <view class="price_num">￥{{goods_num * goods_detail.product.price}}</view>
+    <view class="price_num">￥{{goods_num * goods_detail.product.defaultPrice}}</view>
   </view>
   <view class="book h h-c {{(button_loading==true)?'d-e':''}}" bindtap="place_order">
     <view class="book_text d-e" >提交订单</view>

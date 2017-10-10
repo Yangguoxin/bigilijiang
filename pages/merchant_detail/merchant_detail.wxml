@@ -20,7 +20,7 @@
     <view class="title_container v">
       <view class="title_price h">
         <view class="title f">{{brief_list.product.name}}</view>
-        <view class="price">￥{{brief_list.product.price}}</view>
+        <view class="price">￥{{brief_list.product.defaultPrice}}</view>
       </view>
       <view class="title_discription">{{brief_list.product.buyInfo}}</view>
     </view>

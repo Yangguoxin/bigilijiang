@@ -245,3 +245,7 @@
   width: 100%;
   height: 60rpx;
 }
+.goto_pay_interval{
+  width: 100%;
+  height: 30rpx;
+}

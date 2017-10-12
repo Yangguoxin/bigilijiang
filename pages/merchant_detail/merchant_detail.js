@@ -137,7 +137,7 @@ Page({
     var self = this;
     wx.request({
       url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("product.d",  { "productId": 521, noNeedPlate: true }, true),  
+      data: requestdao.setParamsData("product.d", { "productId": 541, noNeedPlate: true }, true),  
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {
@@ -157,7 +157,7 @@ Page({
     })
     wx.request({
       url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("comment.l", { "productId": 521, "hasImg": true, "page": 1, "size": 4 }, true),
+      data: requestdao.setParamsData("comment.l", { "productId": 541, "hasImg": true, "page": 1, "size": 4 }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {

@@ -9,7 +9,8 @@ App({
   globalData: {
     global_Url: "https://m.natkey.com",
     global_Img_Url:"https://www.natkey.com",
-    global_lijiang_Url:"http://api.dxoo.cn/phone/api.do",
+    global_lijiang_Url:"https://yunyouapi.dxoo.cn/phone/api.do",
+    //global_lijiang_Url:"http://api.dxoo.cn/phone/api.do",
     //global_Url: "http://106.14.5.54",
     //global_Url: "http://172.17.68.183:8080",
     //global_Img_Url: "http://106.14.223.37",

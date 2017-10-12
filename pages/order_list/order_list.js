@@ -127,7 +127,7 @@ Page({
           order_list_tmp[0] = back.orders;
           wx.hideLoading();
           self.setData({ order_list: order_list_tmp });
-          console.log(self.data.order_list)
+          console.log(self.data.order_list[0].length)
         }
         else {
           //请求出错了

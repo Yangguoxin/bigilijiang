@@ -1,0 +1,145 @@
+<!--顶部栏-->
+<view class="top"></view>
+<view class="top_bar h">
+  <view class="top_bar_container h" bindtap="change_bar">
+    <view class="{{change_css[0]}} c" data-num = "0">全部</view>
+    <view class="{{change_css[1]}} c" data-num = "1">好评</view>
+    <view class="{{change_css[2]}} c" data-num = "2">中评</view>
+    <view class="{{change_css[3]}} c" data-num = "3">差评</view>
+  </view>
+</view>
+
+<view wx:if="{{choose_mode==0}}" >
+    <!--具体评价区  -->
+  <block wx:for="{{all_comments}}" wx:key="id" wx:for-index="i">
+    <view class="view5">
+      <view class=" h h-t">
+        <view class="v5-icon">
+          <image src="{{all_comments[i].headImgUrl}}"></image>
+        </view>
+        <view class="v5-des f">
+          <view class="v5-d1 h">
+            <view>{{all_comments[i].nickName}}</view>
+            <view class="v5-d1s h">
+            </view>
+            <view class="f h h-r">{{time_stamp[i]}}</view>
+          </view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{user_start_status[i][0]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][1]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][2]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][3]}}"></image>
+            <image class="d-e" src="/assets/index/{{user_start_status[i][4]}}"></image>
+          </view>
+          <view class="v5-text">
+            {{all_comments[i].content}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="goodsline d-e"></view> 
+  </block>
+</view>
+
+<view wx:if="{{choose_mode==1}}" >
+    <!--具体评价区  -->
+  <block wx:for="{{good_comments}}" wx:key="*this" wx:for-index="i">
+    <view class="view5">
+      <view class=" h h-t">
+        <view class="v5-icon">
+        <image src="{{good_comments[i].headImgUrl}}"></image>
+        </view>
+        <view class="v5-des f">
+          <view class="v5-d1 h">
+            <view>{{good_comments[i].nickName}}</view>
+            <view class="v5-d1s h">
+            </view>
+            <view class="f h h-r">{{good_time_stamp[i]}}</view>
+          </view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{good_start_status[i][0]}}"></image>
+            <image class="d-e" src="/assets/index/{{good_start_status[i][1]}}"></image>
+            <image class="d-e" src="/assets/index/{{good_start_status[i][2]}}"></image>
+            <image class="d-e" src="/assets/index/{{good_start_status[i][3]}}"></image>
+            <image class="d-e" src="/assets/index/{{good_start_status[i][4]}}"></image>
+          </view>
+          <view class="v5-text">
+            {{good_comments[i].content}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="goodsline d-e"></view> 
+  </block>
+</view>
+
+<view wx:if="{{choose_mode==2}}" >
+    <!--具体评价区  -->
+  <block wx:for="{{mid_comments}}" wx:key="id" wx:for-index="i">
+    <view class="view5">
+      <view class=" h h-t">
+        <view class="v5-icon">
+        <image src="{{mid_comments[i].headImgUrl}}"></image>
+        </view>
+        <view class="v5-des f">
+          <view class="v5-d1 h">
+            <view>{{mid_comments[i].nickName}}</view>
+            <view class="v5-d1s h">
+            </view>
+            <view class="f h h-r">{{mid_time_stamp[i]}}</view>
+          </view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{mid_start_status[i][0]}}"></image>
+            <image class="d-e" src="/assets/index/{{mid_start_status[i][1]}}"></image>
+            <image class="d-e" src="/assets/index/{{mid_start_status[i][2]}}"></image>
+            <image class="d-e" src="/assets/index/{{mid_start_status[i][3]}}"></image>
+            <image class="d-e" src="/assets/index/{{mid_start_status[i][4]}}"></image>
+          </view>
+          <view class="v5-text">
+            {{mid_comments[i].content}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="goodsline d-e"></view> 
+  </block>
+</view>
+
+<view wx:if="{{choose_mode==3}}" >
+    <!--具体评价区  -->
+  <block wx:for="{{bad_comments}}" wx:key="id" wx:for-index="i">
+    <view class="view5">
+      <view class=" h h-t">
+        <view class="v5-icon">
+        <image src="{{bad_comments[i].headImgUrl}}"></image>
+        </view>
+        <view class="v5-des f">
+          <view class="v5-d1 h">
+            <view>{{bad_comments[i].nickName}}</view>
+            <view class="v5-d1s h">
+            </view>
+            <view class="f h h-r">{{bad_time_stamp[i]}}</view>
+          </view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{bad_start_status[i][0]}}"></image>
+            <image class="d-e" src="/assets/index/{{bad_start_status[i][1]}}"></image>
+            <image class="d-e" src="/assets/index/{{bad_start_status[i][2]}}"></image>
+            <image class="d-e" src="/assets/index/{{bad_start_status[i][3]}}"></image>
+            <image class="d-e" src="/assets/index/{{bad_start_status[i][4]}}"></image>
+          </view>
+          <view class="v5-text">
+            {{bad_comments[i].content}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="goodsline d-e"></view> 
+  </block>
+</view>
+
+    
+
+<!--底栏-->
+<view class="bottom_bar"></view>
+
+

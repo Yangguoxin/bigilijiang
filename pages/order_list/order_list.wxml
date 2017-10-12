@@ -14,181 +14,194 @@
 
 <!--全部订单显示  -->
 <block wx:if="{{choose_type=='0'}}">
-  <scroll-view class="display_scrollbar" scroll-y="{{true}}" bindscrolltolower="scroll_page">
-    <view class="scroll_window">
-      <!--待发货状态  -->
-      <!--订单状态  -->
-      <block wx:for="{{order_list}}" wx:key="i"  wx:for-index="i">
-        <block wx:for="{{order_list[i]}}" wx:key="id" wx:for-index="j">
-          <!--状态是待支付 -->
-          <block wx:if="{{order_list[i][j].process == 0}}">
-            <!--待支付状态  -->
-            <!--订单状态  -->
-            <view class='order_state_container v'>
-              <view class='order_state h'>状态：
-                <view class='order_state_text'>待支付</view>
+  <block wx:if="{{order_list[0].length!=0 && order_list!=[]}}">
+    <scroll-view class="display_scrollbar" scroll-y="{{true}}" bindscrolltolower="scroll_page">
+      <view class="scroll_window">
+        <!--待发货状态  -->
+        <!--订单状态  -->
+        <block wx:for="{{order_list}}" wx:key="i"  wx:for-index="i">
+          <block wx:for="{{order_list[i]}}" wx:key="id" wx:for-index="j">
+            <!--状态是待支付 -->
+            <block wx:if="{{order_list[i][j].process == 0}}">
+              <!--待支付状态  -->
+              <!--订单状态  -->
+              <view class='order_state_container v'>
+                <view class='order_state h'>状态：
+                  <view class='order_state_text'>待支付</view>
+                </view>
+                <view class='order_state_pay h'>总价：
+                  <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
+                </view>
+                <view class='goto_pay c' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>去支付</view>
               </view>
-              <view class='order_state_pay h'>总价：
-                <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
-              </view>
-              <view class='goto_pay c' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>去支付</view>
-            </view>
-            <!--分割细线  -->
-            <view class='interval_line'></view>
-            <!--商品详情  -->
-            <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
-              <view class='goods_brief_image d-e'>
-                <image src='{{order_list[i][j].thumbLogoUrl}} ' class='d-e'></image>
-              </view>
-              <view class='goods_brief_text_container v d-e'>
-                <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
-                <view class='goods_brief_type_price h d-e' >
+              <!--分割细线  -->
+              <view class='interval_line'></view>
+              <!--商品详情  -->
+              <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
+                <view class='goods_brief_image d-e'>
+                  <image src='{{order_list[i][j].products[0].thumbImgUrl}} ' class='d-e'></image>
+                </view>
+                <view class='goods_brief_text_container v d-e'>
+                  <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
+                  <view class='goods_brief_type_price h d-e' >
 
-                  <block wx:if="{{false}}">
-                    <view class='goods_brief_type h d-e'>白色</view>
-                  </block>
-                  
-                  <view class='f'></view>
-                  <view class='goods_brief_price_container h d-e' >
-                    <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
-                    <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
+                    <block wx:if="{{false}}">
+                      <view class='goods_brief_type h d-e'>白色</view>
+                    </block>
+                    
+                    <view class='f'></view>
+                    <view class='goods_brief_price_container h d-e' >
+                      <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
+                      <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
+                    </view>
                   </view>
                 </view>
               </view>
-            </view>
-            <!--粗分割线  -->
-            <view class='order_interval d-e'></view>
+              <!--粗分割线  -->
+              <view class='order_interval d-e'></view>
+            </block>
+
+
+            <!--状态是已经支付的-->
+            <block wx:if="{{order_list[i][j].process == 2}}"> 
+              <view class='order_state_container v'>
+                <view class='order_state h'>状态：
+                  <view class='order_state_text'>待发货</view>
+                </view>
+                <view class='order_state_pay h'>总价：
+                  <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
+                </view>
+              </view>
+              <!--分割细线  -->
+              <view class='interval_line'></view>
+              <!--商品详情  -->
+              <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
+                <view class='goods_brief_image d-e'>
+                  <image src='{{order_list[i][j].products[0].thumbImgUrl}} ' class='d-e'></image>
+                </view>
+                <view class='goods_brief_text_container v d-e'>
+                  <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
+                  <view class='goods_brief_type_price h d-e' >
+                    
+                    <block wx:if="{{false}}">
+                      <view class='goods_brief_type h d-e'>白色</view>
+                    </block>
+                    
+                    <view class='f'></view>
+                    <view class='goods_brief_price_container h d-e' >
+                      <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
+                      <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <!--粗分割线  -->
+              <view class='order_interval'></view>
+            </block> 
+
+            <!--状态是已经失效的 -->
+            <block wx:if="{{order_list[i][j].process == 1}}">
+              <!--待支付状态  -->
+              <!--订单状态  -->
+              <view class='order_state_container v'>
+                <view class='order_state h'>状态：
+                  <view class='order_state_text'>已经失效</view>
+                </view>
+                <view class='order_state_pay h'>总价：
+                  <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
+                </view>
+              </view>
+              <!--分割细线  -->
+              <view class='interval_line'></view>
+              <!--商品详情  -->
+              <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
+                <view class='goods_brief_image d-e'>
+                  <image src='{{order_list[i][j].products[0].thumbImgUrl}} ' class='d-e'></image>
+                </view>
+                <view class='goods_brief_text_container v d-e'>
+                  <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
+                  <view class='goods_brief_type_price h d-e' >
+
+                    <block wx:if="{{false}}">
+                      <view class='goods_brief_type h d-e'>白色</view>
+                    </block>
+
+                    <view class='f'></view>
+                    <view class='goods_brief_price_container h d-e' >
+                      <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
+                      <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <!--粗分割线  -->
+              <view class='order_interval d-e'></view>
+            </block>
+
+            <!--状态是已经完成的  -->
+            <block wx:if="{{order_list[i][j].process == 6}}">
+              <!--已完成状态  -->
+              <!--订单状态  -->
+              <view class='order_state_container v'>
+                <view class='order_state h'>状态：
+                  <view class='order_state_text'>已完成</view>
+                </view>
+                <view class='order_state_pay h'>总价：
+                  <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
+                </view>
+                <block wx:if="{{order_list[i][j].products[0].hasComment == false}}">
+                  <view class="goto_pay c " bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">去评价</view>
+                </block>
+                <block wx:if="{{order_list[i][j].products[0].hasComment == true}}">
+                  <view class="goto_pay c d-e" bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">已评价</view>
+                </block>
+              </view>
+              <!--分割细线  -->
+              <view class='interval_line'></view>
+              <!--商品详情  -->
+              <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
+                <view class='goods_brief_image d-e'>
+                  <image src='{{order_list[i][j].products[0].thumbImgUrl}} ' class='d-e'></image>
+                </view>
+                <view class='goods_brief_text_container v d-e'>
+                  <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
+                  <view class='goods_brief_type_price h d-e' >
+                    
+                    <block wx:if="{{false}}">
+                      <view class='goods_brief_type h d-e'>白色</view>
+                    </block>
+
+                    <view class='f'></view>
+                    <view class='goods_brief_price_container h d-e' >
+                      <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
+                      <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <!--粗分割线  -->
+              <view class='order_interval'></view>
+            </block>
+
           </block>
-
-
-          <!--状态是已经支付的-->
-          <block wx:if="{{order_list[i][j].process == 2}}"> 
-            <view class='order_state_container v'>
-              <view class='order_state h'>状态：
-                <view class='order_state_text'>待发货</view>
-              </view>
-              <view class='order_state_pay h'>总价：
-                <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
-              </view>
-            </view>
-            <!--分割细线  -->
-            <view class='interval_line'></view>
-            <!--商品详情  -->
-            <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
-              <view class='goods_brief_image d-e'>
-                <image src='{{order_list[i][j].thumbLogoUrl}} ' class='d-e'></image>
-              </view>
-              <view class='goods_brief_text_container v d-e'>
-                <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
-                <view class='goods_brief_type_price h d-e' >
-                  
-                  <block wx:if="{{false}}">
-                    <view class='goods_brief_type h d-e'>白色</view>
-                  </block>
-                  
-                  <view class='f'></view>
-                  <view class='goods_brief_price_container h d-e' >
-                    <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
-                    <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-            <!--粗分割线  -->
-            <view class='order_interval'></view>
-          </block> 
-
-          <!--状态是已经失效的 -->
-          <block wx:if="{{order_list[i][j].process == 1}}">
-            <!--待支付状态  -->
-            <!--订单状态  -->
-            <view class='order_state_container v'>
-              <view class='order_state h'>状态：
-                <view class='order_state_text'>已经失效</view>
-              </view>
-              <view class='order_state_pay h'>总价：
-                <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
-              </view>
-            </view>
-            <!--分割细线  -->
-            <view class='interval_line'></view>
-            <!--商品详情  -->
-            <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
-              <view class='goods_brief_image d-e'>
-                <image src='{{order_list[i][j].thumbLogoUrl}} ' class='d-e'></image>
-              </view>
-              <view class='goods_brief_text_container v d-e'>
-                <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
-                <view class='goods_brief_type_price h d-e' >
-
-                  <block wx:if="{{false}}">
-                    <view class='goods_brief_type h d-e'>白色</view>
-                  </block>
-
-                  <view class='f'></view>
-                  <view class='goods_brief_price_container h d-e' >
-                    <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
-                    <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-            <!--粗分割线  -->
-            <view class='order_interval d-e'></view>
-          </block>
-
-          <!--状态是已经完成的  -->
-          <block wx:if="{{order_list[i][j].process == 6}}">
-            <!--已完成状态  -->
-            <!--订单状态  -->
-            <view class='order_state_container v'>
-              <view class='order_state h'>状态：
-                <view class='order_state_text'>已完成</view>
-              </view>
-              <view class='order_state_pay h'>总价：
-                <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
-              </view>
-              <block wx:if="{{order_list[i][j].products[0].hasComment == false}}">
-                <view class="goto_pay c " bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">去评价</view>
-              </block>
-              <block wx:if="{{order_list[i][j].products[0].hasComment == true}}">
-                <view class="goto_pay c d-e" bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">已评价</view>
-              </block>
-            </view>
-            <!--分割细线  -->
-            <view class='interval_line'></view>
-            <!--商品详情  -->
-            <view class='goods_brief_container h' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>
-              <view class='goods_brief_image d-e'>
-                <image src='{{order_list[i][j].thumbLogoUrl}} ' class='d-e'></image>
-              </view>
-              <view class='goods_brief_text_container v d-e'>
-                <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
-                <view class='goods_brief_type_price h d-e' >
-                  
-                  <block wx:if="{{false}}">
-                    <view class='goods_brief_type h d-e'>白色</view>
-                  </block>
-
-                  <view class='f'></view>
-                  <view class='goods_brief_price_container h d-e' >
-                    <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
-                    <view class='goods_brief_num d-e'>x {{order_list[i][j].products[0].quantity}}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-            <!--粗分割线  -->
-            <view class='order_interval'></view>
-          </block>
-
         </block>
-      </block>
 
-    <!--底部空行  -->
-    <view class='bottom'></view>
+      <!--底部空行  -->
+      <view class='bottom'></view>
+      </view>
+    </scroll-view>
+  </block>
+
+  <!--没有订单的时候显示  -->
+  <block wx:if="{{order_list[0].length==0 || order_list==[]}}">
+    <view class='f c' >
+      <view class='empty_image c'>
+        <image src='/assets/index/no_order.png'></image>
+        <view class='empty_image_text c'>暂无相关订单</view>
+      </view>
     </view>
-  </scroll-view>
+  </block>
+
 </block>
 
 
@@ -204,57 +217,69 @@
 
 <!--待付款状态  -->
 <block wx:if="{{choose_type=='1'}}">
-  <scroll-view class="display_scrollbar" scroll-y="{{true}}" >
-    <view class="scroll_window">
+  <block wx:if="{{wait_pay_list.length!=0 && wait_pay_list!=[]}}">
+    <scroll-view class="display_scrollbar" scroll-y="{{true}}" >
+      <view class="scroll_window">
 
-      <!--订单状态  -->
-      <block wx:for="{{wait_pay_list}}" wx:key="*this"  wx:for-index="i">
-          <!--状态是待支付 -->
-          <block wx:if="{{wait_pay_list[i].process == 0}}">
-            <!--待支付状态  -->
-            <!--订单状态  -->
-            <view class='order_state_container v'>
-              <view class='order_state h'>状态：
-                <view class='order_state_text'>待支付</view>
+        <!--订单状态  -->
+        <block wx:for="{{wait_pay_list}}" wx:key="*this"  wx:for-index="i">
+            <!--状态是待支付 -->
+            <block wx:if="{{wait_pay_list[i].process == 0}}">
+              <!--待支付状态  -->
+              <!--订单状态  -->
+              <view class='order_state_container v'>
+                <view class='order_state h'>状态：
+                  <view class='order_state_text'>待支付</view>
+                </view>
+                <view class='order_state_pay h'>总价：
+                  <view class='order_state_pay_text'>￥{{wait_pay_list[i].totalPrice}}</view>
+                </view>
+                <view class='goto_pay c' bindtap='goto_wait_order_detailHandle' data-num='{{i}}'>去支付</view>
               </view>
-              <view class='order_state_pay h'>总价：
-                <view class='order_state_pay_text'>￥{{wait_pay_list[i].totalPrice}}</view>
-              </view>
-              <view class='goto_pay c' bindtap='goto_wait_order_detailHandle' data-num='{{i}}'>去支付</view>
-            </view>
-            <!--分割细线  -->
-            <view class='interval_line'></view>
-            <!--商品详情  -->
-            <view class='goods_brief_container h' bindtap='goto_wait_order_detailHandle' data-num='{{i}}' >
-              <view class='goods_brief_image d-e'>
-                <image src='{{wait_pay_list[i].thumbLogoUrl}} ' class='d-e'></image>
-              </view>
-              <view class='goods_brief_text_container v d-e'>
-                <view class='goods_brief_text_title d-e'>{{wait_pay_list[i].products[0].productName}}</view>
-                <view class='goods_brief_type_price h d-e' >
+              <!--分割细线  -->
+              <view class='interval_line'></view>
+              <!--商品详情  -->
+              <view class='goods_brief_container h' bindtap='goto_wait_order_detailHandle' data-num='{{i}}' >
+                <view class='goods_brief_image d-e'>
+                  <image src='{{wait_pay_list[i].products[0].thumbImgUrl}} ' class='d-e'></image>
+                </view>
+                <view class='goods_brief_text_container v d-e'>
+                  <view class='goods_brief_text_title d-e'>{{wait_pay_list[i].products[0].productName}}</view>
+                  <view class='goods_brief_type_price h d-e' >
 
-                  <block wx:if="{{false}}">
-                    <view class='goods_brief_type h d-e'>白色</view>
-                  </block>
+                    <block wx:if="{{false}}">
+                      <view class='goods_brief_type h d-e'>白色</view>
+                    </block>
 
-                  <view class='f'></view>
-                  <view class='goods_brief_price_container h d-e' >
-                    <view class='goods_brief_price d-e'>￥{{wait_pay_list[i].products[0].priceSale}}</view>
-                    <view class='goods_brief_num d-e'>x {{wait_pay_list[i].products[0].quantity}}</view>
+                    <view class='f'></view>
+                    <view class='goods_brief_price_container h d-e' >
+                      <view class='goods_brief_price d-e'>￥{{wait_pay_list[i].products[0].priceSale}}</view>
+                      <view class='goods_brief_num d-e'>x {{wait_pay_list[i].products[0].quantity}}</view>
+                    </view>
                   </view>
                 </view>
               </view>
-            </view>
-            <!--粗分割线  -->
-            <view class='order_interval d-e'></view>
-          </block>
+              <!--粗分割线  -->
+              <view class='order_interval d-e'></view>
+            </block>
 
-      </block>
+        </block>
 
-    <!--底部空行  -->
-    <view class='bottom'></view>
+      <!--底部空行  -->
+      <view class='bottom'></view>
+      </view>
+    </scroll-view>    
+  </block>
+  <!--没有订单的时候显示  -->
+  <block wx:if="{{wait_pay_list.length==0 || wait_pay_list==[]}}">
+    <view class='f c' >
+      <view class='empty_image c'>
+        <image src='/assets/index/no_order.png'></image>
+        <view class='empty_image_text c'>暂无相关订单</view>
+      </view>
     </view>
-  </scroll-view>    
+  </block>
+
 </block>
 
 
@@ -262,60 +287,72 @@
 
 <!--待收货状态  -->
 <block wx:if="{{choose_type=='2'}}">
-  <scroll-view class="display_scrollbar" scroll-y="{{true}}" >
-    <view class="scroll_window">
-      <!--待发货状态  -->
-      <!--订单状态  -->
-      <block wx:for="{{has_pay_list}}" wx:key="*this"  wx:for-index="i">
-          
+  <block wx:if="{{has_pay_list.length!=0 && has_pay_list!=[]}}">
+    <scroll-view class="display_scrollbar" scroll-y="{{true}}" >
+      <view class="scroll_window">
+        <!--待发货状态  -->
+        <!--订单状态  -->
+        <block wx:for="{{has_pay_list}}" wx:key="*this"  wx:for-index="i">
+            
 
 
-          <!--状态是已经支付的-->
-          <block wx:if="{{has_pay_list[i].process == 2}}"> 
-            <view class='order_state_container v'>
-              <view class='order_state h'>状态：
-                <view class='order_state_text'>待发货</view>
+            <!--状态是已经支付的-->
+            <block wx:if="{{has_pay_list[i].process == 2}}"> 
+              <view class='order_state_container v'>
+                <view class='order_state h'>状态：
+                  <view class='order_state_text'>待发货</view>
+                </view>
+                <view class='order_state_pay h'>总价：
+                  <view class='order_state_pay_text'>￥{{has_pay_list[i].totalPrice}}</view>
+                </view>
               </view>
-              <view class='order_state_pay h'>总价：
-                <view class='order_state_pay_text'>￥{{has_pay_list[i].totalPrice}}</view>
-              </view>
-            </view>
-            <!--分割细线  -->
-            <view class='interval_line'></view>
-            <!--商品详情  -->
-            <view class='goods_brief_container h' bindtap='goto_has_order_detailHandle' data-num='{{i}}' >
-              <view class='goods_brief_image d-e'>
-                <image src='{{has_pay_list[i].thumbLogoUrl}} ' class='d-e'></image>
-              </view>
-              <view class='goods_brief_text_container v d-e'>
-                <view class='goods_brief_text_title d-e'>{{has_pay_list[i].products[0].productName}}</view>
-                <view class='goods_brief_type_price h d-e' >
-                  
-                  <block wx:if="{{false}}">
-                    <view class='goods_brief_type h d-e'>白色</view>
-                  </block>
-                  
-                  <view class='f'></view>
-                  <view class='goods_brief_price_container h d-e' >
-                    <view class='goods_brief_price d-e'>￥{{has_pay_list[i].products[0].priceSale}}</view>
-                    <view class='goods_brief_num d-e'>x {{has_pay_list[i].products[0].quantity}}</view>
+              <!--分割细线  -->
+              <view class='interval_line'></view>
+              <!--商品详情  -->
+              <view class='goods_brief_container h' bindtap='goto_has_order_detailHandle' data-num='{{i}}' >
+                <view class='goods_brief_image d-e'>
+                  <image src='{{has_pay_list[i].products[0].thumbImgUrl}} ' class='d-e'></image>
+                </view>
+                <view class='goods_brief_text_container v d-e'>
+                  <view class='goods_brief_text_title d-e'>{{has_pay_list[i].products[0].productName}}</view>
+                  <view class='goods_brief_type_price h d-e' >
+                    
+                    <block wx:if="{{false}}">
+                      <view class='goods_brief_type h d-e'>白色</view>
+                    </block>
+                    
+                    <view class='f'></view>
+                    <view class='goods_brief_price_container h d-e' >
+                      <view class='goods_brief_price d-e'>￥{{has_pay_list[i].products[0].priceSale}}</view>
+                      <view class='goods_brief_num d-e'>x {{has_pay_list[i].products[0].quantity}}</view>
+                    </view>
                   </view>
                 </view>
               </view>
-            </view>
-            <!--粗分割线  -->
-            <view class='order_interval'></view>
-          </block> 
+              <!--粗分割线  -->
+              <view class='order_interval'></view>
+            </block> 
+
+            
 
           
+        </block>
 
-        
-      </block>
+      <!--底部空行  -->
+      <view class='bottom'></view>
+      </view>
+    </scroll-view>
+  </block>
 
-    <!--底部空行  -->
-    <view class='bottom'></view>
+  <!--没有订单的时候显示  -->
+  <block wx:if="{{has_pay_list.length==0 || has_pay_list==[]}}">
+    <view class='f c' >
+      <view class='empty_image c'>
+        <image src='/assets/index/no_order.png'></image>
+        <view class='empty_image_text c'>暂无相关订单</view>
+      </view>
     </view>
-  </scroll-view>
+  </block>
 </block>
 
 
@@ -327,12 +364,3 @@
 
 
 
-<!--没有订单的时候显示  -->
-<block wx:if="{{order_list==[]}}">
-  <view class='f c' >
-    <view class='empty_image c'>
-      <image src='/assets/index/no_order.png'></image>
-      <view class='empty_image_text c'>暂无相关订单</view>
-    </view>
-  </view>
-</block>

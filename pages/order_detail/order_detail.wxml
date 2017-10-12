@@ -132,8 +132,8 @@
 
 <!--商品详情  -->
 <view class='goods_brief_container h' >
-  <view class='goods_brief_image' bindtap='replace_orderHandle' >
-    <image src='/assets/index/hardware_mid.png'></image>
+  <view class='goods_brief_image' bindtap='jump_to_goods_Handle' >
+    <image src='{{order_detail.products[0].thumbImgUrl}}'></image>
   </view>
   <view class='goods_brief_text_container v'>
     <view class='goods_brief_text_title'>{{order_detail.products[0].productName}}</view>

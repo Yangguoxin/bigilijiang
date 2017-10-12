@@ -158,7 +158,7 @@ Page({
         var count = 0;
         for (var i = 0; i < tempFilePaths.length; i++){
           wx.uploadFile({
-            url: 'http://ljdy.dxoo.cn/upload.do', //仅为示例，非真实的接口地址
+            url: 'https://image.dxoo.cn/upload.do', //仅为示例，非真实的接口地址
             filePath: tempFilePaths[i],
             name: 'file',
             success: function (res) {

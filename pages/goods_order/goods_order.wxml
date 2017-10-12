@@ -32,7 +32,7 @@
 <!--商品简介  -->
 <view class='goods_brief_container h'>
   <view class='goods_brief_image'>
-    <image src='{{goods_detail.product.thumbImgUrl}}'></image>
+    <image src='{{goods_detail.product.imgList[0].thumbImgPath}}'></image>
   </view>
   <view class='goods_brief_text_container v'>
     <view class='goods_brief_text_title'>{{goods_detail.product.name}}</view>

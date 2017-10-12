@@ -69,6 +69,12 @@ Page({
       url: '../merchant_detail/merchant_detail'
     })
   },
+  jump_to_goods_Handle: function () {
+    var tmp = this.data.order_detail.products[0].productId;
+    wx.redirectTo({
+      url: '../merchant_detail/merchant_detail'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -22,7 +22,7 @@
         <view class="title f">{{brief_list.product.name}}</view>
         <view class="price">￥{{brief_list.product.defaultPrice}}</view>
       </view>
-      <view class="title_discription">{{brief_list.product.buyInfo}}</view>
+      <view class="title_discription">{{brief_list.product.packageName}}</view>
     </view>
     <!--分割线  -->
     <view class="line"></view>
@@ -126,7 +126,7 @@
         <view class="commetHandle c">查看全部评价</view>
       </view>
     </block>
-  <block wx:if="{{second_page}}"> 
+  <!-- <block wx:if="{{second_page}}">  -->
   <!--分割线  -->
   <view class="interval"></view>
   <!--商品信息条  -->
@@ -161,48 +161,19 @@
         <!--普通表项  -->
         <view class="table_container h">
           <view class="table_title c">商品编号</view>
-          <view class="table_content c">2248768</view>
-        </view>
-        <!--标题表项  -->
-        <view class="title_container_paking h">监测功能</view>
-        <!--普通表项  -->
-        <view class="table_container h">
-          <view class="table_title c">测量范围</view>
-          <view class="table_content c">8KG-150KG</view>
-        </view>
-        <!--普通表项  -->
-        <view class="table_container h">
-          <view class="table_title c">测量方法</view>
-          <view class="table_content c">站立</view>
-        </view>
-        <!--普通表项  -->
-        <view class="table_container h">
-          <view class="table_title c">精度</view>
-          <view class="table_content c">0.1</view>
-        </view>
-        <!--标题表项  -->
-        <view class="title_container_paking h">规格</view>
-        <!--普通表项  -->
-        <view class="table_container h">
-          <view class="table_title c">机身尺寸</view>
-          <view class="table_content c">260*260*20mm</view>
-        </view>
-        <!--普通表项  -->
-        <view class="table_container h">
-          <view class="table_title c">机身重量</view>
-          <view class="table_content c">1.2kg</view>
+          <view class="table_content c">541</view>
         </view>
         <!--标题表项  -->
         <view class="title_container_paking h">主体</view>
         <!--普通表项  -->
         <view class="table_container h">
           <view class="table_title c">型号</view>
-          <view class="table_content c">MINI</view>
+          <view class="table_content c">智能体脂秤S7</view>
         </view>
         <!--普通表项  -->
         <view class="table_container h">
           <view class="table_title c">品牌</view>
-          <view class="table_content c">斐讯PICOOC</view>
+          <view class="table_content c">斐讯PHICOMM</view>
         </view>
         <!--普通表项  -->
         <view class="table_container h">
@@ -213,13 +184,75 @@
         <view class="table_container h">
           <view class="table_title c">适用范围</view>
           <view class="table_content c">家用式</view>
-        </view>        
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">操作系统</view>
+          <view class="table_content c">支持Android4.4及IOS8.0以上</view>
+        </view>
+        <!--标题表项  -->
+        <view class="title_container_paking h">监测功能</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">监测内容</view>
+          <view class="table_content c">体重、BMI、体脂、内脏脂肪等</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">测量范围</view>
+          <view class="table_content c">5KG-150KG</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">测量方法</view>
+          <view class="table_content c">站立</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">精度</view>
+          <view class="table_content c">0.05kg</view>
+        </view>
+        <!--标题表项  -->
+        <view class="title_container_paking h">规格</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">机身尺寸</view>
+          <view class="table_content c">330*280*15mm</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">机身重量</view>
+          <view class="table_content c">2kg</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">屏幕尺寸</view>
+          <view class="table_content c">85.2*32.2mm</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">屏幕材质</view>
+          <view class="table_content c">LED隐藏式背光显示</view>
+        </view>
+        
         <!--标题表项  -->
         <view class="title_container_paking h">连接方式</view>
         <!--普通表项  -->
         <view class="table_container h">
-          <view class="table_title c">蓝牙</view>
-          <view class="table_content c">4.0</view>
+          <view class="table_title c">WIFI</view>
+          <view class="table_content c">2.4GWIFI</view>
+        </view>
+        <!--标题表项  -->
+        <view class="title_container_paking h">其他参数</view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">电源</view>
+          <view class="table_content c">2400mAh锂电池</view>
+        </view>
+        <!--普通表项  -->
+        <view class="table_container h">
+          <view class="table_title c">待机时长</view>
+          <view class="table_content c">充电一次待机一年</view>
         </view>         
       </view>
     </view>
@@ -240,7 +273,7 @@
       </view>
       <!--清单内容  -->
       <view class="paking_content_container v">
-        <view class="paking_content">斐讯智能体脂秤x1、说明书x1、AAA电池x3、保修卡x1</view>
+        <view class="paking_content">斐讯智能体脂秤x1、手持电极x1、手持电极连接线x1、充电线x1、三包凭证x1、说明书x1、华夏万家小助手卡片x1</view>
       </view>
     </view>
     
@@ -259,14 +292,14 @@
       <!--清单内容  -->
       <view class="paking_content_container v">
         <view class="paking_content">本产品全国联保，享受三包服务，质保期为：一年质保</view>
-        <view class="paking_content">售后服务电话：400-400-4024</view>
-        <view class="paking_content">品牌官网地址：http://www.tiziyi.com</view>
+        <view class="paking_content">售后服务电话：400-756-7657</view>
+        <view class="paking_content">品牌官网地址：http://www.phicomm.com/</view>
       </view>
     </view>
 
 
     <!--价格说明  -->
-    <view class="paking_container v" >
+     <!-- <view class="paking_container v" >
       <view class="paking_title_container h h-t">
         <view class="line_left">
           <image src="/assets/index/left_line.png"></image>
@@ -275,20 +308,19 @@
         <view class="line_right">
           <image src="/assets/index/right_line.png"></image>
         </view>
-      </view>
-      <!--清单内容  -->
-      <view class="paking_content_container v">
-        <view class="paking_content">1、斐讯智能体脂秤特惠价是您最终的购买价</view>
-        <view class="paking_content">2、斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价</view>
-        <view class="paking_content">3、斐讯智能体脂秤特惠价是您最终的购买价斐讯智能体脂秤特惠价是您最终的购买价</view>
-      </view>
-    </view>
+      </view> 
+       <view class="paking_content_container v">
+        <view class="paking_content">1、</view>
+        <view class="paking_content">2、</view>
+        <view class="paking_content">3、</view>
+      </view> 
+    </view> -->
 
   </block>
     <!--购买按钮  -->
     <!--底部空间  --> 
     
- </block> 
+ <!-- </block>  -->
 <view class="bottom"></view> 
   </view> 
 </scroll-view>

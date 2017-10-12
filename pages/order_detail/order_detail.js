@@ -13,31 +13,59 @@ Page({
   },
   cancel_orderHandle:function(){
     var self = this;
-    wx.request({
-      url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("order.co", {
-        "userId": app.globalData.userId,
-        "orderId": app.globalData.global_order_id
-      }, true),
-      method: "POST",
-      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+    wx.showModal({
+      title: '提示',
+      content: '确认取消',
       success: function (res) {
-        if (res.statusCode == 200) {
-          var back = res.data;
-          console.log(back)
-          self.onShow();
-        }
-        else {
-          //请求出错了
+        if (res.confirm) {
+            wx.request({
+              url: app.globalData.global_lijiang_Url,
+              data: requestdao.setParamsData("order.co", {
+                "userId": app.globalData.userId,
+                "orderId": app.globalData.global_order_id
+              }, true),
+              method: "POST",
+              header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  app.globalData.global_order_list_flash = "yes";
+                  var back = res.data;
+                  console.log(back)
+                  self.onShow();
+                  setTimeout(function () {
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  }, 1000)
+                  
+                }
+                else {
+                  //请求出错了
 
-        }
+                }
 
+              }
+            })
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },
+  goto_comment: function (e) {
+    app.globalData.global_productId_id = this.data.order_detail.products[0].id;
+    app.globalData.global_sellerId = this.data.order_detail.sellerId;
+    app.globalData.global_productId = this.data.order_detail.products[0].productId;
+      console.log(app.globalData.global_productId);
+      wx.navigateTo({
+        url: '../write_goods_comments/wirte_goods_comments'
+      })
+    
+  },
   replace_orderHandle:function(){
     var tmp = this.data.order_detail.products[0].productId;
-    wx.redirectTo({
+    wx.reLaunch({
       url: '../merchant_detail/merchant_detail'
     })
   },
@@ -104,23 +132,28 @@ Page({
                   wx.showToast({
                     title: '支付成功',//这里打印出报名成功
                     image: '/assets/index/success.jpg',
-                    duration: 1000
+                    duration: 300
                   })
-                  self.setData({ button_loading: false });
+                  setTimeout(function () {
+                    wx.hideToast()
+                    self.onShow();
+                    self.setData({ button_loading: false });
+                  }, 500)
                 },
                 'fail': function (res) {
                   self.setData({ button_loading: false });
                   console.log(res.errMsg);
                 },
                 'complete': function (res) {
-                  self.setData({ button_loading: false });
-                  if (res.errMsg == "requestPayment:fail cancel") {
-                    wx.showToast({
-                      title: "支付已经取消",
-                      image: '/assets/index/warning.jpg',
-                      duration: 1000
-                    })
-                  }
+                  wx.showToast({
+                    title: "支付已经取消",
+                    image: '/assets/index/warning.jpg',
+                    duration: 300
+                  })
+                  setTimeout(function () {
+                    wx.hideToast()
+                    self.setData({ button_loading: false });
+                  }, 500)
                   console.log(res.errMsg);
                 }
               })
@@ -173,7 +206,51 @@ Page({
       })
     }
   },
+  confirmHandle:function(){
+    var self = this;
+    wx.showModal({
+      title: '提示',
+      content: '确认收货',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.global_lijiang_Url,
+            data: requestdao.setParamsData("order.recei",
+              {
+                "userId": app.globalData.userId,
+                "orderId": self.data.order_detail.id,
+                "orderProductId": self.data.order_detail.products[0].productId
+              }
+              , true),
+            method: "POST",
+            header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+            success: function (res) {
+              if (res.statusCode == 200) {
+                app.globalData.global_order_list_flash = "yes";
+                var back = res.data;
+                console.log(back)
+                self.onShow();
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000)
+              }
+              else {
+                //请求出错了
 
+              }
+
+            }
+          })
+          console.log('用户点击确定')
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面隐藏
    */

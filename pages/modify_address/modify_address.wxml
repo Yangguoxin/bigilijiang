@@ -92,6 +92,6 @@
     <view class='set_up_address_text d-e'>设为默认地址</view>
   </view>
   <!--确认按钮  -->
-  <button form-type="submit" class="ok_button c" >确认</button>   
+  <button form-type="submit" class="ok_button c {{turn_true == true ? 'd-e':''}}" loading="{{turn_true}}">确认</button>   
 </form>
-  <button bindtap='delete_addressHandle' class="delete_button c" >删除地址</button>
+  <button bindtap='delete_addressHandle' class="delete_button c {{turn_true == true ? 'd-e':''}}" loading="{{turn_true}}">删除地址</button>

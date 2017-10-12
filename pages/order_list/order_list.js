@@ -174,11 +174,6 @@ Page({
       })
     }
   },
-  goto_comment:function(){
-    wx.navigateTo({
-      url: '../write_goods_comments/wirte_goods_comments'
-    })
-  },
   //分页加载
   scroll_page:function(){
     var self = this;
@@ -229,7 +224,49 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    if(app.globalData.global_order_list_flash == "yes"){
+      app.globalData.global_order_list_flash = "no";
+      this.data.order_container = ['all_orders_fix', 'all_orders', 'all_orders'];
+      this.data.order_list = [];
+      var self = this;
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+      //订单列表请求
+      wx.request({
+        url: app.globalData.global_lijiang_Url,
+        data: requestdao.setParamsData("order.l", {
+          "userId": app.globalData.userId,
+          "page": 1,
+          "size": 6,
+        }, true),
+        method: "POST",
+        header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        success: function (res) {
+          if (res.statusCode == 200) {
+            var back = res.data;
+            var order_list_tmp = [];
+            // order_list_tmp[0] = new Array();
+            order_list_tmp[0] = back.orders;
+            wx.hideLoading();
+            self.setData({ 
+              order_container: self.data.order_container,
+              choose_type: "0",
+              order_list: order_list_tmp,
+              page_count:1
+               });
+            console.log(self.data.order_list)
+          }
+          else {
+            //请求出错了
+
+          }
+
+        }
+      })
+
+    }
   },
 
   /**

@@ -18,7 +18,7 @@
     <view class="scroll_window">
       <!--待发货状态  -->
       <!--订单状态  -->
-      <block wx:for="{{order_list}}" wx:key="*this"  wx:for-index="i">
+      <block wx:for="{{order_list}}" wx:key="i"  wx:for-index="i">
         <block wx:for="{{order_list[i]}}" wx:key="id" wx:for-index="j">
           <!--状态是待支付 -->
           <block wx:if="{{order_list[i][j].process == 0}}">
@@ -31,7 +31,7 @@
               <view class='order_state_pay h'>总价：
                 <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
               </view>
-              <view class='goto_pay c' bindtap='goto_payHandle' data-num='{{i}}' data-index='{{j}}'>去支付</view>
+              <view class='goto_pay c' bindtap='goto_order_detailHandle' data-num='{{i}}' data-index='{{j}}'>去支付</view>
             </view>
             <!--分割细线  -->
             <view class='interval_line'></view>
@@ -43,7 +43,11 @@
               <view class='goods_brief_text_container v d-e'>
                 <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
                 <view class='goods_brief_type_price h d-e' >
-                  <view class='goods_brief_type h d-e'>白色</view>
+
+                  <block wx:if="{{false}}">
+                    <view class='goods_brief_type h d-e'>白色</view>
+                  </block>
+                  
                   <view class='f'></view>
                   <view class='goods_brief_price_container h d-e' >
                     <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
@@ -77,7 +81,11 @@
               <view class='goods_brief_text_container v d-e'>
                 <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
                 <view class='goods_brief_type_price h d-e' >
-                  <view class='goods_brief_type h d-e'>白色</view>
+                  
+                  <block wx:if="{{false}}">
+                    <view class='goods_brief_type h d-e'>白色</view>
+                  </block>
+                  
                   <view class='f'></view>
                   <view class='goods_brief_price_container h d-e' >
                     <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
@@ -91,7 +99,7 @@
           </block> 
 
           <!--状态是已经失效的 -->
-          <block wx:if="{{order_list[i][j].process == 6}}">
+          <block wx:if="{{order_list[i][j].process == 1}}">
             <!--待支付状态  -->
             <!--订单状态  -->
             <view class='order_state_container v'>
@@ -112,7 +120,11 @@
               <view class='goods_brief_text_container v d-e'>
                 <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
                 <view class='goods_brief_type_price h d-e' >
-                  <view class='goods_brief_type h d-e'>白色</view>
+
+                  <block wx:if="{{false}}">
+                    <view class='goods_brief_type h d-e'>白色</view>
+                  </block>
+
                   <view class='f'></view>
                   <view class='goods_brief_price_container h d-e' >
                     <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
@@ -126,7 +138,7 @@
           </block>
 
           <!--状态是已经完成的  -->
-          <block wx:if="{{order_list[i][j].process == 1}}">
+          <block wx:if="{{order_list[i][j].process == 6}}">
             <!--已完成状态  -->
             <!--订单状态  -->
             <view class='order_state_container v'>
@@ -136,7 +148,12 @@
               <view class='order_state_pay h'>总价：
                 <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
               </view>
-              <view class='goto_pay c' bindtap='goto_comment'>去评价</view>
+              <block wx:if="{{order_list[i][j].products[0].hasComment == false}}">
+                <view class="goto_pay c " bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">去评价</view>
+              </block>
+              <block wx:if="{{order_list[i][j].products[0].hasComment == true}}">
+                <view class="goto_pay c d-e" bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">已评价</view>
+              </block>
             </view>
             <!--分割细线  -->
             <view class='interval_line'></view>
@@ -148,7 +165,11 @@
               <view class='goods_brief_text_container v d-e'>
                 <view class='goods_brief_text_title d-e'>{{order_list[i][j].products[0].productName}}</view>
                 <view class='goods_brief_type_price h d-e' >
-                  <view class='goods_brief_type h d-e'>白色</view>
+                  
+                  <block wx:if="{{false}}">
+                    <view class='goods_brief_type h d-e'>白色</view>
+                  </block>
+
                   <view class='f'></view>
                   <view class='goods_brief_price_container h d-e' >
                     <view class='goods_brief_price d-e'>￥{{order_list[i][j].products[0].priceSale}}</view>
@@ -199,7 +220,7 @@
               <view class='order_state_pay h'>总价：
                 <view class='order_state_pay_text'>￥{{wait_pay_list[i].totalPrice}}</view>
               </view>
-              <view class='goto_pay c' bindtap='goto_payHandle' data-num='{{i}}'>去支付</view>
+              <view class='goto_pay c' bindtap='goto_wait_order_detailHandle' data-num='{{i}}'>去支付</view>
             </view>
             <!--分割细线  -->
             <view class='interval_line'></view>
@@ -211,7 +232,11 @@
               <view class='goods_brief_text_container v d-e'>
                 <view class='goods_brief_text_title d-e'>{{wait_pay_list[i].products[0].productName}}</view>
                 <view class='goods_brief_type_price h d-e' >
-                  <view class='goods_brief_type h d-e'>白色</view>
+
+                  <block wx:if="{{false}}">
+                    <view class='goods_brief_type h d-e'>白色</view>
+                  </block>
+
                   <view class='f'></view>
                   <view class='goods_brief_price_container h d-e' >
                     <view class='goods_brief_price d-e'>￥{{wait_pay_list[i].products[0].priceSale}}</view>
@@ -265,7 +290,11 @@
               <view class='goods_brief_text_container v d-e'>
                 <view class='goods_brief_text_title d-e'>{{has_pay_list[i].products[0].productName}}</view>
                 <view class='goods_brief_type_price h d-e' >
-                  <view class='goods_brief_type h d-e'>白色</view>
+                  
+                  <block wx:if="{{false}}">
+                    <view class='goods_brief_type h d-e'>白色</view>
+                  </block>
+                  
                   <view class='f'></view>
                   <view class='goods_brief_price_container h d-e' >
                     <view class='goods_brief_price d-e'>￥{{has_pay_list[i].products[0].priceSale}}</view>

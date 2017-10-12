@@ -95,11 +95,11 @@ Page({
       wx.showToast({
         title: "请填写地址",//这里打印出登录成功
         image: '/assets/index/warning.jpg',
-        duration: 1500
+        duration: 500
       })
       setTimeout(function () {
         wx.hideToast()
-      }, 1500)
+      }, 800)
     }else{
 
       self.setData({ button_loading: true });
@@ -134,22 +134,35 @@ Page({
                 wx.showToast({
                   title: '支付成功',//这里打印出报名成功
                   image: '/assets/index/success.jpg',
-                  duration: 1000
+                  duration: 300
                 })
-                self.setData({ button_loading: false });
+                setTimeout(function () {
+                  wx.hideToast()
+                  wx.redirectTo({
+                    url: '../order_list/order_list'
+                  })
+                  self.setData({ button_loading: false });
+                }, 500)
+                
               },
               'fail': function (res) {
                 self.setData({ button_loading: false });
                 console.log(res.errMsg);
               },
               'complete': function (res) {
-                self.setData({ button_loading: false });
                 if (res.errMsg == "requestPayment:fail cancel") {
                   wx.showToast({
                     title: "支付已经取消",
                     image: '/assets/index/warning.jpg',
-                    duration: 1000
+                    duration: 300
                   })
+                  setTimeout(function () {
+                    wx.hideToast()
+                    wx.redirectTo({
+                      url: '../order_list/order_list'
+                    })
+                    self.setData({ button_loading: false });
+                  }, 500)
                 }
                 console.log(res.errMsg);
               }

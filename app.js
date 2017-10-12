@@ -72,7 +72,12 @@ App({
     //商品信息
     global_goods_detail:null,
     //保存全局的订单id
-    global_order_id:null
+    global_order_id:null,
+    global_order_list_flash:"no",
+    global_order_num:null,
+    global_sellerId:null,
+    global_productId:null,
+    global_productId_id:null
     
   }
 })

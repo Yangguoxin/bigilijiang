@@ -1,4 +1,5 @@
-var app = getApp()
+var app = getApp();
+var requestdao = require('../../dao/requestdao.js');
 // write_comments.js
 Page({
 
@@ -10,7 +11,8 @@ Page({
     score: 0,
     image_Url: null,
     turn_true: false,
-    photos_list:[]
+    photos_list:[],
+    image_array:[]
   },
   change_start: function (e) {
     var num = e.target.dataset.num;
@@ -87,43 +89,62 @@ Page({
       return false;
     } else {
       self.setData({ turn_true: true });
+      var image_string = null;
+      for (var i = 0; i < self.data.image_array.length;i++){
+          if( i==0 ){
+            image_string = self.data.image_array[i];
+          }else{
+            image_string = image_string + ',' + self.data.image_array[i];
+          }
+      }
+      console.log(image_string);
       wx.request({
-        url: app.globalData.global_Url + '/iTour/comment/user/add',
-        data: {
-          userId: app.globalData.userId,
-          merchantId: app.globalData.currmerchantId,
-          score: self.data.score,
-          content: e.detail.value.textarea,
-          time: timestamp,
-          category: app.globalData.category
-
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded'
-        },
+        url: app.globalData.global_lijiang_Url,
+        data: requestdao.setParamsData("comment.i", 
+        { 
+          "userId": app.globalData.userId, 
+          "orderProductId": app.globalData.global_productId_id, 
+          "type": 0, 
+          "sellerId": app.globalData.global_sellerId,
+          "remark": self.data.content,
+          "imgs": image_string,
+          "productId": app.globalData.global_productId,
+          "star": (self.data.score/2)
+        }
+        , true),
+        method: "POST",
+        header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
         success: function (res) {
           if (res.statusCode == 200) {
-
-            app.globalData.jump_to_comments = "ok";
-            wx.navigateBack({
-              delta: 1
+            var back = res.data;
+            console.log(back);
+            wx.showToast({
+              title: '感谢您的提交',
+              image: '/assets/index/success.jpg',
+              duration: 1000,
             })
+            setTimeout(function () {
+              app.globalData.global_order_list_flash = "yes";
+              wx.navigateBack({
+                delta: 1
+              })
+            }, 1000)
             self.setData({ turn_true: false });
-            wx.hideLoading();
           }
           else {
+            //请求出错了
             self.setData({ turn_true: false });
-            //访问出错了
           }
 
         }
-      });
+      })
+      
     }
 
   },
   choose_photosHandle:function(){
     var self = this;
+    this.data.image_array = [];
     wx.chooseImage({
       count: 5, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
@@ -134,17 +155,28 @@ Page({
         self.setData({
           photos_list: tempFilePaths
         });
-
-        wx.uploadFile({
-          url: 'https://image.dxoo.cn/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          success: function (res) {
-            var data = res.data
-            console.log(data);
-            //do something
-          }
-        })
+        var count = 0;
+        for (var i = 0; i < tempFilePaths.length; i++){
+          wx.uploadFile({
+            url: 'http://ljdy.dxoo.cn/upload.do', //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            success: function (res) {
+              var tmpImage = [];
+              var data = res.data
+              data = JSON.parse(data);
+              tmpImage = self.data.image_array;
+              tmpImage[count] = data.file.fileId;
+              self.setData({
+                image_array:tmpImage
+              });
+              count+=1;
+              console.log(data);
+              //do something
+            }
+          })
+        }
+        
 
         console.log(tempFilePaths)
       }
@@ -163,8 +195,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    console.log(app.globalData.currscenery);
   },
 
   /**

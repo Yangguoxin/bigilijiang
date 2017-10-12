@@ -92,5 +92,5 @@
     <view class='set_up_address_text d-e'>设为默认地址</view>
   </view> -->
   <!--确认按钮  -->
-  <button form-type="submit" class="ok_button c" >确认</button>   
+  <button form-type="submit" class="ok_button c {{turn_true == true ? 'd-e':''}}" loading="{{turn_true}}">确认</button>   
 </form>

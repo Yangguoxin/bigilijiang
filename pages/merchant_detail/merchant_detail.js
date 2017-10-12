@@ -157,14 +157,19 @@ Page({
     })
     wx.request({
       url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("comment.l", { "productId": 200, "hasImg": true, "page": 1, "size": 2 }, true),
+      data: requestdao.setParamsData("comment.l", { "productId": 521, "hasImg": true, "page": 1, "size": 4 }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {
         if (res.statusCode == 200) {
-          var back = res.data;
-          self.setData({ comments: back });
-          console.log(self.data.comments);
+          if (res.data.reCode=="00"){
+            var back = res.data;
+            self.setData({ comments: back.comments });
+            console.log(self.data.comments);
+          }else{
+
+          }
+          
         }
         else {
           //请求出错了
@@ -197,6 +202,23 @@ Page({
    */
   onReady: function () {
   
+  },
+  previwe_imageHandle:function(e){
+    
+    var num = e.target.dataset.num;
+    var index = e.target.dataset.index;
+    var image_array = [];
+    console.log(this.data.comments);
+    if(num!=undefined && index!=undefined){
+      for (var i = 0; i < this.data.comments[num].imgList.length; i++){
+        image_array[i] = this.data.comments[num].imgList[i].path
+      }
+      console.log(image_array);
+      wx.previewImage({
+        current: this.data.comments[num].imgList[index].path, // 当前显示图片的http链接
+        urls: image_array // 需要预览的图片http链接列表
+      })
+    }
   },
 
   /**

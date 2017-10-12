@@ -13,7 +13,8 @@ Page({
     check_name_switch:"no",
     check_phone_switch:"no",
     check_address_switch:"no",
-    setup_defualt:0
+    setup_defualt:0,
+    turn_true:false
 
   },
   choose_provinceHandle: function (e) {
@@ -51,6 +52,7 @@ Page({
           wx.hideToast()
         }, 2000)
       }else{
+        self.setData({ turn_true:true });
         wx.request({
           url: app.globalData.global_lijiang_Url,
           data: requestdao.setParamsData("address.i", {
@@ -93,6 +95,7 @@ Page({
                           })
                           setTimeout(function () {
                             wx.hideToast()
+                            self.setData({ turn_true: false });
                             wx.navigateBack({
                               delta: 1
                             });
@@ -102,7 +105,7 @@ Page({
                     }
                     else {
                       //请求出错了
-
+                      self.setData({ turn_true: false });
                     }
 
                   }
@@ -118,6 +121,7 @@ Page({
                   })
                   setTimeout(function () {
                     wx.hideToast()
+                    self.setData({ turn_true: false });
                     wx.navigateBack({
                       delta: 1
                     });
@@ -131,6 +135,7 @@ Page({
                   })
                   setTimeout(function () {
                     wx.hideToast()
+                    self.setData({ turn_true: false });
                     app.globalData.global_add_to_address = "yes";
                     wx.navigateBack({
                       delta: 1
@@ -145,7 +150,7 @@ Page({
             }
             else {
               //请求出错了
-
+              self.setData({ turn_true: false });
             }
 
           }

@@ -86,7 +86,7 @@
 }
 .item_container{
   position: relative;
-  width: 384rpx;
+  width: 404rpx;
   height: 262rpx;
 }
 .item_title{

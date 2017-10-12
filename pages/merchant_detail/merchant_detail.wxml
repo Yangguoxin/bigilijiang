@@ -93,61 +93,39 @@
     <!--空白间隔  -->
     <view class="block_interval"></view>
     <!--评价内容  -->
-    <view class="comment_container v">
-      <view class="head_container h">
-        <view class="head_image">
-           <image src=""></image> 
+    <block wx:for="{{comments}}" wx:key="i"  wx:for-index="i">
+      <view class="comment_container v">
+        <view class="head_container h">
+          <view class="head_image">
+            <image src="{{comments[i].headurl}}"></image> 
+          </view>
+          <view class="nick_name">{{comments[i].userName}}</view>
         </view>
-        <view class="nick_name">大吉大利，今晚吃鸡！</view>
-      </view>
-      <view class="comment">我就是登记卡老师觉得快乐撒娇对了撒即可领导说的就是卡里的撒即可来的时间啊丽江斯柯达</view>
-      <view class='comment_photos_contianer h flow'>
-        <view class='comment_photos'>
-          <image src='/assets/index/hardware_big.png'></image>
-        </view>
-        <view class='comment_photos'>
-          <image src='/assets/index/hardware_big.png'></image>
-        </view>
-        <view class='comment_photos'>
-          <image src='/assets/index/hardware_big.png'></image>
-        </view>
-        <view class='comment_photos'>
-          <image src='/assets/index/hardware_big.png'></image>
-        </view>
-        <view class='comment_photos'>
-          <image src='/assets/index/hardware_big.png'></image>
-        </view>
-        <view class='comment_photos'>
-          <image src='/assets/index/hardware_big.png'></image>
+        <view class="comment">{{comments[i].remark}}</view>
+        <block wx:if="{{comments[i].imgList.length != 0}}" >
+          <view class='comment_photos_contianer h flow'>
+            <block wx:for="{{comments[i].imgList}}" wx:key="j"  wx:for-index="j">
+              <view class='comment_photos' bindtap='previwe_imageHandle' data-num ="{{i}}" data-index="{{j}}">
+                <image class='d-e' src='{{comments[i].imgList[j].thumbImgPath}}'></image>
+              </view>
+            </block>
+          </view>
+        </block>
+        <view class="time_goodstype h">
+          <view class="time">{{comments[i].createTime}}</view>
+          <view class="goodstype">规格：S7标准版</view>
         </view>
       </view>
-      <view class="time_goodstype h">
-        <view class="time">2017-09-09 16:31:31</view>
-        <view class="goodstype">规格：S7标准版</view>
-      </view>
-    </view>
-    <!--分割线  -->
-    <view class="line"></view>
-    <!--评价内容  -->
-    <view class="comment_container v">
-      <view class="head_container h">
-        <view class="head_image">
-           <image src=""></image> 
-        </view>
-        <view class="nick_name">大吉大利，今晚吃鸡！</view>
-      </view>
-      <view class="comment">我就是登记卡老师觉得快乐撒娇对了撒即可领导说的就是卡里的撒即可来的时间啊丽江斯柯达</view>
-      <view class="time_goodstype h">
-        <view class="time">2017-09-09 16:31:31</view>
-        <view class="goodstype">规格：S7标准版</view>
-      </view>
-    </view>
+    </block>
+    
+    
 
     <!--查看全部评价  -->
-    <view class="commetHandle_container c">
-      <view class="commetHandle c">查看全部评价</view>
-    </view>
-    
+    <block wx:if="{{(comments.length !=0) && (comments != null)}}">
+      <view class="commetHandle_container c">
+        <view class="commetHandle c">查看全部评价</view>
+      </view>
+    </block>
   <block wx:if="{{second_page}}"> 
   <!--分割线  -->
   <view class="interval"></view>

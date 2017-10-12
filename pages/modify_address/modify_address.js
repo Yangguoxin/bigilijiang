@@ -16,8 +16,8 @@ Page({
     setup_defualt: 0,
     defualt_name:null,
     defualt_phone:null,
-    defualt_address:null
-
+    defualt_address:null,
+    turn_true: false
 
   },
   choose_provinceHandle: function (e) {
@@ -54,7 +54,7 @@ Page({
         }, 2000)
       } else {
         var self = this;
-
+        self.setData({ turn_true: true });
         //设置默认地址
         if (self.data.setup_defualt == 1) {
           wx.request({
@@ -95,6 +95,7 @@ Page({
                       })
                       setTimeout(function () {
                         wx.hideToast()
+                        self.setData({ turn_true: false });
                         app.globalData.global_add_to_address = "yes";
                         wx.navigateBack({
                           delta: 1
@@ -120,6 +121,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  self.setData({ turn_true: false });
                   app.globalData.global_add_to_address = "yes";
                   wx.navigateBack({
                     delta: 1
@@ -158,6 +160,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  self.setData({ turn_true: false });
                   app.globalData.global_add_to_address = "yes";
                   wx.navigateBack({
                     delta: 1
@@ -295,7 +298,7 @@ Page({
       content: '是否删除该地址',
       success: function (res) {
         if (res.confirm) {
-
+          self.setData({ turn_true: true });
           //删除地址请求
           wx.request({
             url: app.globalData.global_lijiang_Url,
@@ -317,6 +320,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  self.setData({ turn_true: false });
                   app.globalData.global_add_to_address = "yes";
                   wx.navigateBack({
                     delta: 1
@@ -333,6 +337,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  self.setData({ turn_true: false });
                   app.globalData.global_add_to_address = "yes";
                   wx.navigateBack({
                     delta: 1

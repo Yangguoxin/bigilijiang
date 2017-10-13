@@ -1,7 +1,8 @@
 // me.js
 var app=getApp();
 var logindao = require('../../dao/logindao.js');
-
+var requestdao = require('../../dao/requestdao.js');
+var md5 = require('../../dao/md5.js');
 Page({
 
   /**
@@ -44,8 +45,34 @@ Page({
     })
   },
   button_address:function(){
-    wx.navigateTo({
-      url: '../address/address'
+    wx.request({
+      url: app.globalData.global_lijiang_Url,
+      data: requestdao.setParamsData("user.login", {
+        "phone": 18600000000,
+        "password": md5.md5(123456),
+        "loginType": 1
+      }, true),
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          console.log(res);
+          // var back = res.data;
+          // self.setData({
+          //   order_detail: back.order
+          // });
+          console.log("返回成功")
+        }
+        else {
+          console.log(res)
+        }
+
+      },
+      fail: function (err) {
+        console.log(err)
+      }
+
+
     })
   },
 

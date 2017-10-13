@@ -32,9 +32,9 @@ Page({
     information_array: ["goods_information_fix", "goods_information","goods_information"],
     current_choose:0,
     goods_type_switch:'/assets/index/down.png',
-    goods_num:0,
+    goods_num:1,
     goods_type:['白色'],
-    type_class: ['goods_type']
+    type_class: ['goods_type_choosed']
   },
   scroll_bottom:function(){
     if(this.data.scroll_switch == true){
@@ -157,14 +157,51 @@ Page({
     })
     wx.request({
       url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("comment.l", { "productId": 541, "hasImg": true, "page": 1, "size": 4 }, true),
+      data: requestdao.setParamsData("comment.l", { "productId": 541, "hasImg":true, "page": 1, "size": 2 }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {
         if (res.statusCode == 200) {
           if (res.data.reCode=="00"){
             var back = res.data;
-            self.setData({ comments: back.comments });
+            var comments_tmp = [];
+            comments_tmp = back.comments;
+            console.log();
+            for (var i = 0; i < back.comments.length; i++) {
+              switch (back.comments[i].star * 2) {
+                case 1:
+                  comments_tmp[i].star_list = ["star5.png", "star0.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 2:
+                  comments_tmp[i].star_list = ["star1.png", "star0.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 3:
+                  comments_tmp[i].star_list = ["star1.png", "star5.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 4:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 5:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star5.png", "star0.png", "star0.png"];
+                  break;
+                case 6:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star1.png", "star0.png", "star0.png"];
+                  break;
+                case 7:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star1.png", "star5.png", "star0.png"];
+                  break;
+                case 8:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star0.png"];
+                  break;
+                case 9:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star5.png"];
+                  break;
+                case 10:
+                  comments_tmp[i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star1.png"];
+                  break;
+              }
+            }
+            self.setData({ comments: comments_tmp });
             console.log(self.data.comments);
           }else{
 
@@ -177,6 +214,11 @@ Page({
         }
 
       }
+    })
+  },
+  goto_allcommentsHandle:function(){
+    wx.navigateTo({
+      url: '../all_goods_comments/all_goods_comments'
     })
   },
   choose_typeHandle:function(e){

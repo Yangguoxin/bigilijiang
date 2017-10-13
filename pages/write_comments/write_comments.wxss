@@ -78,7 +78,7 @@ image{
 .section{
   width: 650rpx;
   margin-left: 50rpx;
-  height: 284rpx;
+  height: auto;
 }
 .section textarea{
   width: 650rpx;

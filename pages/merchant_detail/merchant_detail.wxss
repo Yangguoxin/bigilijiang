@@ -49,13 +49,13 @@
   border: 1px solid #F1F1F1;
 }
 .merchant_type{
-  height: 104rpx;
+  height: auto;
   width: 100%;
   padding: 40rpx 40rpx 30rpx 40rpx;
 }
 .merchant_type_text{
   font-size: 28rpx;
-  line-height: 34rpx;
+  /* line-height: 34rpx; */
   color: #000000;
 }
 .merchant_type_image{
@@ -113,16 +113,16 @@
 .tag_container{
   margin-top: 6prx;
   margin-left: 6rpx;
-  margin-right: 6rpx;
+  margin-right: 8rpx;
   margin-bottom: 6rpx;
   border-radius: 6rpx;
   padding: 0rpx 20rpx 0 20rpx;
   width:auto;
-  font-size: 22rpx;
-  line-height: 28rpx;
+  font-size: 22rpx;         
+  /* line-height: 28rpx; */
   color: #757575;
   border:1rpx solid  #3FC8DE;
-  font-family: STHeitiSC-Light;
+   /* font-family: STHeitiSC-Light;  */
 }
 .address_container{
   width: 710rpx;
@@ -475,4 +475,12 @@
 }
 .wxParse_detail text{
   display: none;
+}
+.v1-star image,.v5-d1s image {
+  width: 28rpx;
+  height: 26rpx;
+}
+.v5-d1s{
+  margin-left: 0rpx;
+  margin-bottom: 14rpx;
 }

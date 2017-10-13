@@ -1,8 +1,12 @@
 <!--顶部 -->
 <view class="top"></view>
 <!--标题-->
+<view class="title h h-c">{{goods_detail.productName}}</view>
+<!--间隔-->
+<view class="interval"></view>
+<!--标题-->
 <view class="title_image h h-c">
-  <image src='/assets/index/hardware_mid.png'></image>
+  <image src='{{goods_detail.thumbImgUrl}}'></image>
 </view>
 <!--间隔-->
 <view class="interval"></view>

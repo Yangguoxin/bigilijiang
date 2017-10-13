@@ -9,7 +9,8 @@ Page({
   data: {
     order_detail:null,
     button_loading:false,
-    cancel_button_loading:false
+    cancel_button_loading:false,
+    logistics:null
   },
   cancel_orderHandle:function(){
     var self = this;
@@ -57,6 +58,7 @@ Page({
     app.globalData.global_productId_id = this.data.order_detail.products[0].id;
     app.globalData.global_sellerId = this.data.order_detail.sellerId;
     app.globalData.global_productId = this.data.order_detail.products[0].productId;
+    app.globalData.global_goods_detail = this.data.order_detail.products[0];
       console.log(app.globalData.global_productId);
       wx.navigateTo({
         url: '../write_goods_comments/wirte_goods_comments'
@@ -188,6 +190,10 @@ Page({
   onShow: function () {
     if (app.globalData.global_order_id != null) {
       var self = this;
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
       wx.request({
         url: app.globalData.global_lijiang_Url,
         data: requestdao.setParamsData("order.d", {
@@ -199,6 +205,7 @@ Page({
         success: function (res) {
           if (res.statusCode == 200) {
             var back = res.data;
+            wx.hideLoading();
             self.setData({
               order_detail: back.order
             });
@@ -219,6 +226,10 @@ Page({
       content: '确认收货',
       success: function (res) {
         if (res.confirm) {
+          wx.showLoading({
+            title: '确认中',
+            mask:true
+          })
           wx.request({
             url: app.globalData.global_lijiang_Url,
             data: requestdao.setParamsData("order.recei",
@@ -234,13 +245,16 @@ Page({
               if (res.statusCode == 200) {
                 app.globalData.global_order_list_flash = "yes";
                 var back = res.data;
-                console.log(back)
-                self.onShow();
+                console.log(back);
+                wx.hideLoading();
+                wx.showToast({
+                  title: '成功收货，感谢您！',//这里打印出报名成功
+                  image: '/assets/index/success.jpg',
+                  duration: 300
+                })
                 setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
-                  })
-                }, 1000)
+                  self.onShow();
+                }, 300)
               }
               else {
                 //请求出错了

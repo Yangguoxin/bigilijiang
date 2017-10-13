@@ -111,7 +111,7 @@
 .goods_brief_num{
   margin-left: 20rpx;
   font-size: 28rpx;
-  line-height: 34rpx;
+  /* line-height: 34rpx; */
   color: #4A4A4A;
 }
 .interval_line{

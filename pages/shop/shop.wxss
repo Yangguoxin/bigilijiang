@@ -86,7 +86,7 @@
 }
 .item_container{
   position: relative;
-  width: 404rpx;
+  width: 408rpx;
   height: 262rpx;
 }
 .item_title{
@@ -118,7 +118,7 @@
   /* margin-left: 21rpx;
   margin-top: 20rpx; */
   width: 384rpx;
-  height: 44rpx;
+  height: auto;
 }
 .start_container{
   margin-left: 21rpx;
@@ -128,17 +128,17 @@
 }
 .price{
   font-size: 36rpx;
-  line-height: 54rpx;
+   /* line-height: 54rpx;  */
   color: #3FC8DE;
 }
 .price_symbol{
   font-size: 24rpx;
-  line-height: 36rpx;
+  /* line-height: 36rpx; */
   color: #3FC8DE;
 }
 .price_unit{
   font-size: 24rpx;
-  line-height: 36rpx;
+  /* line-height: 36rpx; */
   color: #3FC8DE;
 }
 .original_price_container{
@@ -146,12 +146,12 @@
 }
 .original_price_titel{
   font-size: 20rpx;
-  line-height: 30rpx;
+  /* line-height: 30rpx; */
   color: #B6B6B6;
 }
 .original_price{
   font-size: 20rpx;
-  line-height: 30rpx;
+  /* line-height: 30rpx; */
   color: #B6B6B6;  
 }
 .v1-star {

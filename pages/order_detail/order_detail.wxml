@@ -1,12 +1,22 @@
 <!--物流查询  -->
 <block wx:if="{{order_detail.process==2}}">
-  <view class='logistics_container h'>
-  <view class='logistics '>货运单号：</view>
-  <view class='logistics_text f'>6222022409003038180</view>
-  <view class='logistics_button c' bindtap='copy_goods_num'>复制</view>
-  </view>
-  <!--粗分割线  -->
-  <view class='order_interval'></view>
+  <block wx:if="{{order_detail.expressNo != ''}}">
+    <view class='logistics_container h'>
+    <view class='logistics '>货运单号：</view>
+    <view class='logistics_text f'>{{order_detail.expressNo}}</view>
+    <view class='logistics_button c' bindtap='copy_goods_num'>复制</view>
+    </view>
+    <!--粗分割线  -->
+    <view class='order_interval'></view>
+  </block>
+  <block wx:else>
+    <view class='logistics_container h'>
+    <view class='logistics '>货运单号：</view>
+    <view class='logistics_text f'>发货中，请耐心等待</view>
+    </view>
+    <!--粗分割线  -->
+    <view class='order_interval'></view>
+  </block>
 </block>
 
 <!--订单状态栏  已经失效-->
@@ -68,8 +78,9 @@
   </view>
   <!--支付按钮  -->
   <view class='goto_pay c' bindtap='confirmHandle'>确认收货</view>
+  <view class='goto_pay_interval'></view>
   <!--取消订单  -->
-  <view class='cancel_order c'>取消订单</view>
+  <!-- <view class='cancel_order c'>取消订单</view> -->
   <!--粗分割线  -->
   <view class='order_interval'></view>
 </block>
@@ -161,7 +172,7 @@
   <!--运费  -->
   <view class='pay_detail_title h'>
     <view class='pay_detail f'>运费：</view>
-    <view class='pay_detail_text'>￥0.00</view>
+    <view class='pay_detail_text'>￥{{order_detail.products[0].postMoney + 0.00}}</view>
   </view>
   <!--优惠金额  -->
   <view class='pay_detail_title h'>
@@ -179,8 +190,9 @@
 </view>
 
 <!--申请售后  -->
-<block wx:if="{{order_detail.process==6}}">
+
+<!-- <block wx:if="{{order_detail.process==6}}">
   <view class='after_sale c'>售后服务</view>
-</block>
+</block> -->
 <!--底部空行  -->
 <view class='bottom'></view>

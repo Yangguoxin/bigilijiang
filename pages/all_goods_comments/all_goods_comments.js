@@ -1,4 +1,5 @@
 // all_comments.js
+var requestdao = require('../../dao/requestdao.js');
 var app = getApp()
 Page({
 
@@ -12,15 +13,11 @@ Page({
     bad_comments: [],
     change_css: ["text_container_fix", "text_container", "text_container", "text_container"],
     choose_mode: 0,
-    user_start_status: [],
-    good_start_status: [],
-    mid_start_status: [],
-    bad_start_status: [],
-    good_time_stamp: [],
-    mid_time_stamp: [],
-    bad_time_stamp: [],
-    time_stamp: [],
-    image_Url: null
+    image_Url: null,
+    comments:null,
+    all_comments_switch:true,
+    all_comments_count:1,
+    page_size:6
   },
   change_bar: function (e) {
     var num = e.target.dataset.num;
@@ -39,75 +36,96 @@ Page({
         }
 
       }
-      console.log(this.data.choose_mode);
-      switch (num) {
+      switch(num){
         case "0":
-          this.setData({ change_css: change_css, choose_mode: num });
-          break;
-
         case "1":
-          for (var n = 0; n < this.data.all_comments.length; n++) {
-            if (this.data.all_comments[n].score > 8) {
-              this.data.good_start_status[index] = this.data.user_start_status[n];
-              this.data.good_time_stamp[index] = this.data.time_stamp[n];
-              tmp_good[index] = this.data.all_comments[n];
-              index++;
-            }
-          }
-          this.setData({
-            change_css: change_css,
-            choose_mode: num,
-            good_comments: tmp_good,
-            good_start_status: this.data.good_start_status,
-            good_time_stamp: this.data.good_time_stamp
-          });
-          console.log(this.data.good_time_stamp);
-          break;
-
         case "2":
-          for (var n = 0; n < this.data.all_comments.length; n++) {
-            if (this.data.all_comments[n].score > 4 && this.data.all_comments[n].score <= 8) {
-              this.data.mid_start_status[index] = this.data.user_start_status[n];
-              this.data.mid_time_stamp[index] = this.data.time_stamp[n];
-              tmp_mid[index] = this.data.all_comments[n];
-              index++;
-            }
-          }
-          this.setData({
-            change_css: change_css,
-            choose_mode: num,
-            mid_comments: tmp_mid,
-            mid_start_status: this.data.mid_start_status,
-            mid_time_stamp: this.data.mid_time_stamp
-          });
-          break;
-
         case "3":
-          for (var n = 0; n < this.data.all_comments.length; n++) {
-            if (this.data.all_comments[n].score <= 4) {
-              this.data.bad_start_status[index] = this.data.user_start_status[n];
-              this.data.bad_time_stamp[index] = this.data.time_stamp[n];
-              tmp_bad[index] = this.data.all_comments[n];
-              index++;
-            }
-          }
-          this.setData({
-            change_css: change_css,
-            choose_mode: num,
-            bad_comments: tmp_bad,
-            bad_start_status: this.data.bad_start_status,
-            bad_time_stamp: this.data.bad_time_stamp
-          });
-          break;
       }
-
-    }
+      this.setData({
+        change_css: change_css,
+        choose_mode:num
+      })
+    }  
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({ image_Url: app.globalData.global_Img_Url });
+    var self = this;
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    wx.request({
+      url: app.globalData.global_lijiang_Url,
+      data: requestdao.setParamsData("comment.l", { "productId": 541, "page": 1, "size": self.data.page_size }, true),
+      method: "POST",
+      header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          if (res.data.reCode == "00") {
+            var back = res.data;
 
+            var comments_tmp = [];
+            comments_tmp[0] = back.comments;
+            console.log();
+            for (var i = 0; i < back.comments.length; i++) {
+              switch (back.comments[i].star * 2) {
+                case 1:
+                  comments_tmp[0][i].star_list = ["star5.png", "star0.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 2:
+                  comments_tmp[0][i].star_list = ["star1.png", "star0.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 3:
+                  comments_tmp[0][i].star_list = ["star1.png", "star5.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 4:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star0.png", "star0.png", "star0.png"];
+                  break;
+                case 5:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star5.png", "star0.png", "star0.png"];
+                  break;
+                case 6:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star1.png", "star0.png", "star0.png"];
+                  break;
+                case 7:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star1.png", "star5.png", "star0.png"];
+                  break;
+                case 8:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star0.png"];
+                  break;
+                case 9:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star5.png"];
+                  break;
+                case 10:
+                  comments_tmp[0][i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star1.png"];
+                  break;
+              }
+            }
+            self.data.comments = [];
+            var change_css_tmp = ["text_container_fix", "text_container", "text_container", "text_container"];
+            self.setData({
+              comments: comments_tmp,
+              change_css: change_css_tmp,
+              choose_mode: 0
+            });
+            wx.hideLoading();
+            console.log(comments_tmp[0]);
+          } else {
+
+          }
+
+        }
+        else {
+          //请求出错了
+
+        }
+
+      }
+    })
   },
 
   /**
@@ -121,72 +139,98 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({ image_Url: app.globalData.global_Img_Url });
-    var self = this;
-    wx.request({
-      url: app.globalData.global_Url + '/iTour/comment/search/merchantId', //仅为示例，并非真实的接口地址
-      data: {
-        merchantId: app.globalData.currmerchantId,
-        category: app.globalData.category
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        if (res.statusCode == 200) {
-          var back = res.data;
-
-          for (var n = 0; n < back.length; n++) {
-            var score_tmp_user;
-            //时间戳转换
-            self.data.time_stamp[n] = new Date(parseInt(back[n].time)).toLocaleDateString()
-            score_tmp_user = parseFloat(back[n].score);
-            score_tmp_user = score_tmp_user.toFixed(0);
-            console.log(score_tmp_user);
-            self.data.user_start_status[n] = new Array();
-            switch (score_tmp_user) {
-              case "1":
-                self.data.user_start_status[n] = ["star5.png", "star0.png", "star0.png", "star0.png", "star0.png"];
-                break;
-              case "2":
-                self.data.user_start_status[n] = ["star1.png", "star0.png", "star0.png", "star0.png", "star0.png"];
-                break;
-              case "3":
-                self.data.user_start_status[n] = ["star1.png", "star5.png", "star0.png", "star0.png", "star0.png"];
-                break;
-              case "4":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star0.png", "star0.png", "star0.png"];
-                break;
-              case "5":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star5.png", "star0.png", "star0.png"];
-                break;
-              case "6":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star1.png", "star0.png", "star0.png"];
-                break;
-              case "7":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star1.png", "star5.png", "star0.png"];
-                break;
-              case "8":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star1.png", "star1.png", "star0.png"];
-                break;
-              case "9":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star1.png", "star1.png", "star5.png"];
-                break;
-              case "10":
-                self.data.user_start_status[n] = ["star1.png", "star1.png", "star1.png", "star1.png", "star1.png"];
-                break;
-            }
-          }
-          self.setData({ all_comments: back, user_start_status: self.data.user_start_status, time_stamp: self.data.time_stamp });
-          console.log(self.data.all_comments);
-        }
-        else {
-          //访问出错了
-        }
-      }
-    });
+    
   },
+  previwe_imageHandle: function (e) {
+    var num = e.target.dataset.num;
+    var index = e.target.dataset.index;
+    var count = e.target.dataset.count;
+    var image_array = [];
+    console.log(this.data.comments);
+    if (num != undefined && index != undefined && count != undefined) {
+      for (var i = 0; i < this.data.comments[num][count].imgList.length; i++) {
+        image_array[i] = this.data.comments[num][count].imgList[i].path
+      }
+      console.log(image_array);
+      wx.previewImage({
+        current: this.data.comments[num][count].imgList[index].path, // 当前显示图片的http链接
+        urls: image_array // 需要预览的图片http链接列表
+      })
+    }
+  },
+  // 全部评论的分页加载
+  scroll_page_all:function(){
+    var self = this;
+    if (self.data.all_comments_switch == true && self.data.comments[self.data.all_comments_count - 1].length == self.data.page_size){
+      self.setData({ all_comments_switch : false});
+      wx.request({
+        url: app.globalData.global_lijiang_Url,
+        data: requestdao.setParamsData("comment.l", { "productId": 541, "page": (self.data.all_comments_count+1), "size": self.data.page_size }, true),
+        method: "POST",
+        header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        success: function (res) {
+          if (res.statusCode == 200) {
+            if (res.data.reCode == "00") {
+              var back = res.data;
+              var comments_tmp = [];
+              comments_tmp = self.data.comments
+              comments_tmp[self.data.all_comments_count] = back.comments;
+              for (var i = 0; i < back.comments.length; i++) {
+                switch (back.comments[i].star * 2) {
+                  case 1:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star5.png", "star0.png", "star0.png", "star0.png", "star0.png"];
+                    break;
+                  case 2:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star0.png", "star0.png", "star0.png", "star0.png"];
+                    break;
+                  case 3:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star5.png", "star0.png", "star0.png", "star0.png"];
+                    break;
+                  case 4:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star0.png", "star0.png", "star0.png"];
+                    break;
+                  case 5:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star5.png", "star0.png", "star0.png"];
+                    break;
+                  case 6:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star1.png", "star0.png", "star0.png"];
+                    break;
+                  case 7:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star1.png", "star5.png", "star0.png"];
+                    break;
+                  case 8:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star0.png"];
+                    break;
+                  case 9:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star5.png"];
+                    break;
+                  case 10:
+                    comments_tmp[self.data.all_comments_count][i].star_list = ["star1.png", "star1.png", "star1.png", "star1.png", "star1.png"];
+                    break;
+                }
+              }
+              var change_css_tmp = ["text_container_fix", "text_container", "text_container", "text_container"];
+              self.setData({
+                all_comments_count: self.data.all_comments_count + 1,
+                comments: comments_tmp,
+                all_comments_switch:true
+              });
+              console.log(self.data.comments);
+            } else {
 
+            }
+
+          }
+          else {
+            //请求出错了
+
+          }
+
+        }
+      })
+
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

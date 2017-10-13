@@ -28,7 +28,7 @@
   color: #000000;
 }
 .route_list_container{
-  height: 226rpx;
+  height: auto;
   width: 100%;
   padding: 20rpx 20rpx 20rpx 20rpx;
 }
@@ -45,7 +45,7 @@
   position: relative;
   margin-left: 20rpx;
   width: 496rpx;
-  height: 186rpx;
+  height: auto;
 }
 .route_discription{
   font-size: 32rpx;
@@ -61,7 +61,7 @@
   -webkit-line-clamp: 2;
 }
 .route_tag{ 
-  width: 430rpx;
+  width: 400rpx;
   height: auto;
 }
 .route_price{
@@ -111,7 +111,7 @@
 }
 .price{
   font-size: 32rpx;
-  line-height: 32rpx;
+  /* line-height: 32rpx; */
   color: #3FC8DE;
 }
 .route_interval{

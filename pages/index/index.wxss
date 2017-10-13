@@ -266,7 +266,7 @@ page, .page-scroll {
 }
 .travel_titel{
   font-size: 34rpx;
-  line-height: 40rpx;
+  /* line-height: 42rpx; */
   color: #030303;
   height: auto;
   width: 570rpx;

@@ -59,7 +59,7 @@
     <view class="line"></view>
     <!--小标签  -->
     <view class="tag h flow">
-      <view class="tag_container">icity发货&g供应商售后</view>
+      <view class="tag_container">icity发货&供应商售后</view>
       <view class="tag_container">免运费</view>
       <view class="tag_container">0元购</view>
       <view class="tag_container">全国联保</view>
@@ -99,7 +99,14 @@
           <view class="head_image">
             <image src="{{comments[i].headurl}}"></image> 
           </view>
-          <view class="nick_name">{{comments[i].userName}}</view>
+          <view class="nick_name f">{{comments[i].userName}}</view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[0]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[1]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[2]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[3]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[4]}}"></image>
+          </view>
         </view>
         <view class="comment">{{comments[i].remark}}</view>
         <block wx:if="{{comments[i].imgList.length != 0}}" >
@@ -116,6 +123,8 @@
           <view class="goodstype">规格：S7标准版</view>
         </view>
       </view>
+      <!--分割线  -->
+      <view class="line"></view>
     </block>
     
     
@@ -123,7 +132,7 @@
     <!--查看全部评价  -->
     <block wx:if="{{(comments.length !=0) && (comments != null)}}">
       <view class="commetHandle_container c">
-        <view class="commetHandle c">查看全部评价</view>
+        <view class="commetHandle c" bindtap='goto_allcommentsHandle'>查看全部评价</view>
       </view>
     </block>
   <!-- <block wx:if="{{second_page}}">  -->

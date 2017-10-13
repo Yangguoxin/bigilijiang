@@ -12,7 +12,8 @@ Page({
     image_Url: null,
     turn_true: false,
     photos_list:[],
-    image_array:[]
+    image_array:[],
+    goods_detail:null
   },
   change_start: function (e) {
     var num = e.target.dataset.num;
@@ -97,6 +98,7 @@ Page({
             image_string = image_string + ',' + self.data.image_array[i];
           }
       }
+      console.log(app.globalData.userId + ',' + app.globalData.global_productId_id + ',' + app.globalData.global_sellerId + ',' + self.data.content + ',' + app.globalData.global_productId);
       console.log(image_string);
       wx.request({
         url: app.globalData.global_lijiang_Url,
@@ -117,19 +119,32 @@ Page({
         success: function (res) {
           if (res.statusCode == 200) {
             var back = res.data;
-            console.log(back);
-            wx.showToast({
-              title: '感谢您的提交',
-              image: '/assets/index/success.jpg',
-              duration: 1000,
-            })
-            setTimeout(function () {
-              app.globalData.global_order_list_flash = "yes";
-              wx.navigateBack({
-                delta: 1
+            console.log(back.reCode);
+            if (back.reCode == "00"){
+              wx.showToast({
+                title: '感谢您的提交',
+                image: '/assets/index/success.jpg',
+                duration: 1000,
               })
-            }, 1000)
-            self.setData({ turn_true: false });
+              setTimeout(function () {
+                app.globalData.global_order_list_flash = "yes";
+                wx.navigateBack({
+                  delta: 1
+                })
+              }, 1000)
+              self.setData({ turn_true: false });
+            }else{
+              wx.showToast({
+                title: '内容有表情包',
+                image: '/assets/index/warning.jpg',
+                duration: 1000,
+              })
+              setTimeout(function () {
+                app.globalData.global_order_list_flash = "yes";
+              }, 1000)
+              self.setData({ turn_true: false });
+            }
+            
           }
           else {
             //请求出错了
@@ -138,26 +153,26 @@ Page({
 
         }
       })
-      
     }
 
   },
   choose_photosHandle:function(){
     var self = this;
+    self.setData({ turn_true: true });
     this.data.image_array = [];
     wx.chooseImage({
       count: 5, // 默认9
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        //返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths
         self.setData({
           photos_list: tempFilePaths
         });
         var count = 0;
         for (var i = 0; i < tempFilePaths.length; i++){
-          wx.uploadFile({
+          const uploadTask = wx.uploadFile({
             url: 'https://image.dxoo.cn/upload.do', //仅为示例，非真实的接口地址
             filePath: tempFilePaths[i],
             name: 'file',
@@ -171,14 +186,16 @@ Page({
                 image_array:tmpImage
               });
               count+=1;
+              if (count == (tempFilePaths.length )) {
+                self.setData({ turn_true: false });
+              }
               console.log(data);
               //do something
             }
-          })
+          })  
         }
         
-
-        console.log(tempFilePaths)
+        
       }
     })
   },
@@ -195,6 +212,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({goods_detail: app.globalData.global_goods_detail});
+    console.log(app.globalData.global_goods_detail)
   },
 
   /**

@@ -21,7 +21,7 @@
 <view class="choose_man_line"></view>
 
 <!--待付款  -->
-<view class="all_orders h" bindtap="">
+<!-- <view class="all_orders h" bindtap="all_orders_Handle">
   <view class="Pending_pay_image d-e">
     <image src="/assets/index/Pending_pay.png" class="d-e"></image>
   </view>
@@ -30,11 +30,11 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<!--分割线  -->
-<view class="choose_man_line"></view>
+
+<view class="choose_man_line"></view> -->
 
 <!--待收货  -->
-<view class="all_orders h" bindtap="">
+<!-- <view class="all_orders h" bindtap="all_orders_Handle">
   <view class="receiving_image d-e">
     <image src="/assets/index/receiving.png" class="d-e"></image>
   </view>
@@ -43,11 +43,11 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<!--分割线  -->
-<view class="choose_man_line"></view>
+
+<view class="choose_man_line"></view> -->
 
 <!--已完成  -->
-<view class="all_orders h" bindtap="">
+<!-- <view class="all_orders h" bindtap="">
   <view class="all_orders_image d-e">
     <image src="/assets/index/complete.png" class="d-e"></image>
   </view>
@@ -56,15 +56,15 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<!--分割线  -->
-<view class="choose_man_line"></view>
+
+<view class="choose_man_line"></view>  -->
 
 
 
 
 
  <!-- 兑奖测试按钮   -->
-<view class="all_orders h" bindtap="button_test">
+<!-- <view class="all_orders h" bindtap="button_test">
   <view class="all_orders_image d-e">
     <image src="/assets/index/all_orders.png" class="d-e"></image>
   </view>
@@ -73,11 +73,11 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<view class="choose_man_line"></view>    
+<view class="choose_man_line"></view>     -->
 
 
 <!-- 新闻测试按钮 -->
-<view class="all_orders h" bindtap="button_news">
+<!-- <view class="all_orders h" bindtap="button_news">
   <view class="all_orders_image d-e">
     <image src="/assets/index/all_orders.png" class="d-e"></image>
   </view>
@@ -86,10 +86,10 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<view class="choose_man_line"></view>    
+<view class="choose_man_line"></view>     -->
 
 <!--地址测试按钮 -->
-<view class="all_orders h" bindtap="button_address">
+<!-- <view class="all_orders h" bindtap="button_address">
   <view class="all_orders_image d-e">
     <image src="/assets/index/all_orders.png" class="d-e"></image>
   </view>
@@ -98,7 +98,7 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<view class="choose_man_line"></view>    
+<view class="choose_man_line"></view>     -->
 
 
 

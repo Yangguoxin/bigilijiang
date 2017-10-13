@@ -52,9 +52,9 @@
 <view class='invoice_container h'>
   <view class='invoice f' >发票信息</view>
   <view class='invoice_text'>暂无发票</view>
-  <view class='invoice_image'>
+  <!-- <view class='invoice_image'>
     <image src='/assets/index/right.png'></image>
-  </view>
+  </view> -->
 </view>
 
 <!--分割线  -->
@@ -64,9 +64,9 @@
 <view class='invoice_container h'>
   <view class='invoice f' >优惠券</view>
   <view class='invoice_text'>无优惠券</view>
-  <view class='invoice_image'>
+  <!-- <view class='invoice_image'>
     <image src='/assets/index/right.png'></image>
-  </view>
+  </view> -->
 </view>
 <!--细线  -->
 <view class='interval_line'></view>
@@ -82,7 +82,7 @@
 <!--运费  -->
 <view class='invoice_container h'>
   <view class='invoice f' >运费</view>
-  <view class='freight'>￥0.00元</view>
+  <view class='freight'>￥0.00</view>
 </view>
 <!--细线  -->
 <view class='interval_line'></view>

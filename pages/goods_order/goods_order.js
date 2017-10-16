@@ -22,6 +22,10 @@ Page({
   onLoad: function (options) {
     var self = this;
     //获取默认的地址
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     wx.request({
       url: app.globalData.global_lijiang_Url,
       data: requestdao.setParamsData("address.gd", {
@@ -37,6 +41,7 @@ Page({
           self.setData({
             defualt_information: back.address
           });
+          wx.hideLoading();
         }
         else {
           //请求出错了

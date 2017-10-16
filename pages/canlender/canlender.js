@@ -1,58 +1,26 @@
-// me.js
-var app=getApp();
-var logindao = require('../../dao/logindao.js');
-var requestdao = require('../../dao/requestdao.js');
-var md5 = require('../../dao/md5.js');
+// pages/canlender/canlender.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    test:null,
-    nickName: null,
-    avatarUrl:null,
-    rsa_test:"test"
+    currMonth:null,
+    currMonthCount:null,
+    mounthFirstday:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    logindao.check_user(res => {
-      this.setData({
-        nickName: app.globalData.nickName,
-        avatarUrl: app.globalData.avatarUrl
-      });
-    })
-    
-    
+    var day = new Date();
+    var currYear = day.getFullYear();
+    var currMonthCount = new Date(currYear, day.getMonth()+1, 0);
+    console.log(currYear);
+    console.log(day.getMonth());
+    this.setData({ currMonthCount: currMonthCount.getDate()})
   },
-  all_orders_Handle:function(){
-    console.log("test");
-    wx.navigateTo({
-      url: '../order_list/order_list'
-    })
-  },
-  button_test:function(){
-    wx.navigateTo({
-      url: '../coupon/pages/confirm/confirm'
-    })
-  },
-  button_news:function(){
-    wx.navigateTo({
-      url: '../news/news'
-    })
-  },
-  button_address:function(){
-    wx.navigateTo({
-      url: '../canlender/canlender'
-    })
-    
-  },
-
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

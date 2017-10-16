@@ -89,7 +89,7 @@
 <view class="choose_man_line"></view>     -->
 
 <!--地址测试按钮 -->
-<!-- <view class="all_orders h" bindtap="button_address">
+<view class="all_orders h" bindtap="button_address">
   <view class="all_orders_image d-e">
     <image src="/assets/index/all_orders.png" class="d-e"></image>
   </view>
@@ -98,7 +98,7 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<view class="choose_man_line"></view>     -->
+<view class="choose_man_line"></view>     
 
 
 

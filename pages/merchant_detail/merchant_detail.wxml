@@ -59,7 +59,6 @@
     <view class="line"></view>
     <!--小标签  -->
     <view class="tag h flow">
-      <view class="tag_container">icity发货&供应商售后</view>
       <view class="tag_container">免运费</view>
       <view class="tag_container">0元购</view>
       <view class="tag_container">全国联保</view>

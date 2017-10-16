@@ -85,7 +85,7 @@ Page({
   },
   copy_goods_num:function(){
     wx.setClipboardData({
-      data: '6222022409003038180',
+      data: self.data.order_detail.expressNo,
       success: function (res) {
 
         wx.showToast({

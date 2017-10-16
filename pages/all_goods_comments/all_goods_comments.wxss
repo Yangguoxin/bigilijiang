@@ -104,16 +104,16 @@
   padding: 20rpx 0rpx 20rpx 0rpx;
 }
 .comment_photos{
-  width: 150rpx;
-  height: 150rpx;
+  width: 106rpx;
+  height: 106rpx;
   margin-left: 10rpx;
   margin-top: 10rpx;
   background-color: #EFEFEF;
   border: 2rpx solid #DFDFDF;
 }
 .comment_photos image{
-  width: 146rpx;
-  height: 146rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 .line{
   width: 100%;

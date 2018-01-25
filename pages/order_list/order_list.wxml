@@ -1,5 +1,4 @@
-<!--顶部空行  -->
-<view class='top_interval'></view>
+
 <!--顶部  -->
 <view class='top_bar h' bindtap='changeHandle'>
   <!--全部订单  -->
@@ -150,7 +149,7 @@
                   <view class='order_state_pay_text'>￥{{order_list[i][j].totalPrice}}</view>
                 </view>
                 <block wx:if="{{order_list[i][j].products[0].hasComment == false}}">
-                  <view class="goto_pay c " bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">去评价</view>
+                  <view class="goto_pay c " bindtap='goto_comment' data-num = "{{i}}" data-index="{{j}}">去评价</view>
                 </block>
                 <block wx:if="{{order_list[i][j].products[0].hasComment == true}}">
                   <view class="goto_pay c d-e" bindtap='goto_order_detailHandle' data-num = "{{i}}" data-index="{{j}}">已评价</view>

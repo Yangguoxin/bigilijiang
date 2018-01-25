@@ -33,7 +33,8 @@ Page({
             "userId": app.globalData.userId,
             "page": 1,
             "size": 20,
-            "orderState":0
+            "orderState":0,
+            "isPost": true
           }, true),
           method: "POST",
           header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
@@ -65,7 +66,8 @@ Page({
             "userId": app.globalData.userId,
             "page": 1,
             "size": 20,
-            "orderState": 2
+            "orderState": 2,
+            "isPost": true
           }, true),
           method: "POST",
           header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
@@ -94,9 +96,60 @@ Page({
           order_container: order_container_tmp,
           choose_type: num
         });
+        //订单列表请求
+        var self = this;
+        wx.showLoading({
+          title: '加载中',
+          mask: true
+        })
+        wx.request({
+          url: app.globalData.global_lijiang_Url,
+          data: requestdao.setParamsData("order.l", {
+            "userId": app.globalData.userId,
+            "page": 1,
+            "size": 6,
+            "isPost": true
+          }, true),
+          method: "POST",
+          header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
+          success: function (res) {
+            if (res.statusCode == 200) {
+              var back = res.data;
+              var order_list_tmp = [];
+              // order_list_tmp[0] = new Array();
+              order_list_tmp[0] = back.orders;
+              wx.hideLoading();
+              self.setData({ 
+                order_list: order_list_tmp,
+                page_count: 1
+                 });
+              console.log(self.data.order_list[0].length)
+            }
+            else {
+              //请求出错了
+
+            }
+
+          }
+        })
       } 
       
       
+    }
+  },
+  goto_comment: function (e) {
+    var num = e.target.dataset.num;
+    var index = e.target.dataset.index;
+
+    if (num != undefined && index != undefined) {
+      app.globalData.global_productId_id = this.data.order_list[num][index].products[0].id;
+      app.globalData.global_sellerId = this.data.order_list[num][index].sellerId;
+      app.globalData.global_productId = this.data.order_list[num][index].products[0].productId;
+      app.globalData.global_goods_detail = this.data.order_list[num][index].products[0];
+      console.log(app.globalData.global_productId);
+      wx.navigateTo({
+        url: '../write_goods_comments/wirte_goods_comments'
+      })
     }
   },
   /**
@@ -116,6 +169,7 @@ Page({
         "userId": app.globalData.userId,
         "page": 1,
         "size": 6,
+        "isPost": true
       }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
@@ -187,6 +241,7 @@ Page({
           "userId": app.globalData.userId,
           "page": (this.data.page_count + 1),
           "size": 6,
+          "isPost": true
         }, true),
         method: "POST",
         header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
@@ -240,6 +295,7 @@ Page({
           "userId": app.globalData.userId,
           "page": 1,
           "size": 6,
+          "isPost": true
         }, true),
         method: "POST",
         header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },

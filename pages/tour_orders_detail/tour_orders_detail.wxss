@@ -1,0 +1,250 @@
+/* pages/tour_order/tour_order.wxss */
+.display_scrollbar{
+  position: absolute;
+  bottom: 0rpx;
+  top: 0rpx;
+  right: 0rpx;
+}
+.scroll_window{
+  width: 100%;
+  height: 100%;
+}
+.goods_name_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.goods_name{
+  font-size: 32rpx;
+  color: #353535;
+  line-height: 48rpx;
+}
+.interval{
+  width: 100%;
+  height: 20rpx;
+  background-color:#EFEFEF;
+}
+.goods_informatin_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.goods_information_title{
+  font-size: 28rpx;
+  color: #757575;
+}
+.goods_information{
+  width: 510rpx;
+  font-size: 26rpx;
+  color: #000000;
+}
+.goods_information_color{
+  width: 510rpx;
+  font-size: 26rpx;
+  color: #3FC8DE;
+}
+.line{
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.empty_person_name{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #9E9E9E;
+}
+.person_name{
+  width: 470rpx;
+  height: auto;
+  /* margin-left: 80rpx; */
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.person_name_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.person_name_title{
+  font-size: 28rpx;
+  color: #757575;
+  line-height: 42rpx;
+}
+.add_person_information_container{
+  height: auto;
+  width: 100%;
+}
+.add_person_information_title{
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 42rpx;
+}
+
+.choose_traveler_contaienr{
+  width: 100%;
+  height: auto;
+}
+.choose_traveler_title{
+  width: 100%;
+  height: auto;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.choose_traveler_button_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  
+}
+.choose_traveler_button{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #757575;
+} 
+.choose_traveler_image{
+  width: 15rpx;
+  height: 24rpx;
+}
+.choose_traveler_image image{
+  width: 15rpx;
+  height: 24rpx;
+}
+.bottom{
+  width: 100%;
+  height: 160rpx;
+}
+.choose_traveler_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+  width: 430rpx;
+}
+.choose_traveler_button_image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.choose_traveler_button_image image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.discount{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #9E9E9E;
+  width: 480rpx;
+}
+.no_choose_traveler_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #9E9E9E;
+  width: 430rpx;
+}
+.order_state_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.order_state{
+  width: auto;
+  height: auto;
+}
+.order_state_title{
+  font-size: 28rpx;
+  color: #979797;
+  line-height: 42rpx;
+}
+.order_state_text{
+  font-size: 28rpx;
+  color: #3FC8DE;
+  line-height: 42rpx;
+}
+.order_state_price{
+  margin-left: 60rpx;
+  font-size: 28rpx;
+  color: #979797;
+  line-height: 42rpx;
+}
+.place_order_container{
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 104rpx;
+}
+.place_order_price_container{
+  width: 510rpx;
+  height: 100%;
+  background-color: #F8F8F8;
+  padding: 0rpx 40rpx 0rpx 40rpx;
+}
+.place_order_price_title{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #9B9B9B;
+}
+.place_order_price{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color:  #3FC8DE;
+}
+.place_order_price_button{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #757575;
+}
+.place_order_price_image{
+  width: 24rpx;
+  height: 15rpx;
+  margin-left: 10rpx;
+}
+.place_order_price_image image{
+  width: 24rpx;
+  height: 15rpx;
+}
+.palce_button{
+  border-radius: 0rpx;
+  width: 240rpx;
+  height: 100%;
+  background-color: #3FC8DE;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  line-height: 54rpx;
+}
+ button::after{
+  border:none;
+}
+.bottom_littel{
+  width: 100%;
+  height: 50rpx;
+}
+.cancel_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.cancel_button{
+  width: 600rpx;
+  height: 88rpx;
+  font-size: 36rpx;
+  color: #979797;
+  line-height: 54rpx;
+  border: 2rpx solid #DFDFDF;
+  border-radius: 10px;
+}
+.comment_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.comment_button{
+  width: 600rpx;
+  height: 88rpx;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  line-height: 54rpx;
+  border: 2rpx solid #DFDFDF;
+  border-radius: 10px;
+  background-color: #3FC8DE;
+}

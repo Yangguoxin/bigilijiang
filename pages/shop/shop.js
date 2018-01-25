@@ -9,16 +9,18 @@ Page({
     discount_route_list:null,
     image_Url:null,
     hot_scenery_list:null,
-    hot_route_list:null
+    hot_route_list:null,
+    group_travel_Id:null,
+    hight_travel_Id:null
   },
   group_tourHandle:function(e){
     var num = e.target.dataset.num;
     console.log(num);
     if(num != undefined){
-      if(num == 1){
+      if (num == app.globalData.global_group_travel_Id){
         app.globalData.global_tour_type = num;
       }
-      if (num == 2) {
+      if (num == app.globalData.global_hight_travel_Id) {
         app.globalData.global_tour_type = num;
       }
       wx.navigateTo({
@@ -193,7 +195,10 @@ Page({
     this.setData({ 
           image_Url: app.globalData.global_Img_Url, 
           hot_scenery_list: this.data.hot_scenery_list, 
-          hot_route_list: this.data.hot_route_list});
+          hot_route_list: this.data.hot_route_list,
+          hight_travel_Id: app.globalData.global_hight_travel_Id,
+          group_travel_Id: app.globalData.global_group_travel_Id
+          });
     var self = this;
     wx.request({
       url: app.globalData.global_Url + '/iTour/route/brief/list', //仅为示例，并非真实的接口地址

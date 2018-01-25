@@ -1,2 +1,119 @@
-<!--pages/canlender/canlender.wxml-->
-<view>{{currMonthCount}}</view>
+<!--套餐类型  -->
+<view class="goods_type_title">已选商品</view>
+<!--套餐容器  -->
+<view class="goods_type_container_title h flow">
+  <view class="goods_type_choosed_title">{{merchant_detail.name}}</view>
+</view>
+<!--分割粗线  -->
+<view class="interval_line"></view>
+<!--出发日期  -->
+<view class="start_date">出发日期</view>
+<!--分隔细线  -->
+<view class="line"></view>
+<!--月份选择  -->
+<view class="month_container h" bindtap='changeMonthHandle'>
+    <view class="{{month_css[0]}}" data-num="0">{{(Month_title)%12==0 ? '12':(Month_title)%12}}月</view>
+    <view class="{{month_css[1]}}" data-num="1">{{(Month_title+1)%12==0 ? '12':(Month_title+1)%12}}月</view>
+    <view class="{{month_css[2]}}" data-num="2">{{(Month_title+2)%12==0 ? '12':(Month_title+2)%12}}月</view>
+</view>
+<!--分隔细线  -->
+<view class="line"></view>
+<!--日历的标题  -->
+<view class="canlender_title_container h">
+  <block  wx:for="{{canlender_title}}" wx:key="i" wx:for-index="i">
+    <view class="clanlender_title">{{canlender_title[i]}}</view>
+  </block>
+</view>
+<!--分隔细线  -->
+<view class="line"></view>
+<!--日历  -->
+<view class="canlender_container h flow" >
+  <block wx:for="{{emptyDay}}" wx:key="j" wx:for-index="j">
+    <view class="emptyDay "></view>
+  </block>
+  <block wx:for="{{canlenderdays}}" wx:key="z" wx:for-index="z">
+    <view class="canlenderdays c ">{{canlenderdays[z].day}}</view>
+  </block>
+  <block wx:for="{{canlenderdays_left}}" wx:key="i" wx:for-index="i">
+    <view class="canlenderdays_left_container h-c " bindtap='chooseHandle' data-num = "{{i}}">
+      <block wx:if="{{canlenderdays_left[i].isLimit==true}}">
+        <block wx:if="{{canlenderdays_left[i].buyQuantity==-1}}">
+          <view class="canlenderdays_left_empty c d-e"></view>
+        </block>
+        <block wx:if="{{canlenderdays_left[i].buyQuantity==0}}">
+          <view class="canlenderdays_left_num c d-e">售罄</view>
+        </block>
+        <block wx:if="{{canlenderdays_left[i].buyQuantity!=0 && canlenderdays_left[i].buyQuantity!=-1}}">
+          <view class="canlenderdays_left_num c d-e">{{canlenderdays_left[i].buyQuantity}}件</view>
+        </block>
+      </block>
+      <block wx:else>
+          <view class="canlenderdays_left_empty c d-e"></view>    
+      </block>
+      
+      <view class="canlenderdays_left c d-e" >
+          <view class="{{canlenderdays_left[i].choose==true?'canlenderdays_left_text_choosed':'canlenderdays_left_text'}} c d-e" >{{canlenderdays_left[i].day}} </view>
+      </view>
+      <view class="canlenderdays_left_price c d-e">￥{{canlenderdays_left[i].defaultPrice}}</view>
+    </view> 
+  </block>
+</view>
+
+<block wx:if="{{merchant_detail.needTourTime == true}}">
+  <!--分割粗线  -->
+  <view class="interval_line"></view> 
+  <!--出发日期  -->
+  <view class="start_date">出行时间</view>
+  <!--出行时间  -->
+  <view class="goods_type_container h flow" bindtap='choose_tour_timeHandle'>
+    <block wx:for="{{tour_list}}" wx:key="i" wx:for-index="i">
+      <view class="{{tour_list[i].isChoosed==true?'goods_type_choosed_fix':'goods_type_choosed'}}" data-num = "{{i}}">{{tour_list[i].time}}</view>
+    </block>
+  </view>
+</block>
+
+<!--分割粗线  -->
+<view class="interval_line"></view> 
+<!--出发日期  -->
+<view class="start_date">购买数量</view>
+<!--分隔细线  -->
+<view class="line"></view> 
+
+<!--购买数量  -->
+<view class="goods_count_container v">
+  <view class="goods_count_person_container h">
+      <view class="goods_count_title f">成人:(￥{{merchant_detail.defaultPrice}})</view>
+      <view class="goods_count_add_reduce h">
+        <view class="goods_count_add c" bindtap='person_reduce'>-</view>
+        <view class="goods_count_count c">{{person_count}}</view>
+        <view class="goods_count_reduce c" bindtap='person_add'>+</view>
+      </view>
+  </view>
+  <!--间隔  -->
+  <block wx:if="{{merchant_detail.isChild == true }}">
+    <view class="goods_count_interval"></view>
+
+    <view class="goods_count_person_container h">
+        <view class="goods_count_title f">儿童:(￥{{merchant_detail.defaultChildPrice}})</view>
+        <view class="goods_count_add_reduce h">
+          <view class="goods_count_add c" bindtap='child_reduce'>-</view>
+          <view class="goods_count_count c">{{child_count}}</view>
+          <view class="goods_count_reduce c" bindtap='child_add'>+</view>
+        </view>
+    </view>
+  </block>
+  
+  
+</view>
+<!--分割粗线  -->
+<view class="interval_line"></view>
+<!--底部  -->
+<view class="bottom"></view>
+<!--购买按钮  -->
+<view class="goto_buy_container h">
+  <view class="goto_buy_price_container h h-c">
+    <view class="goto_buy_price_title">合计：</view>
+    <view class="goto_buy_price">￥{{merchant_detail.defaultChildPrice*child_count+merchant_detail.defaultPrice*person_count}}</view>
+  </view>
+  <view class="goto_buy_button c" bindtap='goto_buy'>立即购买</view>
+</view>

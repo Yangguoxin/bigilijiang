@@ -1,4 +1,5 @@
 // add_information.js
+var requestdao = require('../../dao/requestdao.js');
 var app = getApp();
 Page({
 
@@ -78,8 +79,8 @@ Page({
     self.data.ID_card = e.detail.value.ID_num;
     self.data.user_name = e.detail.value.user_name;
     self.data.telephone_num = e.detail.value.telephone_num;
-    if (self.data.user_name.replace(/\s/g, '') == "" || self.data.telephone_num.replace(/\s/g, '') == ""  ||
-       self.data.user_name == undefined || self.data.telephone_num == undefined) {
+    if (self.data.user_name.replace(/\s/g, '') == "" || self.data.telephone_num.replace(/\s/g, '') == "" || self.data.ID_card.replace(/\s/g, '') == "" ||
+      self.data.user_name == undefined || self.data.telephone_num == undefined || self.data.ID_card == undefined) {
       wx.showToast({
         title: '*内容不能为空',
         image: '/assets/index/warning.jpg',
@@ -88,44 +89,91 @@ Page({
       return false;
     } else {
           //判断电话号码的长度
-      if (self.data.telephone_num.length != 11){
+      if (!(/^[1][3,4,5,7,8][0-9]{9}$/).test(self.data.telephone_num)) {
         wx.showToast({
-          title: '电话号码11位',
+          title: "手机号不正确",//这里打印出登录成功
           image: '/assets/index/warning.jpg',
-          duration: 1000,
+          duration: 1000
         })
-        return false;  
-      }else{
+        setTimeout(function () {
+          wx.hideToast()
+        }, 2000)
+      } else if ((!self.data.ID_card || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i.test(self.data.ID_card))){
+        wx.showToast({
+          title: "身份证错误",//这里打印出登录成功
+          image: '/assets/index/warning.jpg',
+          duration: 1000
+        })
+        setTimeout(function () {
+          wx.hideToast()
+        }, 2000)
+      }
+      else{
         console.log(self.data.user_name, self.data.telephone_num, self.data.ID_card);
         self.setData({ turn_true: true });
         wx.request({
-          url: app.globalData.global_Url + '/iTour/contact/add',
-          data: {
-            userId: app.globalData.userId,
-            name: self.data.user_name,
-            telephone: self.data.telephone_num,
-            identify: self.data.ID_card
-          },
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
+          url: app.globalData.global_lijiang_Url,
+          data: requestdao.setParamsData("contact.i", {
+            "userId": app.globalData.userId,
+            "name": self.data.user_name,
+            "phone": self.data.telephone_num,
+            "identity": self.data.ID_card
+          }, true),
+          method: "POST",
+          header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
           success: function (res) {
             if (res.statusCode == 200) {
+              var back = res.data;
+              console.log(back);
+              if (back.reCode == '00'){
+                  wx.showToast({
+                    title: "添加成功",
+                    image: '/assets/index/success.jpg',
+                    duration: 1000
+                  })
+                  setTimeout(function () {
+                    wx.hideToast()
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                    self.setData({ turn_true: false });
+                  }, 1200)
+              }
+              else if (back.reCode == '06'){
+                  wx.showToast({
+                    title: "联系人已经存在",
+                    image: '/assets/index/warning.jpg',
+                    duration: 1000
+                  })
 
-              app.globalData.global_traveler_flash = "yes";
-              wx.navigateBack({
-                delta: 1
-              })
-              self.setData({ turn_true: false });
+                  setTimeout(function () {
+                    wx.hideToast()
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                    self.setData({ turn_true: false });
+                  }, 1200)    
+              }else{
+                wx.showToast({
+                  title: "添加失败",
+                  image: '/assets/index/warning.jpg',
+                  duration: 1000
+                })
+                setTimeout(function () {
+                  wx.hideToast()
+                  self.setData({ turn_true: false });
+                }, 1200)  
+              }
+              
             }
             else {
-              self.setData({ turn_true: false });
-              //访问出错了
+              //请求出错了
+
             }
 
           }
-        });
+        })
+        
       }
 
     }

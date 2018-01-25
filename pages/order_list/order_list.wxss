@@ -1,6 +1,10 @@
 .display_scrollbar{
-  height: 1060rpx;
-  width: 750rpx;
+  position: absolute;
+  width: 100%;
+  top: 118rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+  left: 0rpx;
 }
 .scroll_window{
 

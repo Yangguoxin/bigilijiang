@@ -37,7 +37,14 @@
     "pages/write_goods_comments/wirte_goods_comments",
     "pages/modify_address/modify_address",
     "pages/all_goods_comments/all_goods_comments",
-    "pages/canlender/canlender"
+    "pages/canlender/canlender",
+    "pages/tour_order/tour_order",
+    "pages/tour_orders_list/tour_orders_list",
+    "pages/tour_orders_detail/tour_orders_detail",
+    "pages/modify_information/modify_information",
+    "pages/test_web/test_web",
+    "pages/match_goods_list/match_goods_list",
+    "pages/match_verify/match_verify"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,30 +1,57 @@
-<block wx:for="{{info}}" wx:key="id" wx:for-index="i">
-  <block wx:if="{{info[i].types == 'text+image'}}">
-    <view class="text_image_news_contain h h-t">
-      <view class="text_image_news_title h">{{info[i].title}}</view>
-      <view class="text_image_news_image">
-        <image src="{{img_Url}}{{info[i].image_url}}"></image>
-      </view>
-    </view>
-  </block>
-  <block wx:else>
-    <view class="image_news_container v">
-      <view class="image_news_title">{{info[i].title}}</view>
-      <view class="image_news_image_container h">
-        <view class="image_news_image">
-          <image src="{{img_Url}}{{info[i].image_url[0]}}"></image>
-        </view>
-        <view class="image_news_image_interval"></view>
-        <view class="image_news_image">
-          <image src="{{img_Url}}{{info[i].image_url[1]}}"></image>
-        </view>
-        <view class="image_news_image_interval"></view>
-        <view class="image_news_image">
-          <image src="{{img_Url}}{{info[i].image_url[2]}}"></image>
-        </view>
-      </view>
-      
-    </view>
-  </block>
-</block>
+
+
+<!--顶部标题栏  -->
+<view class='top_contaienr c'>
+  <view class='top_title_container h' bindtap=''>
+  <view class='top_title'>发现</view>
+  <view class='top_title_interval'>/</view>
+  <view class='top_title'>攻略</view>
+  <view class='top_title_interval'>/</view>
+  <view class='top_title'>商城</view>
+  </view>
+</view>
+<scroll-view class="scroll_display" scroll-y="{{true}}" bindscrolltolower="scorllHandle">
+  <view class="scroll_page">
+    <block wx:for="{{news_list}}" wx:key="id" wx:for-index="i">
+      <block wx:for="{{news_list[i]}}" wx:key="j" wx:for-index="j">
+
+        <block wx:if="{{news_list[i][j].types == 'text+image'}}">
+          <view class="text_image_news_contain h h-t">
+            <view class="text_image_news_title h">{{news_list[i][j].title}}</view>
+            <view class="text_image_news_image">
+              <image src="{{img_Url}}{{news_list[i][j].image_url}}"></image>
+            </view>
+          </view>
+        </block>
+        <block wx:elif="{{news_list[i][j].types == 'image'}}">
+          <view class="image_news_container v">
+            <view class="image_news_title">{{news_list[i][j].title}}</view>
+            <view class="image_news_image_container h">
+              <view class="image_news_image">
+                <image src="{{img_Url}}{{news_list[i][j].image_url[0]}}"></image>
+              </view>
+              <view class="image_news_image_interval"></view>
+              <view class="image_news_image">
+                <image src="{{img_Url}}{{news_list[i][j].image_url[1]}}"></image>
+              </view>
+              <view class="image_news_image_interval"></view>
+              <view class="image_news_image">
+                <image src="{{img_Url}}{{news_list[i][j].image_url[2]}}"></image>
+              </view>
+            </view>  
+          </view>
+        </block>
+        <block wx:else>
+          <view class="image_news_container v">
+            <view class="image_news_title h">{{news_list[i][j].title}}</view>
+            <view class="big_image_news_image">
+              <image src="{{img_Url}}{{news_list[i][j].image_url}}"></image>
+            </view>
+          </view>
+        </block>
+      </block>  
+    </block>
+  </view>
+</scroll-view>
+    
 

@@ -73,7 +73,7 @@ Page({
     //   success: function (res) {
     //     if (res.statusCode == 200) {
     //       var back = res.data;
-
+    //       console.log(back);
     //     for (var i=0 ; i<back.length ; i++){
     //       var callout_tmp = {
     //         content: null,

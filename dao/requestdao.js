@@ -6,7 +6,7 @@ function setParamsData(method, data, isToken) {
   params.method = "mini." + method;
   params.data = dataJson;
   params.deviceType = "3";
-  params.appType = "3";
+  params.appType = "1";
   params.apiVersion = "1.0";
   params.encryptType = "none";
   params.token = "";

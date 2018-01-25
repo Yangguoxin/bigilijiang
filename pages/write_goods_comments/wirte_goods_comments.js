@@ -173,7 +173,7 @@ Page({
         var count = 0;
         for (var i = 0; i < tempFilePaths.length; i++){
           const uploadTask = wx.uploadFile({
-            url: 'https://image.dxoo.cn/upload.do', //仅为示例，非真实的接口地址
+            url: app.globalData.global_upload_url, //仅为示例，非真实的接口地址
             filePath: tempFilePaths[i],
             name: 'file',
             success: function (res) {
@@ -192,10 +192,14 @@ Page({
               console.log(data);
               //do something
             }
+
           })  
         }
         
         
+      },
+      fail:function(res){
+        self.setData({ turn_true: false });
       }
     })
   },

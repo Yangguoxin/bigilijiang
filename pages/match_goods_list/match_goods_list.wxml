@@ -1,0 +1,90 @@
+
+
+<!--标题  -->
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+    <view class="title_text">参赛选手专用通道</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view>
+<!--间隔  -->
+<view class="interval"></view>
+<view class="macth_interval"></view>
+<block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+    <!--线路列表  -->
+  <block wx:if="{{brief_list[i].categoryId == match_type}}">
+    <view class="route_list_container h {{turn_true == true ? 'd-e':''}}" bindtap="match_buyHandle" data-num = "{{i}}" >
+      <view class="route_image d-e">
+        <image class="d-e" src="{{brief_list[i].imgList[0].thumbImgPath}}"></image>
+      </view>
+      <view class="route_discription_container v d-e" >
+        <view class="route_discription f d-e">{{brief_list[i].name}}</view>
+        <!--跟团游  -->
+        <block wx:if="{{tour_type==group_travel_Id}}">
+          <view class="route_tag flow d-e h">
+            <view class="tag_yellow d-e">参赛专享</view>
+            <view class="tag_green d-e">周到</view>
+            <view class="tag_green d-e">品质旅游</view>
+            <view class="tag_green d-e">精品</view>
+          </view>
+        </block>
+        <view class="route_price h d-e">
+          <view class="price_symbol d-e">￥</view>
+          <view class="price d-e">{{brief_list[i].defaultPrice}}</view>
+          <view class="price_unit d-e">/人</view>
+        </view>
+      </view>
+    </view>
+    <!--线路分割线  -->
+    <view class="route_interval"></view>
+  </block>
+</block>
+
+<!--标题  -->
+<view class="title_container h h-c">
+  <view class="title_left">
+    <image src="/assets/index/shop_left.png"></image>
+  </view>
+    <view class="title_text">普通用户通道</view>
+  <view class="title_right">
+    <image src="/assets/index/shop_right.png"></image>
+  </view>
+</view>
+<!--间隔  -->
+<view class="interval"></view>
+<block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+  <block wx:if="{{brief_list[i].categoryId != match_type}}">
+    <view class="route_list_container h" bindtap="buyHandle" data-num = "{{i}}" >
+      <view class="route_image d-e">
+        <image class="d-e" src="{{brief_list[i].imgList[0].thumbImgPath}}"></image>
+      </view>
+      <view class="route_discription_container v d-e" >
+        <view class="route_discription f d-e">{{brief_list[i].name}}</view>
+        <!--跟团游  -->
+        <block wx:if="{{tour_type==group_travel_Id}}">
+          <view class="route_tag flow d-e h">
+            <view class="tag_yellow d-e">当地游</view>
+            <view class="tag_green d-e">周到</view>
+            <view class="tag_green d-e">品质旅游</view>
+            <view class="tag_green d-e">精品</view>
+          </view>
+        </block>
+        <view class="route_price h d-e">
+          <view class="price_symbol d-e">￥</view>
+          <view class="price d-e">{{brief_list[i].defaultPrice}}</view>
+          <view class="price_unit d-e">/人</view>
+        </view>
+      </view>
+    </view>
+    <!--线路分割线  -->
+    <view class="route_interval"></view>
+  </block>
+</block>
+<!--底部  -->
+<view class="bottom"></view>
+
+
+

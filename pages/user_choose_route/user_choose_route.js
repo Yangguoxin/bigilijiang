@@ -26,7 +26,7 @@ Page({
         url: app.globalData.global_Url + '/iTour/user/route/detail/search', //仅为示例，并非真实的接口地址
         data: {
           routeId: app.globalData.choosed_route,
-          userId: app.globalData.userId
+          userId: app.globalData.global_lj_userId
         },
         header: {
           'content-type': 'application/json'
@@ -139,7 +139,7 @@ Page({
       url: app.globalData.global_Url +'/iTour/user/route/detail/search', //仅为示例，并非真实的接口地址
       data: {
         routeId: app.globalData.choosed_route,
-        userId: app.globalData.userId
+        userId: app.globalData.global_lj_userId
       },
       header: {
         'content-type': 'application/json'
@@ -294,7 +294,7 @@ Page({
     wx.request({
       url: app.globalData.global_Url + '/iTour/user/route/detail/modify',
       data: {
-        userId: app.globalData.userId,
+        userId: app.globalData.global_lj_userId,
         routeId: app.globalData.choosed_route,
         detail: json_object_day
       },
@@ -356,7 +356,7 @@ Page({
     wx.request({
       url: app.globalData.global_Url + '/iTour/user/route/detail/modify',
       data: {
-        userId: app.globalData.userId,
+        userId: app.globalData.global_lj_userId,
         routeId: app.globalData.choosed_route,
         detail: json_object_day
       },
@@ -435,7 +435,7 @@ Page({
           wx.request({
             url: app.globalData.global_Url + '/iTour/user/route/brief/delete',
             data: {
-              userId: app.globalData.userId,
+              userId: app.globalData.global_lj_userId,
               routeId: app.globalData.delete_routeId,
               id: app.globalData.delete_id
             },

@@ -1,0 +1,53 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.5.2",
+	"appid": "wx122a174956f794cf",
+	"projectname": "i-Lijiang",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "智能硬件",
+					"pathName": "pages/merchant_detail/merchant_detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "跟团游",
+					"pathName": "pages/group_tour/group_tour",
+					"query": "global_tour_type=180"
+				},
+				{
+					"id": 2,
+					"name": "跟团游",
+					"pathName": "pages/group_tour/group_tour",
+					"query": "global_tour_type=180"
+				},
+				{
+					"id": 3,
+					"name": "跟团游",
+					"pathName": "pages/match_goods_list/match_goods_list",
+					"query": "match_goods=572,573,567,550,557,568,575,576,577,579"
+				}
+			]
+		}
+	}
+}

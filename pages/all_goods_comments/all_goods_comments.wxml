@@ -42,7 +42,7 @@
               </block>
               <view class="time_goodstype h">
                 <view class="time">{{comments[i][z].createTime}}</view>
-                <view class="goodstype">规格：S7标准版</view>
+                <view class="goodstype">产品：{{comments[i][z].productName}}</view>
               </view>
             </view>
             <!--分割线  -->
@@ -94,7 +94,7 @@
                 </block>
                 <view class="time_goodstype h">
                   <view class="time">{{comments[i][z].createTime}}</view>
-                  <view class="goodstype">规格：S7标准版</view>
+                  <view class="goodstype">产品：{{comments[i][z].productName}}</view>
                 </view>
               </view>
               <!--分割线  -->
@@ -148,7 +148,7 @@
                 </block>
                 <view class="time_goodstype h">
                   <view class="time">{{comments[i][z].createTime}}</view>
-                  <view class="goodstype">规格：S7标准版</view>
+                  <view class="goodstype">产品：{{comments[i][z].productName}}</view>
                 </view>
               </view>
               <!--分割线  -->
@@ -203,7 +203,7 @@
                 </block>
                 <view class="time_goodstype h">
                   <view class="time">{{comments[i][z].createTime}}</view>
-                  <view class="goodstype">规格：S7标准版</view>
+                  <view class="goodstype">产品：{{comments[i][z].productName}}</view>
                 </view>
               </view>
               <!--分割线  -->

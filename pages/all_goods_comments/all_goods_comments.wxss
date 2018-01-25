@@ -77,7 +77,14 @@
   margin-left: 20rpx;
   font-size: 24rpx;
   line-height: 36rpx;
+  width: 350rpx;
   color: #848484;
+  display: -webkit-box !important; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 1;
 }
 .commetHandle_container{
   width: 100%;
@@ -120,8 +127,12 @@
   border: 1px solid #F1F1F1;
 }
 .display_scrollbar{
-  height: 1060rpx;
-  width: 750rpx;
+  position: absolute;
+  width: 100%;
+  top: 118rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+  left: 0rpx;
 }
 .v1-star image,.v5-d1s image {
   width: 28rpx;

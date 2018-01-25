@@ -1,4 +1,16 @@
 /* group_tour.wxss */
+
+.display_scrollbar{
+  position: absolute;
+  width: 100%;
+  top: 110rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+  left: 0rpx;
+}
+.scroll_window{
+
+}
 .title_container{
   margin-top:50rpx;
   width: 100%;
@@ -28,8 +40,9 @@
   color: #000000;
 }
 .route_list_container{
-  height: 226rpx;
-  width: 100%;
+  /* height: 226rpx; */
+  height: 100%;
+  width: auto;
   padding: 20rpx 20rpx 20rpx 20rpx;
 }
 .route_image{
@@ -45,7 +58,8 @@
   position: relative;
   margin-left: 20rpx;
   width: 496rpx;
-  height: 186rpx;
+  height: auto;
+  /* height: 186rpx; */
 }
 .route_discription{
   font-size: 32rpx;
@@ -62,7 +76,7 @@
 }
 .route_tag{ 
   margin-top:6rpx;
-  width: 430rpx;
+  width: 400rpx;
   height: auto;
 }
 .route_price{
@@ -97,7 +111,7 @@
   font-size: 22rpx;
   line-height: 28rpx;
   color: rgb(92,201,162);
-  border:1rpx solid rgb(92,201,162);
+  border:2rpx solid rgb(92,201,162);
   
 }
 .price_symbol{

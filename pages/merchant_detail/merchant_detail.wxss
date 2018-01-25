@@ -1,6 +1,5 @@
 /* merchant_detail.wxss */
 @import "../../dao/wxParse/wxParse.wxss";
-
 .swiper_container{
   position: relative;
   width: 750rpx;
@@ -288,8 +287,14 @@
   color:#979797;  
 }
 .display_scrollbar{
-  height: 1206rpx;
-  width: 750rpx;
+  position: absolute;
+  width: 100%;
+  top: 0rpx;
+  bottom: 88rpx;
+  right: 0rpx;
+  left: 0rpx;
+  /* height: 1206rpx;
+  width: 750rpx; */
 }
 .scroll_window{
   height: auto;
@@ -327,7 +332,7 @@
 }
 .bottom{
   width: 750rpx;
-  height: 88rpx;
+  height: 10rpx;
 }
 .frame_container{
   width: 670rpx;

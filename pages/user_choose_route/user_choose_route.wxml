@@ -40,7 +40,7 @@
             <image class="photo d-e" src="{{image_Url}}{{recommend_data[0].scenery[i].imgUrl}}"></image>
             <view class="goods-des d-e">
               <view class="gdes1 d-e">{{recommend_data[0].scenery[i].name}}</view>
-              <view class="gdes3 d-e">{{recommend_data[0].scenery[i].name}}.建议玩半小时</view>
+              <view class="gdes3 d-e">{{recommend_data[0].scenery[i].suggestTime}}</view>
               <view class="gdes2 d-e h">
                 <image class="d-e" src="/assets/index/{{start_status[0][i][0]}}"></image>
                 <image class="d-e" src="/assets/index/{{start_status[0][i][1]}}"></image>
@@ -71,7 +71,12 @@
           <view class="walk_line d-e"></view>
         </view>
         <view class=" f h">
-          <view class="walk_text">距离上一景点：{{distance[0][i]}}公里</view>
+          <block wx:if="{{distance[0][i] == 'NaN'}}">
+            <view class="walk_text">距离上一景点：> 10公里</view>
+          </block>
+          <block wx:else>
+            <view class="walk_text">距离上一景点：{{distance[0][i]}}公里</view>
+          </block>
         </view> 
         <!-- <view class="walk_d h h-c">
           <image class="walk_detail" src="/assets/index/walk_detail.jpg"></image>
@@ -119,7 +124,7 @@
                 <image class="photo d-e" src="{{image_Url}}{{recommend_data[i+1].scenery[j].imgUrl}}"></image>
                 <view class="goods-des d-e">
                   <view class="gdes1 d-e">{{recommend_data[i+1].scenery[j].name}}</view>
-                  <view class="gdes3 d-e">{{recommend_data[i+1].scenery[j].name}}.建议玩半小时</view>
+                  <view class="gdes3 d-e">{{recommend_data[i+1].scenery[j].suggestTime}}</view>
                   <view class="gdes2 d-e h">
                     <image class="d-e" src="/assets/index/{{start_status[i+1][j][0]}}"></image>
                     <image class="d-e" src="/assets/index/{{start_status[i+1][j][1]}}"></image>
@@ -147,7 +152,12 @@
                 <view class="walk_line d-e"></view>
               </view>
               <view class=" f h">
-                <view class="walk_text">距离上一景点：{{distance[i+1][j]}}公里</view>
+                <block wx:if="{{distance[i+1][j] == 'NaN'}}">
+                  <view class="walk_text">距离上一景点：> 10公里</view>
+                </block>
+                <block wx:else>
+                  <view class="walk_text">距离上一景点：{{distance[i+1][j]}}公里</view>
+                </block>
               </view> 
               <!-- <view class="walk_d h h-c">
                 <image class="walk_detail" src="/assets/index/walk_detail.jpg"></image>

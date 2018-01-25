@@ -135,6 +135,10 @@ Page({
   onLoad: function (options) {
     //接口测试
     var self = this;
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     wx.request({
       url: app.globalData.global_lijiang_Url,
       data: requestdao.setParamsData("product.d", { "productId": 541, noNeedPlate: true }, true),  
@@ -143,6 +147,7 @@ Page({
       success: function (res) {
         if (res.statusCode == 200) {
           var back = res.data;
+          wx.hideToast();
           self.setData({ brief_list: back });
           var article = self.data.brief_list.product.content;
           WxParse.wxParse('article', 'html', article, self, 0);
@@ -217,6 +222,7 @@ Page({
     })
   },
   goto_allcommentsHandle:function(){
+    app.globalData.global_comment_id = 541;
     wx.navigateTo({
       url: '../all_goods_comments/all_goods_comments'
     })
@@ -262,7 +268,21 @@ Page({
       })
     }
   },
-
+  preview_goodsHandle: function (e) {
+    var num = e.target.dataset.num;
+    var image_array = [];
+    console.log(this.data.brief_list.product)
+    if (num != undefined) {
+      for (var i = 0; i < this.data.brief_list.product.imgList.length; i++) {
+        image_array[i] = this.data.brief_list.product.imgList[i].path
+      }
+      console.log(image_array);
+      wx.previewImage({
+        current: this.data.brief_list.product.imgList[num].path, // 当前显示图片的http链接
+        urls: image_array // 需要预览的图片http链接列表
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */

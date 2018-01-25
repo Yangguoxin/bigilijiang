@@ -1,0 +1,386 @@
+/* pages/tour_order/tour_order.wxss */
+.display_scrollbar{
+  position: absolute;
+  bottom: 0rpx;
+  top: 0rpx;
+  right: 0rpx;
+}
+.scroll_window{
+  width: 100%;
+  height: 100%;
+}
+.goods_name_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.goods_name{
+  font-size: 32rpx;
+  color: #353535;
+  line-height: 48rpx;
+}
+
+.interval{
+  width: 100%;
+  height: 20rpx;
+  background-color:#EFEFEF;
+}
+.goods_informatin_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.goods_information_title{
+  font-size: 28rpx;
+  color: #757575;
+}
+.goods_information{
+  width: 510rpx;
+  font-size: 26rpx;
+  color: #000000;
+}
+.line{
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.empty_person_name{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #9E9E9E;
+}
+.person_name{
+  width: 470rpx;
+  height: auto;
+  /* margin-left: 80rpx; */
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+}
+.person_tips{
+  margin-top: 20rpx;
+  width: 670rpx;
+  /* margin-left: 80rpx; */
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+}
+.person_name_container{
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.person_name_title{
+  font-size: 28rpx;
+  color: #757575;
+  line-height: 42rpx;
+}
+.add_person_information_container{
+  height: auto;
+  width: 100%;
+}
+.add_person_information_title{
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 42rpx;
+}
+
+.place_order_container{
+  z-index: 50;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 104rpx;
+}
+.place_order_price_container{
+  width: 510rpx;
+  height: 100%;
+  background-color: #F8F8F8;
+  padding: 0rpx 40rpx 0rpx 40rpx;
+}
+.place_order_price_title{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #9B9B9B;
+}
+.place_order_price{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color:  #3FC8DE;
+}
+.place_order_price_button{
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #757575;
+}
+.place_order_price_image{
+  width: 24rpx;
+  height: 15rpx;
+  margin-left: 10rpx;
+}
+.place_order_price_image image{
+  width: 24rpx;
+  height: 15rpx;
+}
+.palce_button{
+  border-radius: 0rpx;
+  width: 240rpx;
+  height: 100%;
+  background-color: #3FC8DE;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  
+
+
+}
+ button::after{
+  border:none;
+}
+.choose_traveler_contaienr{
+  width: 100%;
+  height: auto;
+}
+.choose_traveler_title{
+  width: 100%;
+  height: auto;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #353535;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.choose_traveler_button_container{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  
+}
+.choose_traveler_button{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #757575;
+} 
+.choose_traveler_image{
+  width: 15rpx;
+  height: 24rpx;
+}
+.choose_traveler_image image{
+  width: 15rpx;
+  height: 24rpx;
+}
+.bottom{
+  width: 100%;
+  height: 160rpx;
+}
+.choose_traveler_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #3FC8DE;
+  width: 430rpx;
+}
+.choose_traveler_button_image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.choose_traveler_button_image image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.discount{
+  font-size: 22rpx;
+  line-height: 33rpx;
+  color: #9E9E9E;
+  width: 480rpx;
+}
+.no_choose_traveler_name{
+  font-size: 28rpx;
+  line-height: 42rpx;
+  color: #9E9E9E;
+  width: 430rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*隐藏界面的css  */
+.hiden_page{
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+  z-index: 100;
+}
+.display_scrollbar_hiden{
+  position: absolute;
+  top: 120rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+}
+.person_list_coantainer_hiden{
+  width: 100%;
+  height: 30%;
+  background-color: rgba(87, 86, 85,0.4);
+}
+.person_list_container{
+  width: 100%;
+  height: 70%;
+  background: white;
+}
+.person_list_ok_cancel{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.person_list_cancel{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #FF5F73;
+}
+.person_list_ok{
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #3FC8DE;
+}
+.person_list_add_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.person_list_add_image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.person_list_add_image image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.person_list_add{
+  margin-left: 30rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #3FC8DE;
+}
+.person_list_choose_container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.person_list_choose_title{
+  width: 100%;
+  height: 120rpx;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 36rpx;
+  line-height: 54rpx;
+  color: #000000;
+}
+.person_list_person_container{
+  width: 100%;
+  height: auto;
+}
+.person_list_person_name{
+  margin-left: 40rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #000000;
+}
+.person_list_person_choose{
+  width: 90rpx;
+  height: 90rpx;
+  padding:20rpx 20rpx 20rpx 20rpx; 
+}
+.person_list_person_modify{
+  width: 90rpx;
+  height: 90rpx;
+  padding:20rpx 20rpx 20rpx 20rpx; 
+  font-size: 20rpx;
+  color: #3FC8DE;
+}
+.person_list_person_choose image{
+  width: 32rpx;
+  height: 32rpx;
+}
+.person_list_person_delete{
+  width: 90rpx;
+  height: 90rpx;
+  padding:20rpx 20rpx 20rpx 20rpx; 
+}
+.person_list_person_delete image{
+  width: 29rpx;
+  height: 32rpx;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*隐藏界面2  */
+.hiden_order_detail{
+  position: absolute;
+  top: 0rpx;
+  left: 0rpx;
+  bottom: 0rpx;
+  right: 0rpx;
+  z-index: 100;
+}
+.hiden_order_lucency{
+  width: 100%;
+  height: 40%;
+  background-color: rgba(87, 86, 85,0.4);
+}
+.hiden_order_display{
+  position: relative;
+  width: 100%;
+  height: 60%;
+  background: white;
+}
+.hiden_order_display_name{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 42rpx;
+}
+.hiden_order_display_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.hiden_order_display_title{
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 42rpx;
+}
+.hiden_order_display_price{
+  font-size: 28rpx;
+  color: #353535;
+  line-height: 42rpx;
+}
+.hiden_riding_display_price{
+  width: 670rpx;
+  font-size: 28rpx;
+  color: #3FC8DE;
+  line-height: 42rpx;
+  display: -webkit-box !important; 
+   overflow: hidden;
+   text-overflow: ellipsis;
+   word-break: break-all;
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp: 1;
+}
+  

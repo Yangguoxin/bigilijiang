@@ -46,11 +46,20 @@ Page({
   },
   button_address:function(){
     wx.navigateTo({
-      url: '../canlender/canlender'
+      url: '../test_web/test_web'
     })
     
   },
-
+  button_order:function(){
+    wx.navigateTo({
+      url: '../tour_order/tour_order'
+    })
+  },
+  tour_orders_Handle:function(){
+    wx.navigateTo({
+      url: '../tour_orders_list/tour_orders_list'
+    })
+  },
 
 
 

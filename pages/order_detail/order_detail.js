@@ -145,6 +145,7 @@ Page({
                   setTimeout(function () {
                     wx.hideToast()
                     self.onShow();
+                    app.globalData.global_order_list_flash = "yes";
                     self.setData({ button_loading: false });
                   }, 500)
                 },

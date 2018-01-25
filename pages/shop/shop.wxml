@@ -28,14 +28,14 @@
     </view> 
     <!--跟团游  -->
     <view class="logo_container c">
-      <view class="logo_image" bindtap="group_tourHandle" data-num="1">
+      <view class="logo_image" bindtap="group_tourHandle" data-num="{{group_travel_Id}}">
         <image class="d-e" src="/assets/index/group_tour.png"></image>
       </view>
       <view class="logo_text d-e">当地游</view>
     </view>
     <!--高端游  -->
     <view class="logo_container c">
-      <view class="logo_image" bindtap="group_tourHandle" data-num="2">
+      <view class="logo_image" bindtap="group_tourHandle" data-num="{{hight_travel_Id}}">
         <image class="d-e" src="/assets/index/high_tour.png"></image>
       </view>
       <view class="d-e logo_text">高端游</view>

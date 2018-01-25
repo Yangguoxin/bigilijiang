@@ -8,7 +8,7 @@
       <block wx:for="{{brief_list.product.imgList}}" wx:for-index="i" wx:key="id">
         <swiper-item >
           
-          <view class="swiper_item h" >
+          <view class="swiper_item h" bindtap='preview_goodsHandle' data-num="{{i}}">
             <image mode="aspectFill" src="{{brief_list.product.imgList[i].path}}" class="slide_image d-e"/>
           </view>
         </swiper-item>
@@ -119,7 +119,7 @@
         </block>
         <view class="time_goodstype h">
           <view class="time">{{comments[i].createTime}}</view>
-          <view class="goodstype">规格：S7标准版</view>
+          <view class="goodstype">产品：{{comments[i].productName}}</view>
         </view>
       </view>
       <!--分割线  -->

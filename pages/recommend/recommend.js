@@ -26,11 +26,12 @@ Page({
     app.globalData.category = null;
     app.globalData.currmerchantId = null;
     var day_introduction = app.globalData.global_day_introduction;
-    day_introduction = day_introduction.split("，");
+    day_introduction = day_introduction.split("|");
     console.log(day_introduction);
     this.setData({ 
             image_Url: app.globalData.global_Img_Url,
-            price: app.globalData.route_price
+            price: app.globalData.route_price,
+            day_introduction: day_introduction
      });
     qqmapsdk = new QQMapWX({
       key: 'I6JBZ-NP734-DIFU2-XNDVZ-YJ3PH-VDB62'
@@ -222,7 +223,7 @@ Page({
     wx.request({
       url: app.globalData.global_Url +'/iTour/user/route/brief/add',
       data: {
-          userId  : app.globalData.userId,
+        userId: app.globalData.global_lj_userId,
           routeId : app.globalData.choosed_route
       },
       method: 'POST',

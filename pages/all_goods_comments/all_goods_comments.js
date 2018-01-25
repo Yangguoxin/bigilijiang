@@ -60,7 +60,7 @@ Page({
     })
     wx.request({
       url: app.globalData.global_lijiang_Url,
-      data: requestdao.setParamsData("comment.l", { "productId": 541, "page": 1, "size": self.data.page_size }, true),
+      data: requestdao.setParamsData("comment.l", { "productId": app.globalData.global_comment_id, "page": 1, "size": self.data.page_size }, true),
       method: "POST",
       header: { 'content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       success: function (res) {

@@ -1,1 +1,215 @@
-/* pages/canlender/canlender.wxss */
+.goods_type_title{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+}
+.goods_type_container{
+  height: auto;
+  width: 100%;
+}
+.goods_type_choosed_title{
+  height: auto;
+  width: auto;
+  padding: 8rpx 40rpx 8rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+  background-color: #F2F3F4;
+  border-radius: 6rpx;
+}
+.goods_type_container_title{
+  height: auto;
+  padding: 0rpx 40rpx 40rpx 40rpx;
+  width: 100%;
+}
+.goods_type_choosed{
+  margin-bottom: 30rpx;
+  margin-left: 40rpx;
+  height: auto;
+  width: auto;
+  padding: 8rpx 40rpx 8rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+  background-color: #F2F3F4;
+  border-radius: 6rpx;
+}
+.goods_type_choosed_fix{
+  margin-bottom: 30rpx;
+  margin-left: 40rpx;
+  height: auto;
+  width: auto;
+  padding: 8rpx 40rpx 8rpx 40rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  background-color: #3FC8DE;
+  border-radius: 6rpx;
+}
+.canlender_title_container{
+  width: 100%;
+  height: auto;
+}
+.clanlender_title{
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 26rpx;
+  color: #353535;
+}
+.line{
+  border-bottom: 2rpx solid #F1F1F1;
+}
+.emptyDay{
+  width: 106rpx;
+  height: 120rpx;
+}
+.canlenderdays{
+  width: 106rpx;
+  height: 120rpx;
+  font-size: 30rpx;
+  color: #9B9B9B;
+}
+.canlender_container{
+  width: 100%;
+  height: auto;
+}
+.canlenderdays_left_container{
+  width: 106rpx;
+  height: 120rpx;
+}
+.canlenderdays_left_num{
+  font-size: 24rpx;
+  color: #3FC8DE;
+}
+.canlenderdays_left_empty{
+  width: 100%;
+  height: 38rpx;
+}
+.canlenderdays_left_price{
+  font-size: 20rpx;
+  color: #353535;
+}
+.canlenderdays_left{
+  width: 100%;
+  height: auto;
+  padding: 0rpx 30rpx 0rpx 30rpx;
+}
+.canlenderdays_left_text_choosed{
+  width: 100%;
+  height: auto;
+  background-color: #3FC8DE;
+  font-size: 30rpx;
+  color: #FFFFFF;
+  border-radius: 10rpx;
+}
+.canlenderdays_left_text{
+  width: 100%;
+  height: auto;
+  font-size: 30rpx;
+  color: #353535;
+}
+.interval_line{
+  width: 100%;
+  height: 20rpx;
+  background-color: #EFEFEF;
+}
+.start_date{
+  width: 100%;
+  height: auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+}
+.month_container{
+  width: 100%;
+  height: auto;
+}
+.month_title_choosed{
+  width: auto;
+  height:auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535; 
+  border-bottom:4rpx solid #3FC8DE;
+}
+.month_title{
+  width: auto;
+  height:auto;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  font-size: 28rpx;
+  color: #353535;
+  border-bottom:4rpx solid #F1F1F1;
+}
+.goods_count_container{
+  width: 100%;
+  height: auto;
+  padding: 40rpx 40rpx 40rpx 40rpx;
+}
+.goods_count_person_container{
+  width: 100%;
+  height: auto;
+}
+.goods_count_title{
+  font-size: 28rpx;
+  color: #353535;
+}
+.goods_count_add_reduce{
+  width: auto;
+  height: auto;
+}
+.goods_count_add{
+  width: 56rpx;
+  height: 56rpx;
+  font-size: 30rpx;
+  color: #9B9B9B;
+  background-color: #EDEDED;
+  border-radius: 10rpx;
+}
+.goods_count_count{
+  font-size: 28rpx;
+  width: 76rpx;
+  height: 56rpx;
+  color: #333333;
+}
+.goods_count_reduce{
+  width: 56rpx;
+  height: 56rpx;
+  font-size: 30rpx;
+  color: #353535;
+  background-color: #EDEDED; 
+  border-radius: 10rpx;
+}
+.goods_count_interval{
+  width: 100%;
+  height: 30rpx;
+}
+.goto_buy_container{
+  width: 100%;
+  height: 104rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+}
+.goto_buy_price_container{
+  width: 510rpx;
+  height: 100%;
+  background-color: #F8F8F8;
+}
+.goto_buy_price_title{
+  font-size: 28rpx;
+  color: #9B9B9B;
+}
+.goto_buy_price{
+  font-size: 36rpx;
+  color: #3FC8DE;
+}
+.goto_buy_button{
+  width: 240rpx;
+  height: 100%;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  background-color: #3FC8DE;
+}
+.bottom{
+  width: 100%;
+  height: 150rpx;
+}

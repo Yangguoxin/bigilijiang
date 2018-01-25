@@ -7,14 +7,29 @@ App({
     console.log(num.toFixed(0));
   },
   globalData: {
+    //global_upload_url: "http://10.1.2.247:8686/YYFile/upload.do",
+    global_upload_url: "https://image.dxoo.cn/upload.do",
+    //global_lijiang_Url: "http://51a3b07f.ngrok.io/YYAPI/phone/api.do",
     global_Url: "https://m.natkey.com",
-    global_Img_Url:"https://www.natkey.com",
+    // global_Img_Url:"https://www.natkey.com",
+    global_Img_Url: "https://m.natkey.com",
+    //斐讯商家id
+    global_merchant_Id: 2706,
+    //智能产品
+    global_hardware_Id:null,
+    //跟团游
+    global_group_travel_Id:180,
+    //高端游
+    global_hight_travel_Id:182,
+    //参赛优惠产品
+    global_match_type_Id:184,
     global_lijiang_Url:"https://yunyouapi.dxoo.cn/phone/api.do",
     //global_lijiang_Url:"http://api.dxoo.cn/phone/api.do",
     //global_Url: "http://106.14.5.54",
-    //global_Url: "http://172.17.68.183:8080",
+    //global_Url: "http://172.17.68.126:8080",
     //global_Img_Url: "http://106.14.223.37",
     //global_Url: "http://106.14.223.37",
+    global_lj_userId:null,
     currscenery:null,
     choosed_route:null,
     user_choosed_flag:null,
@@ -78,7 +93,18 @@ App({
     global_order_num:null,
     global_sellerId:null,
     global_productId:null,
-    global_productId_id:null
-    
+    global_productId_id:null,
+    //旅游产品相关全局
+    global_travel_begin:null,
+    global_product_detail:null,
+    global_child_count:null,
+    global_person_count:null,
+    global_tour_productId:null,
+    global_tour_time:null,
+    //评论产品id
+    global_comment_id:null,
+    global_contact_detail:null,
+    //地图标识
+    markers:null
   }
 })

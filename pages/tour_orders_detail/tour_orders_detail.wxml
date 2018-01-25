@@ -1,0 +1,232 @@
+<scroll-view class="display_scrollbar" scroll-y="{{true}}"  >
+   <view class="scroll_window">
+    <!--订单状态  -->
+    <view class="order_state_container h h-c">
+      <view class="order_state h ">
+        <view class='order_state_title'>状态：</view>
+        <block wx:if="{{product_detail.process == 0}}">
+          <view class='order_state_text'>待支付</view>
+        </block>
+        <block wx:if="{{product_detail.process == 1}}">
+          <view class='order_state_text'>已经失效</view>
+        </block>
+        <block wx:if="{{product_detail.process == 2}}">
+          <view class='order_state_text'>待出行</view>
+        </block>
+        <block wx:if="{{product_detail.process == 6}}">
+          <view class='order_state_text'>已完成</view>
+        </block>
+      </view>
+      <view class="order_state_price">总金额：￥{{product_detail.products[0].total}}</view>
+    </view>
+    <!--间隔粗线  -->
+    <view class="interval"></view>
+    <!--产品名称  -->
+    <view class="goods_name_container">
+      <view class="goods_name">{{product_detail.products[0].productName}}</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+    <!--套餐信息  -->
+    <view class="goods_informatin_container h">
+      <view class="goods_information_title f">套餐类型：</view>
+      <view class="goods_information ">{{product_detail.products[0].packageName}}</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+    <!--套餐信息  -->
+    
+    <view class="goods_informatin_container h">
+      <view class="goods_information_title f">出行日期：</view>
+      <view class="goods_information">{{product_detail.products[0].csTime}}</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+    <!--套餐信息  -->
+    <block wx:if="{{product_detail.products[0].tourTime != ''}}">
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">出行时间：</view>
+        <view class="goods_information">{{product_detail.products[0].tourTime}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+    </block>
+
+    <!--套餐信息  -->
+    <view class="goods_informatin_container h">
+      <view class="goods_information_title f">成人：</view>
+      <view class="goods_information">￥{{product_detail.products[0].priceSale}} * {{product_detail.products[0].quantity - product_detail.products[0].childQuantity}}份</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+    <!--套餐信息  -->
+    <block wx:if="{{product_detail.products[0].isChild==true}}">
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">儿童：</view>
+        <view class="goods_information">￥{{product_detail.products[0].childPrice}} * {{product_detail.products[0].childQuantity}}份</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+    </block>
+    <!--间隔粗线  -->
+    <view class="interval"></view>
+
+
+    <!--添加联系人信息 -->
+    <view class="add_person_information_container">
+      <!--标题  -->
+      <view class="add_person_information_title">预定人信息（用于接收订单反馈）</view>
+      <!--细线  -->
+      <view class="line"></view>
+
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">姓名：</view>
+        <view class="goods_information_color">{{product_detail.products[0].linkman.name}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+      
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">手机号码：</view>
+        <view class="goods_information_color">{{product_detail.products[0].linkman.phone}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+
+
+      <block wx:if="{{product_detail.products[0].ridingAddress!=''}}">
+        <!--套餐信息  -->
+        <view class="goods_informatin_container h">
+          <view class="goods_information_title f">乘车地点：</view>
+          <view class="goods_information_color">{{product_detail.products[0].ridingAddress}}</view>
+        </view>
+        <!--细线  -->
+        <view class="line"></view>
+      </block>
+      
+
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">备注：</view>
+        <view class="goods_information_color">{{product_detail.products[0].remark}}</view>
+      </view>
+      <!--间隔粗线  -->
+      <view class="interval"></view>
+          
+    </view>
+    <!--判断是否需要联系人  -->
+    <block wx:if="{{product_detail.products[0].contacts.length!=0 && product_detail.products[0].contacts != null}}">
+      <!--出游人选择  -->
+      <view class="choose_traveler_contaienr v">
+        <view class="choose_traveler_title">出行人信息</view>
+        <!--细线  -->
+        <view class="line"></view>
+        <block wx:for="{{product_detail.products[0].contacts}}" wx:key="i" wx:for-index="i">
+          <!--套餐信息  -->
+          <view class="goods_informatin_container h">
+            <view class="goods_information_title f">出行人：</view>
+            <view class="goods_information_color">{{product_detail.products[0].contacts[i].name}}</view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+          <!--套餐信息  -->
+          <view class="goods_informatin_container h">
+            <view class="goods_information_title f">电话：</view>
+            <view class="goods_information_color">{{product_detail.products[0].contacts[i].phone}}</view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+          <!--套餐信息  -->
+          <view class="goods_informatin_container h">
+            <view class="goods_information_title f">身份证：</view>
+            <view class="goods_information_color">{{product_detail.products[0].contacts[i].idCardNo}}</view>
+          </view>
+          <!--间隔粗线  -->
+          <view class="interval"></view>
+        </block>        
+      </view>
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">儿童：</view>
+        <view class="goods_information_color">{{product_detail.products[0].childQuantity}} 人</view>
+      </view>
+      <!--间隔粗线  -->
+      <view class="interval"></view>
+    </block>
+    
+
+    <!--出游人选择  -->
+    <view class="choose_traveler_contaienr v">
+      <view class="choose_traveler_title">其他</view>
+      <!--细线  -->
+      <view class="line"></view>
+
+
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">订单号：</view>
+        <view class="goods_information ">{{product_detail.orderNo}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">创建时间：</view>
+        <view class="goods_information ">{{product_detail.products[0].createTime}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+
+      <!--套餐信息  -->
+      <block wx:if="{{product_detail.process == 2 || product_detail.process == 6}}">
+        <view class="goods_informatin_container h">
+          <view class="goods_information_title f">支付时间：</view>
+          <view class="goods_information ">{{product_detail.payTime}}</view>
+        </view>
+        <!--细线  -->
+        <view class="line"></view>
+      </block>
+    </view>
+    <!--去支付  -->
+    <block wx:if="{{product_detail.process == 0}}">
+      <view class="place_order_container h">
+        <view class="place_order_price_container h h-c">
+          <view class="place_order_price_title">合计：</view>
+          <view class="place_order_price ">￥{{product_detail.products[0].total}}</view>
+        </view>
+        <button bindtap='goto_pay' class="palce_button c {{pay_loading==true?'d-e':''}}" loading="{{button_loading}}">去付款</button>
+      </view>
+      <!--取消订单按钮  -->
+      <view class="cancel_container c">
+        <view class="cancel_button c" bindtap='cancelHandle'>取消订单</view>
+      </view>
+      <!--间隔粗线  -->
+      <view class="interval"></view>
+      <view class="bottom"></view>
+    </block>
+    <block wx:if="{{product_detail.process == 6}}">
+      <block wx:if="{{(product_detail.products[0].hasComment == false)}}">
+        <!--评价按钮  -->
+        <view class="comment_container c">
+          <view class="comment_button c" bindtap='goto_comment'>去评价</view>
+        </view>        
+      </block>
+      <!--间隔粗线  -->
+      <view class="interval"></view>
+      <view class="bottom_littel"></view>
+    </block>
+    <block wx:if="{{product_detail.process == 1 || product_detail.process == 2}}">
+      <!--间隔粗线  -->
+      <view class="interval"></view>
+      <view class="bottom_littel"></view>
+    </block>
+    
+   </view>
+</scroll-view>

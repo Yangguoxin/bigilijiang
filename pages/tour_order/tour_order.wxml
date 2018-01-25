@@ -1,0 +1,363 @@
+<!--订单确认  -->
+<scroll-view class="display_scrollbar" scroll-y="{{turn_true}}"  >
+   <view class="scroll_window">
+    <!--产品名称  -->
+    <view class="goods_name_container">
+      <view class="goods_name">{{product_detail.name}}</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+    <block wx:if="{{product_detail.packageName!=''}}">
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">套餐类型：</view>
+        <view class="goods_information">{{product_detail.packageName}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+    </block>
+    <!--套餐信息  -->
+    <view class="goods_informatin_container h">
+      <view class="goods_information_title f">出行日期：</view>
+      <view class="goods_information">{{travel_begin_date}}</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+
+    <block wx:if="{{tour_time!=null}}">
+      <!--套餐信息  -->
+      <view class="goods_informatin_container h">
+        <view class="goods_information_title f">出发时间：</view>
+        <view class="goods_information">{{tour_time}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+    </block>
+    
+
+    <!--套餐信息  -->
+    <view class="goods_informatin_container h">
+      <view class="goods_information_title f">购买数量：</view>
+      <view class="goods_information">成人*{{person_count}} 儿童*{{child_count}}</view>
+    </view>
+    <!--间隔粗线  -->
+    <view class="interval"></view>
+
+    <!--添加联系人信息 -->
+    <view class="add_person_information_container">
+      <!--标题  -->
+      <view class="add_person_information_title">预定人信息（用于接收订单反馈）</view>
+      <!--细线  -->
+      <view class="line"></view>
+
+      <!--表单  -->
+      <form bindsubmit="submit">
+
+        
+        <view class="person_name_container h">
+          <view class="person_name_title f">姓名</view>
+          <input type='text' name='person_name' placeholder='请填写联系人姓名(必填)' placeholder-class='empty_person_name' value='{{defualt_name}}' class='person_name ' ></input>
+        </view>
+        <!--细线  -->
+        <view class="line"></view>
+        
+        <view class="person_name_container h">
+          <view class="person_name_title f">手机号码</view>
+          <input type='text' name='person_phone' placeholder='手机号码(必填)' placeholder-class='empty_person_name' value='{{defualt_phone}}' class='person_name ' ></input>
+        </view>
+        <!--细线  -->
+        <view class="line"></view>
+        <!--上车地点  -->
+        <block wx:if="{{product_detail.needRiding == true}}">
+          <view class="person_name_container h">
+            <view class="person_name_title f">乘车地点</view>
+            <input type='text' name='person_riding' placeholder='乘车地点(必选)' placeholder-class='empty_person_name' value='{{defualt_riding}}' class='person_name ' bindtap='choose_ridingHandle' disabled='true'></input>
+          </view>
+          <view class="line"></view> 
+        </block>
+        <!--备注  -->
+        <view class="person_name_container v">
+          <view class="person_name_title f">备注(如果上车地点距离较远，请备注所住客栈)</view>
+          <input type='text' name='person_tips' placeholder='如有需要，请告诉我们' placeholder-class='empty_person_name' value='{{defualt_tips}}' class='person_tips ' ></input>
+        </view>
+        <!--细线  -->
+        <view class="line"></view>
+
+        
+
+        <!--下订单  -->
+        <view class="place_order_container h">
+          <view class="place_order_price_container h" bindtap='check_orderHandle'>
+            <view class="place_order_price_title">合计：</view>
+            <view class="place_order_price f">￥{{child_count*product_detail.defaultChildPrice  + person_count*product_detail.defaultPrice}}</view>
+            <view class="place_order_price_button" >明细</view>
+            <view class="place_order_price_image">
+              <image src="/assets/index/up.png"></image>
+            </view>
+          </view>
+          <button form-type="submit" class="palce_button c {{button_loading==true?'d-e':''}}" loading="{{button_loading}}">确认</button>
+        </view>
+            
+      </form>
+
+      
+    </view>
+    <!--判断是否需要联系人  -->
+    <block wx:if="{{product_detail.needTraveller == true}}">
+      <!--出游人选择  -->
+      <!--间隔粗线  -->
+      <view class="interval"></view>
+      <view class="choose_traveler_contaienr v">
+        <view class="choose_traveler_title">出行人信息</view>
+        <!--细线  -->
+        <view class="line"></view>
+
+        <!-- <view class="choose_traveler_button_container h">
+          <view class="choose_traveler_button f">主要出行人</view>
+          <view class="choose_traveler_image">
+            <image src="/assets/index/right.png"></image>
+          </view>
+        </view>
+        <view class="line"></view> -->
+        <!--有联系人了之后  -->
+        <view class="choose_traveler_button_container h" bindtap='choose_personHandle'>
+          <view class="choose_traveler_button f">主要出行人</view>
+          <block wx:if="{{man_choose_index[0]==null}}">
+            <view class="no_choose_traveler_name">请选择出行人</view>
+          </block>
+          <block wx:else>
+            <view class="choose_traveler_name ">{{person_contact_list[man_choose_index[0]].name}}</view>
+          </block>
+          <view class="choose_traveler_button_image">
+            <image src="/assets/index/traveler_add.png"></image>
+          </view>
+        </view>
+        <!--细线  -->
+        <view class="line"></view>
+        <block wx:if="{{man_choose_index[0]!=null}}">
+          <!--电话号码  -->
+          <view class="choose_traveler_button_container h" >
+            <view class="choose_traveler_button f">电话号码</view>
+            <view class="choose_traveler_name ">{{person_contact_list[man_choose_index[0]].phone}}</view>
+            <view class="choose_traveler_button_image"></view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+
+
+          <!--身份证  -->
+          <view class="choose_traveler_button_container h" >
+            <view class="choose_traveler_button f">身份证</view>
+            <view class="choose_traveler_name ">{{person_contact_list[man_choose_index[0]].identity}}</view>
+            <view class="choose_traveler_button_image"></view>
+          </view>
+          <!--间隔粗线  -->
+          <view class="interval"></view>
+        </block>
+        <block wx:for="{{man_choose_index.length - 1}}" wx:key='i' wx:for-index="i">
+          <view class="choose_traveler_button_container h" >
+            <view class="choose_traveler_button f">主要出行人</view>
+            <view class="choose_traveler_name ">{{person_contact_list[man_choose_index[i+1]].name}}</view>
+            <view class="choose_traveler_button_image"></view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+
+
+          <!--电话号码  -->
+          <view class="choose_traveler_button_container h" >
+            <view class="choose_traveler_button f">电话号码</view>
+            <view class="choose_traveler_name ">{{person_contact_list[man_choose_index[i+1]].phone}}</view>
+            <view class="choose_traveler_button_image"></view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+
+
+          <!--身份证  -->
+          <view class="choose_traveler_button_container h" >
+            <view class="choose_traveler_button f">身份证</view>
+            <view class="choose_traveler_name ">{{person_contact_list[man_choose_index[i+1]].identity}}</view>
+            <view class="choose_traveler_button_image"></view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+          <!--间隔粗线  -->
+          <view class="interval"></view>
+        </block>
+        <block wx:if="{{child_count!=0}}">
+          <!--有联系人了之后  -->
+          <view class="choose_traveler_button_container h">
+            <view class="choose_traveler_button f">儿童出行人数</view>
+            <view class="choose_traveler_name ">{{child_count}}人</view>
+            <view class="choose_traveler_button_image">
+            </view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+          <!--间隔粗线  -->
+          <view class="interval"></view>
+        </block>
+      </view>
+
+    </block>
+    
+
+
+    <!--出游人选择  -->
+    <view class="choose_traveler_contaienr v">
+      <view class="choose_traveler_title">优惠信息</view>
+      <!--细线  -->
+      <view class="line"></view>
+
+
+      <view class="choose_traveler_button_container h">
+        <view class="choose_traveler_button f">商家优惠</view>
+        <view class="discount">无</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+    </view>
+
+    <!--间隔粗线  -->
+    <view class="interval"></view>
+
+
+    <view class="bottom"></view>
+   </view>
+</scroll-view>
+
+
+
+
+
+
+
+
+<!--隐藏  -->
+<view class="hiden_page" style='display:{{person_list_display}}'>
+  <view class="person_list_coantainer_hiden" bindtap='cloose_choose_personHandle'></view>
+  <view class="person_list_container v">
+    <!--确认和取消按钮  -->
+    <view class="person_list_ok_cancel h">
+      <view class="person_list_cancel " bindtap='cloose_choose_personHandle'>取消</view>
+      <view class="f"></view>
+      <view class="person_list_ok" bindtap='confirmHandle'>确认</view>
+    </view>
+    <!--间隔粗线  -->
+    <view class="interval"></view>
+    <!--添加联系人  -->
+    <view class="person_list_add_container h h-c" bindtap='add_new_personHandle'>
+      <view class="person_list_add_image">
+        <image src="/assets/index/traveler_add.png"></image>
+      </view>
+      <view class="person_list_add">添加出行人</view>
+    </view>
+    <!--间隔粗线  -->
+    <view class="interval"></view>
+
+    <!--选择联系人  -->
+    <view class="person_list_choose_container f v">
+      <view class="person_list_choose_title c">选择所有出行人</view>
+      <!--细线  -->
+      <view class="line"></view>
+
+
+      <!--联系人滚动条  -->
+      <scroll-view class="display_scrollbar_hiden" scroll-y="{{true}}"  >
+        <view class="scroll_window">
+          
+          <block wx:for="{{person_contact_list}}" wx:key="id" wx:for-index="i">
+            <!--联系人1  -->
+            <view class="person_list_person_container h">
+              <view class="person_list_person_name f">{{person_contact_list[i].name}}</view>
+              <!--选择按钮  -->
+              <view class="person_list_person_choose c" bindtap='pick_manHandle' data-num="{{i}}">
+                <image class='d-e' src="{{person_contact_list[i].ischoosed == 'yes'?'/assets/index/pick_man.png':'/assets/index/no_pick.png'}}"></image>
+              </view>
+              <!--选择按钮  -->
+              <view class="person_list_person_modify c" bindtap='modify_manHandle' data-num="{{i}}">修改</view>
+              <!--删除按钮  -->
+              <view class="person_list_person_delete c" bindtap='delete_manHandle' data-num="{{i}}">
+                <image src="/assets/index/delete_travel.png" data-num="{{i}}"></image>
+              </view>
+            </view>
+            <!--细线  -->
+            <view class="line"></view>
+          </block>
+          
+        </view>
+      </scroll-view>
+    </view>
+  </view>  
+</view>
+
+
+
+
+
+
+
+<!--隐藏明细  -->
+<view class="hiden_order_detail v" style='display:{{hiden_order_display}}'>
+  <!--透明的一半  -->
+  <view class="hiden_order_lucency" bindtap='close_orderHandle'></view>
+  <!--显示的一半  -->
+  <view class="hiden_order_display v">
+    <view class="hiden_order_display_name">{{product_detail.name}}</view>
+    <!--细线  -->
+    <view class="line"></view>
+
+
+    <view class="hiden_order_display_container h">
+      <view class="hiden_order_display_title f">成人</view>
+      <view class="hiden_order_display_price">￥{{product_detail.defaultPrice}}  x{{person_count}}</view>
+    </view>
+    <!--细线  -->
+    <view class="line"></view>
+
+    <block wx:if="{{child_count!=0}}">
+      <view class="hiden_order_display_container h">
+        <view class="hiden_order_display_title f">儿童</view>
+        <view class="hiden_order_display_price">￥{{product_detail.defaultChildPrice}}  x{{child_count}}</view>
+      </view>
+      <!--细线  -->
+      <view class="line"></view>
+    </block>
+    
+
+  </view>
+</view>
+
+
+
+<!--隐藏明细  -->
+<view class="hiden_order_detail v" style='display:{{hiden_riding_display}}'>
+  <!--透明的一半  -->
+  <view class="hiden_order_lucency" bindtap='close_ridingHandle'></view>
+  <!--显示的一半  -->
+  <view class="hiden_order_display v">
+    <view class="hiden_order_display_name">必选一个乘车地点，较远的备注地址</view>
+    <!--细线  -->
+    <view class="line"></view>
+    <!--联系人滚动条  -->
+    <scroll-view class="display_scrollbar_hiden" scroll-y="{{true}}"  >
+      <view class="scroll_window">
+
+
+        <block wx:for="{{riding_list}}" wx:key="i" wx:for-index="i">
+          <view class="hiden_order_display_container h" bindtap='pick_ridingHandle' data-num="{{i}}">
+            <view class="hiden_riding_display_price" data-num="{{i}}">{{riding_list[i].des}}</view>
+          </view>
+          <!--细线  -->
+          <view class="line"></view>
+        </block>
+
+
+      </view>
+    </scroll-view>
+
+  </view>
+</view>

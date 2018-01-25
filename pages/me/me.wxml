@@ -12,7 +12,20 @@
   <view class="all_orders_image d-e">
     <image src="/assets/index/all_orders.png" class="d-e"></image>
   </view>
-  <view class="all_orders_text f d-e">全部订单</view>
+  <view class="all_orders_text f d-e">实体产品订单</view>
+  <view class="all_orders_detail c d-e">
+    <image src="/assets/index/right.png" class="d-e"></image>
+  </view>
+</view>
+<!--分割线  -->
+<view class="choose_man_line"></view>
+
+<!--旅游类产品订单  -->
+<view class="all_orders h" bindtap="tour_orders_Handle">
+  <view class="all_orders_image d-e">
+    <image src="/assets/index/all_orders.png" class="d-e"></image>
+  </view>
+  <view class="all_orders_text f d-e">旅游类订单</view>
   <view class="all_orders_detail c d-e">
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
@@ -86,19 +99,31 @@
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<view class="choose_man_line"></view>     -->
+<view class="choose_man_line"></view>         -->
 
 <!--地址测试按钮 -->
-<view class="all_orders h" bindtap="button_address">
+<!-- <view class="all_orders h" bindtap="button_address">
   <view class="all_orders_image d-e">
     <image src="/assets/index/all_orders.png" class="d-e"></image>
   </view>
-  <view class="all_orders_text f d-e">地址测试</view>
+  <view class="all_orders_text f d-e">网页测试</view>
   <view class="all_orders_detail c d-e">
     <image src="/assets/index/right.png" class="d-e"></image>
   </view>
 </view>
-<view class="choose_man_line"></view>     
+<view class="choose_man_line"></view>       -->
+
+<!--订单测试按钮 -->
+<!-- <view class="all_orders h" bindtap="button_order">
+  <view class="all_orders_image d-e">
+    <image src="/assets/index/all_orders.png" class="d-e"></image>
+  </view>
+  <view class="all_orders_text f d-e">订单测试</view>
+  <view class="all_orders_detail c d-e">
+    <image src="/assets/index/right.png" class="d-e"></image>
+  </view>
+</view>
+<view class="choose_man_line"></view>      -->
 
 
 

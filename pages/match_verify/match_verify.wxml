@@ -1,0 +1,25 @@
+<!--顶部空行  -->
+<view class='top'></view>
+
+<!--输入框  -->
+<view class="player_container c">
+  <view class="player_image">
+    <image src="/assets/index/player_image.png"></image>
+
+
+    <form bindsubmit="submit">
+      <!--收货人  -->
+      <input type='text' name='player_num' placeholder='请输入' placeholder-class='empty_person_name' value='{{defualt_name}}'
+                         class='person_name' bindinput='check_name_inputHandle' focus='true' ></input>
+      <!--分隔线  -->
+      <button form-type="submit" class="{{fouced == true ? 'ok_button_fixd':'ok_button'}} c {{turn_true == true ? 'd-e':''}}" loading="{{turn_true}}">确认</button>   
+    </form>
+
+
+  </view>
+</view>
+
+<!--爱丽马logo  -->
+<view class="logo">
+  <image src="/assets/index/ailima.png"></image>
+</view>

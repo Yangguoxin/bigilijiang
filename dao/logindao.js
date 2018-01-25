@@ -24,7 +24,7 @@ function getUserInfo(code) {
       app.globalData.avatarUrl = userInfo.avatarUrl;
       wx.showLoading({
         title: '加载中',
-        mask:false
+        mask:true
       });
       wx.request({
         url: app.globalData.global_lijiang_Url,
@@ -40,6 +40,28 @@ function getUserInfo(code) {
             var tmp = res.data;
             app.globalData.userId = tmp.id;
             app.globalData.openId = tmp.openId;
+            userInfo.openId = tmp.openId;
+            userInfo.userId = tmp.id;
+            //超爱丽江小程序第二用户体系
+            wx.request({
+              url: app.globalData.global_Url + '/iTour/user/new/login',
+              data: userInfo,
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              success: function (res) {
+                if (res.statusCode == 200) {
+                  app.globalData.global_lj_userId = res.data.id;
+                  console.log(app.globalData.global_lj_userId);
+                }
+                else {
+                  //访问出错了
+                }
+
+              }
+            });
+            console.log(userInfo);
             console.log(res.data);
           }
           else {

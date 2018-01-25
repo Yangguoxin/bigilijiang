@@ -3,10 +3,10 @@
   <view class="title_left">
     <image src="/assets/index/shop_left.png"></image>
   </view>
-  <block wx:if="{{tour_type==1}}">
+  <block wx:if="{{tour_type==group_travel_Id}}">
     <view class="title_text">当地游</view>
   </block>
-  <block wx:if="{{tour_type==2}}">
+  <block wx:if="{{tour_type==hight_travel_Id}}">
     <view class="title_text">高端游</view>
   </block>  
   <view class="title_right">
@@ -15,44 +15,49 @@
 </view>
 <!--间隔  -->
 <view class="interval"></view>
-<block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
-  <!--线路列表  -->
-  <view class="route_list_container h" bindtap="{{tour_type==1 ? 'recommHandler' : 'high_travel'}}" data-num = "{{i}}">
-    <view class="route_image d-e">
-      <image class="d-e" src="{{image_Url}}{{brief_list[i].imgUrl}}"></image>
-    </view>
-    <view class="route_discription_container v d-e" >
-      <view class="route_discription f d-e">{{brief_list[i].name}}</view>
-      <!--跟团游  -->
-      <block wx:if="{{tour_type==1}}">
-        <view class="route_tag flow d-e h">
-          <view class="tag_yellow d-e">当地游</view>
-          <view class="tag_green d-e">服务周到</view>
-          <view class="tag_green d-e">服务周到</view>
-          <view class="tag_green d-e">服务周到</view>
+<scroll-view class="display_scrollbar" scroll-y="{{true}}" bindscrolltolower="scroll_page">
+  <view class="scroll_window">
+    <block wx:for="{{brief_list}}" wx:key="id" wx:for-index="i">
+      <block wx:for="{{brief_list[i]}}" wx:key="j" wx:for-index="j">
+        <!--线路列表  -->
+        <view class="route_list_container h" bindtap="{{tour_type==group_travel_Id ? 'recommHandler' : 'high_travel'}}" data-num = "{{i}}" data-index = "{{j}}">
+          <view class="route_image d-e">
+            <image class="d-e" src="{{brief_list[i][j].imgList[0].thumbImgPath}}"></image>
+          </view>
+          <view class="route_discription_container v d-e" >
+            <view class="route_discription f d-e">{{brief_list[i][j].name}}</view>
+            <!--跟团游  -->
+            <block wx:if="{{tour_type==group_travel_Id}}">
+              <view class="route_tag flow d-e h">
+                <view class="tag_yellow d-e">当地游</view>
+                <view class="tag_green d-e">周到</view>
+                <view class="tag_green d-e">品质旅游</view>
+                <view class="tag_green d-e">精品</view>
+              </view>
+            </block>
+            <!--高端游  -->
+            <block wx:if="{{tour_type==hight_travel_Id}}">
+              <view class="route_tag flow d-e h">
+                <view class="tag_yellow d-e">高端</view>
+                <view class="tag_green d-e">全程管家</view>
+                <view class="tag_green d-e">私人订制</view>
+                <view class="tag_green d-e">定制一对一</view>
+              </view>
+            </block>
+            <view class="route_price h d-e">
+              <view class="price_symbol d-e">￥</view>
+              <view class="price d-e">{{brief_list[i][j].defaultPrice}}</view>
+              <view class="price_unit d-e">/人</view>
+            </view>
+          </view>
         </view>
+        <!--线路分割线  -->
+        <view class="route_interval"></view>
       </block>
-      <!--高端游  -->
-      <block wx:if="{{tour_type==2}}">
-        <view class="route_tag flow d-e h">
-          <view class="tag_yellow d-e">高端</view>
-          <view class="tag_green d-e">全程管家</view>
-          <view class="tag_green d-e">私人订制</view>
-          <view class="tag_green d-e">定制一对一</view>
-        </view>
-      </block>
-      <view class="route_price h d-e">
-        <view class="price_symbol d-e">￥</view>
-        <view class="price d-e">{{brief_list[i].discountPrice / 100}}</view>
-        <view class="price_unit d-e">/人</view>
-      </view>
-    </view>
+    </block>
+    <!--底部  -->
+    <view class="bottom"></view>
   </view>
-  <!--线路分割线  -->
-  <view class="route_interval"></view>
-</block>
+</scroll-view>
 
-
-<!--底部  -->
-<view class="bottom"></view>
 

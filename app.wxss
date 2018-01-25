@@ -1,4 +1,4 @@
-@import "dao/wxParse/wxParse.wxss";
+
 view {
   box-sizing: border-box;
 }

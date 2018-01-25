@@ -24,6 +24,7 @@ Page({
     //防止加载出问题
     this.setData({ image_Url: app.globalData.global_Img_Url });
     var self = this;
+    console.log(dao_data);
     console.log(dao_data.scale * 186 * 2);
     // var news_tmp = [
     //   {

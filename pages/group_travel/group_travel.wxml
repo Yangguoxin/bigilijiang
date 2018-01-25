@@ -1,14 +1,15 @@
 <!--滑动模块  -->
+<import src='../../dao/wxParse/wxParse.wxml'/>
 <scroll-view class="display_scrollbar" lower-threshold="0" scroll-y="{{true}}" bindscrolltolower="scroll_bottom">
   <view class="scroll_window">
 
     <!--图片滑块  -->
     <swiper class="swiper_container " indicator-dots="{{true}}" autoplay="{{true}}" interval="5000" duration="1000" indicator-active-color="rgb(104,195,218)">
-      <block wx:for="{{merchant_detail}}" wx:for-index="i" wx:key="id">
+      <block wx:for="{{merchant_detail.imgList}}" wx:for-index="i" wx:key="i">
         <swiper-item >
           
-          <view class="swiper_item h" >
-            <image mode="aspectFill" src="{{image_Url}}{{merchant_detail[i].imageUrl}}" class="slide_image d-e"/>
+          <view class="swiper_item h" bindtap='preview_goodsHandle' data-num="{{i}}">
+            <image mode="aspectFill" src="{{merchant_detail.imgList[i].path}}" class="slide_image d-e"/>
           </view>
         </swiper-item>
       </block>
@@ -18,286 +19,229 @@
     <!--标题  -->
     <view class="title_container v">
       <view class="title_price h">
-        <view class="title ">{{route_name}}</view>
+        <view class="title ">{{merchant_detail.name}}</view>
       </view>
-      <view class="title_discription">{{route_discription}}</view>
+      <!-- <view class="title_discription">{{route_discription}}</view> -->
     </view>
-    <view class="route_price_container v">
-      <view class="discount_route_price_container h">
-        <view class="discount_route_price_title">推广价：￥</view>
-        <view class="discount_route_price">{{price/100}}</view>
-        <view class="discount_route_price_title">/人</view>
+    <view class="route_price_container h">
+      <view class="discount_route_price_container h h-b">
+        <view class="discount_route_price_title ">￥</view>
+        <view class="discount_route_price ">{{merchant_detail.defaultPrice}}</view>
+        <view class="discount_route_price_title ">/人</view>
       </view>
       <view class="origin_route_price_container h">
-        <view class="origin_route_price_title">原价：￥</view>
-        <view class="origin_route_price">1998</view>
-        <view class="origin_route_price_title">/人</view>
+        <view class="origin_route_price_title">市场价</view>
+        <view class="origin_route_price">{{merchant_detail.defaultPrice==0?'￥1998':merchant_detail.defaultPrice}}</view>
       </view>
+    </view>
+
+    <!--分割线  -->
+    <view class="line"></view>
+    <!--出游保障  -->
+    <view class="tour_gurantee_container h">
+      <view class="tour_gurantee_image">
+        <image src="/assets/index/tour_gurantee.png"></image>
+      </view>
+      <view class="tour_gurantee_title">出游保障</view>
+      <view class="tour_gurantee f">承诺不加价 更改则陪付</view>
+      <!-- <view class="tour_gurantee_button">
+        <image src="/assets/index/down.png"></image>
+      </view> -->
     </view>
     <!--分割线  -->
     <view class="line"></view>
-    <!--小标签  -->
-    <view class="tag h flow">
-      <view class="tag_container">专业导游</view>
-      <view class="tag_container">详细讲解</view>
-      <view class="tag_container">透玩丽江</view>
-      <view class="tag_container">在线支付</view>
-      <view class="tag_container">7天无忧退款</view>
-    </view>
-
+    <!--标题  -->
+    <block wx:if="{{packages.length!=0 && packages!=null}}">
+      <view class="title_container_title h h-c">
+        <view class="title_left">
+          <image src="/assets/index/shop_left.png"></image>
+        </view>
+          <view class="title_text">套餐类型</view>
+        <view class="title_right">
+          <image src="/assets/index/shop_right.png"></image>
+        </view>
+      </view>
+      <!--空白间隔  -->
+      <view class="block_interval"></view>
+    </block>
     
 
-  <!--分割线  -->
-  <view class="interval"></view>
-  <!--商品信息条  -->
-  
-  <view class="goods_information_container h" bindtap="change_informationHandle">
-    <view class="{{information_array[0]}}" data-num="0">商品简介</view>
-    <view class="line_goods d-e"></view>
-    <view class="{{information_array[1]}}" data-num="1">商品详情</view>
-    <view class="line_goods d-e"></view>
-    <view class="{{information_array[2]}} c" data-num="2">须知</view>
-  </view>
 
-  <block wx:if="{{current_choose==0}}">
-    <!--商品简介  -->
-    <view class="merchant_brief_container">
-      <view class="merchant_brief">
-        <image src="{{image_Url}}{{goodes_image}}"></image>
-      </view>
-    </view>
-  </block>
-
-  <block wx:if="{{current_choose==1}}">
-<!--第一天-->
-<view class="day h" bindtap="change_updown" data-num="0">
-  <view class="circular v d-e">
-      <view class="dot d-e"></view>
-      <view class="dotline d-e"></view>
-  </view>
-  <view class="day_text h d-e" >
-      <view class="day_date d-e">Day1</view>
-      <view class="day_place f d-e">丽江</view>
-      <view class="day_up h h-c d-e" >
-         <image class="day_imge d-e" src="{{updown[0]}}" ></image>
-      </view>    
-  </view>
-</view>
-<!--景点游玩描述  -->
-<view class="scenery_discription h">
-  <view class="discription_line v">
-    <view class="discription_line_line"></view>
-  </view>
-  <view class="discription_content">
-    <view class="discription_text">狮子山公园是一座位于丽江古城中心的依山而建的森林公园。占地3.9万平方米，是国家级风景名胜区的主要景点。 </view>
-  </view>
-</view>
-<!--第一个景点-->
-<block wx:if="{{updown[0] == '/assets/index/up.png' }}" >
-
-  <block wx:for="{{recommend_data[0].scenery}}" wx:key="day" wx:for-index="i">
-    <view class="goods h"  data-num="{{i}}" bindtap="eventHandler">
-      <view class="commend c d-e" >
-        <view class="goodsline_c d-e"></view>
-        <image class="d-e" src="{{(recommend_data[0].scenery[i].category == 1 ) ?'/assets/index/scenery.png':'/assets/index/restaurant.png'}}"></image>
-        <view class="goodsline_c d-e"></view>
-      </view>
-      <image class="photo d-e" src="{{image_Url}}{{recommend_data[0].scenery[i].imgUrl}}"></image>
-      <view class="goods-des d-e">
-        <view class="gdes1 d-e">{{recommend_data[0].scenery[i].name}}</view>
-        <view class="gdes3 d-e">{{recommend_data[0].scenery[i].name}}.建议玩半小时</view>
-        <view class="gdes2 d-e h">
-          <image class="d-e" src="/assets/index/{{start_status[0][i][0]}}"></image>
-          <image class="d-e" src="/assets/index/{{start_status[0][i][1]}}"></image>
-          <image class="d-e" src="/assets/index/{{start_status[0][i][2]}}"></image>
-          <image class="d-e" src="/assets/index/{{start_status[0][i][3]}}"></image>
-          <image class="d-e" src="/assets/index/{{start_status[0][i][4]}}"></image>
-          <view class="d-e">{{score_change[0][i]}}分/{{recommend_data[0].scenery[i].commentNumber}}点评</view>
-        </view>
-      </view>
-    </view>
-    <view class="goodsline d-e"></view>
-<!--行走路程-->
-    <block wx:if="{{recommend_data[0].scenery.length  != (i+1) }}" >
-      <view class="walk h " >
-        <view class="walk_img c ">
-          <view class="walk_line d-e"></view>
-          <image class="d-e" src="/assets/index/walking.png"></image>
-          <view class="walk_line d-e"></view>
-        </view>
-        <view class=" f h">
-          <view class="walk_text">距离上一景点：{{distance[0][i]}}公里</view>
+    <!--有详细信息的产品  -->
+    <!-- <view class="goods_contianer v">
+      <view class="goods_title_container h">
+        <view class="goods_title f">玉龙雪山超值游</view>
+        <view class="goods_title_price">￥368</view>
+         <view class="goods_title_button c">
+          <image src="/assets/index/down.png"></image>
         </view> 
-        <!-- <view class="walk_d h h-c">
-          <image class="walk_detail" src="/assets/index/walk_detail.jpg"></image>
-        </view>  -->
       </view>
-      <view class="goodsline d-e"></view>
-    </block>
-  </block>
 
-</block>
-<block wx:if="{{updown[0] == '/assets/index/down.png' }}" >
-  <view class="goodsline d-e"></view>
-</block>
+      <view class="line"></view>
 
-<!--除了第一天之外的天数-->
-<block wx:for="{{recommend_data.length - 1}}" wx:for-item="i" wx:key="day">
-  <!--第某天-->
-    <view class="day h" bindtap="change_updown" data-num="{{i+1}}">
-      <view class="circular v-s d-e">
-        <view class="dotline_L d-e"></view>
-        <view class="dot d-e"></view>
-        <view class="dotline d-e"></view>
-      </view>
-      <view class="day_text h d-e">
-        <view class="day_date d-e">Day{{i+2}}</view>
-        <view class="day_place f d-e">丽江</view>
-        <view class="day_up h h-c d-e" >
-          <image class="day_imge d-e" src="{{updown[i+1]}}" ></image>
-        </view>    
-      </view>
-    </view>
-<!--景点游玩描述  -->
-<view class="scenery_discription h">
-  <view class="discription_line v">
-    <view class="discription_line_line"></view>
-  </view>
-  <view class="discription_content">
-    <view class="discription_text">狮子山公园是一座位于丽江古城中心的依山而建的森林公园。占地3.9万平方米，是国家级风景名胜区的主要景点。</view>
-  </view>
-</view>
-  <!--天内景色循环-->
-    <block wx:if="{{updown[i+1] == '/assets/index/up.png' }}" >
-      <block wx:for="{{recommend_data[i+1].scenery}}" wx:key="id" wx:for-index="j">
-        <view class="goods h" data-id="{{i+1}}" data-num="{{j}}" bindtap="eventHandler_second">
-          <view class="commend c" >
-              <view class="goodsline_c d-e"></view>
-              <image class="d-e" src="{{(recommend_data[i+1].scenery[j].category == 1 ) ?'/assets/index/scenery.png':'/assets/index/restaurant.png'}}"></image>
-              <view class="goodsline_c d-e"></view>
+      <view class="goods_content_book_container h">
+        <view class="goods_content_container v">
+          <view class="goods_content_title_text h">
+            <view class="goods_content_title">门票</view>
+            <view class="goods_content_text">千古情，玉龙雪山门票一张</view>
           </view>
-          <image class="photo d-e" src="{{image_Url}}{{recommend_data[i+1].scenery[j].imgUrl}}"></image>
-          <view class="goods-des d-e">
-            <view class="gdes1 d-e">{{recommend_data[i+1].scenery[j].name}}</view>
-            <view class="gdes3 d-e">{{recommend_data[i+1].scenery[j].name}}.建议玩半小时</view>
-            <view class="gdes2 d-e h">
-            <image class="d-e" src="/assets/index/{{start_status[i+1][j][0]}}"></image>
-            <image class="d-e" src="/assets/index/{{start_status[i+1][j][1]}}"></image>
-            <image class="d-e" src="/assets/index/{{start_status[i+1][j][2]}}"></image>
-            <image class="d-e" src="/assets/index/{{start_status[i+1][j][3]}}"></image>
-            <image class="d-e" src="/assets/index/{{start_status[i+1][j][4]}}"></image>
-              <view class="d-e">{{score_change[i+1][j]}}分/{{recommend_data[i+1].scenery[j].commentNumber}}点评</view>
-            </view>
+
+          <view class="goods_content_title_text h">
+            <view class="goods_content_title">交通</view>
+            <view class="goods_content_text">千古情，玉龙雪山门票一张</view>
+          </view>
+
+          <view class="goods_content_title_text h">
+            <view class="goods_content_title">餐饮</view>
+            <view class="goods_content_text">千古情，玉龙雪山门票一张</view>
           </view>
         </view>
-        <view class="goodsline d-e"></view>
-        <block wx:if="{{recommend_data[i+1].scenery.length  != (j+1) }}" >
-          <view class="walk h " >
-            <view class="walk_img c ">
-              <view class="walk_line d-e"></view>
-              <image class="d-e" src="/assets/index/walking.png"></image>
-              <view class="walk_line d-e"></view>
-            </view>
-            <view class=" f h">
-              <view class="walk_text">距离上一景点：{{distance[i+1][j]}}公里</view>
-            </view> 
-            <!-- <view class="walk_d h h-c">
-              <image class="walk_detail" src="/assets/index/walk_detail.jpg"></image>
-            </view>  -->
+        <view class="book_container f c">
+          <view class="book_button c">预定</view>
+        </view>
+      </view> 
+    </view>  -->
+
+    <block wx:for="{{packages}}" wx:key="i" wx:for-index='i'>
+      <!--产品  -->
+      <view class="goods_contianer v">
+        <!--产品标题  -->
+        <view class="goods_title_container h">
+          <view class="goods_title f">{{packages[i].packageName}}</view>
+          <view class="goods_title_price">￥{{packages[i].defaultPrice}}</view>
+          <view class="book_button c" bindtap="place_order" data-num="{{i}}">预定</view>
+        </view>
+        <!--分割线  -->
+        <view class="line"></view>
+
+      </view>
+    </block>
+    
+
+
+    <!--分割线  -->
+    <view class="interval"></view>
+
+
+    <!--评价内容  -->
+    <block wx:for="{{comments}}" wx:key="i"  wx:for-index="i">
+      <view class="comment_container v">
+        <view class="head_container h">
+          <view class="head_image">
+            <image src="{{comments[i].headurl}}"></image> 
           </view>
-          <view class="goodsline d-e"></view>
+          <view class="nick_name f">{{comments[i].userName}}</view>
+          <view class="v5-d1s h">
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[0]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[1]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[2]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[3]}}"></image>
+            <image class="d-e" src="/assets/index/{{comments[i].star_list[4]}}"></image>
+          </view>
+        </view>
+        <view class="comment">{{comments[i].remark}}</view>
+        <block wx:if="{{comments[i].imgList.length != 0}}" >
+          <view class='comment_photos_contianer h flow'>
+            <block wx:for="{{comments[i].imgList}}" wx:key="j"  wx:for-index="j">
+              <view class='comment_photos' bindtap='previwe_imageHandle' data-num ="{{i}}" data-index="{{j}}">
+                <image class='d-e' src='{{comments[i].imgList[j].thumbImgPath}}'></image>
+              </view>
+            </block>
+          </view>
         </block>
-      </block>
+        <view class="time_goodstype h">
+          <view class="time">{{comments[i].createTime}}</view>
+          <view class="goodstype">{{comments[i].productName}}</view>
+        </view>
+      </view>
+      <!--分割线  -->
+      <view class="line"></view>
     </block>
-  <block wx:if="{{updown[i+1] == '/assets/index/down.png' }}" >
-    <view class="goodsline d-e"></view>
-  </block>
-</block>
-<!--最后标题-->
-<view class="day h">
-  <view class="circular v-s ">
-    <view class="dotline_L"></view>
-    <view class="dot"></view>
-  </view>
-  <view class="day_text h ">
-    <view class="day_date">The End</view>    
-  </view>
-</view>
-    
-  </block>
-    
-  <block wx:if="{{current_choose==2}}">
-    <!--包装售后  -->
-    <view class="paking_container v" >
-      <view class="paking_title_container h h-t">
-        <view class="line_left">
-          <image src="/assets/index/left_line.png"></image>
-        </view>
-        <view class="paking_title c">费用包含</view>
-        <view class="line_right">
-          <image src="/assets/index/right_line.png"></image>
-        </view>
-      </view>
-      <!--清单内容  -->
-      <view class="paking_content_container v_high">
-        <view class="paking_content_title h h-t">
-          <view class="dot_style c ">·</view>
-          <view class="paking_content_text">50万元户外专业保险、接送交通费用、公共餐费、领队费、公用装备租赁用费（帐篷、睡袋、登山杖、雨衣）不含个人消费费用</view>
-        </view>
-        <view class="paking_content_title h h-t">
-          <view class="dot_style c ">·</view>
-          <view class="paking_content_text">4小时越野车费、BBQ费用、2小时漂流费用、篝火晚会费用、2小时骑马费用</view>
-        </view>
-      </view>
-    </view>
-    
 
-    <!--售后服务  -->
-    <view class="paking_container v" >
-      <view class="paking_title_container h h-t">
-        <view class="line_left">
-          <image src="/assets/index/left_line.png"></image>
-        </view>
-        <view class="paking_title c">徒步准备</view>
-        <view class="line_right">
-          <image src="/assets/index/right_line.png"></image>
-        </view>
-      </view>
-      <!--清单内容  -->
-      <view class="paking_content_container v_high">
-        <view class="paking_content">1、食品类：饮用水、饮用水、饮用水、饮用水</view>
-        <view class="paking_content">2、衣物类：衣服、裤子、帽子</view>
-        <view class="paking_content">3、药品类：感冒药、退烧药</view>
-        <view class="paking_content">4、电器类：手电筒</view>
-        <view class="paking_content">5、其他类：墨镜、卫生纸</view>
-        <view class="paking_content">6、证件类：身份证</view>
-        <view class="paking_content">7、洗漱类：牙膏、牙刷</view>
+    <!--查看更多评论  -->
+    <view class="more_comments_container h" bindtap='goto_allcommentsHandle'>
+      <view class="more_comments_count f">共{{merchant_detail.commentNum}}条评论</view>
+      <view class="more_comments">查看更多</view>
+      <view class="more_comments_image">
+        <image src="/assets/index/right.png"></image>
       </view>
     </view>
 
+    <!--分割线  -->
+    <view class="interval"></view>
 
-    <!--价格说明  -->
-    <view class="paking_container v" >
-      <view class="paking_title_container h h-t">
-        <view class="line_left">
-          <image src="/assets/index/left_line.png"></image>
-        </view>
-        <view class="paking_title c">温馨提示</view>
-        <view class="line_right">
-          <image src="/assets/index/right_line.png"></image>
-        </view>
-      </view>
-      <!--清单内容  -->
-      <view class="paking_content_container v_high">
-        <view class="paking_content">1、当地游由于自己的原因错过旅程，概不退款</view>
-        <view class="paking_content">2、请随身携带手机等通讯设备，及时与导游保持联系，以免脱团</view>
-        <view class="paking_content">3、行程中会遇突发状况，领队会及时作出调整，请参加徒步的旅客，尽量配合领队做出调整</view>
-      </view>
+    <!--商品信息条  -->
+    <view class="goods_information_container h" bindtap="change_informationHandle">
+      <view class="{{goods_information[0]}}" data-num="0">商品介绍</view>
+      <view class="line_goods d-e"></view>
+      <view class="{{goods_information[1]}}" data-num="1">费用说明</view>
+      <view class="line_goods d-e"></view>
+      <view class="{{goods_information[2]}}" data-num="2">购买须知</view>
     </view>
-  </block>
-    <!--购买按钮  -->
+
+    <block wx:if="{{goods_information[0] == 'goods_information_fix'}}">
+      <!--商品介绍  -->
+      <view class="goods_introduction_title_container h h-c">
+        <view class="goods_introduction_title_image">
+          <image src='/assets/index/tour_introduction.png'></image>
+        </view>
+        <view class="goods_introduction_title">商品介绍</view>
+      </view>
+      <!--分割线  -->
+      <view class="line"></view>
+      <!--空白间隔  -->
+      <view class="block_interval"></view>
+      <view class="wxParse_detail ">
+        <!-- <view>{{merchant_detail.content}}</view> -->
+         <template is="wxParse" data="{{wxParseData:article.nodes}}"/> 
+      </view>
+    </block>
+   
+
+
+    <block wx:if="{{goods_information[1] == 'goods_information_fix'}}">
+      <!--费用说明  -->
+      <view class="goods_introduction_title_container h h-c">
+        <view class="goods_introduction_title_image">
+          <image src='/assets/index/fee.png'></image>
+        </view>
+        <view class="goods_introduction_title">费用说明</view>
+      </view>
+      <!--分割线  -->
+      <view class="line"></view>
+      <view class="wxParse_fee_detail ">
+        <!-- <view>{{merchant_detail.content}}</view> -->
+         <template is="wxParse" data="{{wxParseData:special.nodes}}"/> 
+      </view>
+    </block>
+    
+
+
+    <block wx:if="{{goods_information[2] == 'goods_information_fix'}}">
+      <!--购买须知  -->
+      <view class="goods_introduction_title_container h h-c">
+        <view class="goods_introduction_title_image">
+          <image src='/assets/index/buyknown.png'></image>
+        </view>
+        <view class="goods_introduction_title">购买须知</view>
+      </view>
+      <!--分割线  -->
+      <view class="line"></view>
+       <view class="wxParse_fee_detail ">
+        <!-- <view>{{merchant_detail.content}}</view> -->
+         <template is="wxParse" data="{{wxParseData:buyInfo.nodes}}"/> 
+      </view>
+    </block>
+    
+
+
+
+
+
+
+
     <!--底部空间  --> 
-  <view class="bottom"></view>
+    <view class="bottom"></view>
   </view> 
 </scroll-view>
 
@@ -306,15 +250,7 @@
     <view class="price_title">总计:</view>
     <view class="price_num">￥{{price/100}}</view>
   </view> -->
-  <view class="book h h-c d-e" bindtap="place_order">
-    <view class="book_text d-e" >预订</view>
+  <view class="book h h-c " bindtap="place_order">
+    <view class="book_text " >立即购买</view>
   </view>
 </view>
-
-
-
-  
-      
-
-
-

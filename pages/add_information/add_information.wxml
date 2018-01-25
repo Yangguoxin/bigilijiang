@@ -23,7 +23,7 @@
         <view class="star_text">联系方式</view>
         </view>
         <view class="user_telephone_container h">
-          <input name="telephone_num" value="{{choose_telephone}}" type ="number" placeholder="请输入手机号码" placeholder-class = "empty_test" />
+          <input name="telephone_num" value="{{choose_telephone}}" type ="number" placeholder="出行当天的联系号码" placeholder-class = "empty_test" />
           <!-- <view class="add_person h h-c" bindtap="choose_telephone_Handle">
             <image class="d-e" src="/assets/index/traveler_phone.png"></image>
           </view> -->
@@ -32,6 +32,7 @@
 
       <view class="user_name v">
         <view class="star h">
+        *
         <view class="star_text_ID">身份证</view>
         </view>
         <view class="user_ID_container h">
@@ -50,6 +51,6 @@
       </view>
 
        <!-- <view form-type="submit" class="docomm c" >添加</view>  -->
-         <button form-type="submit" class="docomm c" >添加</button>   
+         <button form-type="submit" class="docomm c {{turn_true==ture?'d-e':''}} h" loading="{{turn_true}}" >添加</button>   
   </form>
 </view>

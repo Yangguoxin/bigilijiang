@@ -90,7 +90,7 @@ Page({
       wx.request({
         url: app.globalData.global_Url + '/iTour/comment/user/add',
         data: {
-          userId: app.globalData.userId,
+          userId: app.globalData.global_lj_userId,
           merchantId: app.globalData.currmerchantId,
           score: self.data.score,
           content: e.detail.value.textarea,
